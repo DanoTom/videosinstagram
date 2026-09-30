@@ -204,8 +204,8 @@ const T = {
 const DURACION = voz.duracion;
 const escenas = [['e1', -1, T.e3 + 0.6], ['e3', T.e3 - 0.1, T.e4 + 0.6], ['e4', T.e4 - 0.1, T.e5 + 0.6],
   ['e5', T.e5, T.e6 + 0.6], ['e6', T.e6, T.e7 + 0.6], ['e7', T.e7, 999]];
-const SUBS = subtitulos(voz, [['en este cuadro hay un hombre cayéndose del cielo'], ['lo encontrás'], ['es que nadie lo mira'], ['no le hizo caso'], ['tres testigos'],
-  ['mirando para otro lado'], ['por qué nadie ayuda'], ['cada uno en lo suyo'], ['esta perdiz'], ['es lo que hiciste vos hace un minuto']]);
+const SUBS = subtitulos(voz, [['en este cuadro hay un hombre que cayó del cielo'], ['lo encontrás'], ['es que nadie lo mira'], ['no le hizo caso'], ['tres testigos'],
+  ['mirando para otro lado'], ['por qué nadie ayuda'], ['cada uno en lo suyo'], ['esta perdiz'], ['es lo que hiciste vos']]);
 
 function seek(t) {
   for (const [id, a, b] of escenas) $(id).style.display = t >= a && t < b ? 'block' : 'none';
@@ -250,7 +250,7 @@ function seek(t) {
     });
     const tm = W('mirando para otro lado').s;
     document.querySelectorAll('#e4 .flecha').forEach((f, k) => trazo(f, ease.out(prog(t, tm + k * 0.22, tm + k * 0.22 + 0.4))));
-    pieza($('negQ'), t, { t0: W('los ven volar').s - 0.05, entra: 'izq', dur: 0.4, t1: tm - 0.15, sale: 'izq' });
+    pieza($('negQ'), t, { t0: W('ven volar').s - 0.05, entra: 'izq', dur: 0.4, t1: tm - 0.15, sale: 'izq' });
     pieza($('tira5'), t, { t0: tm - 0.05, t1: T.e5, sale: 'fundido' });
   }
 

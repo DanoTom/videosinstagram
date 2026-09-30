@@ -1,6 +1,6 @@
 # 02 · La caída de Ícaro: nadie mira
 
-Formato B (leer un cuadro) · Duración final: 1 min 43 s · 1080×1920 · Sistema visual v1.
+Formato B (leer un cuadro) · Duración final: 1 min 46 s · 1080×1920 · Sistema visual v1.
 
 ## Guion (voz en off) · versión final de Dano, con las correcciones de la revisión del video
 
@@ -54,8 +54,8 @@ Las diferencias con el primer borrador dieron origen a [la guía de escritura](.
 
 ## Producción
 
-- Voz: ElevenLabs (voz "Javier – Deep, Confident and Measured"), 97,6 s.
-- Pausas agregadas: 1,3 s después de "¿Lo encontrás?" (para buscar), y 0,3–0,6 s antes de los giros → `audio/voz-editada.wav` (102,7 s).
+- Voz: ElevenLabs (voz "Javier – Deep, Confident and Measured"), 101,3 s, con el guion corregido. La primera grabación quedó en `audio/v1/`.
+- Pausas agregadas: 1,3 s después de "¿Lo encontrás?" (para buscar), y 0,3–0,6 s antes de los giros → `audio/voz-editada.wav` (106,4 s).
 - Animación: `video.html`. La cámara entra en el cuadro (del cuadro entero a las piernas de Ícaro y a la perdiz) con zoom logarítmico.
 
 ```bash

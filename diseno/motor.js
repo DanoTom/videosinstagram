@@ -33,7 +33,7 @@ export async function cargarVoz(url) {
 }
 
 // ───── Subtítulos: frases cortas sincronizadas; se omiten las que ya están escritas en pantalla ─────
-export function subtitulos(voz, ocultar, maxPalabras = 7) {
+export function subtitulos(voz, ocultar, maxPalabras = 8) {
   const oculta = new Set();
   for (const [frase, n] of ocultar) {
     const r = voz.W(frase, n);
@@ -49,13 +49,24 @@ export function subtitulos(voz, ocultar, maxPalabras = 7) {
     if (/[.?!]$/.test(p.w) || (/,$/.test(p.w) && cur.length >= 3)) cerrar();
   });
   cerrar();
-  const trozos = [];
-  for (const f of frases) {
-    const n = Math.ceil(f.length / maxPalabras), tam = Math.ceil(f.length / n);
-    for (let i = 0; i < f.length; i += tam) trozos.push(f.slice(i, i + tam));
-  }
+  // Las frases largas se parten cerca del medio, prefiriendo cortar después de una coma o antes de un nexo
+  // ("y", "que", "pero"...), para no separar "a Dédalo y a / Ícaro".
+  const NEXOS = new Set(['y', 'e', 'o', 'que', 'pero', 'cuando', 'porque', 'donde', 'como', 'sino', 'aunque']);
+  // Nunca se corta después de una preposición o un artículo ("transformado en / ave"), ni se deja un trozo de menos de 3 palabras.
+  const DEBILES = new Set(['a', 'al', 'de', 'del', 'en', 'el', 'la', 'los', 'las', 'un', 'una', 'por', 'para', 'con', 'sin', 'desde', 'hasta', 'hacia', 'sobre', 'entre', 'y', 'que', 'lo', 'se', 'su', 'sus']);
+  const partir = f => {
+    if (f.length <= maxPalabras) return [f];
+    let mejor = Math.ceil(f.length / 2), puntaje = Infinity;
+    for (let i = 3; i <= f.length - 3; i++) {
+      const bonus = /,$/.test(f[i - 1].w) ? 3 : NEXOS.has(f[i].n) ? 2.5 : 0;
+      const p = Math.abs(i - f.length / 2) - bonus + (DEBILES.has(f[i - 1].n) ? 5 : 0);
+      if (p <= puntaje) { puntaje = p; mejor = i; }
+    }
+    return [...partir(f.slice(0, mejor)), ...partir(f.slice(mejor))];
+  };
+  const trozos = frases.flatMap(partir);
   return trozos.map((ws, i) => ({
-    texto: ws.map(w => w.w).join(' '),
+    texto: ws.map(w => w.w).join(' ').replace(/ %/g, '%'),
     s: ws[0].s - 0.06,
     e: Math.min(ws[ws.length - 1].e + 0.35, trozos[i + 1] ? trozos[i + 1][0].s - 0.06 : Infinity),
   }));
