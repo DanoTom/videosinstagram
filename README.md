@@ -20,9 +20,15 @@ Reels de arte y psicología hechos desde Claude Code: guion, guion visual, anima
 
 ## Preparar el entorno
 
+En Claude Code en la web no hace falta hacer nada: el hook `.claude/hooks/session-start.sh` instala todo al iniciar cada sesión
+(dependencias de Node y de Python según `package.json` y `requirements.txt`, y ffmpeg). El modelo de transcripción se baja solo
+la primera vez que se transcribe una voz.
+
+A mano, en otra máquina:
+
 ```bash
 npm install
-pip install imageio-ffmpeg pillow faster-whisper
+pip install -r requirements.txt
 ln -sf "$(python3 -c 'import imageio_ffmpeg; print(imageio_ffmpeg.get_ffmpeg_exe())')" /usr/local/bin/ffmpeg
 ```
 

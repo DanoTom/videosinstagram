@@ -1,0 +1,4 @@
+# Herramientas de Python (transcripción, recortes, ffmpeg estático)
+faster-whisper==1.2.1
+imageio-ffmpeg==0.6.0
+pillow==12.3.0
