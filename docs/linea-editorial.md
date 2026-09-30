@@ -11,6 +11,8 @@
      algo más extenso que el 01.
 - Tono: el de El Reflejo, sin que sea obligatorio.
 - Meta: 1 video por semana es un éxito; 2 es un éxito rotundo.
-- Voz: la de Dano cuando pueda grabar; ElevenLabs cuando no.
+- Voz: la de Dano cuando pueda grabar; ElevenLabs cuando no. En ElevenLabs funcionó la voz "Javier – Deep, Confident and Measured"
+  con velocidad 1,00, estabilidad 30 y similitud 0 (video 02). Si un tramo se regraba con otros ajustes, conviene regrabar el guion entero.
+- Descripción del posteo: la invitación a seguir la cuenta y El Reflejo va ahí, junto con las obras y las fuentes. Se guarda en `publicacion.md`.
 
 Estrategia y banco de temas: [estrategia-contenido.md](estrategia-contenido.md).
