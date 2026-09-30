@@ -12,7 +12,7 @@ import json, sys, time, urllib.parse, urllib.request
 
 UA = "DanoArteVideoBot/0.1 (https://github.com/danotom/videosinstagram)"
 API = "https://commons.wikimedia.org/w/api.php"
-ANCHOS = [3840, 2560, 1920, 1280, 960]
+ANCHOS = [3840, 1920, 1280, 960]  # escalones estándar de Wikimedia (otros anchos dan 400)
 
 
 def pedir(url, binario=False, intentos=6):

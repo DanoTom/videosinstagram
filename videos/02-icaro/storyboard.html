@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Storyboard · Ícaro</title>
+<link rel="stylesheet" href="../../diseno/sistema.css">
+<style>
+  body { margin: 0; background: #777; display: flex; flex-wrap: wrap; gap: 40px; padding: 40px; }
+  .sub { left: 80px; right: 150px; top: 1488px; font-weight: 600; font-size: 36px; line-height: 1.5; color: var(--crema); }
+  .sub span { background: rgba(17,17,17,.86); padding: 3px 12px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+  .persona { position: absolute; width: 64px; height: 110px; color: rgba(243,238,228,.3); transform-origin: 50% 100%; }
+  .persona::before { content: ''; position: absolute; left: 15px; top: 0; width: 34px; height: 34px; border-radius: 50%; background: currentColor; }
+  .persona::after { content: ''; position: absolute; left: 0; top: 42px; width: 64px; height: 68px; border-radius: 30px 30px 8px 8px; background: currentColor; }
+  .persona.vio { color: var(--amarillo); }
+  svg.marca { position: absolute; overflow: visible; }
+  .num { font-weight: 800; font-size: 170px; letter-spacing: -.045em; line-height: .9; }
+</style>
+</head>
+<body>
+
+<!-- 1 · GANCHO -->
+<section class="frame" id="f1">
+  <div class="puntos"></div>
+  <div class="tira titular" data-rasgado style="top:290px;left:44px;font-size:128px;transform:rotate(-2deg)">¿Lo encontrás?</div>
+  <div class="negro serif" style="top:470px;left:110px;font-size:58px;transform:rotate(1deg)">Un hombre se está cayendo del cielo.</div>
+  <div class="lamina" style="top:700px;left:40px;width:1000px;height:664px;transform:rotate(-1deg)">
+    <div class="plate" data-img="icaro" data-crop="0,0,3840,2505"></div>
+    <svg class="marca" style="inset:16px" viewBox="0 0 968 632" fill="none">
+      <path d="M140 420 C 260 300, 420 380, 560 300 S 740 280, 786 340" stroke="var(--amarillo)" stroke-width="5" stroke-dasharray="2 14" stroke-linecap="round"/>
+      <circle cx="786" cy="340" r="62" stroke="var(--amarillo)" stroke-width="8"/>
+    </svg>
+  </div>
+  <div class="ficha" style="top:1392px;left:80px;transform:rotate(-1deg)">Pieter Bruegel (atrib.) · Paisaje con la caída de Ícaro, c. 1560</div>
+  <div class="grano"></div>
+</section>
+
+<!-- 2 · REVELACIÓN -->
+<section class="frame" id="f2">
+  <div class="puntos"></div>
+  <div class="lamina" style="top:540px;left:90px;width:900px;height:900px;transform:rotate(1.5deg)">
+    <div class="plate" data-img="icaro" data-crop="2980,1640,520,520"></div>
+    <svg class="marca" style="inset:16px" viewBox="0 0 868 868" fill="none">
+      <path d="M520 262 C 700 250, 720 420, 640 560 C 560 660, 360 640, 330 500 C 300 360, 400 270, 540 262" stroke="var(--rojo)" stroke-width="12" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <div class="tira titular" data-rasgado style="top:300px;left:50px;font-size:124px;transform:rotate(-2deg)">Nadie lo mira.</div>
+  <div class="negro serif" style="top:1300px;left:600px;font-size:64px;transform:rotate(-3deg)">Ícaro</div>
+  <div class="sub"><span>Acá: las piernas de Ícaro, hundiéndose en el mar.</span></div>
+  <div class="grano"></div>
+</section>
+
+<!-- 3 · EL MITO -->
+<section class="frame" id="f3">
+  <div class="puntos"></div>
+  <div class="tira titular" data-rasgado style="top:290px;left:50px;font-size:118px;transform:rotate(-1.5deg)">No le hizo caso.</div>
+  <div class="lamina" style="top:560px;left:70px;width:940px;height:640px;transform:rotate(-1.5deg)">
+    <div class="plate" data-img="landon" data-crop="300,120,900,604"></div>
+  </div>
+  <div class="plate" data-img="icaro" data-crop="2382,493,300,300" style="top:470px;left:780px;width:250px;height:250px;border-radius:50%;outline:12px solid var(--crema);box-shadow:0 14px 22px rgba(0,0,0,.45)"></div>
+  <div class="negro serif" style="top:1240px;left:90px;font-size:64px;transform:rotate(1deg)">«No vueles cerca del sol.»</div>
+  <div class="ficha" style="top:1360px;left:100px">Charles Paul Landon · Dédalo e Ícaro, 1799</div>
+  <div class="sub"><span>Su padre, Dédalo, le había hecho alas de plumas y cera.</span></div>
+  <div class="grano"></div>
+</section>
+
+<!-- 4 · LOS TESTIGOS -->
+<section class="frame" id="f4">
+  <div class="puntos"></div>
+  <div class="negro serif" style="top:290px;left:60px;right:60px;font-size:56px;line-height:1.12;transform:rotate(-1deg)">«Los vieron volar y creyeron que eran dioses.»</div>
+  <div class="ficha" style="top:462px;left:70px">Ovidio · Metamorfosis, libro VIII</div>
+  <div class="lamina" style="top:600px;left:40px;width:300px;height:400px;transform:rotate(-2deg)">
+    <div class="plate" data-img="icaro" data-crop="1327,1296,682,864"></div>
+    <svg class="marca" style="inset:16px" viewBox="0 0 268 368" fill="none" stroke="var(--rojo)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M96 52 Q 90 110 70 160 M52 140 L 70 162 L 90 146"/></svg>
+  </div>
+  <div class="lamina" style="top:620px;left:390px;width:300px;height:400px;transform:rotate(1.5deg)">
+    <div class="plate" data-img="icaro" data-crop="1790,1250,332,420"></div>
+    <svg class="marca" style="inset:16px" viewBox="0 0 268 368" fill="none" stroke="var(--rojo)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M126 44 Q 150 0 196 -30 M170 -34 L 198 -32 L 190 -6"/></svg>
+  </div>
+  <div class="lamina" style="top:600px;left:740px;width:300px;height:400px;transform:rotate(-1deg)">
+    <div class="plate" data-img="icaro" data-crop="3207,2160,237,300"></div>
+    <svg class="marca" style="inset:16px" viewBox="0 0 268 368" fill="none" stroke="var(--rojo)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M170 110 Q 210 150 236 200 M214 196 L 238 202 L 240 176"/></svg>
+  </div>
+  <div class="ficha" style="top:1036px;left:70px">El campesino</div>
+  <div class="ficha" style="top:1056px;left:430px">El pastor</div>
+  <div class="ficha" style="top:1036px;left:780px">El pescador</div>
+  <div class="tira titular" data-rasgado style="top:1140px;left:50px;font-size:88px;transform:rotate(-2deg)">Mirando para otro lado.</div>
+  <div class="sub"><span>Bruegel pintó a los tres…</span></div>
+  <div class="grano"></div>
+</section>
+
+<!-- 5 · EL DATO -->
+<section class="frame teal" id="f5">
+  <div class="puntos"></div>
+  <div class="negro serif" style="top:290px;left:64px;font-size:58px;transform:rotate(-1deg)">Una emergencia. ¿Quién sale a ayudar?</div>
+  <div class="persona vio" style="top:560px;left:220px;transform:scale(1.8)"></div>
+  <div id="grupo" style="top:590px;left:600px;width:400px;height:260px"></div>
+  <div class="num" style="top:880px;left:92px;color:var(--amarillo)">85%</div>
+  <div class="num" style="top:880px;left:580px">31%</div>
+  <div class="serif" style="top:1050px;left:100px;width:400px;font-size:44px;line-height:1.1;color:var(--amarillo)">si creés que sos el único</div>
+  <div class="serif" style="top:1050px;left:588px;width:420px;font-size:44px;line-height:1.1">si creés que hay cuatro más</div>
+  <div class="ficha" style="top:1250px;left:92px">Darley y Latané, 1968</div>
+  <div class="sub"><span>Cuando cree que hay cuatro personas más, solo el 31%.</span></div>
+  <div class="grano"></div>
+</section>
+
+<!-- 6 · EL GIRO -->
+<section class="frame" id="f6">
+  <div class="puntos"></div>
+  <div class="lamina" style="top:560px;left:90px;width:900px;height:900px;transform:rotate(-1.5deg)">
+    <div class="plate" data-img="icaro" data-crop="3005,1935,320,320"></div>
+    <svg class="marca" style="inset:16px" viewBox="0 0 868 868" fill="none" stroke="var(--crema)" stroke-width="9" stroke-linecap="round">
+      <path d="M640 250 q 36 -46 84 -60"/><path d="M676 320 q 56 -22 110 -8"/><path d="M660 392 q 56 12 100 46"/>
+      <path d="M220 270 q -36 -46 -84 -60"/><path d="M190 340 q -56 -22 -110 -8"/>
+    </svg>
+  </div>
+  <div class="tira titular" data-rasgado style="top:300px;left:50px;font-size:124px;transform:rotate(-2deg)">Esta perdiz.</div>
+  <div class="negro serif" style="top:470px;left:520px;font-size:70px;transform:rotate(2deg)">Y aplaude.</div>
+  <div class="ficha" style="top:1380px;left:120px;transform:rotate(1deg)">Perdix, sobrino de Dédalo<br>12 años · inventó la sierra y el compás</div>
+  <div class="sub"><span>Es su sobrino, al que Dédalo, por envidia, había empujado.</span></div>
+  <div class="grano"></div>
+</section>
+
+<!-- 7 · CIERRE -->
+<section class="frame calido" id="f7">
+  <div class="puntos"></div>
+  <div class="serif" style="top:280px;left:70px;font-size:64px">Falta una: la del que se da vuelta.</div>
+  <div class="titular" style="top:360px;left:62px;font-size:104px">Es lo que hiciste vos.</div>
+  <div class="lamina" style="top:620px;left:40px;width:1000px;height:664px;transform:rotate(1deg)">
+    <div class="plate" data-img="icaro" data-crop="0,0,3840,2505"></div>
+    <svg class="marca" style="inset:16px" viewBox="0 0 968 632" fill="none" stroke="var(--rojo)" stroke-width="7" stroke-linecap="round">
+      <circle cx="391" cy="345" r="44"/><path d="M360 310 Q 300 200 250 150"/>
+      <circle cx="798" cy="527" r="30"/><path d="M820 500 Q 860 420 880 330"/>
+    </svg>
+  </div>
+  <div class="ficha" style="top:700px;left:120px;transform:rotate(-2deg)">seguir con lo tuyo</div>
+  <div class="ficha" style="top:860px;left:780px;transform:rotate(2deg)">festejarlo</div>
+  <div style="top:1320px;left:560px;width:420px;height:120px;border:5px dashed var(--rojo);display:flex;align-items:center;justify-content:center;transform:rotate(-2deg)" class="serif"><span style="font-size:54px;color:var(--rojo)">darse vuelta</span></div>
+  <div class="grano"></div>
+</section>
+
+<script type="module">
+import { encuadrar, rasgar, interfazInstagram } from '../../diseno/sistema.js';
+const IMGS = {
+  icaro:  { src: 'assets/icaro.jpg',  w: 3840, h: 2505 },
+  landon: { src: 'assets/landon.jpg', w: 1280, h: 1709 },
+};
+const g = document.getElementById('grupo');
+[[0, 0], [110, 20], [220, 0], [330, 20], [165, 140]].forEach(([x, y], i) => {
+  const p = document.createElement('div');
+  p.className = 'persona' + (i === 4 ? ' vio' : '');
+  p.style.left = x + 'px'; p.style.top = y + 'px'; p.style.transform = 'scale(1.1)';
+  if (i === 4) p.style.opacity = .45;
+  g.appendChild(p);
+});
+encuadrar(document, IMGS);
+rasgar(document);
+interfazInstagram(document);
+await Promise.all([document.fonts.ready, ...[...document.images].map(i => i.decode())]);
+window.listo = true;
+</script>
+</body>
+</html>

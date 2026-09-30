@@ -38,7 +38,7 @@ Todas las obras son de dominio público salvo que se indique. Los datos están p
 
 | # | Formato | Tema | Obras | Gancho |
 |---|---|---|---|---|
-| 1 | A | Vínculos, sostén | Van Gogh: cartas a Theo, *Almendro en flor* (pintado por el nacimiento de su sobrino) | "Theo murió seis meses después que Vincent. Hoy están enterrados uno al lado del otro." |
+| 1 | A | Vínculos, sostén (**ya hecho**: Vincent, Theo y Jo; volver a Van Gogh solo desde otra perspectiva) | Van Gogh: cartas a Theo, *Almendro en flor* (pintado por el nacimiento de su sobrino) | "Theo murió seis meses después que Vincent. Hoy están enterrados uno al lado del otro." |
 | 2 | A | Duelo | Käthe Kollwitz, *Padres afligidos* | "Tardó 18 años en terminar una escultura: ella y su marido, de rodillas, frente a la tumba de su hijo." |
 | 3 | B | Indiferencia, efecto espectador | Bruegel (atrib.), *Paisaje con la caída de Ícaro* | "En este cuadro un hombre cae del cielo. Nadie se da vuelta. ¿Lo encontrás?" |
 | 4 | B | Ansiedad, pánico | Munch, *El grito* | "No es alguien gritando. Es alguien tapándose los oídos." |
@@ -56,9 +56,9 @@ Todas las obras son de dominio público salvo que se indique. Los datos están p
 
 ## Por dónde empezar
 
-1. **02 · Van Gogh y Theo** (A). Van Gogh ya te funcionó, la historia tiene una emoción enorme y es de las que se mandan ("para mi hermano/a").
-2. **03 · La caída de Ícaro** (B). El gancho es un juego: encontrar al hombre que cae. Eso hace pausar y volver a mirar.
-3. **04 · Narciso** (C). Abre la serie *Mitos al revés*, con un texto que ya tenés escrito.
+1. **02 · La caída de Ícaro** (B), elegido por Dano. El gancho es un juego: encontrar al hombre que cae.
+2. **03 · Narciso** (C). Abre la serie *Mitos al revés*, con un texto que ya tenés escrito.
+3. Van Gogh y Theo ya está hecho (junto con Jo van Gogh-Bonger). Si se vuelve a Van Gogh, que sea desde otra perspectiva.
 
 ## Cómo aprender de cada video
 
