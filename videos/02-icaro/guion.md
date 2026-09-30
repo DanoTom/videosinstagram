@@ -2,25 +2,24 @@
 
 Formato B (leer un cuadro) · Duración estimada: 80–88 s · 1080×1920 · Sistema visual v1.
 
-## Guion (voz en off)
+## Guion (voz en off) · versión final de Dano
 
-> **1. Gancho.** En este cuadro hay un hombre cayéndose del cielo. ¿Lo encontrás?
+> En este cuadro hay un hombre cayéndose del cielo. ¿Lo encontrás?
 >
-> **2. Revelación.** Acá: las piernas de Ícaro, hundiéndose en el mar. Y lo raro no es lo chiquito que es. Es que nadie lo mira.
+> Acá: las piernas de Ícaro, hundiéndose en el mar. Y lo raro no es lo chiquito que es. Es que nadie lo mira.
 >
-> **3. El mito.** Su padre, Dédalo, le había hecho alas de plumas y cera, y le advirtió que no volara cerca del sol. No le hizo caso.
+> Su padre, Dédalo, le había hecho alas de plumas y cera, y le advirtió que no volara cerca del sol. No le hizo caso.
 >
-> **4. Los testigos.** En el poema de Ovidio que cuenta este mito hay tres testigos: un pescador, un pastor y un campesino. Los ven volar y creen que son dioses. Bruegel pintó a los tres… mirando para otro lado.
+> En el poema de Ovidio que cuenta este mito hay tres testigos: un pescador, un pastor y un campesino. Los ven volar y creen que son dioses. Bruegel pintó a los tres… mirando para otro lado.
 >
-> **5. El dato.** No hace falta ser cruel para seguir de largo. En 1968 se midió: cuando alguien cree que es el único que escucha una emergencia, el 85% sale a pedir ayuda. Cuando cree que hay cuatro personas más, solo el 31%.
+> ¿Por qué nadie ayuda? La psicología social tiene una respuesta. En 1968, un artículo fundamental demostró que cuando alguien cree que es el único que presencia una emergencia, el 85% corre a buscar ayuda. Pero cuando cree que hay más personas alrededor, la responsabilidad se diluye y la ayuda cae al 31%. En el cuadro de Bruegel pasa algo parecido: al haber tanta gente y estar cada uno en lo suyo, la tragedia de Ícaro se vuelve invisible.
 >
-> **6. El giro.** Pero en el cuadro hay alguien que sí mira: esta perdiz. Ovidio cuenta que, cuando Dédalo entierra a su hijo, una perdiz lo mira y aplaude con las alas. Es su sobrino, al que Dédalo, por envidia, había empujado desde lo alto de un templo.
+> Pero en el cuadro hay alguien que sí mira: esta perdiz.
+> Ovidio cuenta que, cuando Dédalo entierra a su hijo, una perdiz lo mira y aplaude con las alas. Es su sobrino, que había sido transformado en ave luego de que Dédalo, por envidia, lo empujara desde lo alto de un templo.
 >
-> **7. Cierre.** Bruegel pintó dos maneras de mirar el dolor ajeno: seguir con lo tuyo, o festejarlo. Falta una: la del que se da vuelta a buscarlo. No está en el cuadro. Es lo que hiciste vos hace un minuto.
+> Bruegel pintó dos maneras de mirar el dolor ajeno: seguir con lo tuyo por indiferencia, o festejarlo por venganza. Falta una: la del que se detiene a buscarlo para ayudar. No está en el cuadro. Es lo que hiciste vos hace un minuto.
 
-~218 palabras. Si querés un video más corto (~72 s), el párrafo 5 se puede sacar sin que se rompa la historia.
-
-**Por qué funciona:** el gancho es un juego (buscar a Ícaro) y el cierre lo devuelve. El espectador que lo buscó es justamente el que "se dio vuelta". Así el final rima con el principio e invita a volver a verlo.
+Las diferencias con el primer borrador dieron origen a [la guía de escritura](../../docs/guia-de-escritura.md).
 
 ## Guion visual
 
@@ -38,6 +37,7 @@ Formato B (leer un cuadro) · Duración estimada: 80–88 s · 1080×1920 · Sis
 
 - Pieter Bruegel el Viejo (atribuido; probablemente copia de un original perdido), *Paisaje con la caída de Ícaro*, c. 1560 — Museos Reales de Bellas Artes de Bélgica, Bruselas
 - Charles Paul Landon, *Dédalo e Ícaro*, 1799 — Museo de Bellas Artes y Encajes de Alençon
+- Louis Legrand, según Charles Eisen, *Perdix transformado en perdiz*, grabado para las *Metamorfosis* (París, c. 1770)
 
 ## Fuentes
 
@@ -51,3 +51,13 @@ Formato B (leer un cuadro) · Duración estimada: 80–88 s · 1080×1920 · Sis
 - Después de "¿Lo encontrás?" hace falta un silencio de más de un segundo, para que la gente busque. Si el modelo acepta
   `<break time="1.5s" />`, ponelo; si no, lo agrego yo al editar.
 - Leé "85%" y "31%" como "ochenta y cinco por ciento" y "treinta y uno por ciento" (escritos así le salen mejor).
+
+## Producción
+
+- Voz: ElevenLabs (voz "Javier – Deep, Confident and Measured"), 97,6 s.
+- Pausas agregadas: 1,3 s después de "¿Lo encontrás?" (para buscar), y 0,3–0,6 s antes de los giros → `audio/voz-editada.wav` (102,7 s).
+- Animación: `video.html`. La cámara entra en el cuadro (del cuadro entero a las piernas de Ícaro y a la perdiz) con zoom logarítmico.
+
+```bash
+node herramientas/render.mjs videos/02-icaro/video.html --audio=videos/02-icaro/audio/voz-editada.wav
+```

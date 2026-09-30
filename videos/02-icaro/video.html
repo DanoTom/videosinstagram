@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>02 · La caída de Ícaro</title>
+<link rel="stylesheet" href="../../diseno/sistema.css">
+<style>
+  html, body { margin: 0; background: #000; }
+  .escena { position: absolute; inset: 0; transform-origin: 50% 45%; }  /* visibles al inicio para medir; seek() las alterna */
+  .escena > * { position: absolute; }
+  .fondo { inset: -40px 0 0 0; }
+  .sub { left: 80px; right: 150px; top: 1488px; font-weight: 600; font-size: 36px; line-height: 1.5; color: var(--crema); z-index: 40; }
+  .sub span { background: rgba(17,17,17,.86); padding: 3px 12px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+  svg.marca { position: absolute; inset: 16px; overflow: visible; pointer-events: none; }
+  .persona { position: absolute; width: 64px; height: 110px; color: var(--crema); transform-origin: 50% 100%; }
+  .persona::before { content: ''; position: absolute; left: 15px; top: 0; width: 34px; height: 34px; border-radius: 50%; background: currentColor; }
+  .persona::after { content: ''; position: absolute; left: 0; top: 42px; width: 64px; height: 68px; border-radius: 30px 30px 8px 8px; background: currentColor; }
+  .brillo { position: absolute; border-radius: 50%; background: radial-gradient(circle, rgba(233,196,106,.9), rgba(233,196,106,0) 70%); }
+  .num { font-weight: 800; font-size: 170px; letter-spacing: -.045em; line-height: .9; }
+  .parche { background: var(--crema); box-shadow: 0 4px 10px rgba(0,0,0,.4); }
+</style>
+</head>
+<body>
+<div class="frame" id="video">
+  <div class="puntos" style="position:absolute;inset:0"></div>
+
+  <!-- 1 y 2 · GANCHO Y REVELACIÓN -->
+  <div class="escena" id="e1">
+    <div class="lamina" id="lam1" data-rot="-1" style="top:700px;left:40px;width:1000px;height:664px">
+      <div class="plate" id="p1"></div>
+      <svg class="marca" viewBox="0 0 968 632" fill="none">
+        <circle id="busca" cx="0" cy="0" r="56" stroke="var(--amarillo)" stroke-width="8"/>
+        <ellipse id="elipse" cx="484" cy="316" rx="118" ry="96" pathLength="1" stroke="var(--rojo)" stroke-width="11" stroke-linecap="round" transform="rotate(-12 484 316)"/>
+      </svg>
+    </div>
+    <div class="ficha" id="ficha1" data-rot="-1" style="top:1392px;left:80px">Pieter Bruegel (atrib.) · Paisaje con la caída de Ícaro, c. 1560</div>
+    <div class="negro serif" id="neg1" data-rot="1" style="top:470px;left:110px;font-size:58px">Un hombre se está cayendo del cielo.</div>
+    <div class="tira titular" id="tira1" data-rasgado data-rot="-2" style="top:290px;left:44px;font-size:128px">¿Lo encontrás?</div>
+    <div class="negro serif" id="negIcaro" data-rot="-3" style="top:1190px;left:640px;font-size:64px">Ícaro</div>
+    <div class="tira titular" id="tira2" data-rasgado data-rot="-2" style="top:300px;left:50px;font-size:124px">Nadie lo mira.</div>
+  </div>
+
+  <!-- 3 · EL MITO -->
+  <div class="escena" id="e3">
+    <div class="lamina" id="lamL" data-rot="-1.5" style="top:560px;left:70px;width:940px;height:640px"><div class="plate" id="pL"></div></div>
+    <div class="plate" id="sol" style="top:470px;left:780px;width:250px;height:250px;border-radius:50%;outline:12px solid var(--crema);box-shadow:0 14px 22px rgba(0,0,0,.45)"></div>
+    <div class="negro serif" id="negSol" data-rot="1" style="top:1240px;left:90px;font-size:64px">«No vueles cerca del sol.»</div>
+    <div class="ficha" id="fichaL" style="top:1360px;left:100px">Charles Paul Landon · Dédalo e Ícaro, 1799</div>
+    <div class="tira titular" id="tira3" data-rasgado data-rot="-1.5" style="top:290px;left:50px;font-size:118px">No le hizo caso.</div>
+  </div>
+
+  <!-- 4 · LOS TESTIGOS -->
+  <div class="escena" id="e4">
+    <div class="tira titular" id="tira4" data-rasgado data-rot="-2" style="top:290px;left:50px;font-size:124px">Tres testigos.</div>
+    <div class="ficha" id="fichaO" style="top:454px;left:70px">Ovidio · Metamorfosis, libro VIII</div>
+    <div class="lamina" id="c1" data-rot="-2" style="top:560px;left:40px;width:300px;height:400px">
+      <div class="plate" data-img="icaro" data-crop="3207,2160,237,300"></div>
+      <svg class="marca" viewBox="0 0 268 368" fill="none" stroke="var(--rojo)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+        <path class="flecha" pathLength="1" d="M170 110 Q 210 150 236 200 M214 196 L 238 202 L 240 176"/></svg>
+    </div>
+    <div class="lamina" id="c2" data-rot="1.5" style="top:580px;left:390px;width:300px;height:400px">
+      <div class="plate" data-img="icaro" data-crop="1790,1250,332,420"></div>
+      <svg class="marca" viewBox="0 0 268 368" fill="none" stroke="var(--rojo)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+        <path class="flecha" pathLength="1" d="M126 44 Q 150 0 196 -30 M170 -34 L 198 -32 L 190 -6"/></svg>
+    </div>
+    <div class="lamina" id="c3" data-rot="-1" style="top:560px;left:740px;width:300px;height:400px">
+      <div class="plate" data-img="icaro" data-crop="1327,1296,682,864"></div>
+      <svg class="marca" viewBox="0 0 268 368" fill="none" stroke="var(--rojo)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+        <path class="flecha" pathLength="1" d="M96 52 Q 90 110 70 160 M52 140 L 70 162 L 90 146"/></svg>
+    </div>
+    <div class="ficha" id="r1" style="top:996px;left:70px">El pescador</div>
+    <div class="ficha" id="r2" style="top:1016px;left:430px">El pastor</div>
+    <div class="ficha" id="r3" style="top:996px;left:780px">El campesino</div>
+    <div class="negro serif" id="negQ" data-rot="-1" style="top:1110px;left:80px;font-size:60px">«Creyeron que eran dioses.»</div>
+    <div class="tira titular" id="tira5" data-rasgado data-rot="-2" style="top:1110px;left:50px;font-size:88px">Mirando para otro lado.</div>
+  </div>
+
+  <!-- 5 · EL DATO -->
+  <div class="escena" id="e5">
+    <div class="fondo" id="fondo5" data-rasgado-arriba style="background:var(--teal)"><div class="puntos" style="position:absolute;inset:0"></div></div>
+    <div class="tira titular" id="tira6" data-rasgado data-rot="-2" style="top:290px;left:44px;font-size:108px;line-height:.92">¿Por qué<br>nadie ayuda?</div>
+    <div class="ficha" id="fPs" style="top:1250px;left:92px">Psicología social</div>
+    <div class="ficha" id="fDL" style="top:1306px;left:92px">Darley y Latané, 1968</div>
+    <div class="brillo" id="resp1" style="top:560px;left:130px;width:250px;height:250px"></div>
+    <div class="persona" id="solo" style="top:640px;left:222px"></div>
+    <div class="brillo" id="resp2" style="top:560px;left:620px;width:330px;height:330px"></div>
+    <div id="grupo" style="top:620px;left:600px;width:400px;height:260px"></div>
+    <div class="num" id="n85" style="top:960px;left:92px;color:var(--amarillo)">85%</div>
+    <div class="num" id="n31" style="top:960px;left:580px">31%</div>
+    <div class="serif" id="l85" style="top:1122px;left:100px;width:420px;font-size:42px;line-height:1.1;color:var(--amarillo)">cuando cree que es el único</div>
+    <div class="serif" id="l31" style="top:1122px;left:588px;width:420px;font-size:42px;line-height:1.1">cuando cree que hay más personas</div>
+    <div class="lamina" id="lam5" data-rot="1" style="top:620px;left:40px;width:1000px;height:664px">
+      <div class="plate" data-img="icaro" data-crop="0,0,3840,2505"></div>
+      <svg class="marca" viewBox="0 0 968 632" fill="none" stroke="var(--amarillo)" stroke-width="7">
+        <circle class="aro5" cx="391" cy="341" r="38"/><circle class="aro5" cx="487" cy="333" r="30"/>
+        <circle class="aro5" cx="795" cy="366" r="40"/><circle class="aro5" cx="840" cy="563" r="34"/>
+      </svg>
+      <div class="parche" id="parche" data-rasgado data-rot="8" style="position:absolute;left:806px;top:458px;width:84px;height:72px"></div>
+    </div>
+    <div class="tira titular" id="tira6b" data-rasgado data-rot="-2" style="top:290px;left:44px;font-size:110px;line-height:.92">Cada uno<br>en lo suyo.</div>
+  </div>
+
+  <!-- 6 · EL GIRO -->
+  <div class="escena" id="e6">
+    <div class="fondo" id="fondo6" data-rasgado-arriba style="background:var(--noche)"><div class="puntos" style="position:absolute;inset:0"></div></div>
+    <div class="lamina" id="lam6" data-rot="-1" style="top:620px;left:40px;width:1000px;height:664px">
+      <div class="plate" id="p6"></div>
+      <svg class="marca" viewBox="0 0 968 632" fill="none">
+        <circle id="aroP" cx="484" cy="317" r="120" pathLength="1" stroke="var(--amarillo)" stroke-width="9" stroke-linecap="round"/>
+        <g id="aplauso" stroke="var(--crema)" stroke-width="9" stroke-linecap="round">
+          <path d="M640 250 q 36 -46 84 -60"/><path d="M676 320 q 56 -22 110 -8"/><path d="M660 392 q 56 12 100 46"/>
+          <path d="M320 250 q -36 -46 -84 -60"/><path d="M290 320 q -56 -22 -110 -8"/>
+        </g>
+      </svg>
+    </div>
+    <div class="ficha" id="fichaO6" style="top:1316px;left:90px">Ovidio · Metamorfosis, libro VIII</div>
+    <div class="tira titular" id="tira7" data-rasgado data-rot="-2" style="top:300px;left:50px;font-size:124px">Esta perdiz.</div>
+    <div class="lamina" id="lamLg" data-rot="1.5" style="top:470px;left:200px;width:680px;height:960px">
+      <div class="plate" data-img="legrand" data-crop="110,160,1000,1430"></div>
+      <svg class="marca" viewBox="0 0 648 928" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <circle id="aroPx" cx="266" cy="402" r="96" pathLength="1" stroke="var(--amarillo)" stroke-width="9"/>
+        <path id="empuje" pathLength="1" d="M400 100 Q 380 220 320 312 M296 290 L 318 316 L 344 300" stroke="var(--rojo)" stroke-width="10"/>
+      </svg>
+    </div>
+    <div class="tira titular" id="tira8" data-rasgado data-rot="-2" style="top:290px;left:50px;font-size:124px">Su sobrino.</div>
+    <div class="negro serif" id="negEnv" data-rot="-2" style="top:1330px;left:70px;font-size:66px">Por envidia.</div>
+    <div class="ficha" id="fichaLg" data-rot="1" style="top:1400px;left:520px">Louis Legrand, según Eisen · c. 1770</div>
+  </div>
+
+  <!-- 7 · CIERRE -->
+  <div class="escena" id="e7" style="color:var(--tinta)">
+    <div class="fondo" id="fondo7" data-rasgado-arriba style="background:var(--calido)"><div class="puntos" style="position:absolute;inset:0;background-image:radial-gradient(rgba(0,0,0,.06) 1.3px, transparent 1.7px)"></div></div>
+    <div class="serif" id="ser7" style="top:280px;left:70px;right:70px;font-size:64px;line-height:1.05">Dos maneras de mirar el dolor ajeno.</div>
+    <div class="lamina" id="lam7" data-rot="1" style="top:560px;left:40px;width:1000px;height:664px">
+      <div class="plate" data-img="icaro" data-crop="0,0,3840,2505"></div>
+      <svg class="marca" viewBox="0 0 968 632" fill="none" stroke-linecap="round">
+        <circle id="aroInd" cx="391" cy="345" r="46" pathLength="1" stroke="var(--rojo)" stroke-width="7"/>
+        <path id="lineaInd" pathLength="1" d="M362 306 Q 300 200 250 110" stroke="var(--rojo)" stroke-width="6"/>
+        <circle id="aroVen" cx="799" cy="528" r="32" pathLength="1" stroke="var(--rojo)" stroke-width="7"/>
+        <path id="lineaVen" pathLength="1" d="M820 500 Q 860 400 870 300" stroke="var(--rojo)" stroke-width="6"/>
+        <circle id="busca7" cx="830" cy="478" r="56" stroke="var(--amarillo)" stroke-width="9"/>
+      </svg>
+    </div>
+    <div class="ficha" id="fInd" data-rot="-2" style="top:640px;left:210px">indiferencia</div>
+    <div class="ficha" id="fVen" data-rot="2" style="top:820px;left:830px">venganza</div>
+    <div id="hueco" class="serif" data-rot="-2" style="top:1262px;left:500px;width:500px;height:110px;border:5px dashed var(--rojo);display:flex;align-items:center;justify-content:center"><span style="font-size:50px;color:var(--rojo)">detenerse a ayudar</span></div>
+    <div class="titular" id="tit7" style="top:1390px;left:60px;font-size:84px">Es lo que hiciste vos.</div>
+  </div>
+
+  <div class="sub" id="sub"></div>
+  <div class="grano" id="grano"></div>
+</div>
+
+<script type="module">
+import { encuadrar, rasgar } from '../../diseno/sistema.js';
+import { cargarVoz, subtitulos, pieza, trazo, hervir, prog, lerp, ease, clamp, encuadre, entreEncuadres } from '../../diseno/motor.js';
+
+const IMGS = {
+  icaro:   { src: 'assets/icaro.jpg',        w: 3840, h: 2505 },
+  landon:  { src: 'assets/landon.jpg',       w: 1280, h: 1709 },
+  legrand: { src: 'assets/perdix-ovide.jpg', w: 1280, h: 1762 },
+};
+const TODO = [0, 0, 3840, 2505], PIERNAS = [2900, 1636, 780, 518], PERDIZ = [2915, 1928, 500, 327];
+const SOL = [2382, 493, 300, 300];
+const $ = id => document.getElementById(id);
+const voz = await cargarVoz('audio/voz-editada.json');
+const W = voz.W;
+
+// El grupo de la sala: cinco personas; la del frente (índice 4) es "vos"
+const POS = [[0, 0], [110, 20], [220, 0], [330, 20], [165, 140]];
+for (const [x, y] of POS) {
+  const p = document.createElement('div');
+  p.className = 'persona'; p.style.left = x + 'px'; p.style.top = y + 'px';
+  $('grupo').appendChild(p);
+  const b = document.createElement('div');
+  b.className = 'brillo gota'; b.style.width = b.style.height = '150px';
+  $('e5').insertBefore(b, $('grupo'));
+}
+const grupo = [...$('grupo').children], gotas = [...document.querySelectorAll('.gota')];
+
+for (const f of document.querySelectorAll('[data-rasgado-arriba]')) {
+  const pts = []; let s = 7;
+  const rnd = () => (s = (s * 16807) % 2147483647) / 2147483647;
+  for (let x = 0; x <= 100; x += 2) pts.push(`${x}% ${rnd() * 1.6}%`);
+  f.style.clipPath = `polygon(${pts.join(',')}, 100% 100%, 0% 100%)`;
+}
+const barrido = (el, t, t0) => { el.style.transform = `translateY(${lerp(105, 0, ease.inOut(prog(t, t0, t0 + 0.55)))}%)`; };
+const escalar = (el, t, a, b, s0, s1) => { el.style.transform = `scale(${lerp(s0, s1, ease.suave(prog(t, a, b)))})`; };
+const pop = (el, p) => { el.style.transformOrigin = 'center'; el.style.transformBox = 'fill-box'; el.style.transform = `scale(${ease.back(clamp(p))})`; el.style.opacity = p > 0 ? 1 : 0; };
+
+// Recorrido del aro que "busca" en el gancho (coordenadas de la lámina)
+const RUTA = [[180, 420], [391, 341], [487, 333], [640, 250], [795, 366], [880, 560], [830, 478]];
+function enRuta(p) {
+  const n = RUTA.length - 1, x = clamp(p) * n, i = Math.min(Math.floor(x), n - 1), f = ease.suave(x - i);
+  return [lerp(RUTA[i][0], RUTA[i + 1][0], f), lerp(RUTA[i][1], RUTA[i + 1][1], f)];
+}
+
+// ───── Tiempos (todo anclado a la voz) ─────
+const T = {
+  aca: W('acá').s, e3: W('su padre').s - 0.1, e4: W('en el poema').s - 0.1, e5: W('por qué nadie ayuda').s - 0.25,
+  e5d: W('en el cuadro de bruegel').s - 0.1, e6: W('pero en el cuadro hay alguien').s - 0.25, e6b: W('es su sobrino').s - 0.1,
+  e7: W('bruegel pintó dos').s - 0.25,
+};
+const DURACION = voz.duracion;
+const escenas = [['e1', -1, T.e3 + 0.6], ['e3', T.e3 - 0.1, T.e4 + 0.6], ['e4', T.e4 - 0.1, T.e5 + 0.6],
+  ['e5', T.e5, T.e6 + 0.6], ['e6', T.e6, T.e7 + 0.6], ['e7', T.e7, 999]];
+const SUBS = subtitulos(voz, [['en este cuadro hay un hombre cayéndose del cielo'], ['lo encontrás'], ['es que nadie lo mira'], ['no le hizo caso'], ['tres testigos'],
+  ['mirando para otro lado'], ['por qué nadie ayuda'], ['cada uno en lo suyo'], ['esta perdiz'], ['es lo que hiciste vos hace un minuto']]);
+
+function seek(t) {
+  for (const [id, a, b] of escenas) $(id).style.display = t >= a && t < b ? 'block' : 'none';
+
+  // 1 y 2 · Gancho y revelación: del cuadro entero a las piernas de Ícaro
+  if (t < T.e3 + 0.6) {
+    pieza($('lam1'), t, { t0: -1, t1: T.e3 - 0.05, sale: 'izq' });
+    const pz = ease.inOut(prog(t, T.aca - 0.05, T.aca + 1.3));
+    const empuje = prog(t, T.aca + 1.3, T.e3);   // después del zoom, la cámara sigue acercándose despacio
+    const c = entreEncuadres(entreEncuadres(TODO, PIERNAS, pz), [2960, 1676, 660, 438], ease.suave(empuje) * (pz >= 1 ? 1 : 0));
+    encuadre($('p1'), IMGS.icaro, c);
+    const tb0 = W('lo encontrás').e + 0.05;
+    const [bx, by] = enRuta(prog(t, tb0, T.aca));
+    $('busca').setAttribute('cx', bx); $('busca').setAttribute('cy', by);
+    $('busca').style.opacity = (t >= tb0 - 0.2 ? 1 : 0) * (1 - prog(t, T.aca, T.aca + 0.3));
+    trazo($('elipse'), ease.out(prog(t, W('las piernas').s + 0.2, W('las piernas').s + 0.8)));
+    pieza($('ficha1'), t, { t0: 0.9, entra: 'fundido', t1: T.aca });
+    pieza($('neg1'), t, { t0: 0.1, entra: 'izq', dur: 0.4, t1: T.aca - 0.05, sale: 'izq' });
+    pieza($('tira1'), t, { t0: W('lo encontrás').s - 0.05, t1: T.aca - 0.05, sale: 'izq' });
+    pieza($('negIcaro'), t, { t0: W('ícaro').s - 0.05, t1: T.e3 - 0.1, sale: 'izq' });
+    pieza($('tira2'), t, { t0: W('nadie lo mira').s - 0.05, t1: T.e3 - 0.1, sale: 'izq' });
+  }
+
+  // 3 · El mito
+  if (t >= T.e3 - 0.1 && t < T.e4 + 0.6) {
+    pieza($('lamL'), t, { t0: T.e3, entra: 'abajo', dur: 0.6, t1: T.e4 - 0.05, sale: 'izq' });
+    encuadre($('pL'), IMGS.landon, entreEncuadres([250, 110, 1000, 672], [330, 140, 880, 591], ease.suave(prog(t, T.e3, T.e4))));
+    encuadre($('sol'), IMGS.icaro, SOL);
+    pieza($('sol'), t, { t0: W('sol').s - 0.1, t1: T.e4 - 0.05, sale: 'izq' });
+    pieza($('negSol'), t, { t0: W('le advirtió').s - 0.05, entra: 'izq', dur: 0.4, t1: T.e4 - 0.05, sale: 'izq' });
+    pieza($('fichaL'), t, { t0: T.e3 + 1.2, entra: 'fundido', t1: T.e4 - 0.1 });
+    pieza($('tira3'), t, { t0: W('no le hizo caso').s - 0.05, t1: T.e4 - 0.05, sale: 'izq' });
+  }
+
+  // 4 · Los testigos
+  if (t >= T.e4 - 0.1 && t < T.e5 + 0.6) {
+    pieza($('tira4'), t, { t0: W('tres testigos').s - 0.05, t1: T.e5, sale: 'fundido' });
+    pieza($('fichaO'), t, { t0: W('ovidio').s, entra: 'fundido', t1: T.e5 });
+    [['c1', 'r1', 'pescador'], ['c2', 'r2', 'pastor'], ['c3', 'r3', 'campesino']].forEach(([c, r, w]) => {
+      pieza($(c), t, { t0: W(w).s - 0.05, t1: T.e5, sale: 'fundido' });
+      pieza($(r), t, { t0: W(w).s + 0.2, entra: 'fundido', t1: T.e5 });
+    });
+    const tm = W('mirando para otro lado').s;
+    document.querySelectorAll('#e4 .flecha').forEach((f, k) => trazo(f, ease.out(prog(t, tm + k * 0.22, tm + k * 0.22 + 0.4))));
+    pieza($('negQ'), t, { t0: W('los ven volar').s - 0.05, entra: 'izq', dur: 0.4, t1: tm - 0.15, sale: 'izq' });
+    pieza($('tira5'), t, { t0: tm - 0.05, t1: T.e5, sale: 'fundido' });
+  }
+
+  // 5 · El dato: la responsabilidad que se diluye
+  if (t >= T.e5 && t < T.e6 + 0.6) {
+    barrido($('fondo5'), t, T.e5);
+    const salen = T.e5d - 0.2;
+    pieza($('tira6'), t, { t0: W('por qué nadie ayuda').s - 0.05, t1: salen, sale: 'izq' });
+    pieza($('fPs'), t, { t0: W('psicología social').s, entra: 'fundido', t1: salen });
+    pieza($('fDL'), t, { t0: W('1968').s, t1: salen, sale: 'fundido' });
+    const tu = W('el único').s, tc = W('corre').s;
+    pieza($('solo'), t, { t0: tu - 0.1, escala: 1.8, t1: salen });
+    $('solo').style.color = t >= tc ? 'var(--amarillo)' : 'var(--crema)';
+    $('resp1').style.opacity = 0.55 * ease.out(prog(t, tu + 0.2, tu + 0.8)) * (1 - prog(t, salen, salen + 0.35));
+    const t85 = W('85').s;
+    $('n85').textContent = Math.round(85 * ease.out(prog(t, t85, t85 + 0.9))) + '%';
+    pieza($('n85'), t, { t0: t85 - 0.05, entra: 'fundido', dur: 0.2, t1: salen });
+    pieza($('l85'), t, { t0: t85 + 0.3, entra: 'fundido', t1: salen });
+    const tg = W('pero cuando cree').s, td = W('se diluye');
+    grupo.forEach((p, i) => pieza(p, t, { t0: tg + 0.3 + i * 0.1, escala: 1.1, t1: salen }));
+    $('resp2').style.opacity = 0.55 * ease.out(prog(t, tg + 0.5, tg + 1.0)) * (1 - prog(t, td.s - 0.2, td.s + 0.3));
+    const pd = ease.inOut(prog(t, td.s - 0.25, td.e + 0.35));
+    gotas.forEach((g, i) => {
+      const [x, y] = POS[i];
+      const cx = lerp(785, 600 + x + 32, pd), cy = lerp(725, 620 + y + 40, pd);
+      const s = lerp(1.6, 0.8, pd);
+      g.style.left = cx - 75 + 'px'; g.style.top = cy - 75 + 'px';
+      g.style.transform = `scale(${s})`;
+      g.style.opacity = (pd > 0 ? lerp(0.5, 0.2, pd) : 0) * (1 - prog(t, salen, salen + 0.35));
+    });
+    pieza($('n31'), t, { t0: W('31%').s - 0.05, t1: salen });
+    pieza($('l31'), t, { t0: W('31%').s + 0.3, entra: 'fundido', t1: salen });
+    // En el cuadro pasa algo parecido
+    pieza($('lam5'), t, { t0: T.e5d, entra: 'abajo', dur: 0.6 });
+    const tt = W('tanta gente').s;
+    document.querySelectorAll('#e5 .aro5').forEach((c, k) => pop(c, prog(t, tt + k * 0.25, tt + k * 0.25 + 0.35)));
+    pieza($('parche'), t, { t0: W('invisible').s - 0.05, dur: 0.35 });
+    pieza($('tira6b'), t, { t0: W('cada uno en lo suyo').s - 0.05 });
+  }
+
+  // 6 · El giro: la perdiz
+  if (t >= T.e6 && t < T.e7 + 0.6) {
+    barrido($('fondo6'), t, T.e6);
+    pieza($('lam6'), t, { t0: T.e6 + 0.35, dur: 0.5, t1: T.e6b - 0.05, sale: 'izq' });
+    const pz = ease.inOut(prog(t, W('sí mira').s - 0.1, W('esta perdiz').s + 0.25));
+    encuadre($('p6'), IMGS.icaro, entreEncuadres(TODO, PERDIZ, pz));
+    trazo($('aroP'), ease.out(prog(t, W('esta perdiz').s + 0.3, W('esta perdiz').s + 0.9)));
+    const ta = W('aplaude').s;
+    const pa = prog(t, ta - 0.05, ta + 1.2);
+    $('aplauso').style.opacity = pa > 0 && pa < 1 ? 1 : 0;
+    $('aplauso').style.transformOrigin = '484px 317px';
+    $('aplauso').style.transform = `scale(${1 + 0.12 * Math.abs(Math.sin(pa * Math.PI * 4))})`;
+    pieza($('fichaO6'), t, { t0: W('ovidio cuenta').s, entra: 'fundido', t1: T.e6b - 0.1 });
+    pieza($('tira7'), t, { t0: W('esta perdiz').s - 0.05, t1: T.e6b - 0.1, sale: 'izq' });
+    pieza($('lamLg'), t, { t0: T.e6b, entra: 'der', dur: 0.55 });
+    pieza($('tira8'), t, { t0: W('es su sobrino').s + 0.1 });
+    trazo($('aroPx'), ease.out(prog(t, W('transformado en ave').s, W('transformado en ave').s + 0.6)));
+    trazo($('empuje'), ease.out(prog(t, W('empujara').s - 0.1, W('empujara').s + 0.5)));
+    pieza($('negEnv'), t, { t0: W('por envidia').s - 0.05, entra: 'izq', dur: 0.4 });
+    pieza($('fichaLg'), t, { t0: T.e6b + 1.0, entra: 'fundido' });
+  }
+
+  // 7 · Cierre: la tercera manera de mirar está afuera del cuadro
+  if (t >= T.e7) {
+    barrido($('fondo7'), t, T.e7);
+    pieza($('ser7'), t, { t0: T.e7 + 0.35, entra: 'fundido', dur: 0.5 });
+    pieza($('lam7'), t, { t0: T.e7 + 0.4, dur: 0.5 });
+    const ti = W('indiferencia').s, tv = W('venganza').s;
+    trazo($('aroInd'), ease.out(prog(t, ti - 0.1, ti + 0.4))); trazo($('lineaInd'), ease.out(prog(t, ti + 0.1, ti + 0.5)));
+    pieza($('fInd'), t, { t0: ti + 0.2 });
+    trazo($('aroVen'), ease.out(prog(t, tv - 0.1, tv + 0.4))); trazo($('lineaVen'), ease.out(prog(t, tv + 0.1, tv + 0.5)));
+    pieza($('fVen'), t, { t0: tv + 0.2 });
+    pieza($('hueco'), t, { t0: W('se detiene').s - 0.05 });
+    const tn = W('no está en el cuadro');
+    $('hueco').style.borderStyle = t >= tn.s && Math.floor((t - tn.s) * 4) % 2 === 0 && t < tn.e + 0.3 ? 'solid' : 'dashed';
+    pieza($('tit7'), t, { t0: W('es lo que hiciste').s - 0.05 });
+    // El aro del gancho vuelve y cae sobre Ícaro: el que lo buscó fuiste vos
+    const pb = ease.out(prog(t, W('hiciste').s, W('hiciste').s + 0.8));
+    $('busca7').setAttribute('cx', lerp(80, 830, pb)); $('busca7').setAttribute('cy', lerp(-120, 478, pb));
+    $('busca7').style.opacity = pb > 0 ? 1 : 0;
+  }
+
+  const s = SUBS.find(x => t >= x.s && t < x.e);
+  const html = s ? `<span>${s.texto}</span>` : '';
+  if ($('sub').innerHTML !== html) $('sub').innerHTML = html;
+  hervir($('grano'), t);
+}
+
+encuadrar(document, IMGS);
+rasgar(document);
+for (const el of document.querySelectorAll('[data-rot]')) el.style.transform = `rotate(${el.dataset.rot}deg)`;
+await Promise.all([document.fonts.ready, ...[...document.images].map(i => i.decode())]);
+window.seek = seek;
+window.DURACION = DURACION;
+seek(0);
+window.listo = true;
+
+if (!location.search.includes('render')) {
+  const audio = new Audio('audio/voz-editada.wav');
+  document.body.addEventListener('click', () => { audio.currentTime = 0; audio.play(); });
+  (function loop() { seek(audio.paused ? 0 : audio.currentTime); requestAnimationFrame(loop); })();
+}
+</script>
+</body>
+</html>

@@ -109,3 +109,23 @@ export function hervir(el, t) {
   const k = Math.floor(t * 12);
   el.style.backgroundPosition = `${(k * 137) % 400}px ${(k * 251) % 400}px`;
 }
+
+// ───── Cámara dentro de una obra ─────
+// encuadre: muestra la región [x, y, ancho, alto] (px de la imagen original) llenando la caja.
+export function encuadre(el, im, [sx, sy, sw, sh]) {
+  const bw = el.offsetWidth, bh = el.offsetHeight;
+  const k = Math.max(bw / sw, bh / sh);
+  el.style.backgroundImage = `url(${im.src})`;
+  el.style.backgroundSize = `${im.w * k}px ${im.h * k}px`;
+  el.style.backgroundPosition = `${-sx * k + (bw - sw * k) / 2}px ${-sy * k + (bh - sh * k) / 2}px`;
+}
+// Zoom entre dos encuadres: el ancho se interpola en escala logarítmica y el centro sigue la trayectoria
+// que mantiene el punto de destino quieto en pantalla, como un zoom de cámara real.
+export function entreEncuadres(a, b, p) {
+  const wa = a[2], wb = b[2];
+  const w = Math.exp(lerp(Math.log(wa), Math.log(wb), p));
+  const h = Math.exp(lerp(Math.log(a[3]), Math.log(b[3]), p));
+  const u = Math.abs(wa - wb) < 1e-6 ? p : (1 / wa - 1 / w) / (1 / wa - 1 / wb);
+  const cx = lerp(a[0] + wa / 2, b[0] + wb / 2, u), cy = lerp(a[1] + a[3] / 2, b[1] + b[3] / 2, u);
+  return [cx - w / 2, cy - h / 2, w, h];
+}
