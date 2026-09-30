@@ -2,22 +2,22 @@
 
 Formato B (leer un cuadro) · Duración final: 1 min 43 s · 1080×1920 · Sistema visual v1.
 
-## Guion (voz en off) · versión final de Dano
+## Guion (voz en off) · versión final de Dano, con las correcciones de la revisión del video
 
-> En este cuadro hay un hombre cayéndose del cielo. ¿Lo encontrás?
+> En este cuadro hay un hombre que cayó del cielo. ¿Lo encontrás?
 >
 > Acá: las piernas de Ícaro, hundiéndose en el mar. Y lo raro no es lo chiquito que es. Es que nadie lo mira.
 >
 > Su padre, Dédalo, le había hecho alas de plumas y cera, y le advirtió que no volara cerca del sol. No le hizo caso.
 >
-> En el poema de Ovidio que cuenta este mito hay tres testigos: un pescador, un pastor y un campesino. Los ven volar y creen que son dioses. Bruegel pintó a los tres… mirando para otro lado.
+> En el poema de Ovidio que cuenta este mito hay tres testigos: un pescador, un pastor y un campesino. Ven volar a Dédalo y a Ícaro, y creen que son dioses. Bruegel pintó a los tres… mirando para otro lado.
 >
 > ¿Por qué nadie ayuda? La psicología social tiene una respuesta. En 1968, un artículo fundamental demostró que cuando alguien cree que es el único que presencia una emergencia, el 85% corre a buscar ayuda. Pero cuando cree que hay más personas alrededor, la responsabilidad se diluye y la ayuda cae al 31%. En el cuadro de Bruegel pasa algo parecido: al haber tanta gente y estar cada uno en lo suyo, la tragedia de Ícaro se vuelve invisible.
 >
 > Pero en el cuadro hay alguien que sí mira: esta perdiz.
 > Ovidio cuenta que, cuando Dédalo entierra a su hijo, una perdiz lo mira y aplaude con las alas. Es su sobrino, que había sido transformado en ave luego de que Dédalo, por envidia, lo empujara desde lo alto de un templo.
 >
-> Bruegel pintó dos maneras de mirar el dolor ajeno: seguir con lo tuyo por indiferencia, o festejarlo por venganza. Falta una: la del que se detiene a buscarlo para ayudar. No está en el cuadro. Es lo que hiciste vos hace un minuto.
+> Bruegel pintó dos maneras de mirar el dolor ajeno: seguir con lo tuyo por indiferencia, o festejarlo por venganza. Falta una: la del que se detiene a buscarlo para ayudar. No está en el cuadro. Es lo que hiciste vos al principio, cuando te conté que había un hombre que cayó del cielo.
 
 Las diferencias con el primer borrador dieron origen a [la guía de escritura](../../docs/guia-de-escritura.md).
 

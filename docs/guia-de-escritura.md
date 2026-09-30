@@ -1,6 +1,6 @@
 # Guía de escritura para los guiones
 
-Aprendida de la reescritura que Dano hizo del guion 02 (Ícaro). Divulgamos ciencias sociales y humanas:
+Aprendida de la reescritura que Dano hizo del guion 02 (Ícaro) y de su revisión del video terminado. Divulgamos ciencias sociales y humanas:
 quien escucha oye cada frase **una sola vez**, sin contexto y sin poder volver atrás. Contar bien es más importante que sonar ingenioso.
 
 ## Reglas
@@ -28,6 +28,18 @@ quien escucha oye cada frase **una sola vez**, sin contexto y sin poder volver a
    intención tiene que ser inequívoca.
    - ✗ "la del que se da vuelta a buscarlo"
    - ✓ "la del que se detiene a buscarlo para ayudar"
+9. **Lo que dice la voz tiene que ser verdad de la imagen que se ve en ese momento.** Si el cuadro muestra el final de la caída
+   (las piernas ya en el agua), no se puede decir que está cayendo.
+   - ✗ "En este cuadro hay un hombre cayéndose del cielo."
+   - ✓ "En este cuadro hay un hombre que cayó del cielo."
+10. **Cada pronombre con un referente claro.** Si "los", "lo" o "ellos" pueden apuntar a más de uno, o a alguien que nunca se
+    presentó, se nombra. Y si un personaje hace algo que no se dijo antes (Dédalo también volaba), se dice.
+    - ✗ "Los ven volar y creen que son dioses." (¿a quiénes? Nunca se dijo que Dédalo volara)
+    - ✓ "Ven volar a Dédalo y a Ícaro, y creen que son dioses."
+11. **Las referencias hacia atrás repiten lo que recuerdan.** Quien mira puede haber llegado tarde, haberse distraído o estar
+    viéndolo por segunda vez. "Hace un minuto" obliga a recordar; mejor volver a decir de qué se habla.
+    - ✗ "Es lo que hiciste vos hace un minuto."
+    - ✓ "Es lo que hiciste vos al principio, cuando te conté que había un hombre que cayó del cielo."
 
 ## Lo que sí se mantiene
 
@@ -43,3 +55,6 @@ quien escucha oye cada frase **una sola vez**, sin contexto y sin poder volver a
 - [ ] ¿Hay algo del mito, de la historia o del concepto que doy por sabido?
 - [ ] ¿Están nombradas las emociones y los motivos?
 - [ ] ¿El cierre se entiende de una sola manera?
+- [ ] Frase por frase, con la imagen al lado: ¿lo que se dice es verdad de lo que se ve (tiempo verbal, lugar, acción)?
+- [ ] ¿Cada "lo", "los", "ellos", "esto" tiene un referente que se nombró antes y que no puede confundirse?
+- [ ] ¿Las referencias al principio del video vuelven a decir de qué se trata?
