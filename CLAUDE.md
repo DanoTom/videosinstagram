@@ -7,6 +7,7 @@ Antes de escribir un guion, leer:
 - `docs/guia-de-escritura.md`: reglas de escritura (claridad antes que ingenio, nada dado por sabido, volver siempre a la obra).
 - `docs/estrategia-contenido.md`: fórmula de historia primero, formatos y banco de temas.
 - `docs/linea-editorial.md`: decisiones de Dano (sin placa final de El Reflejo, frecuencia, voz).
+- `docs/guia-visual.md`: marcadores que no tapan lo que señalan, zonas seguras, titulares y subtítulos.
 
 Flujo de un video (ver `README.md` y `videos/01-no-hay-nadie/` como ejemplo completo):
 guion → storyboard → voz (Dano o ElevenLabs) → `herramientas/transcribir.py` → `herramientas/pausas.py` →

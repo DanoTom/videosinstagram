@@ -40,6 +40,10 @@ quien escucha oye cada frase **una sola vez**, sin contexto y sin poder volver a
     viéndolo por segunda vez. "Hace un minuto" obliga a recordar; mejor volver a decir de qué se habla.
     - ✗ "Es lo que hiciste vos hace un minuto."
     - ✓ "Es lo que hiciste vos al principio, cuando te conté que había un hombre que cayó del cielo."
+12. **El cierre no halaga al espectador ni lo pone en un lugar moral.** Nada de "vos, que me estás viendo, sos de los buenos":
+    suena condescendiente y tribunero, y además exagera (buscar a Ícaro en un cuadro no es ayudarlo). El cierre puede incluir a
+    quien habla ("los que miramos"), dejar una pregunta o volver a la imagen del principio, pero no juzga a quien mira.
+    - ✗ "No está en el cuadro. Es lo que hiciste vos al principio, cuando te conté que había un hombre que cayó del cielo."
 
 ## Lo que sí se mantiene
 
@@ -58,3 +62,4 @@ quien escucha oye cada frase **una sola vez**, sin contexto y sin poder volver a
 - [ ] Frase por frase, con la imagen al lado: ¿lo que se dice es verdad de lo que se ve (tiempo verbal, lugar, acción)?
 - [ ] ¿Cada "lo", "los", "ellos", "esto" tiene un referente que se nombró antes y que no puede confundirse?
 - [ ] ¿Las referencias al principio del video vuelven a decir de qué se trata?
+- [ ] ¿El cierre halaga, juzga o sermonea a quien mira? Si lo hace, reescribirlo.

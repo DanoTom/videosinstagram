@@ -106,10 +106,10 @@
     <div class="lamina" id="lam6" data-rot="-1" style="top:620px;left:40px;width:1000px;height:664px">
       <div class="plate" id="p6"></div>
       <svg class="marca" viewBox="0 0 968 632" fill="none">
-        <circle id="aroP" cx="484" cy="317" r="120" pathLength="1" stroke="var(--amarillo)" stroke-width="9" stroke-linecap="round"/>
+        <ellipse id="aroP" cx="509" cy="334" rx="205" ry="145" pathLength="1" stroke="var(--amarillo)" stroke-width="9" stroke-linecap="round"/>
         <g id="aplauso" stroke="var(--crema)" stroke-width="9" stroke-linecap="round">
-          <path d="M640 250 q 36 -46 84 -60"/><path d="M676 320 q 56 -22 110 -8"/><path d="M660 392 q 56 12 100 46"/>
-          <path d="M320 250 q -36 -46 -84 -60"/><path d="M290 320 q -56 -22 -110 -8"/>
+          <path d="M752 250 q 36 -46 84 -60"/><path d="M772 322 q 56 -22 110 -8"/><path d="M758 404 q 56 12 100 46"/>
+          <path d="M270 262 q -36 -46 -84 -60"/><path d="M250 334 q -56 -22 -110 -8"/>
         </g>
       </svg>
     </div>
@@ -301,7 +301,7 @@ function seek(t) {
     const ta = W('aplaude').s;
     const pa = prog(t, ta - 0.05, ta + 1.2);
     $('aplauso').style.opacity = pa > 0 && pa < 1 ? 1 : 0;
-    $('aplauso').style.transformOrigin = '484px 317px';
+    $('aplauso').style.transformOrigin = '509px 334px';
     $('aplauso').style.transform = `scale(${1 + 0.12 * Math.abs(Math.sin(pa * Math.PI * 4))})`;
     pieza($('fichaO6'), t, { t0: W('ovidio cuenta').s, entra: 'fundido', t1: T.e6b - 0.1 });
     pieza($('tira7'), t, { t0: W('esta perdiz').s - 0.05, t1: T.e6b - 0.1, sale: 'izq' });
