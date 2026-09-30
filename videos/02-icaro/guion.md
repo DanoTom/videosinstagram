@@ -1,6 +1,6 @@
 # 02 · La caída de Ícaro: nadie mira
 
-Formato B (leer un cuadro) · Duración estimada: 80–88 s · 1080×1920 · Sistema visual v1.
+Formato B (leer un cuadro) · Duración final: 1 min 43 s · 1080×1920 · Sistema visual v1.
 
 ## Guion (voz en off) · versión final de Dano
 
@@ -28,10 +28,10 @@ Las diferencias con el primer borrador dieron origen a [la guía de escritura](.
 | 1 | Gancho | El cuadro entero; un aro amarillo recorre la escena buscando | "¿Lo encontrás?" |
 | 2 | Revelación | Zoom a las piernas en el agua; el marcador rojo las rodea | "Ícaro" · "Nadie lo mira." |
 | 3 | El mito | Landon, *Dédalo e Ícaro* (1799): el padre lo suelta al vuelo; el sol del cuadro de Bruegel | "«No vueles cerca del sol.»" |
-| 4 | Los testigos | Tres recortes (campesino, pastor, pescador) con flechas hacia donde miran | "«Creyeron que eran dioses.» — Ovidio" · "Mirando para otro lado." |
-| 5 | El dato | Una persona sola se enciende; en un grupo de cinco, casi nadie | "85%" · "31%" · ficha Darley y Latané, 1968 |
-| 6 | El giro | Zoom a la perdiz en la rama; marcas de aplauso | "Esta perdiz." · ficha: "Perdix · 12 años · inventó la sierra y el compás" |
-| 7 | Cierre | Vuelve el cuadro entero; rótulos "seguir con lo tuyo" (campesino) y "festejarlo" (perdiz), y un marco vacío fuera del cuadro | "darse vuelta" · "Es lo que hiciste vos." |
+| 4 | Los testigos | Tres recortes (pescador, pastor, campesino, en el orden de la voz) con flechas hacia donde miran | "Tres testigos." · "«Creyeron que eran dioses.»" · "Mirando para otro lado." |
+| 5 | El dato | Una persona sola se enciende y corre; en el grupo, el brillo de la responsabilidad se reparte y se apaga. Vuelve el cuadro: aros sobre cada personaje y un parche de papel tapa a Ícaro | "¿Por qué nadie ayuda?" · "85%" · "31%" · "Cada uno en lo suyo." · fichas Psicología social / Darley y Latané, 1968 |
+| 6 | El giro | Zoom a la perdiz; marcas de aplauso. Grabado de Legrand: Dédalo empuja a Perdix desde la torre y Atenea lo transforma | "Esta perdiz." · "Su sobrino." · "Por envidia." |
+| 7 | Cierre | Papel tibio; el cuadro entero con rótulos "indiferencia" (campesino) y "venganza" (perdiz), un marco vacío fuera del cuadro y el aro del gancho que vuelve a caer sobre Ícaro | "detenerse a ayudar" · "Es lo que hiciste vos." |
 
 ## Obras
 
