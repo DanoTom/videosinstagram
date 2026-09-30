@@ -1,6 +1,6 @@
 # 02 · La caída de Ícaro: nadie mira
 
-Formato B (leer un cuadro) · Duración final: 1 min 46 s · 1080×1920 · Sistema visual v1.
+Formato B (leer un cuadro) · Duración final: 1 min 44 s · 1080×1920 · Sistema visual v1.
 
 ## Guion (voz en off) · versión final de Dano, con las correcciones de la revisión del video
 
@@ -17,7 +17,7 @@ Formato B (leer un cuadro) · Duración final: 1 min 46 s · 1080×1920 · Siste
 > Pero en el cuadro hay alguien que sí mira: esta perdiz.
 > Ovidio cuenta que, cuando Dédalo entierra a su hijo, una perdiz lo mira y aplaude con las alas. Es su sobrino, que había sido transformado en ave luego de que Dédalo, por envidia, lo empujara desde lo alto de un templo.
 >
-> Bruegel pintó dos maneras de mirar el dolor ajeno: seguir con lo tuyo por indiferencia, o festejarlo por venganza. Falta una: la del que se detiene a buscarlo para ayudar. No está en el cuadro. Es lo que hiciste vos al principio, cuando te conté que había un hombre que cayó del cielo.
+> Bruegel pintó dos maneras de mirar el dolor ajeno: seguir con lo tuyo por indiferencia, o festejarlo por venganza. Falta una tercera: la del que se detiene a ayudar. No está en el cuadro. Esa queda afuera, del lado de los que miramos.
 
 Las diferencias con el primer borrador dieron origen a [la guía de escritura](../../docs/guia-de-escritura.md).
 
@@ -31,7 +31,7 @@ Las diferencias con el primer borrador dieron origen a [la guía de escritura](.
 | 4 | Los testigos | Tres recortes (pescador, pastor, campesino, en el orden de la voz) con flechas hacia donde miran | "Tres testigos." · "«Creyeron que eran dioses.»" · "Mirando para otro lado." |
 | 5 | El dato | Una persona sola se enciende y corre; en el grupo, el brillo de la responsabilidad se reparte y se apaga. Vuelve el cuadro: aros sobre cada personaje y un parche de papel tapa a Ícaro | "¿Por qué nadie ayuda?" · "85%" · "31%" · "Cada uno en lo suyo." · fichas Psicología social / Darley y Latané, 1968 |
 | 6 | El giro | Zoom a la perdiz; marcas de aplauso. Grabado de Legrand: Dédalo empuja a Perdix desde la torre y Atenea lo transforma | "Esta perdiz." · "Su sobrino." · "Por envidia." |
-| 7 | Cierre | Papel tibio; el cuadro entero con rótulos "indiferencia" (campesino) y "venganza" (perdiz), un marco vacío fuera del cuadro y el aro del gancho que vuelve a caer sobre Ícaro | "detenerse a ayudar" · "Es lo que hiciste vos." |
+| 7 | Cierre | Papel tibio; el cuadro entero con rótulos "indiferencia" (campesino) y "venganza" (perdiz). En "esa queda afuera" la cámara se aleja: el cuadro se achica y el recuadro vacío queda de este lado | "detenerse a ayudar" · "Del lado de los que miramos." |
 
 ## Obras
 
@@ -54,8 +54,11 @@ Las diferencias con el primer borrador dieron origen a [la guía de escritura](.
 
 ## Producción
 
-- Voz: ElevenLabs (voz "Javier – Deep, Confident and Measured"), 101,3 s, con el guion corregido. La primera grabación quedó en `audio/v1/`.
-- Pausas agregadas: 1,3 s después de "¿Lo encontrás?" (para buscar), y 0,3–0,6 s antes de los giros → `audio/voz-editada.wav` (106,4 s).
+- Voz: ElevenLabs (voz "Javier – Deep, Confident and Measured"). Hasta "…lo alto de un templo" es la grabación v2; el cierre (opción B)
+  se grabó aparte (`audio/cierre-v3.mp3`), se empalmó en el silencio previo y se bajó 1,1 dB para igualar volumen.
+  Las grabaciones anteriores quedan en `audio/v1/` y `audio/v2/`.
+- Tiempos por palabra: los de v2 (ya verificados) hasta el empalme y la transcripción nueva para el cierre.
+- Pausas agregadas: 1,3 s después de "¿Lo encontrás?" (para buscar), y 0,3–0,6 s antes de los giros → `audio/voz-editada.wav` (104,1 s).
 - Animación: `video.html`. La cámara entra en el cuadro (del cuadro entero a las piernas de Ícaro y a la perdiz) con zoom logarítmico.
 
 ```bash

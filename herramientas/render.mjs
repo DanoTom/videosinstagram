@@ -83,6 +83,7 @@ if (opt.hoja || opt.tira) {
   const audio = opt.audio ? ['-ss', String(desde), '-i', resolve(opt.audio), '-map', '0:v', '-map', '1:a', '-c:a', 'aac', '-b:a', '192k', '-shortest'] : [];
   await ffmpeg(['-framerate', String(fps), '-i', resolve(frames, 'f%05d.jpg'), ...audio,
     '-c:v', 'libx264', '-preset', 'slow', '-crf', '18', '-pix_fmt', 'yuv420p', '-movflags', '+faststart', out]).fin;
+  if (!opt['conservar-frames']) await rm(frames, { recursive: true, force: true });  // ~1–2 GB por video
   console.log(relative(raiz, out));
 }
 await browser.close();

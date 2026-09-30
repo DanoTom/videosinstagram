@@ -136,15 +136,14 @@
       <svg class="marca" viewBox="0 0 968 632" fill="none" stroke-linecap="round">
         <circle id="aroInd" cx="391" cy="345" r="46" pathLength="1" stroke="var(--rojo)" stroke-width="7"/>
         <path id="lineaInd" pathLength="1" d="M362 306 Q 300 200 250 110" stroke="var(--rojo)" stroke-width="6"/>
-        <circle id="aroVen" cx="799" cy="528" r="32" pathLength="1" stroke="var(--rojo)" stroke-width="7"/>
+        <ellipse id="aroVen" cx="800" cy="528" rx="44" ry="32" pathLength="1" stroke="var(--rojo)" stroke-width="7"/>
         <path id="lineaVen" pathLength="1" d="M820 500 Q 860 400 870 300" stroke="var(--rojo)" stroke-width="6"/>
-        <circle id="busca7" cx="830" cy="478" r="56" stroke="var(--amarillo)" stroke-width="9"/>
       </svg>
     </div>
     <div class="ficha" id="fInd" data-rot="-2" style="top:640px;left:210px">indiferencia</div>
     <div class="ficha" id="fVen" data-rot="2" style="top:820px;left:830px">venganza</div>
     <div id="hueco" class="serif" data-rot="-2" style="top:1262px;left:500px;width:500px;height:110px;border:5px dashed var(--rojo);display:flex;align-items:center;justify-content:center"><span style="font-size:50px;color:var(--rojo)">detenerse a ayudar</span></div>
-    <div class="titular" id="tit7" style="top:1390px;left:60px;font-size:84px">Es lo que hiciste vos.</div>
+    <div class="titular" id="tit7" style="top:1330px;left:60px;font-size:88px;line-height:.95">Del lado de<br>los que miramos.</div>
   </div>
 
   <div class="sub" id="sub"></div>
@@ -205,7 +204,7 @@ const DURACION = voz.duracion;
 const escenas = [['e1', -1, T.e3 + 0.6], ['e3', T.e3 - 0.1, T.e4 + 0.6], ['e4', T.e4 - 0.1, T.e5 + 0.6],
   ['e5', T.e5, T.e6 + 0.6], ['e6', T.e6, T.e7 + 0.6], ['e7', T.e7, 999]];
 const SUBS = subtitulos(voz, [['en este cuadro hay un hombre que cayó del cielo'], ['lo encontrás'], ['es que nadie lo mira'], ['no le hizo caso'], ['tres testigos'],
-  ['mirando para otro lado'], ['por qué nadie ayuda'], ['cada uno en lo suyo'], ['esta perdiz'], ['es lo que hiciste vos']]);
+  ['mirando para otro lado'], ['por qué nadie ayuda'], ['cada uno en lo suyo'], ['esta perdiz'], ['del lado de los que miramos']]);
 
 function seek(t) {
   for (const [id, a, b] of escenas) $(id).style.display = t >= a && t < b ? 'block' : 'none';
@@ -317,20 +316,18 @@ function seek(t) {
   if (t >= T.e7) {
     barrido($('fondo7'), t, T.e7);
     pieza($('ser7'), t, { t0: T.e7 + 0.35, entra: 'fundido', dur: 0.5 });
-    pieza($('lam7'), t, { t0: T.e7 + 0.4, dur: 0.5 });
+    // "Esa queda afuera": la cámara se aleja, el cuadro se achica y el recuadro vacío queda de este lado
+    const pf = ease.inOut(prog(t, W('esa queda afuera').s - 0.1, W('esa queda afuera').s + 1.1));
+    pieza($('lam7'), t, { t0: T.e7 + 0.4, dur: 0.5, escala: lerp(1, 0.84, pf), dy: lerp(0, -80, pf) });
     const ti = W('indiferencia').s, tv = W('venganza').s;
     trazo($('aroInd'), ease.out(prog(t, ti - 0.1, ti + 0.4))); trazo($('lineaInd'), ease.out(prog(t, ti + 0.1, ti + 0.5)));
-    pieza($('fInd'), t, { t0: ti + 0.2 });
+    pieza($('fInd'), t, { t0: ti + 0.2, t1: W('esa queda afuera').s - 0.2 });
     trazo($('aroVen'), ease.out(prog(t, tv - 0.1, tv + 0.4))); trazo($('lineaVen'), ease.out(prog(t, tv + 0.1, tv + 0.5)));
-    pieza($('fVen'), t, { t0: tv + 0.2 });
-    pieza($('hueco'), t, { t0: W('se detiene').s - 0.05 });
+    pieza($('fVen'), t, { t0: tv + 0.2, t1: W('esa queda afuera').s - 0.2 });
+    pieza($('hueco'), t, { t0: W('se detiene').s - 0.05, dx: lerp(0, -210, pf), dy: lerp(0, -95, pf), escala: lerp(1, 1.12, pf) });
     const tn = W('no está en el cuadro');
     $('hueco').style.borderStyle = t >= tn.s && Math.floor((t - tn.s) * 4) % 2 === 0 && t < tn.e + 0.3 ? 'solid' : 'dashed';
-    pieza($('tit7'), t, { t0: W('es lo que hiciste').s - 0.05 });
-    // El aro del gancho vuelve y cae sobre Ícaro: el que lo buscó fuiste vos
-    const pb = ease.out(prog(t, W('hiciste').s, W('hiciste').s + 0.8));
-    $('busca7').setAttribute('cx', lerp(80, 830, pb)); $('busca7').setAttribute('cy', lerp(-120, 478, pb));
-    $('busca7').style.opacity = pb > 0 ? 1 : 0;
+    pieza($('tit7'), t, { t0: W('del lado').s - 0.05 });
   }
 
   const s = SUBS.find(x => t >= x.s && t < x.e);
