@@ -2,3 +2,4 @@ node_modules/
 out/
 referencias/
 __pycache__/
+videos/*/*.mp4

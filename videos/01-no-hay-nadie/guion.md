@@ -56,3 +56,14 @@ Gilovich, Medvec y Savitsky (2000), "The spotlight effect in social judgment", *
 - Leé cada párrafo numerado como una toma y dejá un segundo de silencio entre párrafos. Si te trabás, repetí el párrafo entero.
 - Más lento de lo que te parece natural. Las pausas después de "¿Quién me vio?" y de "algo mira" son parte del ritmo.
 - Subí el archivo tal cual sale del grabador (m4a está perfecto) a la carpeta de Drive.
+
+## Producción
+
+- Voz: ElevenLabs (voz "Maxi Argames"), transcrita con faster-whisper (`audio/voz.json`).
+- Pausas agregadas para que las ideas respiren (`herramientas/pausas.py`): después de "¿Quién me vio?" (0,6 s),
+  "La notó un cuarto." (0,7 s), "algo mira." (0,9 s) y otras más cortas → `audio/voz-editada.wav` (52,7 s).
+- Animación: `video.html`. Cada momento está anclado a una palabra de la voz, así que con otra grabación se resincroniza sola.
+
+```bash
+node herramientas/render.mjs videos/01-no-hay-nadie/video.html --audio=videos/01-no-hay-nadie/audio/voz-editada.wav
+```
