@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Prueba técnica · Medusa</title>
+<style>
+  @font-face { font-family: 'Cormorant'; font-weight: 500; font-style: normal;
+    src: url('../../node_modules/@fontsource/cormorant-garamond/files/cormorant-garamond-latin-500-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Cormorant'; font-weight: 500; font-style: italic;
+    src: url('../../node_modules/@fontsource/cormorant-garamond/files/cormorant-garamond-latin-500-italic.woff2') format('woff2'); }
+  @font-face { font-family: 'Inter'; font-weight: 500;
+    src: url('../../node_modules/@fontsource/inter/files/inter-latin-500-normal.woff2') format('woff2'); }
+
+  :root { --bg: #0d0b09; --ink: #f3eadb; --accent: #e9c98f; }
+  html, body { margin: 0; background: var(--bg); }
+  #stage { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: var(--bg); }
+  #painting { position: absolute; left: 0; top: 0; transform-origin: 0 0; will-change: transform;
+    /* recorta el escudo: fuera queda el fondo de la foto del museo */
+    clip-path: ellipse(946px 948px at 960px 987px); }
+  #vignette { position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(ellipse 75% 60% at 50% 50%, transparent 55%, rgba(8,6,4,.55) 100%); }
+  #scrim { position: absolute; left: 0; right: 0; top: 0; height: 820px; pointer-events: none;
+    background: linear-gradient(to bottom, rgba(10,8,6,.82) 0%, rgba(10,8,6,.55) 45%, transparent 100%); }
+  #grain { position: absolute; inset: 0; width: 100%; height: 100%; opacity: .085; mix-blend-mode: overlay; pointer-events: none; }
+  #black { position: absolute; inset: 0; background: #000; pointer-events: none; }
+
+  .line { position: absolute; left: 90px; right: 90px; top: 300px; text-align: center;
+    font-family: 'Cormorant', serif; font-weight: 500; font-size: 74px; line-height: 1.12;
+    color: var(--ink); letter-spacing: .005em; text-shadow: 0 2px 24px rgba(0,0,0,.55); }
+  .line em { font-style: italic; color: var(--accent); }
+  .line .w { display: inline-block; white-space: pre; }
+  #credit { position: absolute; left: 0; right: 0; top: 1512px; text-align: center;
+    font-family: 'Inter', sans-serif; font-weight: 500; font-size: 25px; letter-spacing: .28em;
+    color: rgba(243,234,219,.78); }
+</style>
+</head>
+<body>
+<div id="stage">
+  <img id="painting" src="assets/medusa.jpg" alt="">
+  <div id="vignette"></div>
+  <div id="scrim"></div>
+  <div class="line" id="t1">Se cree que Caravaggio usó <em>su propio rostro</em> para pintarla.</div>
+  <div class="line" id="t2">Medusa convertía en piedra a <em>quien la mirara</em>.</div>
+  <div class="line" id="t3">La pintó sobre un escudo: el <em>reflejo</em> que salvó a Perseo.</div>
+  <div id="credit">CARAVAGGIO · MEDUSA · c. 1597 · UFFIZI</div>
+  <canvas id="grain" width="540" height="960"></canvas>
+  <div id="black"></div>
+</div>
+
+<script>
+// Composición determinista: todo el estado visual es función de t (segundos).
+// El renderizador llama a window.seek(t) para cada frame.
+const DURATION = 13.5, FPS = 30;
+
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const prog = (t, a, b) => clamp((t - a) / (b - a));
+const lerp = (a, b, p) => a + (b - a) * p;
+const ease = {
+  sine:   p => -(Math.cos(Math.PI * p) - 1) / 2,
+  cubic:  p => p < .5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2,
+  quart:  p => p < .5 ? 8 * p ** 4 : 1 - Math.pow(-2 * p + 2, 4) / 2,
+  out:    p => 1 - Math.pow(1 - p, 3),
+  in:     p => p * p * p,
+};
+
+// Cámara en coordenadas normalizadas de la imagen: centro (cx, cy) y ancho visible w (1 = imagen entera).
+const EYES  = { cx: .539, cy: .427 };
+const MOUTH = { cx: .488, cy: .600 };
+const FULL  = { cx: .500, cy: .462 };
+const CAM = [ // [inicio, fin, desde, hasta, easing]
+  [0.0,  4.2,  { ...EYES,  w: .335 }, { ...EYES,  w: .300 }, ease.sine],
+  [4.2,  5.7,  { ...EYES,  w: .300 }, { ...MOUTH, w: .370 }, ease.cubic],
+  [5.7,  8.6,  { ...MOUTH, w: .370 }, { ...MOUTH, w: .345 }, ease.sine],
+  [8.6,  10.5, { ...MOUTH, w: .345 }, { ...FULL,  w: 1.22 }, ease.quart],
+  [10.5, 13.5, { ...FULL,  w: 1.22 }, { ...FULL,  w: 1.17 }, ease.sine],
+];
+function camera(t) {
+  const seg = CAM.find(s => t < s[1]) || CAM[CAM.length - 1];
+  const p = seg[4](prog(t, seg[0], seg[1]));
+  // El zoom se interpola en escala logarítmica para que el movimiento se sienta uniforme.
+  const w = Math.exp(lerp(Math.log(seg[2].w), Math.log(seg[3].w), p));
+  return { cx: lerp(seg[2].cx, seg[3].cx, p), cy: lerp(seg[2].cy, seg[3].cy, p), w };
+}
+
+// Textos: entrada palabra por palabra (desenfoque → nitidez), salida en bloque.
+const LINES = [
+  { el: 't1', in: 0.7,  out: 3.9 },
+  { el: 't2', in: 5.5,  out: 8.4 },
+  { el: 't3', in: 10.1, out: 13.1 },
+];
+for (const L of LINES) {
+  const el = document.getElementById(L.el);
+  el.innerHTML = el.innerHTML.replace(/(<em>.*?<\/em>|[^\s<]+)(\s*)/g, (m, word, sp) =>
+    word.startsWith('<em>')
+      ? word.replace(/<em>(.*?)<\/em>/, (_, inner) => '<em>' + inner.split(' ').map(x => `<span class="w">${x}</span>`).join(' ') + '</em>') + sp
+      : `<span class="w">${word}</span>${sp}`);
+  L.words = [...el.querySelectorAll('.w')];
+  L.node = el;
+}
+
+const img = document.getElementById('painting');
+const stage = { w: 1080, h: 1920 };
+const grain = document.getElementById('grain').getContext('2d');
+const grainImg = grain.createImageData(540, 960);
+
+function rng(seed) { // mulberry32: ruido reproducible frame a frame
+  return () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+    t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
+}
+
+window.seek = function (t) {
+  // Cámara
+  const c = camera(t);
+  const scale = stage.w / (c.w * img.naturalWidth);
+  const x = stage.w / 2 - c.cx * img.naturalWidth * scale;
+  const y = stage.h / 2 - c.cy * img.naturalHeight * scale;
+  img.style.transform = `translate(${x}px, ${y}px) scale(${scale})`;
+
+  // Textos
+  for (const L of LINES) {
+    const outP = ease.in(prog(t, L.out - 0.45, L.out));
+    L.node.style.opacity = 1 - outP;
+    L.words.forEach((w, i) => {
+      const p = ease.out(prog(t, L.in + i * 0.075, L.in + i * 0.075 + 0.75));
+      w.style.opacity = p;
+      w.style.transform = `translateY(${(1 - p) * 22}px)`;
+      w.style.filter = `blur(${(1 - p) * 9}px)`;
+    });
+  }
+  // El velo superior acompaña a los textos
+  const textOn = Math.max(...LINES.map(L => Math.min(ease.out(prog(t, L.in - 0.3, L.in + 0.4)), 1 - ease.in(prog(t, L.out - 0.4, L.out + 0.2)))));
+  document.getElementById('scrim').style.opacity = textOn;
+
+  const cr = document.getElementById('credit');
+  const crP = Math.min(ease.out(prog(t, 10.9, 11.6)), 1 - ease.in(prog(t, 12.7, 13.2)));
+  cr.style.opacity = crP * 0.9;
+  cr.style.letterSpacing = `${0.36 - 0.08 * ease.out(prog(t, 10.9, 12.5))}em`;
+
+  // Grano de película (cambia 15 veces por segundo, como en el celuloide)
+  const r = rng(Math.floor(t * 15) + 7);
+  const d = grainImg.data;
+  for (let i = 0; i < d.length; i += 4) { const v = r() * 255; d[i] = d[i + 1] = d[i + 2] = v; d[i + 3] = 255; }
+  grain.putImageData(grainImg, 0, 0);
+
+  // Fundido desde y hacia negro
+  document.getElementById('black').style.opacity = Math.max(1 - ease.out(prog(t, 0, 0.9)), ease.in(prog(t, DURATION - 0.6, DURATION)));
+};
+
+window.ready = Promise.all([document.fonts.ready, img.decode()]).then(() => { window.seek(0); return { DURATION, FPS }; });
+
+// En el navegador normal (sin ?render) se reproduce en loop para previsualizar.
+if (!location.search.includes('render')) {
+  const t0 = performance.now();
+  window.ready.then(() => (function loop() { window.seek(((performance.now() - t0) / 1000) % DURATION); requestAnimationFrame(loop); })());
+}
+</script>
+</body>
+</html>
