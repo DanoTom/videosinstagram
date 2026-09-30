@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Storyboard · No hay nadie</title>
+<link rel="stylesheet" href="../../diseno/sistema.css">
+<style>
+  body { margin: 0; background: #777; display: flex; flex-wrap: wrap; gap: 40px; padding: 40px; }
+  /* subtítulos discretos: la voz completa, para quien mira sin sonido */
+  .sub { left: 80px; right: 150px; top: 1488px; font-weight: 600; font-size: 36px; line-height: 1.5; color: var(--crema); }
+  .sub span { background: rgba(17,17,17,.86); padding: 3px 12px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+  .persona { position: absolute; width: 64px; height: 110px; }
+  .persona::before { content: ''; position: absolute; left: 15px; top: 0; width: 34px; height: 34px; border-radius: 50%; background: currentColor; }
+  .persona::after { content: ''; position: absolute; left: 0; top: 42px; width: 64px; height: 68px; border-radius: 30px 30px 8px 8px; background: currentColor; }
+  .persona.apagada { color: rgba(243,238,228,.28); }
+  .persona.vio { color: var(--amarillo); }
+  .persona.creyo { color: transparent; }
+  .persona.creyo::before, .persona.creyo::after { border: 4px dashed var(--amarillo); box-sizing: border-box; }
+</style>
+</head>
+<body>
+
+<!-- 1 · GANCHO (0–4,5 s) -->
+<section class="frame" id="f1">
+  <div class="puntos"></div>
+  <div class="haz" style="clip-path:polygon(18% 0, 33% 0, 52% 100%, -14% 100%)"></div>
+  <div class="lamina" style="top:700px;left:40px;width:1000px;height:560px;transform:rotate(-1.5deg)">
+    <div class="plate" data-img="nighthawks" data-crop="0,0,3840,2095"></div>
+    <div style="position:absolute;inset:16px;background:radial-gradient(ellipse 34% 30% at 22% 86%, rgba(255,226,150,.55), transparent 70%);mix-blend-mode:screen"></div>
+  </div>
+  <div class="negro serif" style="top:300px;left:64px;font-size:62px;transform:rotate(-1deg)">Te tropezás en la vereda.</div>
+  <div class="tira titular" data-rasgado style="top:404px;left:40px;font-size:124px;transform:rotate(-2deg)">¿Quién me vio?</div>
+  <div class="cinta" style="top:392px;left:880px;transform:rotate(-30deg)"></div>
+  <div class="ficha" style="top:1296px;left:80px;transform:rotate(-1deg)">Edward Hopper · Nighthawks, 1942</div>
+  <div class="sub">Antes de fijarte si te lastimaste, mirás alrededor.</div>
+  <div class="grano"></div>
+</section>
+
+<!-- 2 · NADIE MIRA (4,5–9 s) -->
+<section class="frame" id="f2">
+  <div class="puntos"></div>
+  <div class="lamina" style="top:660px;left:30px;width:1020px;height:520px;transform:rotate(1deg)">
+    <div class="plate" data-img="nighthawks" data-crop="1920,900,1500,660"></div>
+    <svg style="position:absolute;inset:16px;overflow:visible" viewBox="0 0 988 488" fill="none" stroke="var(--rojo)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M92 120 Q 140 104 188 112 M166 94 L 190 112 L 168 132"/>
+      <path d="M505 170 Q 500 215 486 256 M468 236 L 486 258 L 506 240"/>
+      <path d="M646 178 Q 640 214 622 246 M604 228 L 622 248 L 642 234"/>
+      <path d="M800 190 Q 760 196 716 190 M736 170 L 714 190 L 736 210"/>
+    </svg>
+  </div>
+  <div class="tira titular" data-rasgado style="top:330px;left:44px;font-size:124px;transform:rotate(-1.5deg)">Cuatro personas.</div>
+  <div class="negro serif" style="top:500px;left:300px;font-size:64px;transform:rotate(1.5deg)">Ninguna mira para afuera.</div>
+  <div class="sub">En este cuadro de Hopper hay cuatro personas. Ninguna mira para afuera.</div>
+  <div class="grano"></div>
+</section>
+
+<!-- 3 · EL DATO (9–18 s) -->
+<section class="frame teal" id="f3">
+  <div class="puntos"></div>
+  <div class="negro serif" style="top:290px;left:64px;font-size:60px;transform:rotate(-1deg)">¿Cuántos notaron la remera ridícula?</div>
+  <div id="sala" style="top:450px;left:165px;width:750px;height:600px"></div>
+  <div style="top:1090px;left:80px;display:flex;gap:64px;align-items:flex-end" class="titular">
+    <div style="position:relative"><div style="font-size:184px">50%</div>
+      <svg style="position:absolute;left:-14px;top:62px;width:350px;height:96px;overflow:visible" viewBox="0 0 400 110"><path d="M8 86 C 100 44, 180 70, 250 40 S 360 18, 392 14" fill="none" stroke="var(--rojo)" stroke-width="20" stroke-linecap="round"/></svg>
+      <div class="serif" style="font-size:48px;margin-top:10px;letter-spacing:0">lo que creían</div></div>
+    <div><div style="font-size:184px;color:var(--amarillo)">25%</div>
+      <div class="serif" style="font-size:48px;margin-top:10px;letter-spacing:0;color:var(--amarillo)">lo que pasó</div></div>
+  </div>
+  <div class="ficha" style="top:1400px;left:80px">Efecto reflector · Gilovich, Medvec y Savitsky, 2000</div>
+  <div class="sub">Ellos calcularon que la había notado la mitad. La notó un cuarto.</div>
+  <div class="grano"></div>
+</section>
+
+<!-- 4 · SABERLO NO ALCANZA (18–23 s) -->
+<section class="frame" id="f4">
+  <div class="puntos"></div>
+  <div class="haz"></div>
+  <img class="recorte" src="assets/automat-mujer.png" style="top:590px;left:150px;width:770px;transform:rotate(-3deg)">
+  <div class="negro serif" style="top:380px;left:250px;font-size:84px;transform:rotate(-1.5deg)">Saberlo no alcanza.</div>
+  <div class="ficha" style="top:1340px;left:70px;transform:rotate(-1.5deg)">Hopper · Automat, 1927</div>
+  <div class="sub">Porque la mirada que más pesa no está en la sala.</div>
+  <div class="grano"></div>
+</section>
+
+<!-- 5 · LA TESIS (23–27 s) -->
+<section class="frame" id="f5">
+  <div class="puntos"></div>
+  <div class="haz"></div>
+  <div style="top:590px;left:640px;width:400px;height:130px;overflow:hidden;transform:rotate(6deg);outline:12px solid var(--crema);box-shadow:0 16px 24px rgba(0,0,0,.45)">
+    <div class="plate" data-img="medusa" data-crop="732,648,600,400" style="position:absolute;left:-100px;top:-135px;width:600px;height:400px;transform:rotate(-23deg)"></div>
+  </div>
+  <img class="recorte" src="assets/automat-mujer.png" style="top:630px;left:150px;width:770px;transform:rotate(-3deg)">
+  <div class="tira titular" data-rasgado style="top:282px;left:36px;font-size:134px;transform:rotate(-2.5deg)">No hay nadie.</div>
+  <div class="cinta" style="top:262px;left:40px;transform:rotate(-38deg)"></div>
+  <div class="negro serif" style="top:486px;left:318px;font-size:62px;transform:rotate(1.6deg)">Y sin embargo, algo mira.</div>
+  <div class="grano"></div>
+</section>
+
+<!-- 6 · EL ORIGEN (27–36 s) -->
+<section class="frame calido" id="f6">
+  <div class="puntos"></div>
+  <div class="serif" style="top:280px;left:70px;font-size:72px">Antes de poder mirarnos,</div>
+  <div class="titular" style="top:370px;left:62px;font-size:112px">alguien nos miró.</div>
+  <div class="lamina" style="top:540px;left:110px;width:860px;height:840px;transform:rotate(1.5deg)">
+    <div class="plate" data-img="lacuna" data-crop="1000,1300,2400,2400"></div>
+    <svg style="position:absolute;inset:16px;overflow:visible" viewBox="0 0 828 808">
+      <path d="M170 210 Q 420 330 575 612" fill="none" stroke="var(--rojo)" stroke-width="9" stroke-linecap="round" stroke-dasharray="1 22"/>
+      <circle cx="580" cy="622" r="12" fill="var(--rojo)"/>
+    </svg>
+  </div>
+  <div class="ficha" style="top:1404px;left:90px;transform:rotate(-1deg)">Berthe Morisot · La cuna, 1872</div>
+  <div class="sub">Un bebé descubre que existe en una cara que se inclina sobre él.</div>
+  <div class="grano"></div>
+</section>
+
+<!-- 7 · EL CIERRE (36–45 s) -->
+<section class="frame" id="f7" style="background:#2B2331">
+  <div class="puntos"></div>
+  <div class="haz" style="clip-path:polygon(18% 0, 33% 0, 52% 100%, -14% 100%);background:linear-gradient(to bottom, rgba(245,184,120,.85), rgba(245,184,120,.6))"></div>
+  <div class="lamina" style="top:760px;left:40px;width:1000px;height:560px;transform:rotate(-1.5deg)">
+    <div class="plate" data-img="nighthawks" data-crop="0,0,3840,2095" style="filter:sepia(.25) saturate(1.1)"></div>
+    <div style="position:absolute;inset:16px;background:radial-gradient(ellipse 34% 30% at 22% 86%, rgba(255,200,140,.6), transparent 70%);mix-blend-mode:screen"></div>
+  </div>
+  <div class="negro serif" style="top:300px;left:64px;right:64px;font-size:60px;line-height:1.1;transform:rotate(-1deg)">si todavía hay alguien ahí que nos mira</div>
+  <div class="tira titular" data-rasgado style="top:500px;left:120px;font-size:112px;transform:rotate(-2deg)">como aquella vez.</div>
+  <div class="sub">Si todavía hay alguien ahí que nos mira como aquella vez.</div>
+  <div class="grano"></div>
+</section>
+
+<!-- 8 · PLACA FINAL (45–47 s) -->
+<section class="frame calido" id="f8">
+  <div class="puntos"></div>
+  <div class="ficha" style="top:640px;left:80px">Newsletter semanal · gratis</div>
+  <div class="titular" style="top:720px;left:70px;font-size:190px">El Reflejo</div>
+  <div class="serif" style="top:920px;left:80px;right:80px;font-size:64px;line-height:1.1">Cada semana, algo de la cultura para pensar lo que nos pasa.</div>
+  <div class="tira titular" data-rasgado style="top:1140px;left:80px;font-size:64px;background:var(--tinta);color:var(--crema)">Link en la bio</div>
+  <div class="grano"></div>
+</section>
+
+<script type="module">
+import { encuadrar, rasgar, interfazInstagram } from '../../diseno/sistema.js';
+const IMGS = {
+  nighthawks: { src: 'assets/nighthawks.jpg', w: 3840, h: 2095 },
+  medusa:     { src: 'assets/medusa.jpg',     w: 1920, h: 1968 },
+  lacuna:     { src: 'assets/la-cuna.jpg',    w: 3840, h: 4678 },
+};
+// La sala del experimento: 20 personas; 5 lo notaron, otras 5 son las que ellos creían.
+const VIO = [1, 7, 12, 14, 18], CREYO = [3, 5, 9, 11, 16];
+const sala = document.getElementById('sala');
+for (let i = 0; i < 20; i++) {
+  const p = document.createElement('div');
+  p.className = 'persona ' + (VIO.includes(i) ? 'vio' : CREYO.includes(i) ? 'creyo' : 'apagada');
+  p.style.left = (i % 5) * 150 + 'px';
+  p.style.top = Math.floor(i / 5) * 150 + 'px';
+  sala.appendChild(p);
+}
+for (const el of document.querySelectorAll('.sub')) el.innerHTML = `<span>${el.innerHTML}</span>`;
+encuadrar(document, IMGS);
+rasgar(document);
+interfazInstagram(document);
+await Promise.all([document.fonts.ready, ...[...document.images].map(i => i.decode())]);
+window.listo = true;
+</script>
+</body>
+</html>
