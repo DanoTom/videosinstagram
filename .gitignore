@@ -1,2 +1,4 @@
 node_modules/
 out/
+referencias/
+__pycache__/

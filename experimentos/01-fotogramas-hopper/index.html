@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Fotogramas de estilo · Hopper</title>
+<style>
+  @font-face { font-family: 'Inter Tight'; font-weight: 200; src: url('../../node_modules/@fontsource/inter-tight/files/inter-tight-latin-200-normal.woff2'); }
+  @font-face { font-family: 'Inter Tight'; font-weight: 300; src: url('../../node_modules/@fontsource/inter-tight/files/inter-tight-latin-300-normal.woff2'); }
+  @font-face { font-family: 'Inter Tight'; font-weight: 600; src: url('../../node_modules/@fontsource/inter-tight/files/inter-tight-latin-600-normal.woff2'); }
+  @font-face { font-family: 'Inter Tight'; font-weight: 700; src: url('../../node_modules/@fontsource/inter-tight/files/inter-tight-latin-700-normal.woff2'); }
+  @font-face { font-family: 'Inter Tight'; font-weight: 800; src: url('../../node_modules/@fontsource/inter-tight/files/inter-tight-latin-800-normal.woff2'); }
+  @font-face { font-family: 'Instrument Serif'; font-style: italic; src: url('../../node_modules/@fontsource/instrument-serif/files/instrument-serif-latin-400-italic.woff2'); }
+  @font-face { font-family: 'Instrument Serif'; font-style: normal; src: url('../../node_modules/@fontsource/instrument-serif/files/instrument-serif-latin-400-normal.woff2'); }
+  @font-face { font-family: 'Anton'; src: url('../../node_modules/@fontsource/anton/files/anton-latin-400-normal.woff2'); }
+  @font-face { font-family: 'Space Mono'; font-weight: 400; src: url('../../node_modules/@fontsource/space-mono/files/space-mono-latin-400-normal.woff2'); }
+  @font-face { font-family: 'Space Mono'; font-weight: 700; src: url('../../node_modules/@fontsource/space-mono/files/space-mono-latin-700-normal.woff2'); }
+
+  :root {
+    --tinta: #141414; --papel: #EEE9DF; --crema: #F3EEE4;
+    --teal: #0F5E5A; --noche: #15233A; --amarillo: #E9C46A; --rojo: #D9452E;
+    --grano: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+  body { margin: 0; background: #777; display: flex; flex-wrap: wrap; gap: 40px; padding: 40px; }
+  .frame { position: relative; width: 1080px; height: 1920px; overflow: hidden; flex: none; }
+  .frame > * { position: absolute; }
+  .grano { inset: 0; background-image: var(--grano); opacity: .16; mix-blend-mode: multiply; pointer-events: none; z-index: 50; }
+  .plate { background-repeat: no-repeat; }
+  .serif { font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; }
+  .mono { font-family: 'Space Mono', monospace; }
+
+  /* ───────── A · REVISTA ───────── */
+  .A { background: var(--papel); color: var(--tinta); font-family: 'Inter Tight', sans-serif; }
+  .A .meta { top: 262px; left: 60px; right: 60px; display: flex; justify-content: space-between; align-items: center;
+    font-weight: 700; font-size: 22px; letter-spacing: .22em; padding-bottom: 16px; border-bottom: 3px solid var(--tinta); }
+  .A .meta b { display: inline-block; width: 16px; height: 16px; background: var(--teal); margin-right: 14px; vertical-align: -1px; }
+  .A .titular { top: 318px; left: 48px; font-weight: 800; font-size: 236px; line-height: .84; letter-spacing: -.055em; }
+  .A .bajada { top: 732px; left: 60px; font-size: 72px; color: var(--teal); line-height: 1; }
+  .A .pie { left: 60px; right: 60px; display: flex; justify-content: space-between;
+    font-weight: 600; font-size: 19px; letter-spacing: .2em; opacity: .75; }
+  .A .kicker { left: 60px; right: 60px; font-size: 58px; line-height: 1.04; }
+  .A .num { font-weight: 800; font-size: 214px; line-height: .8; letter-spacing: -.06em; }
+  .A .rotulo { font-size: 50px; line-height: 1; }
+
+  /* ───────── B · COLLAGE ───────── */
+  .B { background: var(--noche); color: var(--tinta); font-family: 'Anton', sans-serif; }
+  .B.teal { background: var(--teal); }
+  .B .puntos { inset: 0; background-image: radial-gradient(rgba(255,255,255,.075) 1.3px, transparent 1.7px); background-size: 10px 10px; }
+  .B .haz { top: -40px; left: 0; width: 1080px; height: 1560px;
+    background: linear-gradient(to bottom, rgba(233,196,106,.95), rgba(233,196,106,.82));
+    clip-path: polygon(43% 0, 60% 0, 97% 100%, 6% 100%); }
+  .B .tira { background: var(--crema); padding: 22px 40px 10px; text-transform: uppercase; }
+  .B .cinta { width: 150px; height: 46px; background: rgba(236,226,200,.72); box-shadow: 0 1px 2px rgba(0,0,0,.15); }
+  .B .negro { background: #111; color: var(--crema); padding: 12px 28px 16px; }
+  .B .recorte { filter: drop-shadow(0 22px 26px rgba(0,0,0,.5)); }
+  .B .etiqueta { background: var(--crema); padding: 14px 18px; font-family: 'Space Mono', monospace; font-size: 21px; line-height: 1.35; letter-spacing: .04em; box-shadow: 0 8px 16px rgba(0,0,0,.3); }
+  .B .marco { background-color: var(--crema); padding: 16px; box-shadow: 0 22px 30px rgba(0,0,0,.45); }
+  .B .marco > div { width: 100%; height: 100%; }
+
+  /* ───────── C · NOCTURNO ───────── */
+  .C { background: #07090e; color: #fff; font-family: 'Inter Tight', sans-serif; }
+  .C .velo { inset: 0; }
+  .C .titular { top: 246px; left: 66px; font-weight: 300; font-size: 190px; line-height: .88; letter-spacing: -.045em; }
+  .C .bajada { font-size: 88px; color: #EFE6D2; line-height: 1; }
+  .C .foco { border: 0; }
+  .C .foco i { position: absolute; width: 44px; height: 44px; border-color: #fff; border-style: solid; border-width: 0; }
+  .C .foco i:nth-child(1) { top: 0; left: 0; border-top-width: 3px; border-left-width: 3px; }
+  .C .foco i:nth-child(2) { top: 0; right: 0; border-top-width: 3px; border-right-width: 3px; }
+  .C .foco i:nth-child(3) { bottom: 0; left: 0; border-bottom-width: 3px; border-left-width: 3px; }
+  .C .foco i:nth-child(4) { bottom: 0; right: 0; border-bottom-width: 3px; border-right-width: 3px; }
+  .C .rec { font-family: 'Space Mono', monospace; font-size: 20px; letter-spacing: .12em; color: #fff; }
+  .C .rec::before { content: ''; display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: #E0442F; margin-right: 10px; }
+  .C .pie { left: 66px; font-family: 'Space Mono', monospace; font-size: 19px; letter-spacing: .14em; opacity: .7; }
+  .C .num { font-weight: 200; font-size: 300px; line-height: .8; letter-spacing: -.05em; }
+  .C .rotulo { font-family: 'Space Mono', monospace; font-size: 21px; letter-spacing: .18em; opacity: .85; }
+
+  /* ───────── Interfaz de Instagram (control de zonas seguras) ───────── */
+  .ui { inset: 0; z-index: 100; display: none; pointer-events: none; font-family: 'Inter Tight', sans-serif; color: #fff; }
+  body.con-ui .ui { display: block; }
+  .ui .sombra { position: absolute; left: 0; right: 0; bottom: 0; height: 520px; background: linear-gradient(to top, rgba(0,0,0,.55), transparent); }
+  .ui .top { position: absolute; top: 96px; left: 44px; font-size: 44px; font-weight: 700; }
+  .ui .col { position: absolute; right: 34px; bottom: 300px; display: flex; flex-direction: column; gap: 58px; align-items: center; }
+  .ui .col i { width: 62px; height: 62px; border: 5px solid #fff; border-radius: 16px; opacity: .92; }
+  .ui .col i:first-child { border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; }
+  .ui .user { position: absolute; left: 40px; bottom: 250px; display: flex; align-items: center; gap: 20px; font-size: 34px; font-weight: 700; }
+  .ui .user i { width: 72px; height: 72px; border-radius: 50%; background: #bbb; border: 3px solid #fff; }
+  .ui .cap { position: absolute; left: 40px; right: 170px; bottom: 150px; font-size: 32px; line-height: 1.35; opacity: .95; }
+  .ui .audio { position: absolute; left: 40px; bottom: 92px; font-size: 28px; opacity: .9; }
+  .ui .grilla { position: absolute; left: 0; right: 0; border-top: 3px dashed rgba(255,60,200,.9); }
+  .ui .grilla span { position: absolute; right: 12px; top: 6px; font-size: 22px; color: rgba(255,60,200,1); font-weight: 700; }
+</style>
+</head>
+<body>
+
+<!-- ═════════ A · REVISTA ═════════ -->
+<section class="frame A" id="A1">
+  <div class="meta"><span><b></b>EL REFLEJO</span><span>Nº 01 — MIRADAS</span></div>
+  <div class="titular">No hay<br>nadie.</div>
+  <div class="bajada serif">Y sin embargo, algo mira.</div>
+  <div class="plate" data-img="automat" data-crop="700,640,1300,840" style="top:842px;left:60px;width:960px;height:620px"></div>
+  <div class="pie" style="top:1484px"><span>EDWARD HOPPER — AUTOMAT, 1927</span></div>
+  <div class="grano"></div>
+</section>
+
+<section class="frame A" id="A2">
+  <div class="meta"><span><b></b>EL REFLEJO</span><span>EFECTO REFLECTOR</span></div>
+  <div class="plate" data-img="nightwindows" data-crop="210,80,1500,940" style="top:338px;left:60px;width:960px;height:602px"></div>
+  <div class="kicker serif" style="top:980px">Entraste con una remera ridícula.<br>¿Cuántos lo notaron?</div>
+  <div class="num" style="top:1150px;left:48px;opacity:.28">50%</div>
+  <div class="num" style="top:1150px;left:560px;color:var(--teal)">25%</div>
+  <div class="rotulo serif" style="top:1348px;left:62px">lo que creemos</div>
+  <div class="rotulo serif" style="top:1348px;left:574px;color:var(--teal)">lo que pasa</div>
+  <div class="pie" style="top:1450px"><span>GILOVICH, MEDVEC Y SAVITSKY (2000)</span></div>
+  <div class="grano"></div>
+</section>
+
+<!-- ═════════ B · COLLAGE ═════════ -->
+<section class="frame B" id="B1">
+  <div class="puntos"></div>
+  <div class="haz"></div>
+  <div style="top:590px;left:640px;width:400px;height:130px;overflow:hidden;transform:rotate(6deg);outline:12px solid var(--crema);box-shadow:0 16px 24px rgba(0,0,0,.45)">
+    <div class="plate" data-img="medusa" data-crop="732,648,600,400" style="position:absolute;left:-100px;top:-135px;width:600px;height:400px;transform:rotate(-23deg)"></div>
+  </div>
+  <img class="recorte" src="assets/automat-mujer.png" style="top:650px;left:118px;width:830px;transform:rotate(-3deg)">
+  <div class="tira" data-rasgado style="top:282px;left:36px;width:935px;font-size:152px;line-height:1;transform:rotate(-2.5deg)">No hay nadie.</div>
+  <div class="cinta" style="top:262px;left:40px;transform:rotate(-38deg)"></div>
+  <div class="cinta" style="top:420px;left:900px;transform:rotate(-30deg)"></div>
+  <div class="negro serif" style="top:492px;left:318px;font-size:62px;transform:rotate(1.6deg)">Y sin embargo, algo mira.</div>
+  <div class="etiqueta" style="top:1398px;left:70px;transform:rotate(-1.5deg)">HOPPER<br>AUTOMAT, 1927</div>
+  <div class="grano"></div>
+</section>
+
+<section class="frame B teal" id="B2">
+  <div class="puntos"></div>
+  <div class="marco" style="top:300px;left:110px;width:830px;height:600px;transform:rotate(-3.5deg)">
+    <div class="plate" data-img="nightwindows" data-crop="560,90,1000,720"></div>
+  </div>
+  <div class="negro serif" style="top:944px;left:80px;font-size:54px;transform:rotate(1deg)">¿Cuántos notaron tu remera ridícula?</div>
+  <div style="top:1080px;left:70px;display:flex;gap:44px;font-size:200px;line-height:1"><span style="color:var(--crema)">50%</span><span style="color:var(--amarillo)">25%</span></div>
+  <svg style="top:1150px;left:46px;width:360px;height:112px;overflow:visible" viewBox="0 0 520 160">
+    <path d="M10 118 C 120 70, 220 96, 300 60 S 450 30, 505 26" fill="none" stroke="var(--rojo)" stroke-width="24" stroke-linecap="round"/>
+  </svg>
+    <div class="tira serif" style="top:1320px;left:74px;font-size:44px;text-transform:none;padding:8px 20px 12px;transform:rotate(-2deg)">lo que creemos</div>
+  <div class="tira serif" style="top:1320px;left:514px;font-size:44px;text-transform:none;padding:8px 20px 12px;transform:rotate(1.5deg)">lo que pasa</div>
+  <div class="grano"></div>
+</section>
+
+<!-- ═════════ C · NOCTURNO ═════════ -->
+<section class="frame C" id="C1">
+  <div class="plate" data-img="automat" data-crop="890,0,874,1554" style="inset:0"></div>
+  <div class="velo" style="background:linear-gradient(to bottom, rgba(5,8,14,.82) 0%, rgba(5,8,14,.55) 30%, rgba(5,8,14,.05) 48%, rgba(5,8,14,0) 70%, rgba(5,8,14,.5) 100%)"></div>
+  <div class="titular">No hay<br>nadie.</div>
+  <div class="bajada serif" style="top:614px;left:70px">Y sin embargo, algo <span style="color:var(--amarillo)">mira</span>.</div>
+  <div class="foco" style="top:880px;left:560px;width:260px;height:290px"><i></i><i></i><i></i><i></i></div>
+  <div class="rec" style="top:842px;left:560px">00:00:03</div>
+  <div class="pie" style="top:1446px">EDWARD HOPPER — AUTOMAT, 1927</div>
+  <div class="grano" style="mix-blend-mode:overlay;opacity:.35"></div>
+</section>
+
+<section class="frame C" id="C2">
+  <div class="plate" data-img="nightwindows" data-crop="520,0,923,1641" style="inset:0"></div>
+  <div class="velo" style="background:linear-gradient(to bottom, rgba(5,8,14,.8) 0%, rgba(5,8,14,.35) 38%, rgba(5,8,14,.6) 62%, rgba(5,8,14,.85) 100%)"></div>
+  <div class="bajada serif" style="top:250px;left:70px;right:70px;font-size:72px">Entraste con una remera ridícula. ¿Cuántos lo notaron?</div>
+  <div class="num" style="top:860px;left:52px;opacity:.55">50%</div>
+  <div style="top:960px;left:60px;width:470px;height:4px;background:#fff;opacity:.8"></div>
+  <div class="rotulo" style="top:1116px;left:70px">LO QUE CREEMOS</div>
+  <div class="num" style="top:1180px;left:52px;color:var(--amarillo)">25%</div>
+  <div class="rotulo" style="top:1436px;left:70px;color:var(--amarillo)">LO QUE PASA</div>
+  <div class="grano" style="mix-blend-mode:overlay;opacity:.35"></div>
+</section>
+
+<template id="ui">
+  <div class="ui">
+    <div class="sombra"></div>
+    <div class="top">Reels</div>
+    <div class="grilla" style="top:240px"><span>corte 3:4 de la grilla</span></div>
+    <div class="grilla" style="top:1680px"></div>
+    <div class="col"><i></i><i></i><i></i><i></i></div>
+    <div class="user"><i></i>dano_arte · Seguir</div>
+    <div class="cap">No hay nadie. Y sin embargo… más</div>
+    <div class="audio">♫ Audio original</div>
+  </div>
+</template>
+
+<script>
+const IMGS = {
+  automat:      { src: 'assets/automat.jpg',       w: 2000, h: 1554 },
+  nightwindows: { src: 'assets/night-windows.jpg', w: 1920, h: 1641 },
+  medusa:       { src: '../00-prueba-tecnica/assets/medusa.jpg', w: 1920, h: 1968 },
+};
+// Encuadre: data-crop = x,y,ancho,alto en píxeles de la imagen original → llena la caja.
+for (const el of document.querySelectorAll('[data-img]')) {
+  const im = IMGS[el.dataset.img], [sx, sy, sw, sh] = el.dataset.crop.split(',').map(Number);
+  const box = { width: el.offsetWidth, height: el.offsetHeight };  // tamaño propio, sin la rotación
+  const k = Math.max(box.width / sw, box.height / sh);
+  el.style.backgroundImage = `url(${im.src})`;
+  el.style.backgroundSize = `${im.w * k}px ${im.h * k}px`;
+  el.style.backgroundPosition = `${-sx * k + (box.width - sw * k) / 2}px ${-sy * k + (box.height - sh * k) / 2}px`;
+}
+// Bordes rasgados, con semilla fija para que el recorte no cambie entre renders.
+let seed = 11;
+const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+for (const el of document.querySelectorAll('[data-rasgado]')) {
+  const pts = [];
+  for (let x = 0; x <= 100; x += 2.5) pts.push(`${x}% ${rnd() * 7}%`);
+  for (let x = 100; x >= 0; x -= 2.5) pts.push(`${x}% ${100 - rnd() * 7}%`);
+  el.style.clipPath = `polygon(${pts.join(',')})`;
+}
+for (const f of document.querySelectorAll('.frame')) f.appendChild(document.getElementById('ui').content.cloneNode(true));
+if (location.search.includes('ui')) document.body.classList.add('con-ui');
+window.ready = Promise.all([document.fonts.ready, ...[...document.images].map(i => i.decode())]);
+</script>
+</body>
+</html>
