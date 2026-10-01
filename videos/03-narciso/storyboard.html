@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Storyboard · Narciso</title>
+<link rel="stylesheet" href="../../diseno/sistema.css">
+<style>
+  body { margin: 0; background: #777; display: flex; flex-wrap: wrap; gap: 40px; padding: 40px; }
+  .sub { left: 80px; right: 150px; top: 1488px; font-weight: 600; font-size: 36px; line-height: 1.5; color: var(--crema); }
+  .sub span { background: rgba(17,17,17,.86); padding: 3px 12px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+  svg.marca { position: absolute; overflow: visible; }
+  /* el reflejo de Caravaggio es muy oscuro: se aclara solo en pantalla */
+  .agua { filter: brightness(2.1) contrast(1.05); }
+  /* Eco: la misma frase que vuelve, cada vez más débil */
+  .eco { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--crema); white-space: nowrap; }
+  .tachado { position: relative; display: inline-block; }
+  .tachado::after { content: ''; position: absolute; left: -10px; right: -10px; top: 48%; height: 12px; background: var(--rojo);
+    transform: rotate(-3deg); border-radius: 6px; }
+</style>
+</head>
+<body>
+
+<!-- 1 · GANCHO: el reflejo dado vuelta parece otro chico -->
+<section class="frame" id="f1">
+  <div class="puntos"></div>
+  <div class="ficha" style="top:280px;left:70px;transform:rotate(-2deg)">Mitos al revés · 1</div>
+  <div class="tira titular" data-rasgado style="top:360px;left:44px;font-size:104px;transform:rotate(-1.5deg)">No se enamoró<br>de sí mismo.</div>
+  <div class="lamina" style="top:700px;left:40px;width:1000px;height:524px;transform:rotate(1deg)">
+    <div class="plate agua" data-img="caravaggio" data-crop="0,1380,1920,945" style="transform:rotate(180deg)"></div>
+  </div>
+  <div class="negro serif" style="top:1262px;left:330px;font-size:60px;transform:rotate(-2deg)">Se enamoró de un chico.</div>
+  <div class="sub"><span>Se enamoró de un chico que vio en el agua,</span></div>
+  <div class="grano"></div>
+</section>
+
+<!-- 2 · REVELACIÓN: el cuadro entero, al derecho -->
+<section class="frame" id="f2">
+  <div class="puntos"></div>
+  <div class="tira titular" data-rasgado style="top:290px;left:50px;font-size:128px;transform:rotate(-2deg)">Era él.</div>
+  <div class="lamina" style="top:450px;left:200px;width:700px;height:850px;transform:rotate(1deg)">
+    <div class="plate" data-img="caravaggio" data-crop="0,0,1920,2325"></div>
+    <!-- elipses que contienen cada cabeza con margen; la línea baja por la zona oscura, entre el brazo y la rodilla -->
+    <svg class="marca" style="inset:16px" viewBox="0 0 668 818" fill="none" stroke="var(--rojo)" stroke-linecap="round">
+      <ellipse cx="170" cy="195" rx="122" ry="118" stroke-width="7"/>
+      <ellipse cx="223" cy="740" rx="118" ry="84" stroke-width="7" stroke-dasharray="3 14"/>
+      <path d="M175 313 C 205 430, 150 530, 205 656" stroke-width="5" stroke-dasharray="3 14"/>
+    </svg>
+  </div>
+  <div class="ficha" style="top:640px;left:700px;transform:rotate(3deg)">él</div>
+  <div class="ficha" style="top:1170px;left:720px;transform:rotate(-2deg)">su reflejo</div>
+  <div class="negro serif" style="top:1330px;left:420px;font-size:58px;transform:rotate(-2deg)">Y saberlo no lo salvó.</div>
+  <div class="ficha" style="top:1310px;left:70px;transform:rotate(-1deg)">Caravaggio (atrib.)<br>Narciso, c. 1597–1599</div>
+  <div class="sub"><span>Y cuando por fin supo que era él,</span></div>
+  <div class="grano"></div>
+</section>
+
+<!-- 3 · LA PROFECÍA -->
+<section class="frame" id="f3">
+  <div class="puntos"></div>
+  <div class="negro serif" style="top:280px;left:60px;right:60px;font-size:60px;line-height:1.1;transform:rotate(-1deg)">«Va a llegar a viejo<br>si nunca se conoce a sí mismo.»</div>
+  <div class="ficha" style="top:470px;left:70px">Ovidio · Metamorfosis, libro III</div>
+  <div class="lamina" style="top:560px;left:70px;width:940px;height:826px;transform:rotate(-1.5deg)">
+    <div class="plate" data-img="carpioni" data-crop="170,540,640,560"></div>
+  </div>
+  <div class="ficha" style="top:1100px;left:350px;transform:rotate(-3deg)">Narciso</div>
+  <div class="ficha" style="top:980px;left:100px;transform:rotate(2deg)">Su madre</div>
+  <div class="ficha" style="top:1250px;left:600px;transform:rotate(2deg)">Tiresias, el adivino</div>
+  <div class="ficha" style="top:1400px;left:120px;font-size:18px">Giulio Carpioni · Liríope lleva a Narciso ante Tiresias, c. 1671</div>
+  <div class="sub" style="top:1500px"><span>un adivino le dijo a su madre</span></div>
+  <div class="grano"></div>
+</section>
+
+<!-- 4 · ECO -->
+<section class="frame" id="f4">
+  <div class="puntos"></div>
+  <div class="lamina" style="top:290px;left:44px;width:560px;height:1000px;transform:rotate(-1.5deg)">
+    <div class="plate" data-img="waterhouse" data-crop="240,300,920,1687"></div>
+  </div>
+  <div class="negro serif" style="top:330px;left:600px;width:400px;font-size:54px;line-height:1.1;transform:rotate(2deg)">«Antes me muero que entregarme a vos.»</div>
+  <div class="eco" style="top:720px;left:650px;font-size:66px">entregarme a vos.</div>
+  <div class="eco" style="top:820px;left:690px;font-size:58px;opacity:.6">entregarme a vos.</div>
+  <div class="eco" style="top:905px;left:730px;font-size:50px;opacity:.35">entregarme a vos.</div>
+  <div class="eco" style="top:978px;left:770px;font-size:44px;opacity:.18">entregarme a vos.</div>
+  <div class="ficha" style="top:1120px;left:640px;transform:rotate(-2deg)">Eco · castigada por Juno<br>a repetir lo último que oye</div>
+  <div class="ficha" style="top:1320px;left:70px;transform:rotate(1deg)">J. W. Waterhouse · Eco y Narciso, 1903</div>
+  <div class="sub"><span>Eco quiso abrazarlo, y él la rechazó:</span></div>
+  <div class="grano"></div>
+</section>
+
+<!-- 5 · EL AGUA -->
+<section class="frame" id="f5">
+  <div class="puntos"></div>
+  <div class="lamina" style="top:290px;left:60px;width:560px;height:1112px;transform:rotate(-1deg)">
+    <div class="plate" data-img="caravaggio" data-crop="150,280,1000,2045"></div>
+    <!-- ondas en la línea del agua, debajo de la cara (y≈1370 del original) -->
+    <svg class="marca" style="inset:16px" viewBox="0 0 528 1080" fill="none" stroke="var(--crema)" stroke-width="4">
+      <ellipse cx="238" cy="576" rx="40" ry="9"/><ellipse cx="238" cy="576" rx="90" ry="20" opacity=".7"/>
+      <ellipse cx="238" cy="576" rx="150" ry="32" opacity=".4"/>
+    </svg>
+  </div>
+  <div class="negro serif" style="top:400px;left:600px;width:400px;font-size:54px;line-height:1.1;transform:rotate(2deg)">Le sonrió, y el chico le sonrió.</div>
+  <div class="tira titular" data-rasgado style="top:760px;left:580px;font-size:112px;transform:rotate(-2deg)">Besó<br>el agua.</div>
+  <div class="sub"><span>Un día, Narciso se inclinó a tomar agua</span></div>
+  <div class="grano"></div>
+</section>
+
+<!-- 6 · ¡ESE SOY YO! -->
+<section class="frame" id="f6">
+  <div class="puntos"></div>
+  <div class="tira titular" data-rasgado style="top:280px;left:50px;font-size:120px;transform:rotate(-2deg)">¡Ese soy yo!</div>
+  <div class="lamina" style="top:440px;left:250px;width:572px;height:885px;transform:rotate(1.5deg)">
+    <div class="plate" data-img="waterhouse" data-crop="2060,1180,640,1011"></div>
+  </div>
+  <div class="negro serif" style="top:1345px;left:60px;right:60px;font-size:48px;line-height:1.15;transform:rotate(-1deg)">«Lo que quiero lo tengo conmigo,<br>y por eso no lo puedo tener.»</div>
+  <div class="sub" style="top:1500px"><span>Pero saberlo no lo salvó.</span></div>
+  <div class="grano"></div>
+</section>
+
+<!-- 7 · ADIÓS -->
+<section class="frame" id="f7">
+  <div class="puntos"></div>
+  <div class="tira titular" data-rasgado style="top:290px;left:50px;font-size:124px;transform:rotate(-2deg)">«Adiós.»</div>
+  <div class="eco" style="top:330px;left:630px;font-size:84px;opacity:.55">adiós.</div>
+  <div class="eco" style="top:410px;left:840px;font-size:64px;opacity:.25">adiós.</div>
+  <div class="lamina" style="top:560px;left:40px;width:1000px;height:780px;transform:rotate(1deg)">
+    <div class="plate" data-img="poussin" data-crop="40,100,1060,819"></div>
+  </div>
+  <div class="ficha" style="top:600px;left:470px;transform:rotate(-2deg)">Eco, que todavía lo quería</div>
+  <div class="ficha" style="top:1360px;left:90px;transform:rotate(-1deg)">Nicolas Poussin · Eco y Narciso, c. 1629–1630</div>
+  <div class="sub" style="top:1450px"><span>Lo último que dijo, antes de morir,</span></div>
+  <div class="grano"></div>
+</section>
+
+<!-- 8 · SE CUMPLIÓ -->
+<section class="frame" id="f8">
+  <div class="puntos"></div>
+  <div class="tira titular" data-rasgado style="top:290px;left:50px;font-size:112px;transform:rotate(-1.5deg)">Se conoció.</div>
+  <div class="negro serif" style="top:450px;left:330px;font-size:70px;transform:rotate(2deg)">No llegó a viejo.</div>
+  <div class="lamina" style="top:640px;left:60px;width:960px;height:560px;transform:rotate(-1deg)">
+    <div class="plate" data-img="poussin" data-crop="150,480,960,530"></div>
+  </div>
+  <div class="plate" data-img="carpioni" data-crop="540,660,260,260" style="top:1080px;left:760px;width:260px;height:260px;border-radius:50%;outline:12px solid var(--crema);box-shadow:0 14px 22px rgba(0,0,0,.45)"></div>
+  <div class="sub"><span>Se cumplió lo que dijo el adivino:</span></div>
+  <div class="grano"></div>
+</section>
+
+<!-- 9 · FREUD -->
+<section class="frame teal" id="f9">
+  <div class="puntos"></div>
+  <div class="negro serif" style="top:280px;left:60px;font-size:60px;transform:rotate(-1deg)">¿Por qué saberlo no lo salvó?</div>
+  <div class="lamina" style="top:450px;left:60px;width:400px;height:540px;transform:rotate(-2deg)">
+    <div class="plate" data-img="freud" data-crop="360,20,600,795"></div>
+  </div>
+  <div class="serif" style="top:470px;left:500px;width:520px;font-size:64px;line-height:1.08">«Al final uno tiene que empezar a amar para no caer enfermo.»</div>
+  <div class="ficha" style="top:1030px;left:70px;transform:rotate(-1deg)">Sigmund Freud · Introducción del narcisismo, 1914</div>
+  <div class="titular" style="top:1160px;left:70px;font-size:96px;color:var(--amarillo)">Narciso nunca empezó.</div>
+  <div class="sub"><span>y todo ese amor terminó en su propio reflejo.</span></div>
+  <div class="grano"></div>
+</section>
+
+<!-- 10 · AL REVÉS -->
+<section class="frame" id="f10">
+  <div class="puntos"></div>
+  <div class="titular" style="top:300px;left:70px;font-size:108px">No murió por<br><span class="tachado">quererse demasiado.</span></div>
+  <div class="serif" style="top:560px;left:110px;font-size:76px;color:var(--amarillo);transform:rotate(-2deg)">Murió porque no pudo<br>querer a otro.</div>
+  <div class="lamina" style="top:820px;left:120px;width:840px;height:560px;transform:rotate(1.5deg)">
+    <div class="plate agua" data-img="caravaggio" data-crop="0,1380,1920,945" style="transform:rotate(180deg)"></div>
+  </div>
+  <div class="grano"></div>
+</section>
+
+<!-- 11 · CIERRE -->
+<section class="frame calido" id="f11">
+  <div class="puntos"></div>
+  <div class="serif" style="top:280px;left:70px;right:70px;font-size:62px;line-height:1.1">Quizás querer a alguien empieza cuando el otro nos contesta</div>
+  <div class="titular" style="top:450px;left:62px;font-size:100px">algo que no<br>dijimos nosotros.</div>
+  <div class="lamina" style="top:720px;left:40px;width:1000px;height:584px;transform:rotate(-1deg)">
+    <div class="plate" data-img="waterhouse" data-crop="0,0,3840,2191"></div>
+    <!-- miradas: cada flecha sale de la cabeza y apunta hacia donde mira; ninguna tapa una cara -->
+    <svg class="marca" style="inset:16px" viewBox="0 0 968 552" fill="none" stroke="var(--rojo)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M282 112 C 380 120, 470 200, 548 300"/><path d="M522 290 L 550 304 L 548 274"/>
+      <path d="M700 392 C 712 430, 700 470, 640 500"/><path d="M669 500 L 640 500 L 653 474"/>
+    </svg>
+  </div>
+  <div class="ficha" style="top:1330px;left:100px;transform:rotate(-2deg)">Eco lo mira a él</div>
+  <div class="ficha" style="top:1340px;left:560px;transform:rotate(2deg)">Él se mira a sí mismo</div>
+  <div class="grano"></div>
+</section>
+
+<script type="module">
+import { encuadrar, rasgar, interfazInstagram } from '../../diseno/sistema.js';
+const IMGS = {
+  caravaggio: { src: 'assets/caravaggio.jpg', w: 1920, h: 2325 },
+  waterhouse: { src: 'assets/waterhouse.jpg', w: 3840, h: 2191 },
+  poussin:    { src: 'assets/poussin.jpg',    w: 1280, h: 959 },
+  carpioni:   { src: 'assets/carpioni.jpg',   w: 960,  h: 1160 },
+  freud:      { src: 'assets/freud.jpg',      w: 1280, h: 1741 },
+};
+encuadrar(document, IMGS);
+rasgar(document);
+interfazInstagram(document);
+await Promise.all([document.fonts.ready, ...[...document.images].map(i => i.decode())]);
+window.listo = true;
+</script>
+</body>
+</html>
