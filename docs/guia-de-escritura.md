@@ -53,6 +53,7 @@ quien escucha oye cada frase **una sola vez**, sin contexto y sin poder volver a
 
 ## Antes de entregar un guion, revisar
 
+- [ ] ¿Tiene 220 palabras o menos? Más que eso pasa de los 90 s que permite la música de Instagram (`wc -w`).
 - [ ] ¿Hay alguna frase que obligue a adivinar a qué se refiere?
 - [ ] ¿Cada dato dice de dónde viene?
 - [ ] ¿Cada dato vuelve explícitamente a la obra?

@@ -11,6 +11,9 @@
      algo más extenso que el 01.
 - Tono: el de El Reflejo, sin que sea obligatorio.
 - Meta: 1 video por semana es un éxito; 2 es un éxito rotundo.
+- **Duración máxima: 90 s** (decisión del 1/10/2026). La música de Instagram no pasa de 90 s y Dano publica desde el celular.
+  Los guiones se escriben para 80–88 s (190 a 220 palabras). Si una voz ya grabada queda larga, se acorta con
+  `herramientas/recortar.py` (frases enteras y silencios largos; ver el 03).
 - Voz: la de Dano cuando pueda grabar; ElevenLabs cuando no. En ElevenLabs funcionó la voz "Javier – Deep, Confident and Measured"
   con velocidad 1,00, estabilidad 30 y similitud 0 (video 02), y con velocidad 1,03, estabilidad 30 y similitud 47 (video 03).
   Si un tramo se regraba con otros ajustes, conviene regrabar el guion entero.

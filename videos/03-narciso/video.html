@@ -107,7 +107,6 @@
     <div class="eco" id="eco1" style="top:1052px;left:700px;font-size:58px;color:var(--eco-tinta)">a vos.</div>
     <div class="eco" id="eco2" style="top:1128px;left:790px;font-size:50px;color:var(--eco-tinta)">a vos.</div>
     <div class="eco" id="eco3" style="top:1194px;left:870px;font-size:42px;color:var(--eco-tinta)">a vos.</div>
-    <div class="serif" id="voz4" style="top:1150px;left:120px;font-size:84px;color:var(--eco-tinta)">solo quedó la voz.</div>
     <div class="ficha" id="fWat" data-rot="1" style="top:1330px;left:70px">J. W. Waterhouse · Eco y Narciso, 1903</div>
   </div>
 
@@ -116,8 +115,6 @@
     <div class="fondo" id="fondo5" style="background:var(--estanque)"></div>
     <div class="plate sangre" id="p5"></div>
     <svg class="velo" id="anillos" viewBox="0 0 1080 1920" fill="none" stroke="var(--crema)" stroke-width="4"></svg>
-    <div class="negro serif" id="son1" data-rot="-1.5" style="top:300px;left:70px;font-size:64px">Le sonrió.</div>
-    <div class="negro serif" id="son2" data-rot="1.5" style="top:400px;left:300px;font-size:64px">Y el chico le sonrió.</div>
     <div class="tira titular" id="beso" data-rasgado data-rot="-2" style="top:290px;left:600px;font-size:112px">Besó<br>el agua.</div>
   </div>
 
@@ -127,8 +124,6 @@
     <div class="velo" id="velo6" style="background:radial-gradient(ellipse at 50% 45%, rgba(14,36,32,0) 35%, rgba(14,36,32,.85) 100%)"></div>
     <div class="tira titular" id="ese" data-rasgado data-rot="-2" style="top:770px;left:60px;font-size:128px">¡Ese soy yo!</div>
     <div class="tira titular reflejoTxt" id="eseR" data-rasgado style="top:1072px;left:60px;font-size:128px;opacity:.3">¡Ese soy yo!</div>
-    <div class="negro serif" id="q6a" data-rot="-1" style="top:1180px;left:60px;font-size:54px">«Lo que quiero lo tengo conmigo,</div>
-    <div class="negro serif" id="q6b" data-rot="1" style="top:1268px;left:150px;font-size:54px">y por eso no lo puedo tener.»</div>
   </div>
 
   <!-- 7 y 8 · ADIÓS Y SE CUMPLIÓ: Poussin a sangre -->
@@ -232,25 +227,27 @@ const T = {
   e2: W('el poeta romano').s - 0.35, nacio: W('narciso nació').s, adiv: W('un adivino').s, viejo: W('iba a llegar a viejo').s,
   e3: W('narciso creció').s - 0.3, her: W('tan hermoso').s, org: W('tan orgulloso').s, rech: W('los rechazaba').s,
   e4: W('una de las que').s - 0.35, abr: W('eco quiso abrazarlo').s, rechazo: W('la rechazó').s, antes: W('antes me muero').s,
-  ent2: W('entregarme a vos', 2).s, avos2: W('a vos', 2).s, aver: W('avergonzada').s, voz: W('solo quedó la voz').s,
-  e5: W('un día').s - 0.35, vio: W('vio a un chico').s, son1: W('le sonrió').s, son2: W('y el chico le sonrió').s,
+  ent2: W('entregarme a vos', 2).s, avos2: W('a vos', 2).s,
+  e5: W('un día').s - 0.35, vio: W('vio a un chico').s,
   quiso: W('lo quiso besar').s, beso: W('besó el agua').s,
-  e6: W('hasta que entendió').s - 0.2, ese: W('ese soy yo').s, q1: W('lo que quiero').s, q2: W('y por eso').s, mirarse: W('no pudo dejar de mirarse').s,
+  e6: W('hasta que entendió').s - 0.2, ese: W('ese soy yo').s, mirarse: W('no pudo dejar de mirarse').s,
   e7: W('lo último que dijo').s - 0.25, ad1: W('adiós').s, yEco: W('y eco').s, todavia: W('todavía lo quería').s, ad2: W('adiós', 2).s,
-  cumplio: W('se cumplió').s, seCon: W('se conoció a sí mismo').s, noVie: W('no llegó a viejo').s,
-  e9: W('saberlo no lo salvó', 3).s - 0.45, freud: W('freud').s, narc: W('narcisismo').s, nunca: W('narciso nunca empezó').s, reflejo: W('su propio reflejo').s,
+  seCon: W('se conoció a sí mismo').s, noVie: W('no llegó a viejo').s,
+  e9: W('saberlo no lo salvó', 2).s - 0.45, freud: W('freud').s, nunca: W('narciso nunca empezó').s, reflejo: W('su propio reflejo').s,
   e10: W('no murió por').s - 0.3, murio: W('murió porque').s,
   e11: W('quizás').s - 0.35, otro: W('cuando el otro').s, contesta: W('nos contesta').s, algo: W('algo que no dijimos').s,
 };
 T.fin = W('nosotros').e;
+// Eco se deshace mientras su voz rebota (en la versión de 90 s no se dice "avergonzada, se escondió…")
+T.aver = T.avos2 + 0.35; T.voz = T.avos2 + 1.0;
+T.cumplio = T.seCon - 0.3;
 T.vuelta = DURACION - 1.0;
 const escenas = [['e1', -1, T.e2 + 0.9], ['e2', T.e2, T.e3 + 0.9], ['e3', T.e3, T.e4 + 0.9], ['e4', T.e4, T.e5 + 0.9],
   ['e5', T.e5, T.e6 + 0.5], ['e6', T.e6, T.e7 + 0.6], ['e7', T.e7, T.e9 + 0.9], ['e9', T.e9, T.e10 + 0.9],
   ['e10', T.e10, T.e11 + 0.9], ['e11', T.e11, 999]];
 const SUBS = subtitulos(voz, [['narciso no se enamoró de sí mismo'], ['se enamoró de un chico'], ['saberlo no lo salvó'],
   ['iba a llegar a viejo si nunca se conoce a sí mismo'], ['antes me muero que entregarme a vos'], ['entregarme a vos', 2],
-  ['solo quedó la voz'], ['le sonrió'], ['y el chico le sonrió'], ['besó el agua'], ['ese soy yo'],
-  ['lo que quiero lo tengo conmigo'], ['y por eso no lo puedo tener'], ['adiós'], ['adiós', 2], ['se conoció a sí mismo'], ['no llegó a viejo'],
+  ['besó el agua'], ['ese soy yo'], ['adiós'], ['adiós', 2], ['se conoció a sí mismo'], ['no llegó a viejo'],
   ['por qué saberlo no lo salvó'], ['al final uno tiene que empezar a amar para no caer enfermo'], ['narciso nunca empezó'],
   ['no murió por quererse demasiado'], ['murió porque no pudo querer a otro'],
   ['quizás querer a alguien empieza cuando el otro nos contesta algo que no dijimos nosotros']]);
@@ -349,7 +346,7 @@ function seek(tReal) {
     const acerca = ease.inOut(prog(t, T.abr, T.abr + 0.8)) * (1 - ease.out(prog(t, T.rechazo, T.rechazo + 0.3)));
     pieza($('lam4'), t, { t0: T.e4 + 0.4, entra: 'abajo', dur: 0.6, dx: acerca * 40 + shake, escala: 1 + acerca * 0.03 });
     encuadre($('p4'), IMGS.waterhouse, entreEncuadres(WT.eco, [300, 320, 860, 1577], ease.suave(prog(t, T.e4, T.aver))));
-    // avergonzada se esconde: la figura se deshace y queda una onda de voz
+    // mientras su voz rebota, la figura de Eco se deshace y queda una onda: de ella solo quedó la voz
     const se = prog(t, T.aver, T.voz + 0.2);
     $('p4').style.opacity = 1 - ease.inOut(se) * 0.92;
     $('p4').style.filter = se > 0 ? 'url(#onda)' : 'none';
@@ -366,16 +363,15 @@ function seek(tReal) {
     pieza($('tEco'), t, { t0: W('era eco').s + 0.1, entra: 'der', dur: 0.45, t1: T.antes - 0.2, sale: 'der' });
     pieza($('fJuno'), t, { t0: W('castigada').s, t1: T.antes - 0.2 });
     pieza($('fRep'), t, { t0: W('a repetir').s, t1: T.antes - 0.2 });
-    pieza($('neg4'), t, { t0: T.antes - 0.05, entra: 'der', dur: 0.4, t1: T.aver - 0.1, sale: 'der' });
+    pieza($('neg4'), t, { t0: T.antes - 0.05, entra: 'der', dur: 0.4, t1: T.e5, sale: 'der' });
     // la frase de Eco y sus rebotes (los tiempos del eco son los de herramientas/eco.py: cada 0,42 s)
-    aparecer($('eco0'), t, T.ent2 - 0.05, T.aver - 0.1);
+    aparecer($('eco0'), t, T.ent2 - 0.05, T.e5 + 0.4);
     ['eco1', 'eco2', 'eco3'].forEach((id, k) => {
       const t0 = T.avos2 + (k + 1) * 0.42;
-      aparecer($(id), t, t0, T.aver - 0.1, 0.2);
+      aparecer($(id), t, t0, T.e5 + 0.4, 0.2);
       $(id).style.opacity *= [0.6, 0.38, 0.2][k];
       $(id).style.transform = `translateX(${(t - t0) * 14}px)`;
     });
-    pieza($('voz4'), t, { t0: T.voz + 0.2, entra: 'fundido', dur: 0.5, t1: T.e5 - 0.1 });
     pieza($('fWat'), t, { t0: T.e4 + 1.2, entra: 'fundido', t1: T.antes });
   }
 
@@ -399,8 +395,6 @@ function seek(tReal) {
       if (q > 0 && q < 1) svg += `<ellipse cx="${cx}" cy="${cy}" rx="${40 + 460 * ease.out(q)}" ry="${10 + 115 * ease.out(q)}" opacity="${(1 - q) * 0.8}"/>`;
     }
     if ($('anillos').innerHTML !== svg) $('anillos').innerHTML = svg;
-    pieza($('son1'), t, { t0: T.son1 - 0.05, entra: 'izq', dur: 0.4, t1: T.quiso - 0.1, sale: 'izq' });
-    pieza($('son2'), t, { t0: T.son2 - 0.05, entra: 'der', dur: 0.4, t1: T.quiso - 0.1, sale: 'der' });
     pieza($('beso'), t, { t0: T.beso + 0.15, t1: T.e6 + 0.1, sale: 'fundido' });
   }
 
@@ -412,16 +406,14 @@ function seek(tReal) {
     encuadre($('p6'), IMGS.waterhouse, c);
     $('p6').style.filter = 'url(#agua)';
     $('velo6').style.opacity = 0.5 + 0.5 * ease.inOut(prog(t, T.mirarse, T.e7 + 0.4));
-    pieza($('ese'), t, { t0: T.ese - 0.05, t1: T.q1 - 0.15, sale: 'arriba' });
+    pieza($('ese'), t, { t0: T.ese - 0.05, t1: T.mirarse - 0.15, sale: 'arriba' });
     // el título se refleja en el agua: copia invertida, ondulada y más débil
-    const pe = ease.out(prog(t, T.ese + 0.25, T.ese + 0.9)) * (1 - prog(t, T.q1 - 0.15, T.q1 + 0.15));
+    const pe = ease.out(prog(t, T.ese + 0.25, T.ese + 0.9)) * (1 - prog(t, T.mirarse - 0.15, T.mirarse + 0.15));
     $('eseR').style.opacity = 0.32 * pe;
     $('eseR').style.visibility = pe > 0 ? 'visible' : 'hidden';
     $('eseR').style.transform = `scaleY(-0.8) rotate(-2deg)`;
     $('eseR').style.filter = 'url(#onda)';
     if (pe > 0) onda(t, 12);
-    pieza($('q6a'), t, { t0: T.q1 - 0.05, entra: 'izq', dur: 0.4, t1: T.e7 - 0.1, sale: 'fundido' });
-    pieza($('q6b'), t, { t0: T.q2 - 0.05, entra: 'der', dur: 0.4, t1: T.e7 - 0.1, sale: 'fundido' });
   }
 
   // 7 y 8 · Adiós; se cumplió la profecía
@@ -434,14 +426,14 @@ function seek(tReal) {
     $('p7').style.filter = 'brightness(1.3) contrast(1.05)';
     $('velo7').style.opacity = 0.05 + 0.6 * ease.inOut(prog(t, T.cumplio - 0.2, T.cumplio + 0.8));
     pieza($('adios'), t, { t0: T.ad1 - 0.05, t1: T.yEco - 0.05, sale: 'izq' });
-    aparecer($('ad0'), t, T.ad2 - 0.05, T.cumplio - 0.3);
+    aparecer($('ad0'), t, T.ad2 - 0.05, T.seCon - 0.1);
     ['ad1', 'ad2', 'ad3'].forEach((id, k) => {
       const t0 = T.ad2 + (k + 1) * 0.42;
-      aparecer($(id), t, t0, T.cumplio - 0.3, 0.2);
+      aparecer($(id), t, t0, T.seCon - 0.1, 0.2);
       $(id).style.opacity *= [0.6, 0.38, 0.2][k];
       $(id).style.transform = `translate(${(t - t0) * 10}px, ${-(t - t0) * 6}px)`;
     });
-    pieza($('fTod'), t, { t0: T.todavia, t1: T.cumplio - 0.3 });
+    pieza($('fTod'), t, { t0: T.todavia, t1: T.seCon - 0.2 });
     pieza($('fPou'), t, { t0: T.e7 + 0.8, entra: 'fundido', t1: T.yEco });
     encuadre($('tiresias'), IMGS.carpioni, K.circ);
     pieza($('tiresias'), t, { t0: T.cumplio + 0.1, t1: T.e9 - 0.1 });
@@ -461,7 +453,7 @@ function seek(tReal) {
     porPalabra($('cita9'), t, cita9);
     $('cita9').style.visibility = t > cita9[0] - 0.1 ? 'visible' : 'hidden';
     $('cita9').style.opacity = 1 - prog(t, T.nunca - 0.1, T.nunca + 0.2) * 0.65;
-    pieza($('fFreud'), t, { t0: T.narc, entra: 'fundido' });
+    pieza($('fFreud'), t, { t0: T.freud + 0.4, entra: 'fundido' });
     pieza($('nunca'), t, { t0: T.nunca - 0.05, entra: 'izq', dur: 0.45 });
   }
 

@@ -20,14 +20,18 @@ El 01 es un **ensayo**: premisa → dato → tesis → origen. Cada idea se resu
 | **Giro** | 50–65 s | El concepto psicológico como la llave que explica la historia. Uno solo, dicho simple. |
 | **Cierre** | 65–75 s | Vuelve al espectador y rima con la primera imagen, así invita a volver a verlo. |
 
-Duración: 60 a 90 s. Los virales de 2023 duraban entre 58 y 88 s; el problema no era el largo, era el ritmo parejo.
+Duración: 60 a 88 s, **nunca más de 90**. Los virales de 2023 duraban entre 58 y 88 s; el problema no era el largo, era el
+ritmo parejo. El tope de 90 es práctico: la música de la biblioteca de Instagram se corta a los 90 s (los reels pueden durar
+hasta 3 minutos, la música no) y Dano publica desde el celular, donde editar el audio pasado ese punto es un problema.
+Además, breve y dinámico se comparte más. En palabras: **190 a 220 palabras de guion** (la voz de ElevenLabs lee 2,7 por
+segundo; con pausas y la cola da 80–88 s).
 
 Señales que busca Instagram: tiempo de visualización y **envíos por mensaje**. Un tema que dan ganas de mandarle a alguien
 ("mirá, somos nosotros") vale más que uno que solo gusta.
 
 ## Cuatro formatos
 
-- **A · La historia detrás** (60–90 s). Un artista, un hecho de su vida, un concepto. Es el motor de alcance.
+- **A · La historia detrás** (60–88 s). Un artista, un hecho de su vida, un concepto. Es el motor de alcance.
 - **B · Leer un cuadro** (45–60 s). La obra como un caso: los detalles son pistas, como en una sesión. Es el que más invita a volver a verlo.
 - **C · Mitos al revés** (serie). Mitos que conocemos mal. Ya lo hiciste con Narciso en El Reflejo. Una serie genera costumbre, y la costumbre genera seguidores.
 - **D · Lo que nos pasa** (formato El Reflejo). Un proceso (memoria, vergüenza) visto en 3 obras. Para usar de vez en cuando; es el que más se guarda.

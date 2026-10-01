@@ -1,10 +1,52 @@
 # 03 · Narciso: no se enamoró de sí mismo
 
-Formato C (*Mitos al revés* · 1) · Duración final: 1 min 57 s · 1080×1920 · Sistema visual v1 con paleta propia (ver abajo).
+Formato C (*Mitos al revés* · 1) · Duración final: 1 min 29 s (versión de 90 s) · 1080×1920 · Sistema visual v1 con paleta propia (ver abajo).
 
 Escrito desde Ovidio: no apareció la entrega de El Reflejo sobre Narciso. Dano revisó el guion y lo aprobó sin cambios.
 
-## Guion (voz en off) · versión final
+## Guion (voz en off) · versión de 90 s (la que se publica)
+
+Instagram no deja pasar de 90 s la música de su biblioteca, y Dano publica desde el celular. La voz ya estaba grabada, así
+que en vez de regrabar se sacaron frases enteras de la grabación (`herramientas/recortar.py`), se achicaron los silencios a
+0,32 s y se aceleró un 3 %. Lo que se dice:
+
+> Narciso no se enamoró de sí mismo. Se enamoró de un chico que vio en el agua, sin saber que era él. Y cuando por fin supo que era él, saberlo no lo salvó.
+>
+> El poeta romano Ovidio cuenta que, cuando Narciso nació, un adivino le dijo a su madre que iba a llegar a viejo «si nunca se conoce a sí mismo».
+>
+> Narciso creció tan hermoso que todos lo deseaban, y tan orgulloso que los rechazaba a todos.
+>
+> Una de las que lo amaban era Eco, una ninfa castigada por la diosa Juno a repetir las últimas palabras que escuchaba. Eco quiso abrazarlo, y él la rechazó: «Antes me muero que entregarme a vos». Y ella solo pudo repetir: «Entregarme a vos».
+>
+> Un día, Narciso se inclinó a tomar agua y vio a un chico hermoso. Lo quiso besar, y besó el agua.
+>
+> Hasta que entendió: «¡Ese soy yo!». No pudo dejar de mirarse. Lo último que dijo, antes de morir, fue «adiós». Y Eco, que todavía lo quería, le devolvió: «adiós».
+>
+> Se conoció a sí mismo, y no llegó a viejo.
+>
+> ¿Por qué saberlo no lo salvó? Freud escribió: «Al final uno tiene que empezar a amar para no caer enfermo». Narciso nunca empezó: rechazó a todos, y todo ese amor terminó en su propio reflejo. No murió por quererse demasiado. Murió porque no pudo querer a otro.
+>
+> Quizás querer a alguien empieza cuando el otro nos contesta algo que no dijimos nosotros.
+
+245 palabras: 84,3 s de voz, 88,7 s con las pausas para los ecos y la cola.
+
+**Qué se sacó y por qué** (en ese orden de prioridad, cuidando que cada paso de la historia se siga diciendo):
+
+| Frase | s | Por qué se puede sacar |
+|---|---|---|
+| «Lo que quiero lo tengo conmigo», dijo, «y por eso no lo puedo tener». | 4,8 | La más linda, pero lo mismo lo explican Freud y "todo ese amor terminó en su propio reflejo". |
+| Avergonzada, se escondió en el bosque hasta que de ella solo quedó la voz. | 4,6 | Lo cuenta la imagen: Eco se deshace mientras su voz rebota. |
+| Le sonrió, y el chico le sonrió. | 2,5 | "Vio a un chico hermoso" y "besó el agua" alcanzan para entender que era un reflejo. |
+| Pero saberlo no lo salvó. | 2,2 | Se repetía: la pregunta "¿Por qué saberlo no lo salvó?" vuelve más adelante. |
+| Se cumplió lo que dijo el adivino. | 2,1 | "Se conoció a sí mismo, y no llegó a viejo" repite las palabras de la profecía; se entiende sola. |
+| en su ensayo sobre el narcisismo | 1,8 | Queda en la ficha en pantalla (*Introducción del narcisismo*, 1914). |
+
+Si Dano prefiere otra combinación (por ejemplo, volver a poner la frase del espejo y sacar el orgullo), se rehace en minutos
+con los comandos de abajo: la animación se resincroniza sola.
+
+### Versión larga (1 min 57 s)
+
+Es la primera, con el guion completo. No se publica, pero queda en la historia del repo (commit `258f3d6`):
 
 > Narciso no se enamoró de sí mismo. Se enamoró de un chico que vio en el agua, sin saber que era él. Y cuando por fin supo que era él, saberlo no lo salvó.
 >
@@ -25,6 +67,7 @@ Escrito desde Ovidio: no apareció la entrega de El Reflejo sobre Narciso. Dano 
 > Quizás querer a alguien empieza cuando el otro nos contesta algo que no dijimos nosotros.
 
 298 palabras: 108,8 s de voz (2,7 palabras por segundo, el mismo ritmo que el 02) y 116,8 s con las pausas.
+Por eso, desde el 04, los guiones tienen como máximo 220 palabras.
 
 ### Por qué está armado así
 
@@ -63,9 +106,9 @@ fondo del tramo de Eco, con tinta `#8E3B36`), vino `#3E1820` (Freud), pétalo `#
 | 2 | Revelación y promesa | En "sin saber que era él" la imagen gira, se achica y queda el cuadro entero al derecho. Elipse sobre la cabeza, línea punteada y elipse punteada sobre el reflejo | "Era él." · "él" / "su reflejo" · "Saberlo no lo salvó." |
 | 3 | La profecía | Carpioni a sangre: la cámara va de la madre con el bebé al adivino y se abre | Cita palabra por palabra: «Va a llegar a viejo si nunca se conoce a sí mismo.» |
 | 4 | El orgullo | Lámina con la cara de Caravaggio; una columna de "todos" que se tachan en "los rechazaba a todos" | "Tan hermoso." · "Tan orgulloso." |
-| 5 | Eco | Fondo rosa. Waterhouse, Eco. Se acerca en "quiso abrazarlo" y se sacude en "la rechazó"; en "avergonzada" se deshace y queda una onda | "Eco" · fichas de Juno · «Antes me muero que entregarme a vos.» · "entregarme a vos." · "a vos." ×3 · "solo quedó la voz." |
-| 6 | El agua | Caravaggio a sangre: la cámara baja de la cara al reflejo y vuelve a subir; el beso abre anillos en la línea del agua | "Le sonrió." · "Y el chico le sonrió." · "Besó el agua." |
-| 7 | ¡Ese soy yo! | Waterhouse a sangre: de la cara en el agua a la cara de Narciso; se oscurece en "no pudo dejar de mirarse" | "¡Ese soy yo!" con su reflejo invertido · la cita en dos partes |
+| 5 | Eco | Fondo rosa. Waterhouse, Eco. Se acerca en "quiso abrazarlo" y se sacude en "la rechazó"; mientras su voz rebota, se deshace y queda una onda | "Eco" · fichas de Juno · «Antes me muero que entregarme a vos.» · "entregarme a vos." · "a vos." ×3 |
+| 6 | El agua | Caravaggio a sangre: la cámara baja de la cara al reflejo y vuelve a subir; el beso abre anillos en la línea del agua | "Besó el agua." |
+| 7 | ¡Ese soy yo! | Waterhouse a sangre: de la cara en el agua a la cara de Narciso; se oscurece en "no pudo dejar de mirarse" | "¡Ese soy yo!" con su reflejo invertido |
 | 8 | Adiós | Poussin a sangre: de Narciso a Eco, que le devuelve la palabra | "«Adiós.»" · "adiós." ×4, cada vez más débil |
 | 9 | Se cumplió | Poussin entero, oscurecido; Tiresias en un espejo redondo | "Se conoció." · "No llegó a viejo." |
 | 10 | Freud | Fondo vino. Freud en un espejo ovalado, que en "su propio reflejo" pasa a mostrar a Narciso | "¿Por qué saberlo no lo salvó?" · cita palabra por palabra · "Narciso nunca empezó." |
@@ -120,23 +163,29 @@ Havelock Ellis y Paul Näcke antes que Freud, que cita a Näcke al comienzo del 
 - Transcripción con faster-whisper "medium" (`audio/voz.json`). Correcciones a mano, verificadas transcribiendo de nuevo esos
   tramos: faltaba "a todos" (después de "los rechazaba"), "se inclinó" había salido "se intimidó" y los dos "adiós" estaban
   partidos en "A Dios".
-- Pausas (`herramientas/pausas.py`): 0,45 s después del gancho; 0,35 s después de la profecía y antes de que Eco repita;
-  0,9 s después del "entregarme a vos" de Eco y 1 s después de su "adiós" (para el eco); 0,55 s después de "besó el agua";
-  0,45 s después de "¡Ese soy yo!"; 0,5 s antes de Freud; 0,3 s antes del cierre; 2,8 s de cola → `voz-pausas.wav` (intermedio, no se guarda).
+- Versión de 90 s (`herramientas/recortar.py`, nuevo): saca seis frases de la grabación cortando en el medio de los silencios,
+  achica a 0,32 s todo silencio más largo y acelera un 3 % sin cambiar el tono → `audio/voz-recortada.json` (84,3 s). Se
+  verificó transcribiendo de nuevo la voz editada: no se perdió ninguna sílaba en los empalmes.
+- Pausas (`herramientas/pausas.py`): 0,3 s después del gancho y antes de Freud; 0,8 s después del "entregarme a vos" de Eco y
+  0,9 s después de su "adiós" (para que se oiga el eco); 2,1 s de cola, donde el video vuelve a su primer cuadro.
 - Eco (`herramientas/eco.py`, nuevo): tres rebotes de "a vos" y de "adiós", cada 0,42 s, cada vez más bajos y opacos →
-  `audio/voz-editada.wav` (116,8 s). Los rebotes en pantalla usan los mismos tiempos.
+  `audio/voz-editada.wav` (88,7 s). Los rebotes en pantalla usan los mismos tiempos.
 - Animación: `video.html`. Cada momento está anclado a una palabra de la voz con `W('palabra')`.
 
 ```bash
 python3 herramientas/transcribir.py videos/03-narciso/audio/voz-elevenlabs.mp3 videos/03-narciso/audio/voz.json --modelo=medium
 cd videos/03-narciso/audio
-python3 ../../../herramientas/pausas.py voz-elevenlabs.mp3 voz.json voz-pausas.wav voz-editada.json "salvó.:0.45" "mismo.#2:0.35" \
-  "vos».:0.35" "vos».#2:0.9" "agua.:0.55" "yo».:0.45" "«adiós».:0.35" "«adiós».#2:1.0" "viejo.:0.5" "otro.:0.3" --cola=2.8
+python3 ../../../herramientas/recortar.py voz-elevenlabs.mp3 voz.json voz-recortada.wav voz-recortada.json \
+  --cortar="avergonzada se escondió en el bosque hasta que de ella solo quedó la voz" --cortar="le sonrió y el chico le sonrió" \
+  --cortar="pero saberlo no lo salvó" --cortar="lo que quiero lo tengo conmigo dijo y por eso no lo puedo tener" \
+  --cortar="se cumplió lo que dijo el adivino" --cortar="en su ensayo sobre el narcisismo" --silencio=0.32 --tempo=1.03
+python3 ../../../herramientas/pausas.py voz-recortada.wav voz-recortada.json voz-pausas.wav voz-editada.json \
+  "salvó.:0.3" "vos».#2:0.8" "«adiós».#2:0.9" "viejo.:0.3" --cola=2.1
 python3 ../../../herramientas/eco.py voz-pausas.wav voz-editada.json voz-editada.wav "a vos#2" "adiós#2"
 cd ../../..
 node herramientas/render.mjs videos/03-narciso/video.html --audio=videos/03-narciso/audio/voz-editada.wav --workers=4
-cd videos/03-narciso   # menos de 30 MB: 1,85 Mbps de video para 117 s
-ffmpeg -y -i out/video.mp4 -c:v libx264 -preset slow -b:v 1850k -pass 1 -passlogfile out/ffmpeg2pass -an -f mp4 /dev/null
-ffmpeg -y -i out/video.mp4 -c:v libx264 -preset slow -b:v 1850k -pass 2 -passlogfile out/ffmpeg2pass -pix_fmt yuv420p \
+cd videos/03-narciso   # menos de 30 MB: 240 / 88,7 − 0,13 ≈ 2,4 Mbps de video
+ffmpeg -y -i out/video.mp4 -c:v libx264 -preset slow -b:v 2400k -pass 1 -passlogfile out/ffmpeg2pass -an -f mp4 /dev/null
+ffmpeg -y -i out/video.mp4 -c:v libx264 -preset slow -b:v 2400k -pass 2 -passlogfile out/ffmpeg2pass -pix_fmt yuv420p \
   -c:a aac -b:a 128k -movflags +faststart 03-narciso.mp4
 ```
