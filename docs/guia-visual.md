@@ -19,6 +19,21 @@ Reglas aprendidas de las revisiones de Dano. Complementa `diseno/sistema.css` (c
 ## Revisión
 
 7. Antes del render completo: hoja de fotogramas de todos los momentos clave y una captura a tamaño real de cada marcador.
+8. **Nunca más de 2,5 s de pantalla vacía.** Una amiga de Dano lo notó en el 02: casi 10 s de "¿Por qué nadie ayuda?" sobre
+   el fondo verde, mientras la voz decía "La psicología social tiene una respuesta. En 1968, un artículo…", hasta que
+   aparecían las personitas. Cuando la voz introduce algo (una disciplina, una fuente, una fecha), en pantalla entra algo
+   al mismo tiempo: la fuente, una imagen, el primer elemento del dato. Una frase sola sobre fondo liso, como mucho 2,5 s.
+9. **Nada quieto más de 4 s:** si la voz sigue y la imagen no cambia, se mueve la cámara, entra una pieza o cambia el encuadre.
+10. **Los subtítulos dicen exactamente el guion.** En el 02 salió "Bruegel Bruegel": al empalmar el cierre regrabado, la
+   palabra del empalme quedó dos veces en los tiempos. La transcripción también se come palabras ("a todos") o las oye
+   mal ("se intimidó" por "se inclinó", en el 03).
+
+Los dos controles automáticos, antes de mandar (salen con error si encuentran algo):
+
+```bash
+python3 herramientas/cotejar.py videos/NN/guion.md videos/NN/audio/voz-editada.json   # guion contra subtítulos
+python3 herramientas/quietud.py videos/NN/NN.mp4                                       # pantalla vacía o quieta
+```
 
 ## Variar de un video a otro
 
@@ -26,12 +41,12 @@ Pedido de Dano al ver el storyboard del 03: tener una gama reconocible, pero no 
 en cada reel. Lo que se mantiene es la identidad (tipografías, tiras rasgadas, fichas, láminas, grano, subtítulos sobre banda
 oscura); lo que cambia en cada video es el color, las composiciones y los efectos.
 
-8. **Antes de diseñar, mirar el reel anterior terminado.** Están en el Drive de Dano (cómo encontrarlos: `docs/linea-editorial.md`);
-   se bajan a `referencias/` (no se sube al repo) y se revisan con una hoja de fotogramas:
-   `ffmpeg -i referencias/NN.mp4 -vf "fps=1/2.5,scale=180:-1,tile=11x4" -frames:v 1 hoja.jpg`.
-9. **La paleta sale de las obras del video.** Cinco colores: un fondo principal, uno o dos fondos de tramo, el del cierre y un
-   acento. Se definen como variables en el `<style>` del `video.html` (no se toca `sistema.css`).
-10. **Cambiar al menos dos recursos de movimiento** respecto del video anterior (tabla de abajo), y alternar composiciones:
+11. **Antes de diseñar, mirar el reel anterior terminado.** Están en el Drive de Dano (cómo encontrarlos: `docs/linea-editorial.md`);
+    se bajan a `referencias/` (no se sube al repo) y se revisan con una hoja de fotogramas:
+    `ffmpeg -i referencias/NN.mp4 -vf "fps=1/2.5,scale=180:-1,tile=11x4" -frames:v 1 hoja.jpg`.
+12. **La paleta sale de las obras del video.** Cinco colores: un fondo principal, uno o dos fondos de tramo, el del cierre y un
+    acento. Se definen como variables en el `<style>` del `video.html` (no se toca `sistema.css`).
+13. **Cambiar al menos dos recursos de movimiento** respecto del video anterior (tabla de abajo), y alternar composiciones:
     obra a sangre con cámara, lámina, dos láminas, texto solo. Que no haya tres tramos seguidos con el título arriba a la
     izquierda y la lámina al medio.
 

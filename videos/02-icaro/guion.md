@@ -64,3 +64,14 @@ Las diferencias con el primer borrador dieron origen a [la guía de escritura](.
 ```bash
 node herramientas/render.mjs videos/02-icaro/video.html --audio=videos/02-icaro/audio/voz-editada.wav
 ```
+
+## Después de publicar
+
+Dos observaciones de una amiga de Dano, ya publicado el video:
+
+- **Pantalla vacía:** de 36 a 48 s quedan casi 10 s de "¿Por qué nadie ayuda?" sobre el fondo verde, hasta que aparecen las
+  personitas. Dio origen a la regla 8 de la [guía visual](../../docs/guia-visual.md) y a `herramientas/quietud.py`, que lo
+  detecta (también marca 22–25 s).
+- **"Bruegel Bruegel" en los subtítulos** (86,7 s): al empalmar el cierre regrabado, la palabra del empalme quedó dos veces
+  en `audio/voz-editada.json`. La voz la dice una sola vez. Ya está corregido en el JSON (si se vuelve a renderizar, sale
+  bien); lo detecta `herramientas/cotejar.py`.

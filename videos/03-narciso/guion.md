@@ -112,7 +112,7 @@ fondo del tramo de Eco, con tinta `#8E3B36`), vino `#3E1820` (Freud), pétalo `#
 | 8 | Adiós | Poussin a sangre: de Narciso a Eco, que le devuelve la palabra | "«Adiós.»" · "adiós." ×4, cada vez más débil |
 | 9 | Se cumplió | Poussin entero, oscurecido; Tiresias en un espejo redondo | "Se conoció." · "No llegó a viejo." |
 | 10 | Freud | Fondo vino. Freud en un espejo ovalado, que en "su propio reflejo" pasa a mostrar a Narciso | "¿Por qué saberlo no lo salvó?" · cita palabra por palabra · "Narciso nunca empezó." |
-| 11 | Al revés | El reflejo girado del principio, apenas visible | "No murió por quererse demasiado." (tachado) · "Murió porque no pudo querer a otro." |
+| 11 | Al revés | El cuadro de Caravaggio entero en una lámina, que en "Murió porque…" se da vuelta 180°: la frase y el cuadro se invierten juntos (antes era solo texto y `quietud.py` lo marcó como pantalla vacía) | "No murió por quererse demasiado." (tachado) · "Murió porque no pudo querer a otro." |
 | 12 | Cierre | Fondo pétalo. Waterhouse entero; las flechas de mirada se dibujan en "cuando el otro" y "nos contesta". Sube la marea y vuelve el primer cuadro | "Quizás querer a alguien empieza cuando el otro nos contesta" · "algo que no dijimos nosotros." |
 
 ## Obras
