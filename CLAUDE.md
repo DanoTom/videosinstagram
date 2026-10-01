@@ -9,6 +9,10 @@ Antes de escribir un guion, leer:
 - `docs/linea-editorial.md`: decisiones de Dano (sin placa final de El Reflejo, frecuencia, voz).
 - `docs/guia-visual.md`: marcadores que no tapan lo que señalan, zonas seguras, titulares y subtítulos.
 
+Para elegir tema: el banco de temas de `docs/estrategia-contenido.md` y `docs/banco-de-pistas.md` (obras leídas por
+Freud, Lacan, Winnicott, Langer, Pichon-Rivière y otros; separar siempre el dato de la interpretación y no diagnosticar
+artistas). Los informes completos de donde salen las pistas están en `docs/investigacion/`.
+
 Flujo de un video (ver `README.md` y `videos/01-no-hay-nadie/` como ejemplo completo):
 guion → storyboard → voz (Dano o ElevenLabs) → `herramientas/transcribir.py` → `herramientas/pausas.py` →
 `video.html` (cada momento anclado a una palabra de la voz con `W('palabra')`) → `herramientas/render.mjs`.

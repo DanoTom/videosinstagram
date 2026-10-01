@@ -35,6 +35,7 @@ Señales que busca Instagram: tiempo de visualización y **envíos por mensaje**
 ## Banco de temas
 
 Todas las obras son de dominio público salvo que se indique. Los datos están para verificar antes de grabar.
+Más ideas, con autores que leyeron estas obras desde la psicología y la filosofía: [banco de pistas](banco-de-pistas.md).
 
 | # | Formato | Tema | Obras | Gancho |
 |---|---|---|---|---|
@@ -59,6 +60,8 @@ Todas las obras son de dominio público salvo que se indique. Los datos están p
 1. **02 · La caída de Ícaro** (B), elegido por Dano. El gancho es un juego: encontrar al hombre que cae.
 2. **03 · Narciso** (C). Abre la serie *Mitos al revés*, con un texto que ya tenés escrito.
 3. Van Gogh y Theo ya está hecho (junto con Jo van Gogh-Bonger). Si se vuelve a Van Gogh, que sea desde otra perspectiva.
+4. Después, alternar temas de este banco con las pistas ★★ del [banco de pistas](banco-de-pistas.md). La más cercana al 02,
+   por el juego de buscar algo escondido en el cuadro, es la calavera de *Los embajadores*.
 
 ## Cómo aprender de cada video
 
