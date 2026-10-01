@@ -12,7 +12,11 @@ Reglas aprendidas de las revisiones de Dano. Complementa `diseno/sistema.css` (c
 
 ## Texto en pantalla
 
-4. Nada de texto en la zona de la interfaz de Instagram (columna de íconos a la derecha desde y≈1100; usuario y descripción abajo).
+4. **Zona segura común, Instagram y YouTube Shorts** (el mismo archivo sirve para los dos). YouTube tapa más que Instagram:
+   ~180 px arriba, ~390 px abajo (canal, título, suscribirse) y ~120 px a la derecha (botones).
+   - Texto y piezas importantes: x 60–940, y 260–1460. Nada importante a la derecha de x 940 por debajo de y≈900.
+   - Subtítulos: una sola línea entre y 1460 y 1515 (`.sub { top: 1460px }` y `subtitulos(voz, ocultar, 7)`).
+   - En el 03, "Narciso nunca empezó." llegaba hasta x≈1060 y quedaba debajo de los botones en las dos apps: se partió en dos líneas.
 5. Los titulares entran en una o dos líneas pensadas: si una palabra queda sola en la segunda línea, se corta a mano con `<br>`.
 6. Los subtítulos van sobre una banda negra (legibles sobre cualquier fondo) y no repiten lo que ya está escrito en pantalla.
 

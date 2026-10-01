@@ -23,7 +23,8 @@
   .fondo { inset: 0; }
   .sangre { inset: 0; }                       /* obra a sangre: llena la pantalla */
   .velo { inset: 0; pointer-events: none; }
-  .sub { left: 80px; right: 150px; top: 1488px; font-weight: 600; font-size: 36px; line-height: 1.5; color: var(--crema); z-index: 40; }
+  /* zona común Instagram + YouTube Shorts: una sola línea entre y 1460 y 1515 (YouTube tapa desde 1530) */
+  .sub { left: 80px; right: 150px; top: 1460px; font-weight: 600; font-size: 36px; line-height: 1.5; color: var(--crema); z-index: 40; }
   .sub span { background: rgba(10,20,18,.86); padding: 3px 12px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
   svg.marca { position: absolute; inset: 16px; overflow: visible; pointer-events: none; }
   .eco { font-family: 'Instrument Serif', serif; font-style: italic; white-space: nowrap; }
@@ -150,7 +151,7 @@
     <div class="plate espejo" id="narEsp" style="top:520px;left:70px;width:400px;height:540px"></div>
     <div class="cita" id="cita9" style="top:540px;left:510px;width:510px;font-size:66px;color:var(--crema)">«<span>Al</span> <span>final</span> <span>uno</span> <span>tiene</span> <span>que</span> <span>empezar</span> <span>a</span> <span>amar</span> <span>para</span> <span>no</span> <span>caer</span> <span>enfermo.»</span></div>
     <div class="ficha" id="fFreud" data-rot="-1" style="top:1100px;left:70px">Sigmund Freud · Introducción del narcisismo, 1914</div>
-    <div class="titular" id="nunca" style="top:1200px;left:70px;font-size:100px;color:var(--azafran)">Narciso nunca empezó.</div>
+    <div class="titular" id="nunca" style="top:1200px;left:70px;font-size:100px;color:var(--azafran)">Narciso nunca<br>empezó.</div>
   </div>
 
   <!-- 10 · AL REVÉS -->
@@ -252,7 +253,7 @@ const SUBS = subtitulos(voz, [['narciso no se enamoró de sí mismo'], ['se enam
   ['besó el agua'], ['ese soy yo'], ['adiós'], ['adiós', 2], ['se conoció a sí mismo'], ['no llegó a viejo'],
   ['por qué saberlo no lo salvó'], ['al final uno tiene que empezar a amar para no caer enfermo'], ['narciso nunca empezó'],
   ['no murió por quererse demasiado'], ['murió porque no pudo querer a otro'],
-  ['quizás querer a alguien empieza cuando el otro nos contesta algo que no dijimos nosotros']]);
+  ['quizás querer a alguien empieza cuando el otro nos contesta algo que no dijimos nosotros']], 7);
 
 const aparecer = (el, t, t0, t1 = Infinity, dur = 0.35) => {
   const o = ease.out(prog(t, t0, t0 + dur)) * (1 - prog(t, t1, t1 + 0.3));
