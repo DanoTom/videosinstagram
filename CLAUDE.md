@@ -23,4 +23,5 @@ guion → storyboard → voz (Dano o ElevenLabs) → `herramientas/transcribir.p
 - Obras: Wikimedia Commons con `herramientas/commons.py` (solo anchos 960/1280/1920/3840; los originales dan 429).
 - Verificar cada dato antes de ponerlo en un guion y citar la fuente en `guion.md`.
 - Revisar siempre con hojas de fotogramas (`--hoja`) y tiras (`--tira`) antes del render completo.
-- El MP4 para mandar tiene que pesar menos de 30 MB (codificar en dos pasadas a ~3,8 Mbps).
+- El MP4 para mandar tiene que pesar menos de 30 MB: codificar en dos pasadas con video a `240 / duración_en_s − 0,13` Mbps y
+  audio a 128 kbps (02: 104 s → 2,0 Mbps; 03: 117 s → 1,85 Mbps). Los comandos están en `videos/03-narciso/guion.md`.

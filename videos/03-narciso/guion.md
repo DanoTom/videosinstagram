@@ -135,6 +135,8 @@ python3 ../../../herramientas/pausas.py voz-elevenlabs.mp3 voz.json voz-pausas.w
 python3 ../../../herramientas/eco.py voz-pausas.wav voz-editada.json voz-editada.wav "a vos#2" "adiós#2"
 cd ../../..
 node herramientas/render.mjs videos/03-narciso/video.html --audio=videos/03-narciso/audio/voz-editada.wav --workers=4
-ffmpeg -y -i videos/03-narciso/out/video.mp4 -c:v libx264 -b:v 3800k -pass 1 -an -f mp4 /dev/null
-ffmpeg -y -i videos/03-narciso/out/video.mp4 -c:v libx264 -b:v 3800k -pass 2 -c:a aac -b:a 160k -movflags +faststart videos/03-narciso/03-narciso.mp4
+cd videos/03-narciso   # menos de 30 MB: 1,85 Mbps de video para 117 s
+ffmpeg -y -i out/video.mp4 -c:v libx264 -preset slow -b:v 1850k -pass 1 -passlogfile out/ffmpeg2pass -an -f mp4 /dev/null
+ffmpeg -y -i out/video.mp4 -c:v libx264 -preset slow -b:v 1850k -pass 2 -passlogfile out/ffmpeg2pass -pix_fmt yuv420p \
+  -c:a aac -b:a 128k -movflags +faststart 03-narciso.mp4
 ```

@@ -43,7 +43,7 @@ Más ideas, con autores que leyeron estas obras desde la psicología y la filoso
 | 2 | A | Duelo | Käthe Kollwitz, *Padres afligidos* | "Tardó 18 años en terminar una escultura: ella y su marido, de rodillas, frente a la tumba de su hijo." |
 | 3 | B | Indiferencia, efecto espectador | Bruegel (atrib.), *Paisaje con la caída de Ícaro* | "En este cuadro un hombre cae del cielo. Nadie se da vuelta. ¿Lo encontrás?" |
 | 4 | B | Ansiedad, pánico | Munch, *El grito* | "No es alguien gritando. Es alguien tapándose los oídos." |
-| 5 | C | Amor propio, reconocimiento | Caravaggio, *Narciso*; Waterhouse, *Eco y Narciso* | "Narciso no se enamoró de sí mismo. Se enamoró de alguien que no sabía que era él." |
+| 5 | C | Amor propio, reconocimiento (**ya hecho**: 03) | Caravaggio, *Narciso*; Waterhouse, *Eco y Narciso* | "Narciso no se enamoró de sí mismo. Se enamoró de alguien que no sabía que era él." |
 | 6 | C | Duelo, soltar | Orfeo y Eurídice (Corot, Watts y otros) | "Lo único que tenía que hacer era no darse vuelta." |
 | 7 | C | Amor, idealización | Canova, *Psique reanimada por el beso del Amor* | "Podía amarlo con una sola condición: nunca verle la cara." |
 | 8 | B | Proyección | Vermeer, *La joven de la perla* | "No es el retrato de nadie. Y sin embargo, sentís que la conocés." |
@@ -58,7 +58,8 @@ Más ideas, con autores que leyeron estas obras desde la psicología y la filoso
 ## Por dónde empezar
 
 1. **02 · La caída de Ícaro** (B), elegido por Dano. El gancho es un juego: encontrar al hombre que cae.
-2. **03 · Narciso** (C). Abre la serie *Mitos al revés*, con un texto que ya tenés escrito.
+2. **03 · Narciso** (C), hecho. Abre la serie *Mitos al revés*: Narciso no sabía que el chico del agua era él, y la profecía
+   decía que iba a llegar a viejo si nunca se conocía.
 3. Van Gogh y Theo ya está hecho (junto con Jo van Gogh-Bonger). Si se vuelve a Van Gogh, que sea desde otra perspectiva.
 4. Después, alternar temas de este banco con las pistas ★★ del [banco de pistas](banco-de-pistas.md). La más cercana al 02,
    por el juego de buscar algo escondido en el cuadro, es la calavera de *Los embajadores*.
