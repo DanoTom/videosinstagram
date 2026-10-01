@@ -6,7 +6,8 @@ Reels de arte y psicología hechos desde Claude Code: guion, guion visual, anima
 
 - `diseno/`: sistema visual compartido por todos los videos (colores, tipografías, piezas de collage, maqueta de la interfaz de Instagram).
 - `videos/NN-nombre/`: un video por carpeta, con `guion.md` (voz y guion visual), `storyboard.html` y sus obras en `assets/`.
-- `herramientas/`: `commons.py` (buscar y bajar obras de Wikimedia), `capturar.mjs` (captura cada fotograma), `tablero.py` (arma tableros de revisión).
+- `herramientas/`: `commons.py` (buscar y bajar obras de Wikimedia), `capturar.mjs` (captura cada fotograma), `tablero.py` (arma tableros de revisión),
+  `transcribir.py` y `pausas.py` (tiempos de la voz), `eco.py` (eco en palabras puntuales), `render.mjs` (video, hojas y tiras).
 - `experimentos/`: pruebas que dieron origen al sistema (render de video, direcciones de arte).
 - `docs/`: análisis y notas.
 
