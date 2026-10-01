@@ -104,15 +104,18 @@ export function pieza(el, t, { t0, t1 = Infinity, entra = 'pegar', sale = 'fundi
 }
 
 // Trazo SVG que se dibuja (path con pathLength="1").
+// Mientras no empezó, se oculta: con stroke-linecap="round" un trazo de largo cero igual deja un punto.
 export function trazo(path, p) {
   path.style.strokeDasharray = '1';
   path.style.strokeDashoffset = String(1 - clamp(p));
+  path.style.visibility = p > 0 ? 'visible' : 'hidden';
 }
 
 // Trazo punteado que avanza: repite el patrón de puntos hasta la fracción p del largo.
 export function punteado(path, p, punto = 1, hueco = 22) {
   const L = path.getTotalLength(), n = Math.floor((L * clamp(p)) / (punto + hueco));
   path.style.strokeDasharray = `${`${punto} ${hueco} `.repeat(n)}0 ${L + 100}`;
+  path.style.visibility = p > 0 ? 'visible' : 'hidden';
 }
 
 // Grano que "hierve" 12 veces por segundo, como el celuloide.
