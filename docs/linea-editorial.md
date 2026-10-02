@@ -22,6 +22,8 @@
   `referencias/`: `curl -L -o referencias/NN.mp4 "https://drive.usercontent.google.com/download?id=<id>&export=download&confirm=t"`.
 - Cada video varía la paleta y los efectos respecto del anterior, dentro de la misma identidad (ver `docs/guia-visual.md`).
 - Descripción del posteo: la invitación a seguir la cuenta y El Reflejo va ahí, junto con las obras y las fuentes. Se guarda en `publicacion.md`.
+  Nombre, biografías y firmas, iguales en todos los canales: `docs/identidad.md`. El Reflejo sale cada dos o tres semanas:
+  nunca prometer "cada semana".
 - **YouTube Shorts (desde octubre de 2026):** los mismos reels, sin trabajo extra. Reglas:
   - El mismo MP4 para las dos plataformas (por eso la zona segura común de `docs/guia-visual.md`). Nunca el archivo
     descargado de Instagram, que tiene marca de agua.

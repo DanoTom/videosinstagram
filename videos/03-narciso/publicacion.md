@@ -10,7 +10,7 @@ Y hay un detalle que casi nadie cuenta: cuando nació, un adivino dijo que iba a
 
 Con este video empieza una serie: Mitos al revés. Historias que creemos conocer y que, leídas de nuevo, dicen otra cosa de nosotros.
 
-Si te interesa, seguime por acá. Y si querés leer más, cada semana escribo El Reflejo (link en la bio).
+Si te interesa, seguime por acá. Y si querés pensarlo con más tiempo, escribo El Reflejo (link en la bio).
 
 ¿Qué otro mito te gustaría ver al revés?
 
@@ -38,7 +38,7 @@ Y hay un detalle que casi nadie cuenta: cuando nació, un adivino dijo que iba a
 
 Con este video empieza una serie: Mitos al revés. Historias que creemos conocer y que, leídas de nuevo, dicen otra cosa de nosotros.
 
-Soy psicólogo. Si te interesa, suscribite. Cada semana escribo El Reflejo: el link está en el perfil del canal.
+Soy psicólogo. Si te interesa, suscribite. También escribo El Reflejo, un newsletter para pensar con más tiempo: el link está en el perfil del canal.
 
 Obras: Caravaggio (atrib.), Narciso, c. 1597–1599 · Giulio Carpioni, Liríope lleva a Narciso ante Tiresias, c. 1671 · John William Waterhouse, Eco y Narciso, 1903 · Nicolas Poussin, Eco y Narciso, c. 1629–1630 · Foto de Freud: Max Halberstadt, c. 1921.
 Fuentes: Ovidio, Metamorfosis, libro III · Sigmund Freud, Introducción del narcisismo (1914).
