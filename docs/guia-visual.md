@@ -54,8 +54,13 @@ oscura); lo que cambia en cada video es el color, las composiciones y los efecto
     obra a sangre con cámara, lámina, dos láminas, texto solo. Que no haya tres tramos seguidos con el título arriba a la
     izquierda y la lámina al medio.
 
+14. **Cada video estrena algo.** Pedido de Dano: además de variar, en cada video hay un espacio, aunque sea corto, para
+    probar un efecto o un movimiento que nunca se usó. Le da frescura sin romper la marca. Si funciona, pasa a `motor.js` y
+    queda disponible para los siguientes. En la tabla, el estreno de cada video va en negrita.
+
 | Video | Paleta | Recursos |
 |---|---|---|
 | 01 · No hay nadie | noche `#15233A`, teal, papel tibio, amarillo reflector | láminas, tira rasgada, reflector, sala de figuras |
 | 02 · Ícaro | noche `#15233A`, teal `#0F5E5A`, papel tibio `#E7D9C0`, amarillo `#E9C46A`, rojo | zoom logarítmico dentro del cuadro, aro que busca, flechas de mirada, papel rasgado que sube, conteo de porcentajes |
-| 03 · Narciso | estanque `#0E2420`, rosa Eco `#E5BDB3`, vino `#3E1820`, pétalo `#F2EEE4`, azafrán `#E8A33D` | obras a sangre con cámara, giro de 180°, marea (`marea()` en `motor.js`), agua (filtros SVG de desplazamiento), eco tipográfico sincronizado con el eco de la voz, citas palabra por palabra (`porPalabra()`), título reflejado, final que vuelve al primer cuadro |
+| 03 · Narciso | estanque `#0E2420`, rosa Eco `#E5BDB3`, vino `#3E1820`, pétalo `#F2EEE4`, azafrán `#E8A33D` | obras a sangre con cámara, giro de 180°, **marea** (`marea()` en `motor.js`), **agua** (filtros SVG de desplazamiento), **eco tipográfico** sincronizado con el eco de la voz, citas palabra por palabra (`porPalabra()`), título reflejado, final que vuelve al primer cuadro |
+| 04 · Los embajadores | nogal `#16120E`, hueso `#ECE4D2`, lacre `#B8362C`, oro viejo `#C49A45`, pizarra `#232A31` | **anamorfosis animada** (el cuadro se comprime en la dirección de la mancha y la calavera se endereza), **plano visto desde arriba**, líneas de catálogo, carta escrita con tinta, transiciones de costado |

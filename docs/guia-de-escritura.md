@@ -45,6 +45,14 @@ quien escucha oye cada frase **una sola vez**, sin contexto y sin poder volver a
     quien habla ("los que miramos"), dejar una pregunta o volver a la imagen del principio, pero no juzga a quien mira.
     - ✗ "No está en el cuadro. Es lo que hiciste vos al principio, cuando te conté que había un hombre que cayó del cielo."
 
+13. **Cada video le deja algo a quien mira, más allá de la obra.** Pedido de Dano al leer la primera versión del 04: no
+    alcanza con mostrar el cuadro y explicar el mecanismo psicológico ("negamos la muerte"); tiene que quedar algo para pensar
+    la propia vida. Desde la psicología o el psicoanálisis, sin nombrar escuelas (alcanza con Freud o con desarrollar la
+    idea), en tono de divulgación: abierto, nunca una receta ni una verdad cerrada.
+    - ✗ "Y aun así, nos cuesta verla." (describe; no deja nada)
+    - ✓ "Freud escribió algo más: lo que se termina no vale menos. Vale más. […] Y quizás por eso, todo lo demás se ve mejor."
+    - Pregunta para hacerse antes de escribir el giro: ¿qué entiende de sí mismo quien terminó de mirar el video?
+
 ## Lo que sí se mantiene
 
 - El gancho corto y concreto ("¿Lo encontrás?").
@@ -95,3 +103,4 @@ dice exactamente el guion nuevo. Comandos: `videos/03-narciso/guion.md`.
 - [ ] ¿Cada "lo", "los", "ellos", "esto" tiene un referente que se nombró antes y que no puede confundirse?
 - [ ] ¿Las referencias al principio del video vuelven a decir de qué se trata?
 - [ ] ¿El cierre halaga, juzga o sermonea a quien mira? Si lo hace, reescribirlo.
+- [ ] ¿Qué se lleva quien mira para pensar su propia vida? Si la respuesta es solo "un dato sobre el cuadro", falta el aporte (regla 13).
