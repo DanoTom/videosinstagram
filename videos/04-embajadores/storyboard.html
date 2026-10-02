@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Storyboard · Los embajadores</title>
+<link rel="stylesheet" href="../../diseno/sistema.css">
+<style>
+  /* paleta del 04, sacada del cuadro: nogal, hueso, lacre, oro viejo y pizarra */
+  :root { --noche: #16120E; --crema: #ECE4D2; --rojo: #B8362C; --amarillo: #C49A45; --teal: #232A31; --tintaCarta: #2B1D12; }
+  body { margin: 0; background: #777; display: flex; flex-wrap: wrap; gap: 40px; padding: 40px; }
+  .sub { left: 80px; right: 150px; top: 1460px; font-weight: 600; font-size: 36px; line-height: 1.5; color: var(--crema); }
+  .sub span { background: rgba(17,17,17,.86); padding: 3px 12px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+  svg.marca { position: absolute; overflow: visible; }
+  .num { font-weight: 800; letter-spacing: -.05em; color: var(--amarillo); text-shadow: 0 6px 18px rgba(0,0,0,.6); }
+  .cat { font-family: 'Space Mono', monospace; font-size: 20px; letter-spacing: .06em; text-transform: uppercase; color: var(--amarillo);
+    background: rgba(22,18,14,.82); padding: 6px 10px; }
+  .carta { background: var(--crema); color: var(--tintaCarta); padding: 40px 48px 46px; box-shadow: 0 22px 30px rgba(0,0,0,.5); }
+  /* la anamorfosis: el cuadro se comprime en la dirección de la mancha (26,8°) y la calavera se endereza */
+  .ventana { overflow: hidden; background: var(--noche); }
+  .anamorfosis { position: absolute; background-size: 100% 100%; background-repeat: no-repeat; }
+  .oscuro { filter: brightness(.42) saturate(.8); }
+</style>
+</head>
+<body>
+
+<!-- 1 · GANCHO: el cuadro entero -->
+<section class="frame" id="f1">
+  <div class="puntos"></div>
+  <div class="lamina" style="top:300px;left:60px;width:960px;height:946px;transform:rotate(-1deg)">
+    <div class="plate" data-img="emb" data-crop="0,0,3840,3784"></div>
+  </div>
+  <div class="tira titular" data-rasgado style="top:1278px;left:330px;font-size:128px;transform:rotate(-2deg)">¿La ves?</div>
+  <div class="sub" style="top:1470px"><span>Hay una calavera en este cuadro.</span></div>
+  <div class="grano"></div>
+</section>
+
+<!-- 2 · PROMESA: está en el medio -->
+<section class="frame" id="f2">
+  <div class="puntos"></div>
+  <div class="lamina" style="top:300px;left:60px;width:960px;height:946px;transform:rotate(-1deg)">
+    <div class="plate" data-img="emb" data-crop="0,0,3840,3784"></div>
+    <!-- elipse punteada a lo largo de la mancha (centro 1930,3320 del original; escala 928/3840), sin taparla -->
+    <svg class="marca" style="inset:16px" viewBox="0 0 928 914" fill="none" stroke="var(--rojo)" stroke-width="6" stroke-linecap="round">
+      <ellipse rx="300" ry="78" stroke-dasharray="2 16" transform="translate(448 832) rotate(-24.5)"/>
+    </svg>
+  </div>
+  <div class="negro serif" style="top:1290px;left:120px;font-size:64px;transform:rotate(-1.5deg)">De frente, casi imposible.</div>
+  <div class="sub" style="top:1470px"><span>Y aun así, de frente, es casi imposible verla.</span></div>
+  <div class="grano"></div>
+</section>
+
+<!-- 3 · LOS DOS -->
+<section class="frame" id="f3">
+  <div class="puntos"></div>
+  <div class="ficha" style="top:270px;left:70px;transform:rotate(-1deg)">Londres, 1533 · Hans Holbein el Joven</div>
+  <div class="lamina" style="top:350px;left:40px;width:1000px;height:900px;transform:rotate(1deg)">
+    <div class="plate" data-img="emb" data-crop="0,250,3840,3456"></div>
+  </div>
+  <div class="ficha" style="top:1130px;left:80px;transform:rotate(-2deg)">Jean de Dinteville<br>embajador de Francia</div>
+  <div class="ficha" style="top:1090px;left:620px;transform:rotate(2deg)">Georges de Selve<br>obispo de Lavaur</div>
+  <div class="num" style="top:870px;left:90px;font-size:150px">29</div>
+  <div class="num" style="top:690px;left:770px;font-size:150px">25</div>
+  <div class="sub" style="top:1470px"><span>Ninguno llega a los treinta años.</span></div>
+  <div class="grano"></div>
+</section>
+
+<!-- 4 · LA MESA: líneas de catálogo -->
+<section class="frame" id="f4">
+  <div class="puntos"></div>
+  <div class="lamina" style="top:290px;left:190px;width:700px;height:1003px;transform:rotate(-1deg)">
+    <div class="plate" data-img="emb" data-crop="1450,620,1480,2150"></div>
+    <!-- escala 668/1480 = 0.4514; cada línea sale del objeto hacia su rótulo -->
+    <svg class="marca" style="inset:16px" viewBox="0 0 668 971" fill="none" stroke="var(--amarillo)" stroke-width="3">
+      <circle cx="90" cy="126" r="7" fill="var(--amarillo)"/><path d="M90 126 L 20 40"/>
+      <circle cx="275" cy="190" r="7" fill="var(--amarillo)"/><path d="M275 190 L 330 70"/>
+      <circle cx="430" cy="250" r="7" fill="var(--amarillo)"/><path d="M430 250 L 560 150"/>
+      <circle cx="122" cy="760" r="7" fill="var(--amarillo)"/><path d="M122 760 L 40 640"/>
+      <circle cx="470" cy="690" r="7" fill="var(--amarillo)"/><path d="M470 690 L 600 600"/>
+      <circle cx="470" cy="850" r="7" fill="var(--amarillo)"/><path d="M470 850 L 600 920"/>
+    </svg>
+  </div>
+  <div class="cat" style="top:300px;left:130px">globo celeste</div>
+  <div class="cat" style="top:330px;left:470px">reloj de sol</div>
+  <div class="cat" style="top:410px;left:700px">cuadrante</div>
+  <div class="cat" style="top:900px;left:150px">globo terrestre</div>
+  <div class="cat" style="top:860px;left:760px">laúd</div>
+  <div class="cat" style="top:1210px;left:700px">libro de himnos</div>
+  <div class="sub" style="top:1470px"><span>Entre ellos, globos, libros, instrumentos:</span></div>
+  <div class="grano"></div>
+</section>
+
+<!-- 5 · LA MANCHA y dónde pararse (plano visto desde arriba) -->
+<section class="frame" id="f5">
+  <div class="puntos"></div>
+  <div class="lamina" style="top:280px;left:40px;width:1000px;height:470px;transform:rotate(-1deg)">
+    <div class="plate" data-img="emb" data-crop="600,2770,2700,1014"></div>
+  </div>
+  <svg class="marca" style="top:830px;left:90px;width:900px;height:520px" viewBox="0 0 900 520" fill="none" stroke="var(--crema)" stroke-linecap="round">
+    <path d="M20 70 H 880" stroke-width="5"/>                         <!-- la pared -->
+    <path d="M280 70 H 620" stroke="var(--amarillo)" stroke-width="22"/> <!-- el cuadro -->
+    <!-- de frente: la mirada choca de lleno con el cuadro -->
+    <g opacity=".45"><path d="M450 400 V 100" stroke-width="3" stroke-dasharray="2 12"/>
+      <path d="M418 430 Q 450 404 482 430 Q 450 456 418 430 Z" stroke-width="4"/><circle cx="450" cy="430" r="8" fill="var(--crema)"/></g>
+    <!-- el camino hasta la pared, a la derecha -->
+    <path d="M500 440 C 690 430, 790 330, 800 190" stroke="var(--rojo)" stroke-width="6" stroke-dasharray="2 14"/>
+    <path d="M782 214 L 800 186 L 816 216" stroke="var(--rojo)" stroke-width="6" stroke-linejoin="round"/>
+    <!-- de costado: la mirada roza el cuadro -->
+    <path d="M780 140 L 470 84" stroke-width="3" stroke-dasharray="2 12"/>
+    <path d="M770 150 Q 805 118 836 146 Q 801 176 770 150 Z" stroke-width="4" transform="rotate(-18 803 147)"/><circle cx="803" cy="147" r="8" fill="var(--crema)"/>
+  </svg>
+  <div class="ficha" style="top:1300px;left:420px;transform:rotate(-1deg)">de frente</div>
+  <div class="ficha" style="top:1050px;left:760px;transform:rotate(2deg)">de costado</div>
+  <div class="ficha" style="top:810px;left:90px;font-size:18px;transform:rotate(-1deg)">visto desde arriba: la pared y el cuadro</div>
+  <div class="sub" style="top:1470px"><span>Si te parás a la derecha del cuadro, casi pegado a la pared,</span></div>
+  <div class="grano"></div>
+</section>
+
+<!-- 6 · LA ANAMORFOSIS: la calavera se endereza -->
+<section class="frame" id="f6">
+  <div class="puntos"></div>
+  <div class="ficha" style="top:270px;left:70px;transform:rotate(-1deg)">Anamorfosis: una imagen deformada a propósito,<br>que se corrige mirándola desde otro ángulo</div>
+  <div class="lamina ventana" style="top:400px;left:60px;width:960px;height:860px;transform:rotate(1deg);background-color:var(--crema)">
+    <div class="plate ventana">
+      <!-- el cuadro a escala 1,6: la calavera (1930,3320) queda en el centro de la ventana (464,414) -->
+      <div class="anamorfosis" data-k=".2" style="width:6144px;height:6054px;left:-2624px;top:-4898px;transform-origin:3088px 5312px"></div>
+    </div>
+  </div>
+  <div class="tira titular" data-rasgado style="top:1290px;left:200px;font-size:112px;transform:rotate(-2deg)">Es una calavera.</div>
+  <div class="grano"></div>
+</section>
+
+<!-- 7 · LA CARTA y el prendedor -->
+<section class="frame" id="f7">
+  <div class="plate oscuro" data-img="emb" data-crop="300,150,1500,2667" style="inset:0"></div>
+  <div class="carta serif" style="top:420px;left:80px;width:920px;font-size:62px;line-height:1.12;transform:rotate(-2deg)">«Soy el embajador más melancólico, cansado y pesado que se haya visto.»</div>
+  <div class="ficha" style="top:800px;left:110px;transform:rotate(1deg)">Carta a su hermano François · 23 de mayo de 1533</div>
+  <div class="lamina" style="top:960px;left:520px;width:420px;height:320px;transform:rotate(2deg)">
+    <div class="plate" data-img="emb" data-crop="960,320,250,180"></div>
+    <svg class="marca" style="inset:16px" viewBox="0 0 388 288" fill="none" stroke="var(--rojo)" stroke-width="6">
+      <ellipse cx="164" cy="128" rx="78" ry="60"/>
+    </svg>
+  </div>
+  <div class="ficha" style="top:1300px;left:600px;transform:rotate(-2deg)">un prendedor con una calavera</div>
+  <div class="sub" style="top:1470px"><span>Y en el sombrero lleva un prendedor con una calavera.</span></div>
+  <div class="grano"></div>
+</section>
+
+<!-- 8 · FREUD -->
+<section class="frame teal" id="f8">
+  <div class="puntos"></div>
+  <div class="negro serif" style="top:280px;left:60px;right:120px;font-size:58px;line-height:1.1;transform:rotate(-1deg)">¿Cómo puede ser que sepamos que vamos a morir, y vivamos como si no?</div>
+  <div class="lamina" style="top:560px;left:60px;width:380px;height:510px;transform:rotate(-2deg)">
+    <div class="plate" data-img="freud" data-crop="360,20,600,795"></div>
+  </div>
+  <div class="serif" style="top:600px;left:490px;width:470px;font-size:66px;line-height:1.06">«En el fondo, nadie cree en su propia muerte.»</div>
+  <div class="ficha" style="top:1120px;left:70px;transform:rotate(-1deg)">Sigmund Freud · De guerra y muerte, 1915</div>
+  <div class="sub" style="top:1470px"><span>Freud escribió en 1915:</span></div>
+  <div class="grano"></div>
+</section>
+
+<!-- 9 · DE COSTADO: la calavera asoma cuando el cuadro se inclina -->
+<section class="frame" id="f9">
+  <div class="puntos"></div>
+  <div class="lamina" style="top:330px;left:110px;width:860px;height:848px;transform:perspective(1600px) rotateY(-38deg) rotate(-1deg)">
+    <div class="plate" data-img="emb" data-crop="0,0,3840,3784"></div>
+  </div>
+  <div class="ficha" style="top:1230px;left:120px;transform:rotate(-2deg)">una enfermedad</div>
+  <div class="ficha" style="top:1300px;left:520px;transform:rotate(2deg)">una pérdida</div>
+  <div class="sub" style="top:1470px"><span>Aparece de costado, cuando algo nos saca del lugar de siempre:</span></div>
+  <div class="grano"></div>
+</section>
+
+<!-- 10 · CIERRE: de frente otra vez -->
+<section class="frame" id="f10">
+  <div class="puntos"></div>
+  <div class="lamina" style="top:300px;left:60px;width:960px;height:946px;transform:rotate(-1deg)">
+    <div class="plate" data-img="emb" data-crop="0,0,3840,3784"></div>
+    <svg class="marca" style="inset:16px" viewBox="0 0 928 914" fill="none" stroke="var(--rojo)" stroke-width="6" stroke-linecap="round" opacity=".55">
+      <ellipse rx="300" ry="78" stroke-dasharray="2 16" transform="translate(448 832) rotate(-24.5)"/>
+    </svg>
+  </div>
+  <div class="serif" style="top:1268px;left:70px;font-size:60px">Y aun así,</div>
+  <div class="tira titular" data-rasgado style="top:1340px;left:60px;font-size:80px;white-space:nowrap;transform:rotate(-1.5deg)">nos cuesta verla.</div>
+  <div class="grano"></div>
+</section>
+
+<script type="module">
+import { encuadrar, rasgar, interfazInstagram } from '../../diseno/sistema.js';
+const IMGS = {
+  emb:   { src: 'assets/embajadores.jpg', w: 3840, h: 3784 },
+  freud: { src: 'assets/freud.jpg',       w: 1280, h: 1741 },
+};
+encuadrar(document, IMGS);
+rasgar(document);
+interfazInstagram(document);
+for (const el of document.querySelectorAll('.anamorfosis')) {
+  el.style.backgroundImage = `url(${IMGS.emb.src})`;
+  el.style.transform = `rotate(-26.8deg) scaleX(${el.dataset.k}) rotate(26.8deg)`;
+}
+await Promise.all([document.fonts.ready, ...Object.values(IMGS).map(im => { const i = new Image(); i.src = im.src; return i.decode(); })]);
+window.listo = true;
+</script>
+</body>
+</html>
