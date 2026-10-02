@@ -6,7 +6,7 @@ paleta propia (ver abajo).
 Elegido de las pistas ★★ del [banco de pistas](../../docs/banco-de-pistas.md#-la-calavera-que-solo-se-ve-de-costado): el mismo
 juego que funcionó con Ícaro ("¿la ves?"), pero acá buscar no alcanza: para ver la calavera hay que cambiar de lugar.
 
-## Guion (voz en off) · versión 3 de Dano, recortada (propuesta, falta su visto bueno)
+## Guion (voz en off) · versión 3 de Dano, recortada (la que se grabó)
 
 Dano reescribió el guion (versión 3, abajo completa): el aporte ya no es solo "darle a la muerte su lugar", sino lo que Freud
 cuenta en *La transitoriedad*: el paseo con un poeta que no podía disfrutar porque todo iba a terminar, el duelo por
@@ -35,8 +35,8 @@ de los 90 s, sin tocar el giro de Dano:
 >
 > Para ver el cuadro entero, hay que moverse.
 
-224 palabras: unos 81 s de voz, más 1,5 s de silencio después de "¿La ves?", 2 s después de "es una calavera" y la cola:
-86–88 s. Si la voz sale larga, el primer recorte es "y lejos de su casa" (la carta lo dice en pantalla).
+224 palabras. Dano la aprobó y la grabó: 85,6 s de voz y 89,5 s con las pausas (ver Producción). Nota para los próximos
+guiones: con estos ajustes de ElevenLabs la voz lee unas 2,6 palabras por segundo, así que 224 palabras es el techo.
 
 **Qué se sacó de la versión 3 y por qué** (método de los 90 s, `docs/guia-de-escritura.md`):
 
@@ -134,7 +134,7 @@ marcadores), oro viejo `#C49A45` (los instrumentos; líneas de catálogo) y piza
 | 4 | La mesa | La cámara en la mesa; líneas de catálogo a cada objeto | "globo celeste" · "reloj de sol" · "cuadrante" · "globo terrestre" · "laúd" · "libro de himnos" |
 | 5 | La mancha | La cámara baja al piso. En "a la derecha", el plano visto desde arriba: el ojo camina hasta la pared. En "se acomoda", la anamorfosis: el cuadro se comprime y aparece la calavera. 2 s de silencio con la calavera entera | "Es una calavera." · ficha "Anamorfosis: una imagen deformada a propósito, que se corrige mirándola desde otro ángulo" |
 | 6 | Freud | Fondo pizarra. Freud en una lámina; la cita escrita con tinta | ficha "*De guerra y muerte*, 1915" · «En el fondo, nadie cree en su propia muerte.» |
-| 7 | El paseo | "¿Y no se arruina todo si la miramos?" sobre la calavera. Después, un paisaje de verano a sangre (Klimt, *Litzlberg am Attersee*) y Rilke en una lámina chica | ficha "*La transitoriedad*, 1915" · ficha "¿Rilke? (con Lou Andreas-Salomé, 1900)" |
+| 7 | El paseo | "¿Y no se arruina todo si la miramos?" sobre la calavera. Después, un paisaje de verano a sangre (Klimt, *Litzlberg am Attersee*) y Rilke en una lámina chica | ficha "Sigmund Freud · La transitoriedad, 1915" · ficha "¿Rilke? Con Lou Andreas-Salomé, 1900" |
 | 8 | La flor | La flor de una noche (Reinagle, *Night-blowing Cereus*, 1807) se abre en "una flor que dura una sola noche" | ficha con la cita: «El valor de la transitoriedad es el de la escasez en el tiempo» |
 | 9 | Por adelantado | **Estreno 2:** el paisaje de verano se queda sin color mientras la voz dice "llorando el verano por adelantado": todavía está ahí, pero ya se ve gris | "llorando el verano por adelantado" |
 | 10 | Las dos reacciones | Pantalla partida: arriba el cuadro de frente ("un mundo que parece eterno"), abajo la calavera enderezada ("parece borrarlo todo") | "rebelarse" · "hundirse" |
@@ -148,10 +148,10 @@ marcadores), oro viejo `#C49A45` (los instrumentos; líneas de catálogo) y piza
   National Gallery, Londres. Dominio público; Wikimedia Commons, versión de Google Arts & Culture
   (`assets/embajadores.jpg`, 3840 px).
 - Max Halberstadt, retrato de Sigmund Freud, c. 1921 (el mismo del 03).
-- Gustav Klimt, *Litzlberg am Attersee*, 1915 (a confirmar el año). Dominio público; Wikimedia Commons.
-- Anónimo, *Lou Andreas-Salomé y Rainer Maria Rilke en Rusia*, 1900. Dominio público; Wikimedia Commons.
+- Gustav Klimt, *Litzlberg am Attersee*, c. 1910–1912. Dominio público; Wikimedia Commons (`assets/klimt.jpg`).
+- Anónimo, *Lou Andreas-Salomé y Rainer Maria Rilke en Rusia*, 1900. Dominio público; Wikimedia Commons (`assets/rilke.jpg`).
 - Philip Reinagle, *The Night-Blowing Cereus*, para *The Temple of Flora* de Robert Thornton, 1807 (NYPL). Dominio público;
-  Wikimedia Commons.
+  Wikimedia Commons (`assets/flor.jpg`).
 
 ## Fuentes
 
@@ -182,5 +182,29 @@ Enrique VIII rompió con Roma y se casó con Ana Bolena.
 
 ## Producción
 
-Pendiente: voz → `herramientas/transcribir.py` → `herramientas/pausas.py` (1,5 s después de "¿La ves?") → `video.html` →
-`herramientas/render.mjs`.
+- Voz: ElevenLabs, "Javier – Deep, Confident and Measured", velocidad 1,03, estabilidad 30 y similitud 47 (los mismos ajustes
+  del 03). Toma única: `audio/voz-elevenlabs.mp3` (85,6 s). Con 224 palabras salió en 85 s: 2,6 palabras por segundo.
+- Transcripción con faster-whisper "medium" (`audio/voz.json`). Correcciones a mano: "paras" → "parás", "Revelarse" →
+  "Rebelarse"; el final de "calavera." y el comienzo de "Con" se corrigieron mirando el volumen de la grabación (whisper los
+  pegaba y la pausa habría caído encima de la palabra). `cotejar.py`: 0 diferencias.
+- Pausas: 1 s después de "¿La ves?" (para buscar), 1,6 s después de "Es una calavera." (la calavera entera en silencio) y
+  1,3 s de cola, donde el cuadro vuelve a su primer cuadro → `audio/voz-editada.wav` (89,5 s).
+- Animación: `video.html`. Efectos nuevos, ahora en `diseno/motor.js`: `anamorfosis()` (la calavera se endereza),
+  `tinta()` (la carta y la cita de Freud se escriben línea por línea) y `destenir()` (el verano se queda sin color de arriba
+  hacia abajo).
+
+```bash
+python3 herramientas/transcribir.py videos/04-embajadores/audio/voz-elevenlabs.mp3 videos/04-embajadores/audio/voz.json \
+  --modelo=medium --prompt="Holbein, Freud, Rilke, embajador, obispo, calavera."
+cd videos/04-embajadores/audio
+python3 ../../../herramientas/pausas.py voz-elevenlabs.mp3 voz.json voz-editada.wav voz-editada.json "ves?:1.0" "calavera.:1.6" --cola=1.3
+cd ../../..
+python3 herramientas/cotejar.py videos/04-embajadores/guion.md videos/04-embajadores/audio/voz-editada.json
+node herramientas/render.mjs videos/04-embajadores/video.html --audio=videos/04-embajadores/audio/voz-editada.wav --workers=4
+cd videos/04-embajadores   # menos de 30 MB: 240 / 89,5 − 0,13 ≈ 2,55 Mbps de video
+ffmpeg -y -i out/video.mp4 -c:v libx264 -preset slow -b:v 2500k -pass 1 -passlogfile out/ffmpeg2pass -an -f mp4 /dev/null
+ffmpeg -y -i out/video.mp4 -c:v libx264 -preset slow -b:v 2500k -pass 2 -passlogfile out/ffmpeg2pass -pix_fmt yuv420p \
+  -c:a aac -b:a 128k -movflags +faststart 04-embajadores.mp4
+cd ../..
+python3 herramientas/quietud.py videos/04-embajadores/04-embajadores.mp4
+```

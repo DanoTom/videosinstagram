@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>04 · Los embajadores</title>
+<link rel="stylesheet" href="../../diseno/sistema.css">
+<style>
+  /* Paleta del 04, sacada del cuadro: el fondo oscuro (nogal), la calavera (hueso), la alfombra (lacre),
+     los instrumentos (oro viejo) y una pizarra fría para Freud. */
+  :root {
+    --noche: #16120E;
+    --crema: #ECE4D2;
+    --rojo: #B8362C;
+    --amarillo: #C49A45;
+    --pizarra: #232A31;
+    --tintaCarta: #2B1D12;
+  }
+  html, body { margin: 0; background: #000; }
+  #video { background: var(--noche); }
+  .escena { position: absolute; inset: 0; }
+  .escena > * { position: absolute; }
+  .fondo { inset: 0; }
+  .sangre { inset: 0; }
+  .velo { inset: 0; pointer-events: none; }
+  .sub { left: 80px; right: 150px; top: 1460px; font-weight: 600; font-size: 36px; line-height: 1.5; color: var(--crema); z-index: 40; }
+  .sub span { background: rgba(14,11,8,.88); padding: 3px 12px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+  svg.marca { position: absolute; inset: 16px; overflow: visible; pointer-events: none; }
+  .cita { font-family: 'Instrument Serif', serif; font-style: italic; line-height: 1.05; }
+  .linea { display: block; white-space: nowrap; }
+  .carta { background: var(--crema); color: var(--tintaCarta); padding: 34px 44px 40px; box-shadow: 0 22px 30px rgba(0,0,0,.5); }
+  .cat { font-family: 'Space Mono', monospace; font-size: 24px; letter-spacing: .06em; text-transform: uppercase; color: var(--amarillo);
+    background: rgba(22,18,14,.92); padding: 7px 11px; white-space: nowrap; }
+  .ventana { position: relative; width: 100%; height: 100%; overflow: hidden; background: var(--noche); }
+  .anam { position: absolute; width: 3840px; height: 3784px; background-size: 100% 100%; background-repeat: no-repeat; }
+  .gris { filter: grayscale(1) brightness(.82) contrast(.95); }
+</style>
+</head>
+<body>
+<div class="frame" id="video">
+  <div class="puntos" style="position:absolute;inset:0"></div>
+
+  <!-- 1 · GANCHO: el cuadro entero; la calavera está a la vista y no se ve -->
+  <div class="escena" id="e1">
+    <div class="lamina" id="lam1" style="top:300px;left:60px;width:960px;height:946px">
+      <div class="plate" id="p1"></div>
+      <!-- elipse punteada a lo largo de la mancha, sin taparla (escala 928/3840) -->
+      <svg class="marca" viewBox="0 0 928 914" fill="none" stroke="var(--rojo)" stroke-width="6" stroke-linecap="round">
+        <ellipse id="elip1" rx="300" ry="78" transform="translate(448 832) rotate(-24.5)"/>
+      </svg>
+    </div>
+    <div class="tira titular" id="laves" data-rasgado data-rot="-2" style="top:1270px;left:330px;font-size:128px">¿La ves?</div>
+    <div class="negro serif" id="casi" data-rot="-1.5" style="top:1300px;left:120px;font-size:64px">De frente, casi imposible.</div>
+  </div>
+
+  <!-- 2 · LOS DOS Y LA MESA: el cuadro a sangre; la cámara va del embajador al obispo y baja a la mesa -->
+  <div class="escena" id="e2">
+    <div class="fondo" style="background:var(--noche)"></div>
+    <div class="plate sangre" id="p2"></div>
+    <div class="velo" id="velo2" style="background:linear-gradient(to bottom, rgba(22,18,14,.75) 10%, rgba(22,18,14,0) 26%, rgba(22,18,14,0) 70%, rgba(22,18,14,.6) 90%)"></div>
+    <div class="velo" id="oscuro2" style="background:rgba(22,18,14,.55)"></div>
+    <div class="ficha" id="fLon" data-rot="-1" style="top:280px;left:70px">Londres, 1533 · Hans Holbein el Joven</div>
+    <div class="ficha" id="fDin" data-rot="-2" style="top:1290px;left:80px">Jean de Dinteville, 29 años<br>embajador de Francia</div>
+    <div class="carta cita" id="carta" data-rot="-2" style="top:420px;left:70px;width:880px;font-size:62px">
+      <span class="linea">«Soy el embajador más</span><span class="linea">melancólico, cansado y pesado</span><span class="linea">que se haya visto.»</span>
+    </div>
+    <div class="ficha" id="fCarta" data-rot="1" style="top:740px;left:110px">Carta a su hermano · 23 de mayo de 1533</div>
+    <div class="ficha" id="fSel" data-rot="2" style="top:1290px;left:540px">Georges de Selve, 25 años<br>obispo de Lavaur</div>
+    <svg class="velo" id="catSvg" viewBox="0 0 1080 1920" fill="none" stroke="var(--amarillo)" stroke-width="3"></svg>
+    <div class="cat" id="cat0" style="top:345px;left:70px">globo celeste</div>
+    <div class="cat" id="cat1" style="top:530px;left:330px">cuadrante</div>
+    <div class="cat" id="cat2" style="top:640px;left:640px">reloj de sol</div>
+    <div class="cat" id="cat3" style="top:1060px;left:70px">globo terrestre</div>
+    <div class="cat" id="cat4" style="top:960px;left:800px">laúd</div>
+    <div class="cat" id="cat5" style="top:1290px;left:470px">libro de himnos</div>
+  </div>
+
+  <!-- 4 · LA MANCHA: el piso, el plano visto desde arriba y la anamorfosis -->
+  <div class="escena" id="e4">
+    <div class="fondo" style="background:var(--noche)"><div class="puntos" style="position:absolute;inset:0"></div></div>
+    <div class="lamina" id="lam4" style="top:290px;left:40px;width:1000px;height:470px">
+      <div class="ventana"><div class="anam" id="a4"></div></div>
+    </div>
+    <svg id="plano" style="position:absolute;top:840px;left:90px;width:900px;height:520px;overflow:visible" viewBox="0 0 900 520" fill="none" stroke="var(--crema)" stroke-linecap="round">
+      <path d="M20 70 H 880" stroke-width="5"/>
+      <path d="M280 70 H 620" stroke="var(--amarillo)" stroke-width="22"/>
+      <path id="camino" d="M450 430 C 690 430, 800 330, 803 160" stroke="var(--rojo)" stroke-width="6"/>
+      <path id="mirada" stroke-width="3" stroke-dasharray="2 12"/>
+      <g id="ojo"><path d="M-32 0 Q 0 -26 32 0 Q 0 26 -32 0 Z" stroke-width="4" fill="var(--noche)"/><circle r="9" fill="var(--crema)" stroke="none"/></g>
+    </svg>
+    <div class="ficha" id="fArriba" data-rot="-1" style="top:800px;left:90px;font-size:18px">visto desde arriba: la pared y el cuadro</div>
+    <div class="ficha" id="fFrente" data-rot="-1" style="top:1310px;left:390px">de frente</div>
+    <div class="ficha" id="fCostado" data-rot="2" style="top:1060px;left:720px">de costado</div>
+    <div class="tira titular" id="esCal" data-rasgado data-rot="-2" style="top:1300px;left:150px;font-size:110px">Es una calavera.</div>
+    <div class="ficha" id="fAnam" data-rot="-1" style="top:270px;left:70px">Anamorfosis: una imagen deformada a propósito,<br>que se corrige mirándola desde otro ángulo</div>
+  </div>
+
+  <!-- 5 · FREUD: pizarra; la calavera ya enderezada queda a la vista -->
+  <div class="escena" id="e5">
+    <div class="fondo" style="background:var(--pizarra)"><div class="puntos" style="position:absolute;inset:0"></div></div>
+    <div class="lamina" id="lam5" data-rot="-2" style="top:300px;left:60px;width:380px;height:510px"><div class="plate" id="p5"></div></div>
+    <div class="cita" id="cita5" style="top:320px;left:490px;font-size:68px;color:var(--crema)">
+      <span class="linea">«En el fondo,</span><span class="linea">nadie cree</span><span class="linea">en su propia</span><span class="linea">muerte.»</span>
+    </div>
+    <div class="ficha" id="fFreud" data-rot="-1" style="top:850px;left:70px">Sigmund Freud · De guerra y muerte, 1915</div>
+    <div class="lamina" id="lam5b"><div class="ventana"><div class="anam" id="a5"></div></div></div>
+    <div class="negro serif" id="preg" data-rot="-1" style="top:290px;left:60px;right:110px;font-size:62px;line-height:1.1">¿Y no se arruina todo<br>si la miramos?</div>
+  </div>
+
+  <!-- 6 y 7 · EL PASEO: un verano de Klimt; el poeta; al revés -->
+  <div class="escena" id="e6">
+    <div class="fondo" style="background:var(--noche)"></div>
+    <div class="plate sangre" id="p6"></div>
+    <div class="velo" style="background:linear-gradient(to bottom, rgba(22,18,14,.7) 8%, rgba(22,18,14,0) 24%)"></div>
+    <div class="velo" id="oscuro6" style="background:rgba(22,18,14,.72)"></div>
+    <div class="ficha" id="fTrans" data-rot="-1" style="top:280px;left:70px">Sigmund Freud · La transitoriedad, 1915</div>
+    <div class="lamina" id="lam6" data-rot="2" style="top:820px;left:560px;width:380px;height:500px"><div class="plate" id="p6b"></div></div>
+    <div class="ficha" id="fRil" data-rot="-2" style="top:1340px;left:470px;font-size:18px">¿Rilke? Con Lou Andreas-Salomé, 1900</div>
+    <div class="negro serif" id="nada" data-rot="-2" style="top:1250px;left:80px;font-size:64px">ya nada valía.</div>
+    <div class="tira titular" id="reves" data-rasgado data-rot="-2" style="top:340px;left:60px;font-size:120px">Al revés.</div>
+    <div class="cita" id="cita7" style="top:560px;left:70px;right:80px;font-size:86px;color:var(--crema)"><span>Lo</span> <span>que</span> <span>no</span> <span>podemos</span><br><span>tener</span> <span>siempre,</span><br><span>lo</span> <span>valoramos</span> <span>más.</span></div>
+    <div class="ficha" id="fEsc" data-rot="1" style="top:1030px;left:80px">«El valor de la transitoriedad es el de<br>la escasez en el tiempo» · Freud</div>
+    <div class="ficha" id="fKli" data-rot="-1" style="top:1350px;left:70px;font-size:18px">Gustav Klimt · Litzlberg am Attersee, c. 1910–1912</div>
+  </div>
+
+  <!-- 7b · LA FLOR DE UNA NOCHE -->
+  <div class="escena" id="e7">
+    <div class="fondo" style="background:#0d1412"></div>
+    <div class="plate sangre" id="p7"></div>
+    <div class="ficha" id="fFlor" data-rot="-1" style="top:1350px;left:70px;font-size:18px">Philip Reinagle · La flor de una noche, 1807</div>
+  </div>
+
+  <!-- 8 · POR ADELANTADO: el verano se queda sin color antes de terminar -->
+  <div class="escena" id="e8">
+    <div class="fondo" style="background:var(--noche)"></div>
+    <div class="plate sangre" id="p8"></div>
+    <div class="plate sangre gris" id="p8g"></div>
+    <div class="velo" style="background:linear-gradient(to bottom, rgba(22,18,14,.65) 8%, rgba(22,18,14,0) 24%)"></div>
+    <div class="velo" id="oscuro8" style="background:rgba(22,18,14,.5)"></div>
+    <div class="ficha" id="fDuelo" data-rot="-1" style="top:280px;left:70px">Para Freud, un anticipo del duelo</div>
+    <div class="tira titular" id="adel" data-rasgado data-rot="-2" style="top:1240px;left:240px;font-size:100px">por adelantado.</div>
+  </div>
+
+  <!-- 9 · LAS DOS MIRADAS: arriba el mundo que parece eterno, abajo la calavera -->
+  <div class="escena" id="e9">
+    <div class="fondo" style="background:var(--noche)"><div class="puntos" style="position:absolute;inset:0"></div></div>
+    <div class="lamina" id="lamT" data-rot="-1" style="top:280px;left:40px;width:1000px;height:560px"><div class="plate" id="pT"></div></div>
+    <div class="lamina" id="lamB" data-rot="1" style="top:880px;left:40px;width:1000px;height:560px"><div class="ventana"><div class="anam" id="a9"></div></div></div>
+    <div class="tira titular" id="rebel" data-rasgado data-rot="-2" style="top:700px;left:470px;font-size:84px">rebelarse</div>
+    <div class="tira titular" id="hund" data-rasgado data-rot="2" style="top:1290px;left:540px;font-size:84px">hundirse</div>
+    <div class="ficha" id="fDeF" data-rot="-2" style="top:300px;left:70px">de frente</div>
+    <div class="ficha" id="fDeC" data-rot="2" style="top:900px;left:70px">de costado</div>
+  </div>
+
+  <!-- 10 · CIERRE: para ver el cuadro entero, hay que moverse -->
+  <div class="escena" id="e10">
+    <div class="fondo" style="background:var(--noche)"><div class="puntos" style="position:absolute;inset:0"></div></div>
+    <div class="lamina" id="lam10" style="top:300px;left:60px;width:960px;height:946px"><div class="ventana"><div class="anam" id="a10"></div></div></div>
+    <div class="tira titular" id="mover" data-rasgado data-rot="-2" style="top:1290px;left:150px;font-size:96px">hay que moverse.</div>
+  </div>
+
+  <div class="sub" id="sub"></div>
+  <div class="grano" id="grano"></div>
+</div>
+
+<script type="module">
+import { encuadrar, rasgar } from '../../diseno/sistema.js';
+import { cargarVoz, subtitulos, pieza, trazo, punteado, hervir, prog, lerp, ease, clamp, encuadre, entreEncuadres, porPalabra,
+  anamorfosis, tinta, destenir } from '../../diseno/motor.js';
+
+const IMGS = {
+  emb:   { src: 'assets/embajadores.jpg', w: 3840, h: 3784 },
+  freud: { src: 'assets/freud.jpg',       w: 1280, h: 1741 },
+  klimt: { src: 'assets/klimt.jpg',       w: 1920, h: 1916 },
+  flor:  { src: 'assets/flor.jpg',        w: 1920, h: 2432 },
+  rilke: { src: 'assets/rilke.jpg',       w: 453,  h: 607 },
+};
+// Encuadres en píxeles del original. Los "a sangre" tienen la proporción de la pantalla (0,5625).
+const E = {
+  todo: [0, 0, 3840, 3784], dinCerca: [430, 230, 1000, 1778], din: [250, 150, 1400, 2489],
+  sel: [2500, 250, 1340, 2382], mesa: [1430, 600, 1480, 2631], arriba: [0, 300, 3840, 2094],
+};
+const KL = { abajo: [560, 760, 650, 1156], todo: [420, 0, 1077, 1916], cerca: [520, 300, 760, 1351] };
+const FL = { cerca: [560, 900, 760, 1351], todo: [330, 180, 1200, 2133] };
+// La calavera: centro de la mancha en el original y dirección de su eje (grados). Con k = 0,2 se lee entera.
+const CAL = { cx: 1930, cy: 3320, ang: 26.8 };
+// Objetos de la mesa (px del original) y el punto del rótulo en pantalla
+const OBJ = [[1650, 900, 150, 345], [2050, 1000, 400, 530], [2420, 1180, 700, 640], [1720, 2330, 170, 1100], [2500, 2150, 830, 1000], [2420, 2500, 600, 1290]];
+
+const $ = id => document.getElementById(id);
+const voz = await cargarVoz('audio/voz-editada.json');
+const W = voz.W;
+const DURACION = voz.duracion;
+
+// ───── Tiempos (todo anclado a la voz) ─────
+const T = {
+  ves: W('la ves').s, vista: W('está a la vista').s, frente: W('pero de frente').s,
+  e2: W('londres').s - 0.45, holb: W('holbein retrata').s, triste: W('triste y lejos').s, amigo: W('y a su amigo').s,
+  entre: W('entre ellos').s, todo: W('todo lo que sabían').s,
+  e4: W('pero a sus pies').s - 0.35, mancha: W('una mancha larga').s, parar: W('si te parás').s, pared: W('la pared').e,
+  acomoda: W('se acomoda').s, calav: W('es una calavera').s,
+  e5: W('con la muerte').s - 0.4, freud: W('freud escribió').s, fondo: W('en el fondo').s, arruina: W('y no se arruina').s - 0.1,
+  e6: W('freud contó').s - 0.45, poeta: W('un joven poeta').s, podia: W('el poeta no podía').s, nada: W('ya nada valía').s,
+  contesto: W('freud le contestó').s, reves: W('al revés').s, loQue: W('lo que no podemos').s, valoramos: W('lo valoramos más').s,
+  e7: W('una flor').s - 0.45, flor: W('una flor').s,
+  e8: W('y vio algo más').s - 0.4, llora: W('llorando el verano').s, adel: W('por adelantado').s, dejaba: W('dejaba de disfrutarlo').s,
+  e9: W('ante lo que se acaba').s - 0.4, dos: W('dos reacciones').s, reb: W('rebelarse').s, hun: W('hundirse').s,
+  miradas: W('el cuadro tiene').s, deF: W('de frente', 2).s, deC: W('de costado').s, borrar: W('borrarlo todo').s,
+  e10: W('para ver el cuadro').s - 0.45, mover: W('hay que moverse').s,
+};
+T.vuelta = DURACION - 0.6;
+const escenas = [['e1', -1, T.e2 + 0.8], ['e2', T.e2, T.e4 + 0.8], ['e4', T.e4, T.e5 + 0.8], ['e5', T.e5, T.e6 + 0.8],
+  ['e6', T.e6, T.e7 + 0.8], ['e7', T.e7, T.e8 + 0.8], ['e8', T.e8, T.e9 + 0.8], ['e9', T.e9, T.e10 + 0.8], ['e10', T.e10, 999]];
+const SUBS = subtitulos(voz, [['pero de frente es casi imposible verla'], ['es una calavera'],
+  ['en el fondo nadie cree en su propia muerte'], ['y no se arruina todo si la miramos'], ['ya nada valía'], ['al revés'],
+  ['lo que no podemos tener siempre lo valoramos más'], ['por adelantado'], ['rebelarse'], ['hundirse'],
+  ['de frente', 2], ['de costado'], ['hay que moverse']], 7);
+
+const aparecer = (el, t, t0, t1 = Infinity, dur = 0.35) => {
+  const o = ease.out(prog(t, t0, t0 + dur)) * (1 - prog(t, t1, t1 + 0.3));
+  el.style.opacity = o; el.style.visibility = o > 0 ? 'visible' : 'hidden';
+};
+const tiemposDe = (frase, n = 1) => { const r = W(frase, n); return frase.split(' ').map((_, k) => voz.palabras[r.i + k].s); };
+const cita7 = tiemposDe('lo que no podemos tener siempre lo valoramos más');
+// De costado: cada escena entra deslizándose desde la derecha, y la anterior se corre un poco a la izquierda
+const sigue = { e1: 'e2', e2: 'e4', e4: 'e5', e5: 'e6', e6: 'e7', e7: 'e8', e8: 'e9', e9: 'e10' };
+const inicio = Object.fromEntries(escenas.map(([id, a]) => [id, a]));
+function deCostado(id, t) {
+  const pe = id === 'e1' ? 1 : ease.inOut(prog(t, inicio[id], inicio[id] + 0.75));
+  const n = sigue[id], ps = n ? ease.inOut(prog(t, inicio[n], inicio[n] + 0.75)) : 0;
+  $(id).style.transform = `translateX(${(1 - pe) * 1080 - ps * 380}px)`;
+}
+// Ventana con la calavera: centra el punto de la mancha en la caja, con escala s y compresión k
+function calavera(el, caja, s, k) {
+  anamorfosis(el, { cx: CAL.cx, cy: CAL.cy, px: caja.offsetWidth / 2, py: caja.offsetHeight / 2, s, k, ang: CAL.ang });
+}
+
+function seek(tReal) {
+  for (const [id, a, b] of escenas) {
+    const on = tReal >= a && tReal < b;
+    $(id).style.display = on ? 'block' : 'none';
+    if (on) deCostado(id, tReal);
+  }
+  // al final, el video vuelve a su primer cuadro para que el loop no se note
+  const vuelve = tReal >= T.vuelta;
+  if (vuelve) { $('e1').style.display = 'block'; $('e1').style.zIndex = 30; $('e1').style.transform = 'none'; }
+  else $('e1').style.zIndex = '';
+  let t = vuelve ? 0 : tReal;
+
+  // 1 · Gancho
+  if (t < T.e2 + 0.8) {
+    const push = lerp(1, 1.045, ease.suave(prog(t, 0, T.e2)));
+    $('lam1').style.transform = `rotate(-1deg) scale(${push})`;
+    pieza($('laves'), t, { t0: T.ves - 0.05, t1: T.vista - 0.1, sale: 'fundido' });
+    punteado($('elip1'), ease.inOut(prog(t, T.vista, T.vista + 1.0)), 2, 16);
+    $('elip1').style.opacity = 1 - prog(t, T.e2 - 0.4, T.e2);
+    pieza($('casi'), t, { t0: T.frente - 0.05, entra: 'der', dur: 0.4, t1: T.e2, sale: 'fundido' });
+  }
+
+  t = tReal;
+  // 2 · Los dos y la mesa
+  if (t >= T.e2 && t < T.e4 + 0.8) {
+    let c = entreEncuadres(E.dinCerca, E.din, ease.suave(prog(t, T.e2, T.triste)));
+    c = entreEncuadres(c, E.sel, ease.inOut(prog(t, T.amigo - 0.2, T.amigo + 1.1)));
+    c = entreEncuadres(c, E.mesa, ease.inOut(prog(t, T.entre - 0.3, T.entre + 0.8)));
+    encuadre($('p2'), IMGS.emb, c);
+    $('oscuro2').style.opacity = ease.inOut(prog(t, T.triste - 0.2, T.triste + 0.3)) * (1 - ease.inOut(prog(t, T.amigo - 0.2, T.amigo + 0.4)));
+    pieza($('fLon'), t, { t0: T.e2 + 0.5, entra: 'fundido', t1: T.triste - 0.2 });
+    pieza($('fDin'), t, { t0: T.holb + 0.3, t1: T.amigo - 0.1, sale: 'izq' });
+    pieza($('carta'), t, { t0: T.triste - 0.2, entra: 'izq', dur: 0.5, t1: T.amigo - 0.1, sale: 'izq' });
+    tinta($('carta'), prog(t, T.triste + 0.15, T.amigo - 0.25));
+    $('carta').style.visibility = t >= T.triste - 0.2 && t < T.amigo + 0.3 ? 'visible' : 'hidden';
+    pieza($('fCarta'), t, { t0: T.triste + 0.6, entra: 'fundido', t1: T.amigo - 0.1 });
+    pieza($('fSel'), t, { t0: T.amigo + 0.9, t1: T.entre - 0.1, sale: 'der' });
+    // líneas de catálogo: cada objeto de la mesa se nombra
+    const k = 1080 / E.mesa[2];
+    let svg = '';
+    OBJ.forEach(([x, y, lx, ly], i) => {
+      const t0 = T.entre + 0.7 + i * 0.28, p = ease.out(prog(t, t0, t0 + 0.35));
+      const ox = (x - E.mesa[0]) * k, oy = (y - E.mesa[1]) * k;
+      if (p > 0) svg += `<circle cx="${ox}" cy="${oy}" r="${8 * p}" fill="var(--amarillo)"/><path d="M${ox} ${oy} L ${lerp(ox, lx + 20, p)} ${lerp(oy, ly + 16, p)}"/>`;
+      aparecer($('cat' + i), t, t0 + 0.2, T.e4 + 0.1, 0.25);
+    });
+    if ($('catSvg').innerHTML !== svg) $('catSvg').innerHTML = svg;
+  }
+
+  // 4 · La mancha, el plano y la anamorfosis
+  if (t >= T.e4 && t < T.e5 + 0.8) {
+    const pa = ease.inOut(prog(t, T.acomoda - 0.1, T.acomoda + 1.5));
+    const pc = ease.inOut(prog(t, T.acomoda - 0.2, T.acomoda + 0.6));
+    $('lam4').style.height = lerp(470, 1000, pc) + 'px';
+    $('lam4').style.top = lerp(290, 330, pc) + 'px';
+    const zoom = lerp(1, 1.08, ease.suave(prog(t, T.calav, T.e5 + 0.6)));
+    calavera($('a4'), $('a4').parentElement, lerp(0.4, 1.45, pa) * zoom, lerp(1, 0.2, pa));
+    // el plano: el ojo camina de frente hasta pegarse a la pared, a la derecha
+    const po = 1 - prog(t, T.acomoda - 0.2, T.acomoda + 0.2);
+    for (const id of ['plano', 'fArriba']) aparecer($(id), t, T.mancha + 0.4, T.acomoda - 0.2);
+    const pw = ease.inOut(prog(t, T.parar, T.pared));
+    const cam = $('camino'), L = cam.getTotalLength(), pt = cam.getPointAtLength(L * pw);
+    punteado(cam, pw, 2, 14);
+    $('ojo').setAttribute('transform', `translate(${pt.x} ${pt.y}) rotate(${lerp(0, -14, pw)})`);
+    const objetivo = [lerp(450, 470, pw), lerp(100, 84, pw)];
+    $('mirada').setAttribute('d', `M${pt.x} ${pt.y - 20} L ${objetivo[0]} ${objetivo[1]}`);
+    pieza($('fFrente'), t, { t0: T.mancha + 0.7, entra: 'fundido', t1: T.parar + 0.6 });
+    pieza($('fCostado'), t, { t0: T.pared - 0.3, entra: 'fundido', t1: T.acomoda - 0.2 });
+    $('plano').style.opacity *= po;
+    pieza($('esCal'), t, { t0: T.calav - 0.05, t1: T.e5, sale: 'fundido' });
+    pieza($('fAnam'), t, { t0: T.calav + 0.9, entra: 'fundido', t1: T.e5 });
+  }
+
+  // 5 · Freud; la pregunta
+  if (t >= T.e5 && t < T.e6 + 0.8) {
+    encuadre($('p5'), IMGS.freud, [370, 30, 560, 757]);
+    pieza($('lam5'), t, { t0: T.freud - 0.1, dur: 0.5, t1: T.arruina, sale: 'izq' });
+    pieza($('cita5'), t, { t0: T.fondo - 0.1, entra: 'fundido', dur: 0.2, t1: T.arruina, sale: 'izq' });
+    tinta($('cita5'), prog(t, T.fondo - 0.05, T.fondo + 2.4));
+    if (t >= T.arruina + 0.35) $('cita5').style.visibility = 'hidden';
+    pieza($('fFreud'), t, { t0: T.freud + 0.5, entra: 'fundido', t1: T.arruina, sale: 'izq' });
+    // la calavera enderezada sigue en pantalla: grande al entrar, chica abajo a la derecha mientras habla Freud,
+    // y en "¿y no se arruina todo si la miramos?" vuelve a crecer al centro
+    const g1 = ease.inOut(prog(t, T.freud - 0.35, T.freud + 0.45)), g2 = ease.inOut(prog(t, T.arruina, T.arruina + 0.9));
+    const A = [100, 440, 880, 820, 1.3], B = [560, 930, 400, 380, 0.62], C = [100, 560, 880, 820, 1.3];
+    const G = A.map((a, i) => lerp(lerp(a, B[i], g1), C[i], g2));
+    const lb = $('lam5b');
+    Object.assign(lb.style, { left: G[0] + 'px', top: G[1] + 'px', width: G[2] + 'px', height: G[3] + 'px', visibility: 'visible', opacity: 1 });
+    lb.style.transform = `rotate(${lerp(lerp(-1, 2, g1), -1, g2)}deg)`;
+    calavera($('a5'), $('a5').parentElement, G[4] * lerp(1, 1.06, prog(t, T.arruina + 0.9, T.e6 + 0.8)), 0.2);
+    pieza($('preg'), t, { t0: T.arruina - 0.05, entra: 'der', dur: 0.4, t1: T.e6, sale: 'fundido' });
+  }
+
+  // 6 y 7 · El paseo; al revés
+  if (t >= T.e6 && t < T.e7 + 0.8) {
+    let c = entreEncuadres(KL.abajo, KL.todo, ease.suave(prog(t, T.e6, T.contesto)));
+    encuadre($('p6'), IMGS.klimt, c);
+    $('oscuro6').style.opacity = 0.72 * ease.inOut(prog(t, T.contesto - 0.2, T.contesto + 0.5));
+    pieza($('fTrans'), t, { t0: T.e6 + 0.7, entra: 'fundido', t1: T.contesto - 0.2 });
+    encuadre($('p6b'), IMGS.rilke, [0, 120, 300, 400]);
+    pieza($('lam6'), t, { t0: T.poeta + 0.1, entra: 'abajo', dur: 0.55, t1: T.nada - 0.4, sale: 'der' });
+    pieza($('fRil'), t, { t0: T.poeta + 0.8, entra: 'fundido', t1: T.nada - 0.4 });
+    pieza($('nada'), t, { t0: T.nada - 0.05, entra: 'izq', dur: 0.4, t1: T.contesto - 0.1, sale: 'izq' });
+    pieza($('fKli'), t, { t0: T.e6 + 1.2, entra: 'fundido', t1: T.poeta });
+    pieza($('reves'), t, { t0: T.reves - 0.05, t1: T.e7 + 0.2 });
+    porPalabra($('cita7'), t, cita7);
+    $('cita7').style.visibility = t > cita7[0] - 0.1 ? 'visible' : 'hidden';
+    pieza($('fEsc'), t, { t0: T.valoramos + 0.2, entra: 'fundido', t1: T.e7 + 0.2 });
+  }
+
+  // 7b · La flor de una noche: se abre
+  if (t >= T.e7 && t < T.e8 + 0.8) {
+    const pf = ease.out(prog(t, T.flor - 0.1, T.flor + 1.3));
+    encuadre($('p7'), IMGS.flor, entreEncuadres(FL.cerca, FL.todo, ease.suave(prog(t, T.e7, T.e8 + 0.8))));
+    const [fx, fy] = [(931 - 330) * (1080 / 1200), (1297 - 180) * (1080 / 1200)];
+    $('p7').style.clipPath = `circle(${lerp(60, 1500, pf)}px at ${fx}px ${fy}px)`;
+    $('p7').style.transform = `rotate(${lerp(-8, 0, pf)}deg) scale(${lerp(0.9, 1, pf)})`;
+    $('p7').style.transformOrigin = `${fx}px ${fy}px`;
+    pieza($('fFlor'), t, { t0: T.flor + 1.0, entra: 'fundido' });
+  }
+
+  // 8 · Por adelantado: el verano se queda sin color mientras todavía está
+  if (t >= T.e8 && t < T.e9 + 0.8) {
+    const c = entreEncuadres(KL.todo, KL.cerca, ease.suave(prog(t, T.e8, T.e9 + 0.8)));
+    encuadre($('p8'), IMGS.klimt, c);
+    encuadre($('p8g'), IMGS.klimt, c);
+    destenir($('p8g'), ease.inOut(prog(t, T.llora - 0.1, T.adel + 0.9)));
+    $('oscuro8').style.opacity = 0.15 + 0.55 * ease.inOut(prog(t, T.dejaba - 0.2, T.dejaba + 0.9));
+    pieza($('fDuelo'), t, { t0: T.llora + 0.3, entra: 'fundido', t1: T.e9 });
+    pieza($('adel'), t, { t0: T.adel - 0.05, t1: T.dejaba - 0.2, sale: 'fundido' });
+  }
+
+  // 9 · Las dos reacciones y las dos miradas
+  if (t >= T.e9 && t < T.e10 + 0.8) {
+    encuadre($('pT'), IMGS.emb, entreEncuadres(E.arriba, [600, 500, 2640, 1440], ease.suave(prog(t, T.e9, T.e10 + 0.8))));
+    pieza($('lamT'), t, { t0: T.e9 + 0.4, entra: 'abajo', dur: 0.6 });
+    pieza($('lamB'), t, { t0: T.dos - 0.1, entra: 'abajo', dur: 0.6 });
+    calavera($('a9'), $('a9').parentElement, lerp(0.8, 0.95, ease.suave(prog(t, T.dos, T.e10 + 0.8))), 0.2);
+    // cada reacción ilumina su mitad; en "el cuadro tiene las dos miradas" se encienden las dos
+    const top = t < T.reb ? 1 : t < T.hun ? 1 : t < T.miradas ? 0.45 : 1;
+    const bot = t < T.hun - 0.1 ? 0.5 : 1;
+    $('pT').style.filter = `brightness(${top})`;
+    $('a9').style.filter = `brightness(${bot})`;
+    pieza($('rebel'), t, { t0: T.reb - 0.05, t1: T.miradas - 0.1 });
+    pieza($('hund'), t, { t0: T.hun - 0.05, t1: T.miradas - 0.1 });
+    pieza($('fDeF'), t, { t0: T.deF - 0.05 });
+    pieza($('fDeC'), t, { t0: T.deC - 0.05 });
+    $('lamB').style.transform += ` scale(${1 + 0.03 * ease.suave(prog(t, T.borrar - 0.3, T.borrar + 0.6))})`;
+  }
+
+  // 10 · Cierre: el cuadro de frente; al moverse, la calavera se endereza, y vuelve
+  if (t >= T.e10) {
+    const s = 928 / 3840;
+    const ida = ease.inOut(prog(t, T.mover, T.mover + 0.8)), vuelta = ease.inOut(prog(t, T.mover + 1.2, T.vuelta - 0.05));
+    const k = lerp(1, 0.32, ida * (1 - vuelta));
+    // el punto de la calavera queda donde está en el cuadro: así, con k = 1, es el cuadro entero
+    anamorfosis($('a10'), { cx: CAL.cx, cy: CAL.cy, px: CAL.cx * s, py: CAL.cy * s, s, k, ang: CAL.ang });
+    pieza($('lam10'), t, { t0: T.e10 + 0.3, entra: 'fundido', dur: 0.5 });
+    $('lam10').style.transform = `rotate(-1deg)`;
+    pieza($('mover'), t, { t0: T.mover - 0.05, t1: T.vuelta - 0.45, sale: 'fundido' });
+  }
+
+  const sb = SUBS.find(x => t >= x.s && t < x.e);
+  const html = sb ? `<span>${sb.texto}</span>` : '';
+  if ($('sub').innerHTML !== html) $('sub').innerHTML = html;
+  hervir($('grano'), t);
+}
+
+encuadrar(document, IMGS);
+rasgar(document);
+for (const el of document.querySelectorAll('[data-rot]')) el.style.transform = `rotate(${el.dataset.rot}deg)`;
+for (const el of document.querySelectorAll('.anam')) el.style.backgroundImage = `url(${IMGS.emb.src})`;
+encuadre($('p1'), IMGS.emb, E.todo);
+await Promise.all([document.fonts.ready, ...Object.values(IMGS).map(im => { const i = new Image(); i.src = im.src; return i.decode(); })]);
+window.seek = seek;
+window.DURACION = DURACION;
+window.T = T;
+seek(0);
+window.listo = true;
+
+if (!location.search.includes('render')) {
+  const audio = new Audio('audio/voz-editada.wav');
+  document.body.addEventListener('click', () => { audio.currentTime = 0; audio.play(); });
+  (function loop() { seek(audio.paused ? 0 : audio.currentTime); requestAnimationFrame(loop); })();
+}
+</script>
+</body>
+</html>
