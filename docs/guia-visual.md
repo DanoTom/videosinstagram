@@ -68,6 +68,15 @@ todos posibles con el sistema (`sistema.css`, `motor.js`); cada video del format
 6. **Palabras que hacen lo que dicen.** No flotan: "reprimir" se hunde debajo de una línea, "negar" se tacha y vuelve a
    aparecer, "proyectar" sale disparada hacia otro. Una o dos por video, no más.
 7. **La obra como espejo emocional.** El arte sigue estando, como imagen del estado interior o como cierre.
+8. **Cine de archivo de dominio público** (desde el 05). Películas de hace más de cien años que están en Wikimedia Commons:
+   los Lumière, Edison, noticieros. Sirven para el mundo real (bebés, familias, la calle) y ya son un dato en sí ("una de
+   las primeras películas de la historia es un bebé comiendo"). Se pasan a una secuencia de cuadros con ffmpeg y
+   `video.html` muestra el cuadro de cada instante, así el render sigue siendo exacto. Bancos de video modernos (Pexels,
+   Pixabay) no: se ven genéricos, rompen la estética de papel y grano, y además no se pueden bajar desde este entorno.
+
+**Alternar** (pedido de Dano): ningún video del formato E usa todos los recursos, y dos seguidos no repiten la misma
+combinación. Lo de afuera (la escena, el archivo, la obra) y lo de adentro (la personita, la metáfora) se combinan distinto
+cada vez.
 
 Lo que no: diagramas de clase (cajas y flechas con texto), íconos genéricos de bancos de imágenes, cerebros, fotos de
 consultorio, y nada que sugiera un diagnóstico.
