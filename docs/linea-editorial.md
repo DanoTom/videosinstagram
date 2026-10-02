@@ -11,6 +11,10 @@
      algo más extenso que el 01.
 - Tono: el de El Reflejo, sin que sea obligatorio.
 - Meta: 1 video por semana es un éxito; 2 es un éxito rotundo.
+- Ritmo (propuesta de octubre de 2026): el mismo video, el mismo día, en Instagram y en YouTube (se pueden programar los
+  dos). Arrancar con 1 por semana en un día fijo y pasar a 2 solo con 3 videos terminados de reserva: la constancia pesa
+  más que la cantidad, y cortar después de unas semanas de 2 rinde menos que sostener 1. El Reflejo (cada dos o tres
+  semanas) profundiza el tema de algún video reciente, así la investigación sirve dos veces.
 - **Duración máxima: 90 s** (decisión del 1/10/2026). La música de Instagram no pasa de 90 s y Dano publica desde el celular.
   Los guiones se escriben para 80–88 s (190 a 220 palabras). Si una voz ya grabada queda larga, se acorta con
   `herramientas/recortar.py` (frases enteras y silencios largos; ver el 03).

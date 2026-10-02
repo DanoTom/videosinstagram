@@ -68,6 +68,12 @@ Si se prefiere dar un ritmo: cambiar "No llega todas las semanas: llega cuando�
 
 **Links del canal:** El Reflejo e Instagram.
 
+**Banner:** `canal/banner-youtube.jpg` (2560×1440, se sube en Personalizar canal → Marca). Obras de los videos apoyadas sobre
+una línea de agua que las refleja (el reflejo: El Reflejo y Narciso), con el nombre en el centro. Lo que se ve en el celular
+es solo la franja central de 1546×423 (x 507–2053, y 508–931); en la computadora, esa franja a todo el ancho; la imagen
+entera, solo en la tele. Se arma con `canal/banner.html` y se captura con `node herramientas/capturar.mjs canal/banner.html`
+(`--ui` muestra la franja del celular). Para cambiar las obras, editar las láminas: se ubican solas a los costados del nombre.
+
 ### Firma de cada video (`publicacion.md`)
 
 - Instagram: "Si te interesa, seguime por acá. Y si querés pensarlo con más tiempo, escribo El Reflejo (link en la bio)."
