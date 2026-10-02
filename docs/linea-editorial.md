@@ -25,7 +25,7 @@
   Los guiones se escriben para 80–88 s (190 a 220 palabras). Si una voz ya grabada queda larga, se acorta con
   `herramientas/recortar.py` (frases enteras y silencios largos; ver el 03).
 - Voz: la de Dano cuando pueda grabar; ElevenLabs cuando no. En ElevenLabs funcionó la voz "Javier – Deep, Confident and Measured"
-  con velocidad 1,00, estabilidad 30 y similitud 0 (video 02), y con velocidad 1,03, estabilidad 30 y similitud 47 (video 03).
+  con velocidad 1,00, estabilidad 30 y similitud 0 (videos 02 y 04), y con velocidad 1,03, estabilidad 30 y similitud 47 (video 03).
   Si un tramo se regraba con otros ajustes, conviene regrabar el guion entero.
 - Dano sube cada reel terminado a una carpeta de su Drive (el link no va acá porque el repo es público). Con el conector de
   Google Drive se encuentran buscando el nombre del archivo (por ejemplo `title contains '02-icaro'`), y con el id se bajan a

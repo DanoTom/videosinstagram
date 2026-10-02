@@ -19,6 +19,8 @@ Reglas aprendidas de las revisiones de Dano. Complementa `diseno/sistema.css` (c
    - En el 03, "Narciso nunca empezó." llegaba hasta x≈1060 y quedaba debajo de los botones en las dos apps: se partió en dos líneas.
 5. Los titulares entran en una o dos líneas pensadas: si una palabra queda sola en la segunda línea, se corta a mano con `<br>`.
 6. Los subtítulos van sobre una banda negra (legibles sobre cualquier fondo) y no repiten lo que ya está escrito en pantalla.
+   Los rótulos sobre una obra (los objetos de la mesa del 04, nombres) van en papel claro con tinta oscura, y sus líneas,
+   claras con un borde oscuro debajo. En el 04, dorado sobre una banda oscura translúcida no se leía (revisión de Dano).
 
 ## Revisión
 

@@ -23,7 +23,7 @@ de los 90 s, sin tocar el giro de Dano:
 >
 > Pero a sus pies hay una mancha larga. Si te parás a la derecha, casi pegado a la pared, se acomoda: es una calavera.
 >
-> Con la muerte pasa igual. Freud escribió en 1915: «En el fondo, nadie cree en su propia muerte».
+> Con la muerte pasa algo similar. Freud escribió en 1915: «En el fondo, nadie cree en su propia muerte».
 >
 > ¿Y no se arruina todo si la miramos? Freud contó un paseo de verano con un joven poeta, quizás Rilke. El poeta no podía disfrutar del paisaje: como todo iba a desaparecer, ya nada valía.
 >
@@ -31,12 +31,13 @@ de los 90 s, sin tocar el giro de Dano:
 >
 > Y vio algo más: el poeta ya estaba llorando el verano por adelantado, y para no sentir ese dolor dejaba de disfrutarlo.
 >
-> Ante lo que se acaba, Freud veía dos reacciones: rebelarse, como si todo pudiera durar, o hundirse, como el poeta. El cuadro tiene las dos miradas: de frente, un mundo que parece eterno; de costado, una calavera que parece borrarlo todo.
+> Ante lo que se acaba, Freud veía dos reacciones: negarse a aceptarlo, como si todo pudiera durar, o hundirse, como el poeta. El cuadro tiene las dos miradas: de frente, un mundo que parece eterno; de costado, una calavera que parece borrarlo todo.
 >
 > Para ver el cuadro entero, hay que moverse.
 
-224 palabras. Dano la aprobó y la grabó: 85,6 s de voz y 89,5 s con las pausas (ver Producción). Nota para los próximos
-guiones: con estos ajustes de ElevenLabs la voz lee unas 2,6 palabras por segundo, así que 224 palabras es el techo.
+227 palabras (con los dos cambios de Dano al grabar: "pasa algo similar" y "negarse a aceptarlo"): 85,4 s de voz y 89,3 s
+con las pausas (ver Producción). Nota para los próximos guiones: con estos ajustes de ElevenLabs la voz lee unas 2,65 palabras
+por segundo, así que unas 225 palabras son el techo.
 
 **Qué se sacó de la versión 3 y por qué** (método de los 90 s, `docs/guia-de-escritura.md`):
 
@@ -85,7 +86,7 @@ Las cuatro cosas que Dano pide que deje cada video (`docs/linea-editorial.md`), 
 - **Datos que no conocía:** la calavera escondida (anamorfosis); que Freud escribió sobre un paseo con un poeta, quizás Rilke.
 - **Cómo funciona la cabeza:** sabemos que vamos a morir, pero no lo creemos; y el duelo por adelantado: para no sentir el
   dolor de perder algo, dejamos de disfrutarlo antes de que se termine.
-- **Una perspectiva:** lo que no dura no vale menos, vale más; y entre rebelarse (hacer como si todo fuera a durar) y
+- **Una perspectiva:** lo que no dura no vale menos, vale más; y entre negarse a aceptarlo (hacer como si todo fuera a durar) y
   hundirse (que nada valga), hay otra manera de mirar.
 - **Un vínculo entre arte y mente:** el cuadro tiene las dos miradas a la vez, y para verlo entero hay que moverse entre
   ellas. La anamorfosis es una forma de mirar lo que se termina.
@@ -137,7 +138,7 @@ marcadores), oro viejo `#C49A45` (los instrumentos; líneas de catálogo) y piza
 | 7 | El paseo | "¿Y no se arruina todo si la miramos?" sobre la calavera. Después, un paisaje de verano a sangre (Klimt, *Litzlberg am Attersee*) y la foto de Rilke en una lámina grande (520 × 690) | ficha "Sigmund Freud · La transitoriedad, 1915" · ficha "¿Rilke? Con Lou Andreas-Salomé, 1900" |
 | 8 | La flor | La flor de una noche (Reinagle, *Night-blowing Cereus*, 1807) se abre en "una flor que dura una sola noche" | ficha con la cita: «El valor de la transitoriedad es el de la escasez en el tiempo» |
 | 9 | Por adelantado | **Estreno 2:** otro verano de Klimt, el jardín con girasoles (Dano notó que volver al paisaje del paseo no traía nada nuevo), se queda sin color de arriba hacia abajo mientras la voz dice "llorando el verano por adelantado": todavía está ahí, pero ya se ve gris | "llorando el verano por adelantado" |
-| 10 | Las dos reacciones | Pantalla partida: arriba el cuadro de frente ("un mundo que parece eterno"), abajo la calavera enderezada ("parece borrarlo todo") | "rebelarse" · "hundirse" |
+| 10 | Las dos reacciones | Pantalla partida: arriba el cuadro de frente ("un mundo que parece eterno"), abajo la calavera enderezada ("parece borrarlo todo") | "negarse a aceptarlo" · "hundirse" |
 | 11 | Cierre | En "hay que moverse", el cuadro gira de frente a costado y vuelve: las dos miradas en un mismo movimiento. El último segundo vuelve al primer cuadro (el loop empalma) | "Para ver el cuadro entero, hay que moverse." |
 
 **Estrenos del 04:** la anamorfosis animada (tramo 5) y el paisaje que se queda sin color (tramo 9).
@@ -160,7 +161,10 @@ marcadores), oro viejo `#C49A45` (los instrumentos; líneas de catálogo) y piza
 ## Fuentes
 
 El sitio de la National Gallery y Wikipedia no se pueden abrir desde este entorno: los datos se cotejaron en los resultados de
-búsqueda que citan esas páginas, en al menos dos fuentes cada uno. **Dano: revisar los marcados con ◇ antes de grabar.**
+búsqueda que citan esas páginas, en al menos dos fuentes cada uno. Las frases de Freud (✓) las verificó Dano en el tomo XIV
+de Amorrortu: las dos citas textuales son auténticas; "una flor que dura una sola noche" es una paráfrasis correcta, no una
+cita; "anticipo del duelo" es más preciso que citar "pregusto del duelo"; y "hundirse" y "negarse a aceptarlo" son etiquetas
+nuestras para explicar las dos reacciones, no palabras de Freud (por eso la voz no las pone entre comillas).
 
 | Lo que dice la voz o la pantalla | Fuente |
 |---|---|
@@ -172,10 +176,10 @@ búsqueda que citan esas páginas, en al menos dos fuentes cada uno. **Dano: rev
 | Su amigo lo visita y eso lo alegra: "the arrival of his friend, who was in London briefly from April to June, cheered him up" | National Gallery. Se suele decir que Dinteville encargó el cuadro para recordar esa visita; la voz no lo afirma |
 | (No va en la voz) prendedor con una calavera en el sombrero de Dinteville | National Gallery; Wikipedia |
 | (No va en la voz) crucifijo medio tapado por la cortina, arriba a la izquierda | National Gallery; Wikipedia |
-| ◇ Freud, *De guerra y muerte. Temas de actualidad* (1915), parte II, "Nuestra actitud hacia la muerte" (Amorrortu, *Obras completas*, t. XIV): «la muerte propia es inimaginable, y cuantas veces lo intentamos podemos notar que en verdad sobrevivimos como observadores. […] en el fondo nadie cree en su propia muerte, o, lo que viene a ser lo mismo: en el inconsciente cada uno de nosotros está convencido de su inmortalidad» | Citado igual en *Querencia* (Universidad de la República) y en *Psicopsi*; el tomo XIV no está en el Drive: confirmar la página en el libro |
-| ◇ En el mismo texto: «¿No sería mejor dejar a la muerte, en la realidad y en nuestros pensamientos, el lugar que por derecho le corresponde, y sacar a relucir un poco más nuestra actitud inconciente hacia ella…?». Termina con «Si vis vitam, para mortem»: si querés soportar la vida, preparate para la muerte | Citado igual en *Psicopsi* y *Psicomundo*; confirmar en el tomo XIV |
-| ◇ Freud, *La transitoriedad* (1916, escrito en 1915), tomo XIV: a un poeta que sentía que la belleza perdía valor por ser pasajera, Freud le responde que es al revés: «El valor de la transitoriedad es el de la escasez en el tiempo». La voz lo dice como "lo que se termina no vale menos: vale más" | *Psicopsi*; *Virtualia*, "Pandemia y transitoriedad"; confirmar en el tomo XIV |
-| ◇ Freud, *La transitoriedad* (escrito en noviembre de 1915, publicado en 1916): el paseo de verano "con un amigo taciturno y un poeta joven, pero ya famoso"; el poeta sentía que la belleza perdía valor porque iba a desaparecer; Freud le responde que es al revés ("valor de escasez en el tiempo"); una flor que se abre una sola noche no es por eso menos espléndida; lo que les arruinaba el goce era un anticipo del duelo; ante lo perecedero, dos movimientos: el hastío del mundo (el poeta) y la rebeldía contra el hecho (todo tiene que poder perdurar) | Psicopsi; Psicología La Guía, "La transitoriedad"; confirmar las frases en el tomo XIV |
+| ✓ Freud, *De guerra y muerte. Temas de actualidad* (1915), parte II, "Nuestra actitud hacia la muerte" (Amorrortu, *Obras completas*, t. XIV): «la muerte propia es inimaginable, y cuantas veces lo intentamos podemos notar que en verdad sobrevivimos como observadores. […] en el fondo nadie cree en su propia muerte, o, lo que viene a ser lo mismo: en el inconsciente cada uno de nosotros está convencido de su inmortalidad» | Citado igual en *Querencia* (Universidad de la República) y en *Psicopsi*; verificada por Dano en el tomo XIV |
+| (Ya no va en la voz; salió con la versión 3) En el mismo texto: «¿No sería mejor dejar a la muerte, en la realidad y en nuestros pensamientos, el lugar que por derecho le corresponde, y sacar a relucir un poco más nuestra actitud inconciente hacia ella…?». Termina con «Si vis vitam, para mortem»: si querés soportar la vida, preparate para la muerte | Citado igual en *Psicopsi* y *Psicomundo*; confirmar en el tomo XIV |
+| ✓ Freud, *La transitoriedad* (1916, escrito en 1915), tomo XIV: a un poeta que sentía que la belleza perdía valor por ser pasajera, Freud le responde que es al revés: «El valor de la transitoriedad es el de la escasez en el tiempo». La voz lo dice como "lo que se termina no vale menos: vale más" | *Psicopsi*; *Virtualia*, "Pandemia y transitoriedad"; verificada por Dano en el tomo XIV |
+| ✓ Freud, *La transitoriedad* (escrito en noviembre de 1915, publicado en 1916): el paseo de verano "con un amigo taciturno y un poeta joven, pero ya famoso"; el poeta sentía que la belleza perdía valor porque iba a desaparecer; Freud le responde que es al revés ("valor de escasez en el tiempo"); una flor que se abre una sola noche no es por eso menos espléndida; lo que les arruinaba el goce era un anticipo del duelo; ante lo perecedero, dos movimientos: el hastío del mundo (el poeta) y la rebeldía contra el hecho (todo tiene que poder perdurar) | Psicopsi; Psicología La Guía, "La transitoriedad"; revisado por Dano (ver arriba) |
 | Que el poeta fuera Rilke (y el amigo, Lou Andreas-Salomé) es la hipótesis más aceptada, no un dato del texto: Freud no los nombra. Se conocieron en Múnich, en septiembre de 1913 | *European Journal of Psychoanalysis*, "Freud, Rilke and Transience". Por eso la voz dice "quizás Rilke" |
 | (No va en la voz) Slavoj Žižek, *Mirando al sesgo. Una introducción a Jacques Lacan a través de la cultura popular* (1991): el título viene de la anamorfosis de *Los embajadores* | Aula de Filosofía, reseña de *Mirando al sesgo* |
 | (No va en la voz) Lacan describe la calavera en el Seminario 11 (1964): aparece cuando, al salir de la sala, uno se da vuelta a mirar el cuadro | Lacan, *Los cuatro conceptos fundamentales del psicoanálisis*, clases de febrero y marzo de 1964; doce-pensadores §11 [22] [23] |
@@ -186,16 +190,22 @@ Enrique VIII rompió con Roma y se casó con Ana Bolena.
 
 ## Producción
 
-- Voz: ElevenLabs, "Javier – Deep, Confident and Measured", velocidad 1,03, estabilidad 30 y similitud 47 (los mismos ajustes
-  del 03). Toma única: `audio/voz-elevenlabs.mp3` (85,6 s). Con 224 palabras salió en 85 s: 2,6 palabras por segundo.
-- Transcripción con faster-whisper "medium" (`audio/voz.json`). Correcciones a mano: "paras" → "parás", "Revelarse" →
-  "Rebelarse"; el final de "calavera." y el comienzo de "Con" se corrigieron mirando el volumen de la grabación (whisper los
+- Voz: ElevenLabs, "Javier – Deep, Confident and Measured". Dano grabó dos tomas:
+  - Primera: velocidad 1,03, estabilidad 30 y similitud 47 (los ajustes del 03); 85,6 s.
+  - **Segunda, la que se usa:** velocidad 1,00, estabilidad 30 y similitud 0 (los del 02), con dos cambios de texto de Dano:
+    "Con la muerte pasa igual" → "pasa algo similar" y "rebelarse" → "negarse a aceptarlo". 227 palabras en 85,4 s
+    (`audio/voz-elevenlabs.mp3`; la primera toma queda en la historia del repo).
+- Transcripción con faster-whisper "medium" (`audio/voz.json`). Correcciones a mano: "paras" → "parás"; el final de
+  "calavera." y los comienzos de "Con" y del primer "Freud" se corrigieron mirando el volumen de la grabación (whisper los
   pegaba y la pausa habría caído encima de la palabra). `cotejar.py`: 0 diferencias.
 - Pausas: 1 s después de "¿La ves?" (para buscar), 1,6 s después de "Es una calavera." (la calavera entera en silencio) y
-  1,3 s de cola, donde el cuadro vuelve a su primer cuadro → `audio/voz-editada.wav` (89,5 s).
+  1,3 s de cola, donde el cuadro vuelve a su primer cuadro → `audio/voz-editada.wav` (89,3 s).
 - Animación: `video.html`. Efectos nuevos, ahora en `diseno/motor.js`: `anamorfosis()` (la calavera se endereza),
   `tinta()` (la carta y la cita de Freud se escriben línea por línea) y `destenir()` (el verano se queda sin color de arriba
   hacia abajo).
+- Revisión de Dano del primer render: el autorretrato de Holbein en "Londres, 1533"; la carta, que se iba antes de poder
+  leerla, ahora entra antes y queda completa unos 2 s; la foto de Rilke más grande; el duelo por adelantado con otro verano
+  de Klimt (los girasoles) en vez de repetir el paseo; los rótulos de la mesa en papel claro (los dorados no se leían).
 
 ```bash
 python3 herramientas/transcribir.py videos/04-embajadores/audio/voz-elevenlabs.mp3 videos/04-embajadores/audio/voz.json \
@@ -205,7 +215,7 @@ python3 ../../../herramientas/pausas.py voz-elevenlabs.mp3 voz.json voz-editada.
 cd ../../..
 python3 herramientas/cotejar.py videos/04-embajadores/guion.md videos/04-embajadores/audio/voz-editada.json
 node herramientas/render.mjs videos/04-embajadores/video.html --audio=videos/04-embajadores/audio/voz-editada.wav --workers=4
-cd videos/04-embajadores   # menos de 30 MB: 240 / 89,5 − 0,13 ≈ 2,55 Mbps de video
+cd videos/04-embajadores   # menos de 30 MB: 240 / 89,3 − 0,13 ≈ 2,55 Mbps de video
 ffmpeg -y -i out/video.mp4 -c:v libx264 -preset slow -b:v 2500k -pass 1 -passlogfile out/ffmpeg2pass -an -f mp4 /dev/null
 ffmpeg -y -i out/video.mp4 -c:v libx264 -preset slow -b:v 2500k -pass 2 -passlogfile out/ffmpeg2pass -pix_fmt yuv420p \
   -c:a aac -b:a 128k -movflags +faststart 04-embajadores.mp4

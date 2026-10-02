@@ -28,8 +28,10 @@
   .cita { font-family: 'Instrument Serif', serif; font-style: italic; line-height: 1.05; }
   .linea { display: block; white-space: nowrap; }
   .carta { background: var(--crema); color: var(--tintaCarta); padding: 34px 44px 40px; box-shadow: 0 22px 30px rgba(0,0,0,.5); }
-  .cat { font-family: 'Space Mono', monospace; font-size: 24px; letter-spacing: .06em; text-transform: uppercase; color: var(--amarillo);
-    background: rgba(22,18,14,.92); padding: 7px 11px; white-space: nowrap; }
+  /* rótulos de catálogo: papel hueso y tinta oscura, para que se lean sobre el cuadro (revisión de Dano: los dorados sobre
+     fondo oscuro no se veían) */
+  .cat { font-family: 'Space Mono', monospace; font-size: 25px; letter-spacing: .06em; text-transform: uppercase; color: var(--tinta);
+    background: var(--crema); padding: 7px 12px; white-space: nowrap; box-shadow: 0 6px 14px rgba(0,0,0,.55); }
   .ventana { position: relative; width: 100%; height: 100%; overflow: hidden; background: var(--noche); }
   .anam { position: absolute; width: 3840px; height: 3784px; background-size: 100% 100%; background-repeat: no-repeat; }
   .gris { filter: grayscale(1) brightness(.82) contrast(.95); }
@@ -67,7 +69,7 @@
     </div>
     <div class="ficha" id="fCarta" data-rot="-1" style="top:390px;left:90px">Le escribe a su hermano, el 23 de mayo de 1533:</div>
     <div class="ficha" id="fSel" data-rot="2" style="top:1290px;left:540px">Georges de Selve, 25 años<br>obispo de Lavaur</div>
-    <svg class="velo" id="catSvg" viewBox="0 0 1080 1920" fill="none" stroke="var(--amarillo)" stroke-width="3"></svg>
+    <svg class="velo" id="catSvg" viewBox="0 0 1080 1920" fill="none" stroke-linecap="round"></svg>
     <div class="cat" id="cat0" style="top:345px;left:70px">globo celeste</div>
     <div class="cat" id="cat1" style="top:530px;left:330px">cuadrante</div>
     <div class="cat" id="cat2" style="top:640px;left:640px">reloj de sol</div>
@@ -148,7 +150,7 @@
     <div class="fondo" style="background:var(--noche)"><div class="puntos" style="position:absolute;inset:0"></div></div>
     <div class="lamina" id="lamT" data-rot="-1" style="top:280px;left:40px;width:1000px;height:560px"><div class="plate" id="pT"></div></div>
     <div class="lamina" id="lamB" data-rot="1" style="top:880px;left:40px;width:1000px;height:560px"><div class="ventana"><div class="anam" id="a9"></div></div></div>
-    <div class="tira titular" id="rebel" data-rasgado data-rot="-2" style="top:700px;left:470px;font-size:84px">rebelarse</div>
+    <div class="tira titular" id="rebel" data-rasgado data-rot="-2" style="top:705px;left:100px;font-size:70px">negarse a aceptarlo</div>
     <div class="tira titular" id="hund" data-rasgado data-rot="2" style="top:1290px;left:540px;font-size:84px">hundirse</div>
     <div class="ficha" id="fDeF" data-rot="-2" style="top:300px;left:70px">de frente</div>
     <div class="ficha" id="fDeC" data-rot="2" style="top:900px;left:70px">de costado</div>
@@ -210,7 +212,7 @@ const T = {
   contesto: W('freud le contestó').s, reves: W('al revés').s, loQue: W('lo que no podemos').s, valoramos: W('lo valoramos más').s,
   e7: W('una flor').s - 0.45, flor: W('una flor').s,
   e8: W('y vio algo más').s - 0.4, llora: W('llorando el verano').s, adel: W('por adelantado').s, dejaba: W('dejaba de disfrutarlo').s,
-  e9: W('ante lo que se acaba').s - 0.4, dos: W('dos reacciones').s, reb: W('rebelarse').s, hun: W('hundirse').s,
+  e9: W('ante lo que se acaba').s - 0.4, dos: W('dos reacciones').s, reb: W('negarse a aceptarlo').s, hun: W('hundirse').s,
   miradas: W('el cuadro tiene').s, deF: W('de frente', 2).s, deC: W('de costado').s, borrar: W('borrarlo todo').s,
   e10: W('para ver el cuadro').s - 0.45, mover: W('hay que moverse').s,
 };
@@ -219,7 +221,7 @@ const escenas = [['e1', -1, T.e2 + 0.8], ['e2', T.e2, T.e4 + 0.8], ['e4', T.e4, 
   ['e6', T.e6, T.e7 + 0.8], ['e7', T.e7, T.e8 + 0.8], ['e8', T.e8, T.e9 + 0.8], ['e9', T.e9, T.e10 + 0.8], ['e10', T.e10, 999]];
 const SUBS = subtitulos(voz, [['pero de frente es casi imposible verla'], ['es una calavera'],
   ['en el fondo nadie cree en su propia muerte'], ['y no se arruina todo si la miramos'], ['ya nada valía'], ['al revés'],
-  ['lo que no podemos tener siempre lo valoramos más'], ['por adelantado'], ['rebelarse'], ['hundirse'],
+  ['lo que no podemos tener siempre lo valoramos más'], ['por adelantado'], ['negarse a aceptarlo'], ['hundirse'],
   ['de frente', 2], ['de costado'], ['hay que moverse']], 7);
 
 const aparecer = (el, t, t0, t1 = Infinity, dur = 0.35) => {
@@ -292,10 +294,14 @@ function seek(tReal) {
     OBJ.forEach(([x, y, lx, ly], i) => {
       const t0 = T.entre + 0.85 + i * 0.26, p = ease.out(prog(t, t0, t0 + 0.35));
       const ox = (x - E.mesa[0]) * k, oy = (y - E.mesa[1]) * k;
-      if (p > 0) svg += `<circle cx="${ox}" cy="${oy}" r="${8 * p}" fill="var(--amarillo)"/><path d="M${ox} ${oy} L ${lerp(ox, lx + 20, p)} ${lerp(oy, ly + 16, p)}"/>`;
+      const d = `M${ox} ${oy} L ${lerp(ox, lx + 20, p)} ${lerp(oy, ly + 16, p)}`;
+      // línea clara con un borde oscuro debajo, y un punto con aro: se leen sobre cualquier parte del cuadro
+      if (p > 0) svg += `<path d="${d}" stroke="rgba(10,8,6,.85)" stroke-width="9"/><path d="${d}" stroke="var(--crema)" stroke-width="4"/>` +
+        `<circle cx="${ox}" cy="${oy}" r="${11 * p}" fill="var(--crema)" stroke="rgba(10,8,6,.85)" stroke-width="4"/>`;
       aparecer($('cat' + i), t, t0 + 0.2, T.e4 + 0.1, 0.25);
     });
     if ($('catSvg').innerHTML !== svg) $('catSvg').innerHTML = svg;
+    $('catSvg').style.opacity = 1 - prog(t, T.e4 + 0.1, T.e4 + 0.4);
   }
 
   // 4 · La mancha, el plano y la anamorfosis
