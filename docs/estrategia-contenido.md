@@ -65,8 +65,8 @@ Más ideas, con autores que leyeron estas obras desde la psicología y la filoso
 2. **03 · Narciso** (C), hecho. Abre la serie *Mitos al revés*: Narciso no sabía que el chico del agua era él, y la profecía
    decía que iba a llegar a viejo si nunca se conocía.
 3. Van Gogh y Theo ya está hecho (junto con Jo van Gogh-Bonger). Si se vuelve a Van Gogh, que sea desde otra perspectiva.
-4. **04 · Los embajadores** (B), en producción: la calavera que solo se ve de costado (Holbein) y Freud sobre la muerte
-   propia. Es la pista ★★ más cercana al 02, por el juego de buscar algo escondido en el cuadro.
+4. **04 · Los embajadores** (B), hecho: la calavera que solo se ve de costado (Holbein), Freud sobre la muerte propia y
+   *La transitoriedad* (el paseo con el poeta, el duelo por adelantado). Es la pista ★★ más cercana al 02, por el juego de buscar algo escondido en el cuadro.
 5. Después, alternar temas de este banco con las otras pistas ★★ del [banco de pistas](banco-de-pistas.md).
 
 ## Cómo aprender de cada video
