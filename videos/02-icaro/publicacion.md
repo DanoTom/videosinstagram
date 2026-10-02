@@ -2,7 +2,7 @@
 
 Portada: `portada.jpg` (en Instagram: Editar portada → Agregar desde la galería).
 
-## Descripción
+## Descripción (publicada en Instagram)
 
 Volví.
 
@@ -37,7 +37,7 @@ En este cuadro hay un hombre que cayó del cielo. Son apenas unas piernas hundi�
 
 Es «Paisaje con la caída de Ícaro», atribuido a Pieter Bruegel el Viejo (c. 1560). Y lo que más me interesa no es Ícaro, sino todos los que no lo miran.
 
-Soy psicólogo y hago videos sobre arte y sobre lo que el arte dice de nosotros. Si te interesa, suscribite. Cada semana escribo El Reflejo: el link está en el perfil del canal.
+Soy psicólogo y hago videos sobre arte y sobre lo que el arte dice de nosotros. Si te interesa, suscribite. También escribo El Reflejo, un newsletter para pensar con más tiempo: el link está en el perfil del canal.
 
 ¿Encontraste a Ícaro antes de que apareciera el círculo?
 
