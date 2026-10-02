@@ -45,12 +45,21 @@ quien escucha oye cada frase **una sola vez**, sin contexto y sin poder volver a
     quien habla ("los que miramos"), dejar una pregunta o volver a la imagen del principio, pero no juzga a quien mira.
     - ✗ "No está en el cuadro. Es lo que hiciste vos al principio, cuando te conté que había un hombre que cayó del cielo."
 
-13. **Cada video le deja algo a quien mira, más allá de la obra.** Pedido de Dano al leer la primera versión del 04: no
-    alcanza con mostrar el cuadro y explicar el mecanismo psicológico ("negamos la muerte"); tiene que quedar algo para pensar
-    la propia vida. Desde la psicología o el psicoanálisis, sin nombrar escuelas (alcanza con Freud o con desarrollar la
-    idea), en tono de divulgación: abierto, nunca una receta ni una verdad cerrada.
-    - ✗ "Y aun así, nos cuesta verla." (describe; no deja nada)
-    - ✓ "Freud escribió algo más: lo que se termina no vale menos. Vale más. […] Y quizás por eso, todo lo demás se ve mejor."
+13. **Cada video le deja algo a quien mira, más allá de la obra.** El canal es de divulgación (decisión de Dano, ver
+    `docs/linea-editorial.md`): quien termina el video se lleva al menos una de estas cosas, y mejor si son varias:
+    - **una perspectiva** sobre un tema (lo que no dura no vale menos: vale más);
+    - **datos que no conocía** (la calavera escondida; Freud y el paseo con un poeta, quizás Rilke);
+    - **cómo funciona la cabeza** en algo (el duelo por adelantado: dejar de disfrutar algo para no sufrir cuando se termine);
+    - **un vínculo entre el arte o la cultura y la mente** o lo humano (la anamorfosis como forma de mirar lo que se termina).
+
+    No alcanza con mostrar el cuadro y nombrar el mecanismo ("negamos la muerte"). Desde la psicología o el psicoanálisis,
+    sin nombrar escuelas (alcanza con Freud o con desarrollar la idea), en tono de divulgación: abierto, nunca una receta ni
+    una verdad cerrada.
+    - ✗ "Y aun así, nos cuesta verla." (versión 1 del 04: describe, no deja nada)
+    - ✓ El paseo de Freud con el poeta, el duelo por adelantado, las dos reacciones ante lo que se acaba y "para ver el cuadro
+      entero, hay que moverse" (versión de Dano del 04).
+    - **El concepto también se cuenta como historia.** En la versión de Dano, la idea de Freud llega como una escena (un
+      paseo de verano, un poeta que no puede disfrutar), no como una definición. Se entiende y se recuerda mejor.
     - Pregunta para hacerse antes de escribir el giro: ¿qué entiende de sí mismo quien terminó de mirar el video?
 
 ## Lo que sí se mantiene
@@ -103,4 +112,5 @@ dice exactamente el guion nuevo. Comandos: `videos/03-narciso/guion.md`.
 - [ ] ¿Cada "lo", "los", "ellos", "esto" tiene un referente que se nombró antes y que no puede confundirse?
 - [ ] ¿Las referencias al principio del video vuelven a decir de qué se trata?
 - [ ] ¿El cierre halaga, juzga o sermonea a quien mira? Si lo hace, reescribirlo.
-- [ ] ¿Qué se lleva quien mira para pensar su propia vida? Si la respuesta es solo "un dato sobre el cuadro", falta el aporte (regla 13).
+- [ ] ¿Qué se lleva quien mira? Una perspectiva, datos que no conocía, cómo funciona la cabeza en algo o un vínculo entre arte y
+  mente. Si la respuesta es solo "el cuadro explicado", falta el aporte (regla 13).

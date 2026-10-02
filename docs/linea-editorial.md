@@ -9,6 +9,11 @@
   1. **Una obra o un artista como relato**: tal pintor, pintora o escultor, o tal obra, representa algo, o quiso mostrar algo.
   2. **Un proceso humano visto a través del arte**: la memoria, el amor, los vínculos. Con un suceso concreto, un dato y un giro,
      algo más extenso que el 01.
+- **El canal es de divulgación** (Dano, 2/10/2026): cada video deja algo a quien lo mira: una perspectiva sobre un tema,
+  datos que no conocía, cómo funciona la cabeza en algo, o un vínculo entre el arte o la cultura y la mente o lo humano.
+  Mostrar la obra y nombrar un concepto no alcanza. Cómo se escribe: regla 13 de `docs/guia-de-escritura.md`.
+- **Cada video estrena algo** (un efecto o un movimiento nuevo, aunque sea en un momento corto), dentro del sistema visual
+  propio: regla 14 de `docs/guia-visual.md`.
 - Tono: el de El Reflejo, sin que sea obligatorio.
 - Meta: 1 video por semana es un éxito; 2 es un éxito rotundo.
 - **Ritmo (decisión de Dano, 2/10/2026):** sin compromiso fijo; se alternan semanas de 1 y de 2 videos según cuántos haya
