@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Portada · Los embajadores</title>
+<link rel="stylesheet" href="../../diseno/sistema.css">
+<style>
+  :root { --noche: #16120E; --crema: #ECE4D2; --rojo: #B8362C; }
+  body { margin: 0; }
+  #portada { background: var(--noche); }
+</style>
+</head>
+<body>
+<!-- Todo dentro del recorte 3:4 de la grilla del perfil (y 240–1680) -->
+<section class="frame" id="portada">
+  <div class="puntos"></div>
+  <div class="tira titular" data-rasgado style="top:290px;left:44px;font-size:96px;transform:rotate(-1.5deg)">Hay una calavera<br>en este cuadro.</div>
+  <div class="lamina" style="top:600px;left:90px;width:900px;height:887px;transform:rotate(1deg)">
+    <div class="plate" data-img="emb" data-crop="0,0,3840,3784"></div>
+  </div>
+  <div class="negro serif" style="top:1450px;left:560px;font-size:86px;transform:rotate(-2deg)">¿La ves?</div>
+  <div class="ficha" style="top:1500px;left:110px;transform:rotate(-1deg)">Hans Holbein el Joven<br>Los embajadores, 1533</div>
+  <div class="grano"></div>
+</section>
+<script type="module">
+import { encuadrar, rasgar } from '../../diseno/sistema.js';
+encuadrar(document, { emb: { src: 'assets/embajadores.jpg', w: 3840, h: 3784 } });
+rasgar(document);
+await Promise.all([document.fonts.ready, (() => { const i = new Image(); i.src = 'assets/embajadores.jpg'; return i.decode(); })()]);
+window.listo = true;
+</script>
+</body>
+</html>

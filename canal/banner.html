@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Banner · YouTube</title>
+<link rel="stylesheet" href="../diseno/sistema.css">
+<style>
+  /* Banner de YouTube: 2560×1440. Lo que se ve en todos los dispositivos es la franja central de 1546×423
+     (x 507–2053, y 508–931); en computadora se ve todo el ancho de esa franja, y la imagen entera solo en la tele. */
+  body { margin: 0; background: #555; }
+  #banner { width: 2560px; height: 1440px; }
+  .capa { position: absolute; inset: 0; }
+  .capa > * { position: absolute; }
+  #abajo { transform-origin: 0 800px; transform: scaleY(-1); opacity: .38; filter: url(#agua);
+    -webkit-mask-image: linear-gradient(to top, transparent 0px, transparent 560px, #000 800px);
+            mask-image: linear-gradient(to top, transparent 0px, transparent 560px, #000 800px); }
+  .agua { left: 0; right: 0; top: 800px; bottom: 0; background: linear-gradient(to bottom, rgba(5,12,24,.55), rgba(5,12,24,.85)); }
+  .linea { left: 0; right: 0; top: 798px; height: 3px; background: rgba(243,238,228,.18); }
+  .lamina { padding: 10px; }
+  .guia { border: 3px dashed rgba(255,60,200,.9); z-index: 99; display: none; }
+  body.guias .guia { display: block; }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute">
+  <filter id="agua" x="-2%" y="-2%" width="104%" height="104%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.003 0.04" numOctaves="2" seed="5" result="r"/>
+    <feDisplacementMap in="SourceGraphic" in2="r" scale="18" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+</svg>
+
+<section class="frame" id="banner">
+  <div class="puntos"></div>
+  <div class="agua"></div>
+  <div class="capa" id="arriba">
+    <!-- las obras se ubican solas a los costados del nombre (ver el script); todas apoyadas en el agua (y 790) -->
+    <div class="lamina" data-lado="izq" data-rot="-1"   style="width:160px;height:218px"><div class="plate" data-img="caravaggio" data-crop="0,0,1920,2325"></div></div>
+    <div class="lamina" data-lado="izq" data-rot="1.5"  style="width:300px;height:200px"><div class="plate" data-img="icaro" data-crop="0,0,3840,2505"></div></div>
+    <div class="lamina" data-lado="izq" data-rot="-2"   style="width:270px;height:205px"><div class="plate" data-img="poussin" data-crop="40,40,1200,880"></div></div>
+    <div class="lamina" data-lado="der" data-rot="1.5"  style="width:190px;height:215px"><div class="plate" data-img="landon" data-crop="0,150,1280,1450"></div></div>
+    <div class="lamina" data-lado="der" data-rot="-1"   style="width:290px;height:220px"><div class="plate" data-img="waterhouse" data-crop="1824,720,2016,1471"></div></div>
+    <div class="lamina" data-lado="der" data-rot="2"    style="width:260px;height:225px"><div class="plate" data-img="cuna" data-crop="0,700,3840,3200"></div></div>
+    <!-- el nombre, en el centro de la franja que se ve en el celular -->
+    <div class="tira titular" id="nombre" data-rasgado data-rot="-1.5" style="top:585px;font-size:104px;padding:22px 36px 18px">Dano Tommasi</div>
+    <div class="negro serif" id="lema" data-rot="1" style="top:728px;font-size:48px;padding:6px 22px 10px">psicología, arte y cultura</div>
+  </div>
+  <div class="capa" id="abajo"></div>
+  <div class="linea"></div>
+  <div class="guia" style="left:507px;top:508px;width:1546px;height:423px"></div>
+  <div class="grano"></div>
+</section>
+
+<script type="module">
+import { encuadrar, rasgar } from '../diseno/sistema.js';
+const IMGS = {
+  icaro:      { src: '../videos/02-icaro/assets/icaro.jpg',        w: 3840, h: 2505 },
+  landon:     { src: '../videos/02-icaro/assets/landon.jpg',       w: 1280, h: 1709 },
+  cuna:       { src: '../videos/01-no-hay-nadie/assets/la-cuna.jpg', w: 3840, h: 4678 },
+  caravaggio: { src: '../videos/03-narciso/assets/caravaggio.jpg', w: 1920, h: 2325 },
+  waterhouse: { src: '../videos/03-narciso/assets/waterhouse.jpg', w: 3840, h: 2191 },
+  poussin:    { src: '../videos/03-narciso/assets/poussin.jpg',    w: 1280, h: 959 },
+};
+encuadrar(document, IMGS);
+rasgar(document);
+for (const el of document.querySelectorAll('[data-rot]')) el.style.transform = `rotate(${el.dataset.rot}deg)`;
+// el nombre al centro; las obras, hacia afuera desde el nombre, con el mismo espacio entre todas y 70 px de margen
+const nombre = document.getElementById('nombre'), lema = document.getElementById('lema');
+await document.fonts.ready;
+nombre.style.left = 1280 - nombre.offsetWidth / 2 + 'px';
+lema.style.left = 1280 - lema.offsetWidth / 2 + 60 + 'px';
+const MARGEN = 70;
+for (const [lado, desde] of [['izq', nombre.offsetLeft], ['der', nombre.offsetLeft + nombre.offsetWidth]]) {
+  const obras = [...document.querySelectorAll(`[data-lado="${lado}"]`)];
+  const libre = (lado === 'izq' ? desde - MARGEN : 2560 - MARGEN - desde) - obras.reduce((a, o) => a + o.offsetWidth, 0);
+  let x = desde;
+  for (const o of obras) {
+    x += (lado === 'izq' ? -1 : 1) * libre / obras.length;
+    if (lado === 'izq') x -= o.offsetWidth;
+    o.style.left = x + 'px';
+    o.style.top = 790 - o.offsetHeight + 'px';
+    if (lado === 'der') x += o.offsetWidth;
+  }
+}
+// el reflejo: la misma escena, invertida sobre la línea del agua (y 800)
+document.getElementById('abajo').innerHTML = document.getElementById('arriba').innerHTML;
+// con --ui (capturar.mjs) se ve la franja que muestra el celular
+if (location.search.includes('ui')) document.body.classList.add('guias');
+await Promise.all([document.fonts.ready, ...Object.values(IMGS).map(im => { const i = new Image(); i.src = im.src; return i.decode(); })]);
+window.listo = true;
+</script>
+</body>
+</html>

@@ -19,6 +19,8 @@ Reglas aprendidas de las revisiones de Dano. Complementa `diseno/sistema.css` (c
    - En el 03, "Narciso nunca empezó." llegaba hasta x≈1060 y quedaba debajo de los botones en las dos apps: se partió en dos líneas.
 5. Los titulares entran en una o dos líneas pensadas: si una palabra queda sola en la segunda línea, se corta a mano con `<br>`.
 6. Los subtítulos van sobre una banda negra (legibles sobre cualquier fondo) y no repiten lo que ya está escrito en pantalla.
+   Los rótulos sobre una obra (los objetos de la mesa del 04, nombres) van en papel claro con tinta oscura, y sus líneas,
+   claras con un borde oscuro debajo. En el 04, dorado sobre una banda oscura translúcida no se leía (revisión de Dano).
 
 ## Revisión
 
@@ -31,6 +33,16 @@ Reglas aprendidas de las revisiones de Dano. Complementa `diseno/sistema.css` (c
 10. **Los subtítulos dicen exactamente el guion.** En el 02 salió "Bruegel Bruegel": al empalmar el cierre regrabado, la
    palabra del empalme quedó dos veces en los tiempos. La transcripción también se come palabras ("a todos") o las oye
    mal ("se intimidó" por "se inclinó", en el 03).
+
+11. **Un texto que la voz no dice (una carta, una cita) necesita tiempo para leerse.** Revisión de Dano del 04: la carta del
+    embajador entraba tarde, se escribía despacio y se iba antes de poder leerla. Entra apenas se nombra a quien la escribió,
+    se termina de escribir en poco más de un segundo y queda completa y quieta al menos 2 s por cada 10 palabras. Si no hay
+    ese tiempo, se saca.
+12. **Cuando la voz nombra a quien pintó o escribió, que se le vea la cara** (un autorretrato, una foto). En el 04, el
+    autorretrato de Holbein en "Londres, 1533. Holbein…". Variar el recurso: no hace falta en todos los videos ni en todas
+    las portadas.
+13. **Una idea nueva, una imagen nueva.** En el 04, el "duelo por adelantado" volvía al paisaje del paseo y no había
+    novedad visual; se cambió por otro verano (el jardín con girasoles de Klimt) que se queda sin color.
 
 Los dos controles automáticos, antes de mandar (salen con error si encuentran algo):
 
@@ -45,17 +57,22 @@ Pedido de Dano al ver el storyboard del 03: tener una gama reconocible, pero no 
 en cada reel. Lo que se mantiene es la identidad (tipografías, tiras rasgadas, fichas, láminas, grano, subtítulos sobre banda
 oscura); lo que cambia en cada video es el color, las composiciones y los efectos.
 
-11. **Antes de diseñar, mirar el reel anterior terminado.** Están en el Drive de Dano (cómo encontrarlos: `docs/linea-editorial.md`);
+14. **Antes de diseñar, mirar el reel anterior terminado.** Están en el Drive de Dano (cómo encontrarlos: `docs/linea-editorial.md`);
     se bajan a `referencias/` (no se sube al repo) y se revisan con una hoja de fotogramas:
     `ffmpeg -i referencias/NN.mp4 -vf "fps=1/2.5,scale=180:-1,tile=11x4" -frames:v 1 hoja.jpg`.
-12. **La paleta sale de las obras del video.** Cinco colores: un fondo principal, uno o dos fondos de tramo, el del cierre y un
+15. **La paleta sale de las obras del video.** Cinco colores: un fondo principal, uno o dos fondos de tramo, el del cierre y un
     acento. Se definen como variables en el `<style>` del `video.html` (no se toca `sistema.css`).
-13. **Cambiar al menos dos recursos de movimiento** respecto del video anterior (tabla de abajo), y alternar composiciones:
+16. **Cambiar al menos dos recursos de movimiento** respecto del video anterior (tabla de abajo), y alternar composiciones:
     obra a sangre con cámara, lámina, dos láminas, texto solo. Que no haya tres tramos seguidos con el título arriba a la
     izquierda y la lámina al medio.
+
+17. **Cada video estrena algo.** Pedido de Dano: además de variar, en cada video hay un espacio, aunque sea corto, para
+    probar un efecto o un movimiento que nunca se usó. Le da frescura sin romper la marca. Si funciona, pasa a `motor.js` y
+    queda disponible para los siguientes. En la tabla, el estreno de cada video va en negrita.
 
 | Video | Paleta | Recursos |
 |---|---|---|
 | 01 · No hay nadie | noche `#15233A`, teal, papel tibio, amarillo reflector | láminas, tira rasgada, reflector, sala de figuras |
 | 02 · Ícaro | noche `#15233A`, teal `#0F5E5A`, papel tibio `#E7D9C0`, amarillo `#E9C46A`, rojo | zoom logarítmico dentro del cuadro, aro que busca, flechas de mirada, papel rasgado que sube, conteo de porcentajes |
-| 03 · Narciso | estanque `#0E2420`, rosa Eco `#E5BDB3`, vino `#3E1820`, pétalo `#F2EEE4`, azafrán `#E8A33D` | obras a sangre con cámara, giro de 180°, marea (`marea()` en `motor.js`), agua (filtros SVG de desplazamiento), eco tipográfico sincronizado con el eco de la voz, citas palabra por palabra (`porPalabra()`), título reflejado, final que vuelve al primer cuadro |
+| 03 · Narciso | estanque `#0E2420`, rosa Eco `#E5BDB3`, vino `#3E1820`, pétalo `#F2EEE4`, azafrán `#E8A33D` | obras a sangre con cámara, giro de 180°, **marea** (`marea()` en `motor.js`), **agua** (filtros SVG de desplazamiento), **eco tipográfico** sincronizado con el eco de la voz, citas palabra por palabra (`porPalabra()`), título reflejado, final que vuelve al primer cuadro |
+| 04 · Los embajadores | nogal `#16120E`, hueso `#ECE4D2`, lacre `#B8362C`, oro viejo `#C49A45`, pizarra `#232A31` | **anamorfosis animada** (`anamorfosis()`: el cuadro se comprime en la dirección de la mancha y la calavera se endereza), **desteñir** (`destenir()`: un paisaje se queda sin color de arriba hacia abajo), **tinta** (`tinta()`: citas escritas línea por línea), plano visto desde arriba, líneas de catálogo, pantalla partida, transiciones de costado, final que vuelve al primer cuadro |

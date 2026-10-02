@@ -163,3 +163,31 @@ export function porPalabra(el, t, tiempos, dur = 0.25) {
     s.style.transform = `translateY(${lerp(18, 0, p)}px)`;
   });
 }
+
+// ───── Efectos estrenados en el 04 ─────
+// Anamorfosis: la obra (un div con la imagen de fondo a su tamaño original) se comprime con factor k en la dirección
+// `ang` (grados, la de la mancha), alrededor del punto (cx, cy) de la obra, que queda en (px, py) de su caja.
+// Con k = 1 es la obra tal cual; con k ≈ 0,2 la calavera de Holbein se ve como desde el costado.
+export function anamorfosis(el, { cx, cy, px, py, s = 1, k = 1, ang = 0 }) {
+  el.style.left = `${px - cx}px`;
+  el.style.top = `${py - cy}px`;
+  el.style.transformOrigin = `${cx}px ${cy}px`;
+  el.style.transform = `scale(${s}) rotate(${-ang}deg) scaleX(${k}) rotate(${ang}deg)`;
+}
+
+// Tinta: cada .linea del contenedor se escribe de izquierda a derecha, una después de la otra (p de 0 a 1).
+export function tinta(el, p) {
+  const ls = [...el.querySelectorAll('.linea')], q = clamp(p) * ls.length;
+  ls.forEach((l, i) => {
+    const f = clamp(q - i) * 112 - 6, m = `linear-gradient(to right, #000 ${f}%, transparent ${f + 6}%)`;
+    l.style.webkitMaskImage = m; l.style.maskImage = m;
+  });
+  el.style.visibility = p > 0 ? 'visible' : 'hidden';
+}
+
+// Desteñir: una copia en gris de la imagen (el) la va cubriendo de arriba hacia abajo, con el borde suave (p de 0 a 1).
+export function destenir(el, p) {
+  const f = clamp(p) * 130 - 15, m = `linear-gradient(to bottom, #000 ${f}%, transparent ${f + 15}%)`;
+  el.style.webkitMaskImage = m; el.style.maskImage = m;
+  el.style.visibility = p > 0 ? 'visible' : 'hidden';
+}
