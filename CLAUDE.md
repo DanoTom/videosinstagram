@@ -17,6 +17,10 @@ Antes de escribir un guion, leer:
   efectos de un video a otro (antes de diseñar, mirar el reel anterior terminado, que está en el Drive de Dano: ver
   `docs/linea-editorial.md`).
 
+Uno de cada tres videos es del formato E, "Cómo funciona" (más psicología, con la obra como puerta de entrada): ver
+`docs/estrategia-contenido.md` y los recursos visuales de `docs/guia-visual.md` § "Explicar psicología". Los números de cada
+video se anotan en `docs/resultados.md`.
+
 Para elegir tema: el banco de temas de `docs/estrategia-contenido.md` y `docs/banco-de-pistas.md` (obras leídas por
 Freud, Lacan, Winnicott, Langer, Pichon-Rivière y otros; separar siempre el dato de la interpretación y no diagnosticar
 artistas). Los informes completos de donde salen las pistas están en `docs/investigacion/`.

@@ -14,6 +14,9 @@
   Mostrar la obra y nombrar un concepto no alcanza. Cómo se escribe: regla 13 de `docs/guia-de-escritura.md`.
 - **Cada video estrena algo** (un efecto o un movimiento nuevo, aunque sea en un momento corto), dentro del sistema visual
   propio: regla 17 de `docs/guia-visual.md`.
+- **Más psicología, de a poco** (Dano, 2/10/2026): uno de cada tres videos es del formato E, "Cómo funciona"
+  (`docs/estrategia-contenido.md`), para probar si la gente responde a más contenido de psicología. La obra o la cultura
+  sigue siendo la puerta de entrada. Se mide en `docs/resultados.md` y a los seis videos se decide la proporción.
 - Tono: el de El Reflejo, sin que sea obligatorio.
 - Meta: 1 video por semana es un éxito; 2 es un éxito rotundo.
 - **Ritmo (decisión de Dano, 2/10/2026):** sin compromiso fijo; se alternan semanas de 1 y de 2 videos según cuántos haya

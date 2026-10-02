@@ -51,6 +51,27 @@ python3 herramientas/cotejar.py videos/NN/guion.md videos/NN/audio/voz-editada.j
 python3 herramientas/quietud.py videos/NN/NN.mp4                                       # pantalla vacía o quieta
 ```
 
+## Explicar psicología (formato E)
+
+El desafío que planteó Dano: explicar un mecanismo psíquico con imágenes atractivas, no con palabras flotando. Recursos,
+todos posibles con el sistema (`sistema.css`, `motor.js`); cada video del formato E usa dos o tres y estrena uno:
+
+1. **Quien mira hace el experimento.** El "¿La ves?" del 02 y el 04 llevado a la psicología: una figura ambigua, una mancha
+   de tinta, una ilusión. El concepto se vive antes de explicarse.
+2. **Una personita que vive el mecanismo.** Un personaje simple y recurrente (como las personitas del 02), dibujado con
+   `trazo()`, con dos capas: lo que muestra y lo que siente (una sombra, un hilo, un color). Puede ser la firma del formato.
+3. **Metáforas hechas objeto.** Proyectar es un proyector que tira su imagen sobre otro; un recuerdo, un cajón que se abre;
+   un vínculo, un hilo que se estira con la distancia. La metáfora se arma en pantalla y se mueve.
+4. **Escenas cotidianas en collage**, con fotos de época de dominio público (Biblioteca del Congreso de Estados Unidos, FSA)
+   y recortes: la situación que quien mira reconoce.
+5. **Datos que se ven:** personitas que se cuentan, barras, líneas de tiempo (como el 85 % → 31 % del 02).
+6. **Palabras que hacen lo que dicen.** No flotan: "reprimir" se hunde debajo de una línea, "negar" se tacha y vuelve a
+   aparecer, "proyectar" sale disparada hacia otro. Una o dos por video, no más.
+7. **La obra como espejo emocional.** El arte sigue estando, como imagen del estado interior o como cierre.
+
+Lo que no: diagramas de clase (cajas y flechas con texto), íconos genéricos de bancos de imágenes, cerebros, fotos de
+consultorio, y nada que sugiera un diagnóstico.
+
 ## Variar de un video a otro
 
 Pedido de Dano al ver el storyboard del 03: tener una gama reconocible, pero no repetir la misma paleta ni los mismos efectos
