@@ -244,8 +244,10 @@ function seek(t) {
   if (t >= T.e4 - 0.1 && t < T.e5 + 0.6) {
     pieza($('tira4'), t, { t0: W('tres testigos').s - 0.05, t1: T.e5, sale: 'fundido' });
     pieza($('fichaO'), t, { t0: W('ovidio').s, entra: 'fundido', t1: T.e5 });
-    [['c1', 'r1', 'pescador'], ['c2', 'r2', 'pastor'], ['c3', 'r3', 'campesino']].forEach(([c, r, w]) => {
-      pieza($(c), t, { t0: W(w).s - 0.05, t1: T.e5, sale: 'fundido' });
+    // los tres recortes entran apenas se nombra el poema (antes había ~3 s vacíos) y se acercan despacio mientras se habla de ellos
+    const crece = 1 + 0.07 * ease.suave(prog(t, T.e4, T.e5));
+    [['c1', 'r1', 'pescador'], ['c2', 'r2', 'pastor'], ['c3', 'r3', 'campesino']].forEach(([c, r, w], k) => {
+      pieza($(c), t, { t0: T.e4 + 0.5 + k * 0.35, t1: T.e5, sale: 'fundido', escala: crece });
       pieza($(r), t, { t0: W(w).s + 0.2, entra: 'fundido', t1: T.e5 });
     });
     const tm = W('mirando para otro lado').s;

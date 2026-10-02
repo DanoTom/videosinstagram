@@ -6,7 +6,8 @@
 - Pantalla vacía: más de --vacia segundos seguidos en que casi todo el cuadro es fondo liso (menos de --ocupacion del
   cuadro tiene algo encima). Es lo que se notó en el 02: casi 10 s de "¿Por qué nadie ayuda?" sobre el verde, hasta que
   aparecían las personitas.
-- Pantalla quieta: más de --quieta segundos sin que entre ni se mueva nada (el grano y el agua no cuentan).
+- Pantalla quieta: más de --quieta segundos en que cambia menos del 1 % del cuadro (el grano y el agua no cuentan;
+  una ficha que entra o un trazo que se dibuja sí).
 Sale con código 1 si encuentra tramos vacíos.
 """
 import subprocess, sys
@@ -29,7 +30,8 @@ for k, f in enumerate(fr):
     vals, cuenta = np.unique(q, axis=0, return_counts=True)
     fondo = vals[cuenta.argmax()] * 24 + 12
     ocup.append(float((np.abs(f - fondo).sum(2) > 45).mean()))
-    cambio.append(float(np.abs(f - fr[max(k - FPS, 0)]).mean()) if k else 99.0)
+    # cambio: qué parte del cuadro cambió de verdad en el último segundo (el grano y el agua mueven poco cada píxel)
+    cambio.append(float((np.abs(f - fr[max(k - FPS, 0)]).sum(2) > 60).mean()) if k else 1.0)
 
 def tramos(cond, minimo):
     out, ini = [], None
@@ -43,7 +45,7 @@ def tramos(cond, minimo):
     return out
 
 vacios = tramos([o < OCUP for o in ocup], VACIA)
-quietos = tramos([c < 2.0 for c in cambio], QUIETA)
+quietos = tramos([c < 0.01 for c in cambio], QUIETA)  # menos del 1 % del cuadro cambió
 for a, b in vacios:
     print(f"VACÍA   {a:6.1f}–{b:6.1f} s ({b - a:.1f} s): menos del {OCUP:.0%} del cuadro tiene algo")
 for a, b in quietos:

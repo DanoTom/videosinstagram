@@ -30,7 +30,8 @@ Qué se sacó:
 | "En 1968, un artículo fundamental demostró que" | La fuente sigue nombrada ("La psicología social tiene una respuesta") y el año y los autores quedan en la ficha en pantalla (Darley y Latané, 1968). |
 | "En el cuadro de Bruegel pasa algo parecido." | Anunciaba lo que la frase siguiente dice completo ("la tragedia de Ícaro se vuelve invisible"), y la imagen ya vuelve al cuadro. |
 
-Además: las personitas entran apagadas apenas se hace la pregunta (antes había ~10 s de pantalla vacía), la palabra
+Además: los tres recortes de los testigos entran apenas se nombra el poema y las personitas, apagadas, apenas se hace la
+pregunta (antes había ~3 s y ~10 s de pantalla vacía, que marcaba `herramientas/quietud.py`), la palabra
 "Bruegel" ya no sale dos veces en los subtítulos y los subtítulos respetan la zona segura común con YouTube.
 Voz: `audio/voz-90.wav` (87,7 s), con 1,5 s de silencio después de "¿Lo encontrás?" para buscar.
 
