@@ -2,7 +2,39 @@
 
 Formato B (leer un cuadro) · Duración final: 1 min 44 s · 1080×1920 · Sistema visual v1.
 
-## Guion (voz en off) · versión final de Dano, con las correcciones de la revisión del video
+## Guion (voz en off) · versión de 90 s, para YouTube Shorts (octubre de 2026)
+
+La versión publicada en Instagram dura 1:44. Para YouTube se acortó la misma grabación con el método de los 90 s
+(`herramientas/recortar.py`, ver `docs/guia-de-escritura.md`): salen dos frases, los silencios largos se achican a 0,32 s y la
+voz se acelera un 3 %. Las frases que reescribió Dano quedan intactas. Lo que se dice:
+
+> En este cuadro hay un hombre que cayó del cielo. ¿Lo encontrás?
+>
+> Acá: las piernas de Ícaro, hundiéndose en el mar. Y lo raro no es lo chiquito que es. Es que nadie lo mira.
+>
+> Su padre, Dédalo, le había hecho alas de plumas y cera, y le advirtió que no volara cerca del sol. No le hizo caso.
+>
+> En el poema de Ovidio que cuenta este mito hay tres testigos: un pescador, un pastor y un campesino. Ven volar a Dédalo y a Ícaro, y creen que son dioses. Bruegel pintó a los tres… mirando para otro lado.
+>
+> ¿Por qué nadie ayuda? La psicología social tiene una respuesta. Cuando alguien cree que es el único que presencia una emergencia, el 85% corre a buscar ayuda. Pero cuando cree que hay más personas alrededor, la responsabilidad se diluye y la ayuda cae al 31%. Al haber tanta gente y estar cada uno en lo suyo, la tragedia de Ícaro se vuelve invisible.
+>
+> Pero en el cuadro hay alguien que sí mira: esta perdiz.
+> Ovidio cuenta que, cuando Dédalo entierra a su hijo, una perdiz lo mira y aplaude con las alas. Es su sobrino, que había sido transformado en ave luego de que Dédalo, por envidia, lo empujara desde lo alto de un templo.
+>
+> Bruegel pintó dos maneras de mirar el dolor ajeno: seguir con lo tuyo por indiferencia, o festejarlo por venganza. Falta una tercera: la del que se detiene a ayudar. No está en el cuadro. Esa queda afuera, del lado de los que miramos.
+
+Qué se sacó:
+
+| Frase | Por qué se puede sacar |
+|---|---|
+| "En 1968, un artículo fundamental demostró que" | La fuente sigue nombrada ("La psicología social tiene una respuesta") y el año y los autores quedan en la ficha en pantalla (Darley y Latané, 1968). |
+| "En el cuadro de Bruegel pasa algo parecido." | Anunciaba lo que la frase siguiente dice completo ("la tragedia de Ícaro se vuelve invisible"), y la imagen ya vuelve al cuadro. |
+
+Además: las personitas entran apagadas apenas se hace la pregunta (antes había ~10 s de pantalla vacía), la palabra
+"Bruegel" ya no sale dos veces en los subtítulos y los subtítulos respetan la zona segura común con YouTube.
+Voz: `audio/voz-90.wav` (87,7 s), con 1,5 s de silencio después de "¿Lo encontrás?" para buscar.
+
+### Versión publicada en Instagram (1:44) · versión final de Dano, con las correcciones de la revisión del video
 
 > En este cuadro hay un hombre que cayó del cielo. ¿Lo encontrás?
 >
@@ -53,6 +85,20 @@ Las diferencias con el primer borrador dieron origen a [la guía de escritura](.
 - Leé "85%" y "31%" como "ochenta y cinco por ciento" y "treinta y uno por ciento" (escritos así le salen mejor).
 
 ## Producción
+
+Versión de 90 s (YouTube):
+
+```bash
+cd videos/02-icaro/audio
+python3 ../../../herramientas/recortar.py voz-editada.wav voz-editada.json voz-90-recortada.wav voz-90-recortada.json \
+  --cortar="en el cuadro de bruegel pasa algo parecido" --cortar="en 1968 un artículo fundamental demostró que" --silencio=0.32 --tempo=1.03
+python3 ../../../herramientas/pausas.py voz-90-recortada.wav voz-90-recortada.json voz-90.wav voz-90.json \
+  "encontrás?:1.5" "invisible.:0.4" "templo.:0.5" "caso.:0.2" --cola=2.0
+cd ../../..
+node herramientas/render.mjs videos/02-icaro/video.html --audio=videos/02-icaro/audio/voz-90.wav --workers=4
+```
+
+Versión publicada en Instagram (1:44):
 
 - Voz: ElevenLabs (voz "Javier – Deep, Confident and Measured"). Hasta "…lo alto de un templo" es la grabación v2; el cierre (opción B)
   se grabó aparte (`audio/cierre-v3.mp3`), se empalmó en el silencio previo y se bajó 1,1 dB para igualar volumen.
