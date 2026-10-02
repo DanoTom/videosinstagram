@@ -23,6 +23,8 @@ guion → storyboard → voz (Dano o ElevenLabs) → `herramientas/transcribir.p
 `herramientas/eco.py` agrega eco a palabras puntuales de la voz (03). `herramientas/recortar.py` acorta una voz ya grabada
 (saca frases enteras, achica silencios, acelera apenas) y recalcula los tiempos por palabra.
 
+- Cada video se publica en Instagram y en YouTube Shorts con el mismo archivo: `publicacion.md` lleva las dos descripciones
+  (ver `docs/linea-editorial.md`).
 - Obras: Wikimedia Commons con `herramientas/commons.py` (solo anchos 960/1280/1920/3840; los originales dan 429).
 - Verificar cada dato antes de ponerlo en un guion y citar la fuente en `guion.md`.
 - Revisar siempre con hojas de fotogramas (`--hoja`) y tiras (`--tira`) antes del render completo, y antes de mandar correr

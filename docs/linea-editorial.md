@@ -22,5 +22,15 @@
   `referencias/`: `curl -L -o referencias/NN.mp4 "https://drive.usercontent.google.com/download?id=<id>&export=download&confirm=t"`.
 - Cada video varía la paleta y los efectos respecto del anterior, dentro de la misma identidad (ver `docs/guia-visual.md`).
 - Descripción del posteo: la invitación a seguir la cuenta y El Reflejo va ahí, junto con las obras y las fuentes. Se guarda en `publicacion.md`.
+- **YouTube Shorts (desde octubre de 2026):** los mismos reels, sin trabajo extra. Reglas:
+  - El mismo MP4 para las dos plataformas (por eso la zona segura común de `docs/guia-visual.md`). Nunca el archivo
+    descargado de Instagram, que tiene marca de agua.
+  - Sin música agregada desde afuera: un Short de más de 1 minuto con un reclamo de derechos se bloquea. Si se quiere
+    música, solo desde la biblioteca de sonidos de la app de YouTube.
+  - Cada `publicacion.md` trae una sección "YouTube Shorts" con título (YouTube lo usa para buscar: nombre de la obra, del
+    mito o del artista) y descripción. En los Shorts los links de la descripción no se pueden tocar: El Reflejo va en los
+    links del perfil del canal.
+  - Prueba de 8 videos: mirar en YouTube Studio qué porcentaje lo mira en vez de pasarlo y hasta qué segundo llega.
+  - El 02 (Ícaro) tiene una versión de 90 s solo para YouTube (`02-icaro-90.mp4`); la de Instagram quedó como se publicó.
 
 Estrategia y banco de temas: [estrategia-contenido.md](estrategia-contenido.md).
