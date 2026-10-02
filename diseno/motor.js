@@ -77,7 +77,8 @@ export function subtitulos(voz, ocultar, maxPalabras = 8) {
 export function pieza(el, t, { t0, t1 = Infinity, entra = 'pegar', sale = 'fundido', dur = 0.45, dx = 0, dy = 0, escala = 1 } = {}) {
   const rot = +(el.dataset.rot || 0);
   const pe = prog(t, t0, t0 + dur), ps = prog(t, t1, t1 + 0.35);
-  if (pe <= 0 || ps >= 1) { el.style.visibility = 'hidden'; return; }
+  // oculta también con opacidad: un hijo con visibility: visible (un trazo ya dibujado) se vería igual
+  if (pe <= 0 || ps >= 1) { el.style.visibility = 'hidden'; el.style.opacity = 0; return; }
   el.style.visibility = 'visible';
   let x = dx, y = dy, s = escala, r = rot, o = 1;
   if (entra === 'pegar') {           // cae sobre la mesa: grande, girado, y se asienta con rebote
@@ -190,4 +191,53 @@ export function destenir(el, p) {
   const f = clamp(p) * 130 - 15, m = `linear-gradient(to bottom, #000 ${f}%, transparent ${f + 15}%)`;
   el.style.webkitMaskImage = m; el.style.maskImage = m;
   el.style.visibility = p > 0 ? 'visible' : 'hidden';
+}
+
+// ───── Efectos estrenados en el 05 ─────
+// Dibujo: los trazos de un dibujo (<path pathLength="1">) se dibujan en orden, uno después del otro, repartiendo p según
+// su largo: como una mano que dibuja sin levantar el lápiz. Con p bajando, se borra al revés. Las piezas .relleno y
+// .costura aparecen con un fundido entre las fracciones `rellenos` = [a, b] de p (con a < 0 están desde el principio;
+// con a > 1, nunca).
+export function dibujo(el, p, { rellenos = [0.7, 0.95] } = {}) {
+  const ps = [...el.querySelectorAll('path[pathLength]')].filter(x => !x.closest('.relleno, .costura'));
+  if (!el._largos) el._largos = ps.map(x => x.getTotalLength());
+  const total = el._largos.reduce((a, b) => a + b, 0);
+  let q = clamp(p) * total;
+  ps.forEach((x, i) => { trazo(x, q / el._largos[i]); q -= el._largos[i]; });
+  const f = rellenos[0] < 0 ? 1 : rellenos[0] > 1 ? 0 : ease.out(prog(p, rellenos[0], rellenos[1]));
+  for (const r of el.querySelectorAll('.relleno, .costura')) {
+    const d = r.dataset.desde;  // un relleno puede aparecer con su trazo (el cachete con la cara): data-desde="0.3"
+    r.style.opacity = (d === undefined ? f : ease.out(prog(p, +d, +d + 0.08))) * (+(r.getAttribute('opacity') ?? 1));
+  }
+  el.style.visibility = p > 0 || rellenos[0] < 0 ? 'visible' : 'hidden';
+}
+
+// Hilo: una cuerda de A a B. `comba` es cuánto cuelga (px) y `amp` cuánto vibra (px), como una cuerda pulsada: una onda
+// estacionaria con su armónico. Con p < 1 el hilo todavía se está tendiendo de A hacia B.
+export function hilo(path, [ax, ay], [bx, by], { comba = 0, amp = 0, t = 0, frec = 3.2, p = 1 } = {}) {
+  const dx = bx - ax, dy = by - ay, L = Math.hypot(dx, dy) || 1, nx = -dy / L, ny = dx / L, n = 48, pts = [];
+  const fin = clamp(p);
+  for (let i = 0; i <= n; i++) {
+    const u = (i / n) * fin;
+    const vib = amp * (Math.sin(Math.PI * u) * Math.sin(2 * Math.PI * frec * t) + 0.3 * Math.sin(2 * Math.PI * u) * Math.sin(2 * Math.PI * frec * 2.1 * t + 1));
+    pts.push(`${(ax + dx * u + nx * vib).toFixed(1)} ${(ay + dy * u + comba * 4 * u * (1 - u) + ny * vib).toFixed(1)}`);
+  }
+  path.setAttribute('d', 'M' + pts.join(' L '));
+  path.style.visibility = p > 0 ? 'visible' : 'hidden';
+}
+
+// Cinta sin fin: el texto de la cinta (un <span> con el texto repetido dos veces) corre hacia la izquierda sin terminar
+// nunca. `x` es cuánto avanzó, en px (se pasa ya integrado, para poder frenarla y volver a arrancarla).
+export function cinta(el, x) {
+  const s = el.firstElementChild, w = s.scrollWidth / 2;
+  s.style.transform = `translateX(${-(((x % w) + w) % w)}px)`;
+}
+
+// Cine: dibuja en un <canvas> el cuadro de la película (imágenes ya decodificadas) que corresponde al instante t,
+// a `fps` cuadros por segundo desde t0, con el parpadeo de un proyector. `recorte` = [x, y, ancho, alto] del cuadro.
+export function cine(canvas, cuadros, t, t0, fps = 12, recorte) {
+  const k = clamp(Math.floor((t - t0) * fps), 0, cuadros.length - 1), im = cuadros[k];
+  const [sx, sy, sw, sh] = recorte || [0, 0, im.naturalWidth, im.naturalHeight];
+  canvas.getContext('2d').drawImage(im, sx, sy, sw, sh, 0, 0, canvas.width, canvas.height);
+  canvas.style.filter = `brightness(${(1 + 0.05 * Math.sin(k * 2.7) + 0.03 * Math.sin(k * 7.3)).toFixed(3)}) contrast(1.05)`;
 }

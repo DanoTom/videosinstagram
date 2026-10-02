@@ -61,7 +61,7 @@ video en [resultados.md](resultados.md); después de seis videos se decide la pr
 
 | Tema | Gancho posible | Imágenes |
 |---|---|---|
-| El objeto transicional (Winnicott) · **05, en producción** | "¿Tuviste un trapito, una mantita o un peluche sin el que no te podías dormir?" | Pinturas de madres e hijos (Cassatt, Morisot), la personita con su manta, el hilo que se estira |
+| El objeto transicional (Winnicott) · **05, hecho** | "¿Tuviste un trapito, una mantita o un peluche sin el que no te podías dormir?" | Pinturas de madres e hijos (Cassatt, Morisot), la personita con su manta, el hilo que se estira |
 | Proyección (las manchas de Rorschach, 1921, de dominio público) | "¿Qué ves en esta mancha?" | Las láminas originales; la mancha se transforma en lo que cada uno ve. Contar el debate sobre la validez del test |
 | Duelo y melancolía (Freud, 1917) | La diferencia entre perder a alguien y perderse uno con esa pérdida | Durero, *Melencolia I*; Käthe Kollwitz (de dominio público desde 2016) |
 | El juego del carretel (Freud, *Más allá del principio de placer*, 1920) | "Un nene de un año y medio tiraba un carretel y decía «o-o-o». Era su nieto." | Un carretel dibujado con `trazo()`; el hilo que va y vuelve |
