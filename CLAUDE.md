@@ -7,7 +7,7 @@ Claude trabaja como director, guionista, diseñador y animador. Todo se escribe 
 
 **El canal es de divulgación:** cada video deja algo a quien lo mira (una perspectiva, datos que no conocía, cómo funciona la
 cabeza en algo, o un vínculo entre arte y mente), no solo la obra explicada. Y cada video estrena un efecto o movimiento
-nuevo, dentro del sistema visual. Ver la regla 13 de `docs/guia-de-escritura.md` y la 14 de `docs/guia-visual.md`.
+nuevo, dentro del sistema visual. Ver la regla 13 de `docs/guia-de-escritura.md` y la 17 de `docs/guia-visual.md`.
 
 Antes de escribir un guion, leer:
 - `docs/guia-de-escritura.md`: reglas de escritura (claridad antes que ingenio, nada dado por sabido, volver siempre a la obra).

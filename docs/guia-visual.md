@@ -32,6 +32,16 @@ Reglas aprendidas de las revisiones de Dano. Complementa `diseno/sistema.css` (c
    palabra del empalme quedó dos veces en los tiempos. La transcripción también se come palabras ("a todos") o las oye
    mal ("se intimidó" por "se inclinó", en el 03).
 
+11. **Un texto que la voz no dice (una carta, una cita) necesita tiempo para leerse.** Revisión de Dano del 04: la carta del
+    embajador entraba tarde, se escribía despacio y se iba antes de poder leerla. Entra apenas se nombra a quien la escribió,
+    se termina de escribir en poco más de un segundo y queda completa y quieta al menos 2 s por cada 10 palabras. Si no hay
+    ese tiempo, se saca.
+12. **Cuando la voz nombra a quien pintó o escribió, que se le vea la cara** (un autorretrato, una foto). En el 04, el
+    autorretrato de Holbein en "Londres, 1533. Holbein…". Variar el recurso: no hace falta en todos los videos ni en todas
+    las portadas.
+13. **Una idea nueva, una imagen nueva.** En el 04, el "duelo por adelantado" volvía al paisaje del paseo y no había
+    novedad visual; se cambió por otro verano (el jardín con girasoles de Klimt) que se queda sin color.
+
 Los dos controles automáticos, antes de mandar (salen con error si encuentran algo):
 
 ```bash
@@ -45,16 +55,16 @@ Pedido de Dano al ver el storyboard del 03: tener una gama reconocible, pero no 
 en cada reel. Lo que se mantiene es la identidad (tipografías, tiras rasgadas, fichas, láminas, grano, subtítulos sobre banda
 oscura); lo que cambia en cada video es el color, las composiciones y los efectos.
 
-11. **Antes de diseñar, mirar el reel anterior terminado.** Están en el Drive de Dano (cómo encontrarlos: `docs/linea-editorial.md`);
+14. **Antes de diseñar, mirar el reel anterior terminado.** Están en el Drive de Dano (cómo encontrarlos: `docs/linea-editorial.md`);
     se bajan a `referencias/` (no se sube al repo) y se revisan con una hoja de fotogramas:
     `ffmpeg -i referencias/NN.mp4 -vf "fps=1/2.5,scale=180:-1,tile=11x4" -frames:v 1 hoja.jpg`.
-12. **La paleta sale de las obras del video.** Cinco colores: un fondo principal, uno o dos fondos de tramo, el del cierre y un
+15. **La paleta sale de las obras del video.** Cinco colores: un fondo principal, uno o dos fondos de tramo, el del cierre y un
     acento. Se definen como variables en el `<style>` del `video.html` (no se toca `sistema.css`).
-13. **Cambiar al menos dos recursos de movimiento** respecto del video anterior (tabla de abajo), y alternar composiciones:
+16. **Cambiar al menos dos recursos de movimiento** respecto del video anterior (tabla de abajo), y alternar composiciones:
     obra a sangre con cámara, lámina, dos láminas, texto solo. Que no haya tres tramos seguidos con el título arriba a la
     izquierda y la lámina al medio.
 
-14. **Cada video estrena algo.** Pedido de Dano: además de variar, en cada video hay un espacio, aunque sea corto, para
+17. **Cada video estrena algo.** Pedido de Dano: además de variar, en cada video hay un espacio, aunque sea corto, para
     probar un efecto o un movimiento que nunca se usó. Le da frescura sin romper la marca. Si funciona, pasa a `motor.js` y
     queda disponible para los siguientes. En la tabla, el estreno de cada video va en negrita.
 

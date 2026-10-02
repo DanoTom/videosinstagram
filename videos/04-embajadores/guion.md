@@ -130,13 +130,13 @@ marcadores), oro viejo `#C49A45` (los instrumentos; líneas de catálogo) y piza
 |---|---|---|---|
 | 1 | Gancho | El cuadro entero en una lámina, sobre nogal; la cámara se acerca despacio. 1,5 s de silencio para buscar | "¿La ves?" |
 | 2 | Promesa | Una elipse punteada lacre rodea la mancha sin taparla | "De frente, casi imposible." |
-| 3 | Los dos | Dinteville a sangre, oscurecido; entra de costado una hoja hueso con su carta escrita con tinta ("triste y lejos de su casa"). En "su amigo", la cámara cruza hasta Selve y se abre al cuadro entero; aparecen el 29 de la daga y el 25 del libro | ficha "Jean de Dinteville, embajador de Francia" · la carta: «Soy el embajador más melancólico, cansado y pesado que se haya visto» (a su hermano, 23/5/1533) · ficha "Georges de Selve, obispo de Lavaur" · ficha "Hans Holbein el Joven · Londres, 1533" · "29" · "25" |
+| 3 | Los dos | En "Londres, 1533" entra el autorretrato de Holbein (pedido de Dano: que se vea quién pinta). En "retrata", Dinteville a sangre. Apenas se dice "embajador francés" entra de costado una hoja hueso con su carta, que se escribe con tinta en poco más de un segundo y queda a la vista hasta "su amigo" (en la primera versión aparecía tarde y se iba antes de poder leerla). En "su amigo", la cámara cruza hasta Selve | ficha "Londres, 1533" · ficha "Hans Holbein el Joven · autorretrato, c. 1542–1543" · ficha "Jean de Dinteville, 29 años · embajador de Francia" · "Le escribe a su hermano, el 23 de mayo de 1533:" y la carta: «Soy el embajador más melancólico, cansado y pesado que se haya visto» · ficha "Georges de Selve, 25 años · obispo de Lavaur" |
 | 4 | La mesa | La cámara en la mesa; líneas de catálogo a cada objeto | "globo celeste" · "reloj de sol" · "cuadrante" · "globo terrestre" · "laúd" · "libro de himnos" |
 | 5 | La mancha | La cámara baja al piso. En "a la derecha", el plano visto desde arriba: el ojo camina hasta la pared. En "se acomoda", la anamorfosis: el cuadro se comprime y aparece la calavera. 2 s de silencio con la calavera entera | "Es una calavera." · ficha "Anamorfosis: una imagen deformada a propósito, que se corrige mirándola desde otro ángulo" |
 | 6 | Freud | Fondo pizarra. Freud en una lámina; la cita escrita con tinta | ficha "*De guerra y muerte*, 1915" · «En el fondo, nadie cree en su propia muerte.» |
-| 7 | El paseo | "¿Y no se arruina todo si la miramos?" sobre la calavera. Después, un paisaje de verano a sangre (Klimt, *Litzlberg am Attersee*) y Rilke en una lámina chica | ficha "Sigmund Freud · La transitoriedad, 1915" · ficha "¿Rilke? Con Lou Andreas-Salomé, 1900" |
+| 7 | El paseo | "¿Y no se arruina todo si la miramos?" sobre la calavera. Después, un paisaje de verano a sangre (Klimt, *Litzlberg am Attersee*) y la foto de Rilke en una lámina grande (520 × 690) | ficha "Sigmund Freud · La transitoriedad, 1915" · ficha "¿Rilke? Con Lou Andreas-Salomé, 1900" |
 | 8 | La flor | La flor de una noche (Reinagle, *Night-blowing Cereus*, 1807) se abre en "una flor que dura una sola noche" | ficha con la cita: «El valor de la transitoriedad es el de la escasez en el tiempo» |
-| 9 | Por adelantado | **Estreno 2:** el paisaje de verano se queda sin color mientras la voz dice "llorando el verano por adelantado": todavía está ahí, pero ya se ve gris | "llorando el verano por adelantado" |
+| 9 | Por adelantado | **Estreno 2:** otro verano de Klimt, el jardín con girasoles (Dano notó que volver al paisaje del paseo no traía nada nuevo), se queda sin color de arriba hacia abajo mientras la voz dice "llorando el verano por adelantado": todavía está ahí, pero ya se ve gris | "llorando el verano por adelantado" |
 | 10 | Las dos reacciones | Pantalla partida: arriba el cuadro de frente ("un mundo que parece eterno"), abajo la calavera enderezada ("parece borrarlo todo") | "rebelarse" · "hundirse" |
 | 11 | Cierre | En "hay que moverse", el cuadro gira de frente a costado y vuelve: las dos miradas en un mismo movimiento. El último segundo vuelve al primer cuadro (el loop empalma) | "Para ver el cuadro entero, hay que moverse." |
 
@@ -147,7 +147,11 @@ marcadores), oro viejo `#C49A45` (los instrumentos; líneas de catálogo) y piza
 - Hans Holbein el Joven, *Los embajadores* (*Jean de Dinteville y Georges de Selve*), 1533. Óleo sobre roble, 207 × 209 cm.
   National Gallery, Londres. Dominio público; Wikimedia Commons, versión de Google Arts & Culture
   (`assets/embajadores.jpg`, 3840 px).
+- Hans Holbein el Joven, *Autorretrato*, c. 1542–1543 (tizas de color). Galería de los Uffizi, Florencia. Dominio público;
+  Wikimedia Commons (`assets/holbein.jpg`).
 - Max Halberstadt, retrato de Sigmund Freud, c. 1921 (el mismo del 03).
+- Gustav Klimt, *Jardín con girasoles* (*Bauerngarten mit Sonnenblumen*), c. 1906–1907. Österreichische Galerie Belvedere,
+  Viena. Dominio público; Wikimedia Commons (`assets/girasoles.jpg`).
 - Gustav Klimt, *Litzlberg am Attersee*, c. 1910–1912. Dominio público; Wikimedia Commons (`assets/klimt.jpg`).
 - Anónimo, *Lou Andreas-Salomé y Rainer Maria Rilke en Rusia*, 1900. Dominio público; Wikimedia Commons (`assets/rilke.jpg`).
 - Philip Reinagle, *The Night-Blowing Cereus*, para *The Temple of Flora* de Robert Thornton, 1807 (NYPL). Dominio público;
