@@ -51,8 +51,40 @@ quien escucha oye cada frase **una sola vez**, sin contexto y sin poder volver a
 - Las frases cortas en los momentos de revelación ("Acá.", "No le hizo caso.", "No está en el cuadro.").
 - El cierre que vuelve al espectador y rima con el principio.
 
+## Recortar: el método de los 90 s
+
+Aprendido con el 03 (Narciso). La versión completa duraba 1:57; para entrar en los 90 s de la música de Instagram se sacaron
+seis frases de la voz ya grabada y quedó en 1:29. Dano: "el timing mejoró mucho". Recortar no fue una pérdida: el video ganó
+ritmo. Por eso el método sirve también para escribir, no solo para salvar una voz larga.
+
+**Qué se puede sacar, en este orden:**
+
+1. **Lo que la imagen ya cuenta.** "Avergonzada, se escondió… hasta que de ella solo quedó la voz": en pantalla, Eco se
+   deshace mientras su voz rebota. Decirlo además es contarlo dos veces.
+2. **Lo que se dice dos veces.** "Pero saberlo no lo salvó" ya estaba en el gancho y volvía en "¿Por qué saberlo no lo salvó?".
+3. **Lo que se entiende por lo que sigue.** "Le sonrió, y el chico le sonrió": con "vio a un chico hermoso" y "besó el agua"
+   ya se entiende que era un reflejo.
+4. **La frase que anuncia algo que la siguiente dice completo.** "Se cumplió lo que dijo el adivino" antes de "Se conoció a sí
+   mismo, y no llegó a viejo": la segunda repite las palabras de la profecía y se entiende sola.
+5. **Los datos de la fuente que pueden ir en pantalla.** "En su ensayo sobre el narcisismo" pasó a la ficha; la voz dice
+   "Freud escribió". Lo que no se saca es de dónde viene el conocimiento (regla 2): Freud, Ovidio, la psicología social.
+6. **La frase linda que explica lo mismo que el giro.** «Lo que quiero lo tengo conmigo, y por eso no lo puedo tener» era la
+   mejor cita del mito, pero Freud y "todo ese amor terminó en su propio reflejo" dicen lo mismo. Es la más difícil de soltar.
+
+**Lo que no se saca nunca:** el gancho, la promesa, cada paso de la historia que hace falta para no dar nada por sabido
+(regla 4: "No pudo dejar de mirarse" se quedó, porque sin ella no se entiende de qué murió), el giro, la frase que lo conecta
+con la obra (regla 6) y el cierre.
+
+**Cómo se hace con una voz ya grabada:** `herramientas/recortar.py` saca frases enteras cortando en el medio de los silencios,
+achica los silencios largos (0,32 s) y acelera hasta un 3 % sin cambiar el tono. Después, `cotejar.py` confirma que la voz
+dice exactamente el guion nuevo. Comandos: `videos/03-narciso/guion.md`.
+
+**Cómo se evita desde el guion:** 190 a 220 palabras, y antes de entregar, pasar la lista de arriba frase por frase.
+
 ## Antes de entregar un guion, revisar
 
+- [ ] ¿Tiene 220 palabras o menos? Más que eso pasa de los 90 s que permite la música de Instagram (`wc -w`).
+- [ ] ¿Hay frases que la imagen ya cuenta, que se dicen dos veces o que anuncian lo que la siguiente dice completo? (método de los 90 s)
 - [ ] ¿Hay alguna frase que obligue a adivinar a qué se refiere?
 - [ ] ¿Cada dato dice de dónde viene?
 - [ ] ¿Cada dato vuelve explícitamente a la obra?

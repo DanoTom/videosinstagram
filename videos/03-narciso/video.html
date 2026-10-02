@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>03 · Narciso</title>
+<link rel="stylesheet" href="../../diseno/sistema.css">
+<style>
+  /* Paleta del 03, sacada de las obras: el estanque de Waterhouse, el vestido de Eco, la flor del narciso
+     (blanca con el centro azafrán, como la describe Ovidio) y un vino para el tramo de Freud. */
+  :root {
+    --estanque: #0E2420;
+    --eco: #E5BDB3;
+    --eco-tinta: #8E3B36;
+    --rosa: #EBA79B;
+    --vino: #3E1820;
+    --petalo: #F2EEE4;
+    --azafran: #E8A33D;
+  }
+  html, body { margin: 0; background: #000; }
+  #video { background: var(--estanque); }
+  .escena { position: absolute; inset: 0; }
+  .escena > * { position: absolute; }
+  .fondo { inset: 0; }
+  .sangre { inset: 0; }                       /* obra a sangre: llena la pantalla */
+  .velo { inset: 0; pointer-events: none; }
+  /* zona común Instagram + YouTube Shorts: una sola línea entre y 1460 y 1515 (YouTube tapa desde 1530) */
+  .sub { left: 80px; right: 150px; top: 1460px; font-weight: 600; font-size: 36px; line-height: 1.5; color: var(--crema); z-index: 40; }
+  .sub span { background: rgba(10,20,18,.86); padding: 3px 12px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+  svg.marca { position: absolute; inset: 16px; overflow: visible; pointer-events: none; }
+  .eco { font-family: 'Instrument Serif', serif; font-style: italic; white-space: nowrap; }
+  .cita { font-family: 'Instrument Serif', serif; font-style: italic; line-height: 1.04; }
+  .espejo { border-radius: 50%; outline: 14px solid var(--crema); box-shadow: 0 18px 30px rgba(0,0,0,.5); }
+  .todos { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 52px; color: var(--crema); }
+  .todos i { position: absolute; left: -8px; right: -8px; top: 52%; height: 6px; background: var(--rojo); border-radius: 3px; transform-origin: 0 50%; }
+  .reflejoTxt { transform-origin: 50% 0; }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute">
+  <!-- agua: ondulación suave y constante -->
+  <filter id="agua" x="-5%" y="-5%" width="110%" height="110%">
+    <feTurbulence id="aguaRuido" type="fractalNoise" baseFrequency="0.004 0.03" numOctaves="2" seed="3" result="r"/>
+    <feDisplacementMap id="aguaDesp" in="SourceGraphic" in2="r" scale="8" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+  <!-- onda: el golpe sobre el agua (beso) y lo que se deshace (Eco) -->
+  <filter id="onda" x="-10%" y="-10%" width="120%" height="120%">
+    <feTurbulence id="ondaRuido" type="turbulence" baseFrequency="0.006 0.05" numOctaves="2" seed="8" result="r"/>
+    <feDisplacementMap id="ondaDesp" in="SourceGraphic" in2="r" scale="0" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+</svg>
+
+<div class="frame" id="video">
+  <div class="puntos" style="position:absolute;inset:0"></div>
+
+  <!-- 1 · GANCHO: el reflejo dado vuelta parece otro chico; en "sin saber que era él" el cuadro se endereza -->
+  <div class="escena" id="e1">
+    <div class="lamina" id="lam1" style="top:380px;left:90px;width:900px;height:1090px">
+      <div class="plate" id="p1"></div>
+      <svg class="marca" viewBox="0 0 868 1058" fill="none" stroke="var(--azafran)" stroke-linecap="round">
+        <ellipse id="elCara" cx="212" cy="246" rx="138" ry="133" pathLength="1" stroke-width="8"/>
+        <path id="linea1" d="M222 380 C 252 520, 192 680, 262 850" stroke-width="7"/>
+        <ellipse id="elRefl" cx="285" cy="954" rx="150" ry="104" stroke-width="8"/>
+      </svg>
+    </div>
+    <div class="ficha" id="serie" style="top:276px;left:70px">Mitos al revés · 1</div>
+    <div class="tira titular" id="tira1" data-rasgado data-rot="-1.5" style="top:1060px;left:44px;font-size:100px">No se enamoró<br>de sí mismo.</div>
+    <div class="negro serif" id="neg1" data-rot="-2" style="top:1310px;left:330px;font-size:62px">Se enamoró de un chico.</div>
+    <div class="tira titular" id="tira2" data-rasgado data-rot="-2" style="top:262px;left:50px;font-size:120px">Era él.</div>
+    <div class="ficha" id="fEl" data-rot="3" style="top:520px;left:470px">él</div>
+    <div class="ficha" id="fRefl" data-rot="-2" style="top:1290px;left:610px">su reflejo</div>
+    <div class="ficha" id="fCar" data-rot="-1" style="top:1400px;left:120px">Caravaggio (atrib.) · Narciso, c. 1597–1599</div>
+    <div class="negro serif" id="neg2" data-rot="-2" style="top:1300px;left:370px;font-size:60px">Saberlo no lo salvó.</div>
+  </div>
+
+  <!-- 2 · LA PROFECÍA: Carpioni a sangre, la cámara va de la madre al adivino -->
+  <div class="escena" id="e2">
+    <div class="fondo" id="fondo2" style="background:var(--estanque)"></div>
+    <div class="plate sangre" id="p2"></div>
+    <div class="velo" id="velo2" style="background:linear-gradient(to bottom, rgba(14,36,32,.95) 22%, rgba(14,36,32,0) 44%)"></div>
+    <div class="ficha" id="fOv" data-rot="-1" style="top:1400px;left:90px">Ovidio · Metamorfosis, libro III</div>
+    <div class="ficha" id="fNar" data-rot="-3" style="top:1150px;left:560px">Narciso</div>
+    <div class="ficha" id="fTir" data-rot="2" style="top:1180px;left:470px">Tiresias, el adivino</div>
+    <div class="cita" id="cita2" style="top:330px;left:70px;right:90px;font-size:84px;color:var(--azafran)">«<span>Va</span> <span>a</span> <span>llegar</span> <span>a</span> <span>viejo</span><br><span>si</span> <span>nunca</span> <span>se</span> <span>conoce</span><br><span>a</span> <span>sí</span> <span>mismo.»</span></div>
+    <div class="ficha" id="fCarp" data-rot="1" style="top:1400px;left:90px;font-size:18px">Giulio Carpioni · Liríope lleva a Narciso ante Tiresias, c. 1671</div>
+  </div>
+
+  <!-- 3 · EL ORGULLO: todos lo deseaban, los rechazaba a todos -->
+  <div class="escena" id="e3">
+    <div class="fondo" id="fondo3" style="background:var(--estanque)"><div class="puntos" style="position:absolute;inset:0"></div></div>
+    <div class="lamina" id="lam3" data-rot="-2" style="top:300px;left:60px;width:700px;height:620px"><div class="plate" id="p3"></div></div>
+    <div class="titular" id="her" style="top:1040px;left:70px;font-size:124px">Tan hermoso.</div>
+    <div class="titular" id="org" style="top:1170px;left:70px;font-size:124px;color:var(--azafran)">Tan orgulloso.</div>
+    <div id="todos" style="top:330px;left:790px;width:240px;height:620px"></div>
+  </div>
+
+  <!-- 4 · ECO: fondo rosa (su vestido); la frase que vuelve, cada vez más débil -->
+  <div class="escena" id="e4" style="color:var(--tinta)">
+    <div class="fondo" id="fondo4" style="background:var(--eco)"><div class="puntos" style="position:absolute;inset:0;background-image:radial-gradient(rgba(0,0,0,.06) 1.3px, transparent 1.7px)"></div></div>
+    <div class="lamina" id="lam4" data-rot="-1.5" style="top:290px;left:44px;width:520px;height:1000px">
+      <div class="plate" id="p4"></div>
+      <svg class="marca" viewBox="0 0 488 968" fill="none"><path id="onda4" stroke="var(--eco-tinta)" stroke-width="7" stroke-linecap="round"/></svg>
+    </div>
+    <div class="titular" id="tEco" style="top:300px;left:610px;font-size:170px;color:var(--eco-tinta)">Eco</div>
+    <div class="ficha" id="fJuno" data-rot="2" style="top:500px;left:610px">Castigada por Juno</div>
+    <div class="ficha" id="fRep" data-rot="-1" style="top:560px;left:640px">a repetir lo último<br>que oye</div>
+    <div class="negro serif" id="neg4" data-rot="1.5" style="top:690px;left:590px;width:420px;font-size:50px;line-height:1.1">«Antes me muero que entregarme a vos.»</div>
+    <div class="eco" id="eco0" style="top:960px;left:600px;font-size:68px;color:var(--eco-tinta)">entregarme a vos.</div>
+    <div class="eco" id="eco1" style="top:1052px;left:700px;font-size:58px;color:var(--eco-tinta)">a vos.</div>
+    <div class="eco" id="eco2" style="top:1128px;left:790px;font-size:50px;color:var(--eco-tinta)">a vos.</div>
+    <div class="eco" id="eco3" style="top:1194px;left:870px;font-size:42px;color:var(--eco-tinta)">a vos.</div>
+    <div class="ficha" id="fWat" data-rot="1" style="top:1330px;left:70px">J. W. Waterhouse · Eco y Narciso, 1903</div>
+  </div>
+
+  <!-- 5 · EL AGUA: Caravaggio a sangre, la cámara baja de la cara al reflejo; el beso rompe el agua -->
+  <div class="escena" id="e5">
+    <div class="fondo" id="fondo5" style="background:var(--estanque)"></div>
+    <div class="plate sangre" id="p5"></div>
+    <svg class="velo" id="anillos" viewBox="0 0 1080 1920" fill="none" stroke="var(--crema)" stroke-width="4"></svg>
+    <div class="tira titular" id="beso" data-rasgado data-rot="-2" style="top:290px;left:600px;font-size:112px">Besó<br>el agua.</div>
+  </div>
+
+  <!-- 6 · ¡ESE SOY YO!: Waterhouse a sangre, del reflejo a la cara -->
+  <div class="escena" id="e6">
+    <div class="plate sangre" id="p6"></div>
+    <div class="velo" id="velo6" style="background:radial-gradient(ellipse at 50% 45%, rgba(14,36,32,0) 35%, rgba(14,36,32,.85) 100%)"></div>
+    <div class="tira titular" id="ese" data-rasgado data-rot="-2" style="top:770px;left:60px;font-size:128px">¡Ese soy yo!</div>
+    <div class="tira titular reflejoTxt" id="eseR" data-rasgado style="top:1072px;left:60px;font-size:128px;opacity:.3">¡Ese soy yo!</div>
+  </div>
+
+  <!-- 7 y 8 · ADIÓS Y SE CUMPLIÓ: Poussin a sangre -->
+  <div class="escena" id="e7">
+    <div class="plate sangre" id="p7"></div>
+    <div class="velo" id="velo7" style="background:var(--estanque)"></div>
+    <div class="tira titular" id="adios" data-rasgado data-rot="-2" style="top:300px;left:60px;font-size:128px">«Adiós.»</div>
+    <div class="eco" id="ad0" style="top:330px;left:600px;font-size:96px;color:var(--rosa)">adiós.</div>
+    <div class="eco" id="ad1" style="top:430px;left:690px;font-size:80px;color:var(--rosa)">adiós.</div>
+    <div class="eco" id="ad2" style="top:515px;left:770px;font-size:66px;color:var(--rosa)">adiós.</div>
+    <div class="eco" id="ad3" style="top:588px;left:840px;font-size:54px;color:var(--rosa)">adiós.</div>
+    <div class="ficha" id="fTod" data-rot="-2" style="top:1200px;left:520px">Eco, que todavía lo quería</div>
+    <div class="ficha" id="fPou" data-rot="1" style="top:1400px;left:90px">Nicolas Poussin · Eco y Narciso, c. 1629–1630</div>
+    <div class="plate espejo" id="tiresias" style="top:300px;left:690px;width:300px;height:300px"></div>
+    <div class="tira titular" id="seCon" data-rasgado data-rot="-2" style="top:700px;left:60px;font-size:120px">Se conoció.</div>
+    <div class="negro serif" id="noVie" data-rot="2" style="top:870px;left:330px;font-size:76px">No llegó a viejo.</div>
+  </div>
+
+  <!-- 9 · FREUD: fondo vino; un espejo ovalado -->
+  <div class="escena" id="e9">
+    <div class="fondo" id="fondo9" style="background:var(--vino)"><div class="puntos" style="position:absolute;inset:0"></div></div>
+    <div class="titular" id="porQue" style="top:280px;left:70px;font-size:84px;line-height:.95">¿Por qué saberlo<br>no lo salvó?</div>
+    <div class="plate espejo" id="freud" style="top:520px;left:70px;width:400px;height:540px"></div>
+    <div class="plate espejo" id="narEsp" style="top:520px;left:70px;width:400px;height:540px"></div>
+    <div class="cita" id="cita9" style="top:540px;left:510px;width:510px;font-size:66px;color:var(--crema)">«<span>Al</span> <span>final</span> <span>uno</span> <span>tiene</span> <span>que</span> <span>empezar</span> <span>a</span> <span>amar</span> <span>para</span> <span>no</span> <span>caer</span> <span>enfermo.»</span></div>
+    <div class="ficha" id="fFreud" data-rot="-1" style="top:1100px;left:70px">Sigmund Freud · Introducción del narcisismo, 1914</div>
+    <div class="titular" id="nunca" style="top:1200px;left:70px;font-size:100px;color:var(--azafran)">Narciso nunca<br>empezó.</div>
+  </div>
+
+  <!-- 10 · AL REVÉS -->
+  <div class="escena" id="e10">
+    <div class="fondo" id="fondo10" style="background:var(--estanque)"></div>
+    <div class="plate sangre" id="p10" style="opacity:.28"></div>
+    <div class="titular" id="noMurio" style="top:290px;left:70px;font-size:94px">No murió por<br>quererse demasiado.</div>
+    <!-- el cuadro entero, que se da vuelta cuando la frase se da vuelta -->
+    <div class="lamina" id="lam10" style="top:740px;left:260px;width:560px;height:680px"><div class="plate" id="p10b"></div></div>
+    <svg class="velo" viewBox="0 0 1080 1920" fill="none"><path id="tacha" d="M58 428 L 905 406" pathLength="1" stroke="var(--rojo)" stroke-width="16" stroke-linecap="round"/></svg>
+    <div class="cita" id="cita10" style="top:500px;left:70px;right:80px;font-size:84px;color:var(--azafran)"><span>Murió</span> <span>porque</span> <span>no</span> <span>pudo</span><br><span>querer</span> <span>a</span> <span>otro.</span></div>
+  </div>
+
+  <!-- 11 · CIERRE: papel blanco de pétalo; las miradas -->
+  <div class="escena" id="e11" style="color:var(--tinta)">
+    <div class="fondo" id="fondo11" style="background:var(--petalo)"><div class="puntos" style="position:absolute;inset:0;background-image:radial-gradient(rgba(0,0,0,.06) 1.3px, transparent 1.7px)"></div></div>
+    <div class="cita" id="cita11a" style="top:280px;left:70px;right:70px;font-size:64px">Quizás querer a alguien empieza cuando el otro nos contesta</div>
+    <div class="titular" id="cita11b" style="top:450px;left:62px;font-size:104px;line-height:.95"><span>algo</span> <span>que</span> <span>no</span><br><span>dijimos</span> <span>nosotros.</span></div>
+    <div class="lamina" id="lam11" data-rot="-1" style="top:720px;left:40px;width:1000px;height:584px">
+      <div class="plate" id="p11"></div>
+      <svg class="marca" viewBox="0 0 968 552" fill="none" stroke="var(--rojo)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+        <path id="mira1" pathLength="1" d="M282 112 C 380 120, 470 200, 548 300"/><path id="punta1" pathLength="1" d="M522 290 L 550 304 L 548 274"/>
+        <path id="mira2" pathLength="1" d="M700 392 C 712 430, 700 470, 640 500"/><path id="punta2" pathLength="1" d="M669 500 L 640 500 L 653 474"/>
+      </svg>
+    </div>
+    <div class="ficha" id="fMira1" data-rot="-2" style="top:1330px;left:100px">Eco lo mira a él</div>
+    <div class="ficha" id="fMira2" data-rot="2" style="top:1340px;left:560px">Él se mira a sí mismo</div>
+    <!-- el final vuelve al principio: sube el agua y reaparece el gancho (escena 1 en t = 0) -->
+    <div class="fondo" id="fondo12" style="background:var(--estanque)"></div>
+  </div>
+
+  <div class="sub" id="sub"></div>
+  <div class="grano" id="grano"></div>
+</div>
+
+<script type="module">
+import { encuadrar, rasgar } from '../../diseno/sistema.js';
+import { cargarVoz, subtitulos, pieza, trazo, punteado, hervir, prog, lerp, ease, clamp, encuadre, entreEncuadres, marea, porPalabra } from '../../diseno/motor.js';
+
+const IMGS = {
+  caravaggio: { src: 'assets/caravaggio.jpg', w: 1920, h: 2325 },
+  waterhouse: { src: 'assets/waterhouse.jpg', w: 3840, h: 2191 },
+  poussin:    { src: 'assets/poussin.jpg',    w: 1280, h: 959 },
+  carpioni:   { src: 'assets/carpioni.jpg',   w: 960,  h: 1160 },
+  freud:      { src: 'assets/freud.jpg',      w: 1280, h: 1741 },
+};
+// Encuadres en píxeles de cada original. Los "a sangre" tienen la proporción de la pantalla (0,5625).
+const C = {
+  todo: [0, 0, 1920, 2325], refl: [300, 1496, 680, 829],   // refl: la cabeza reflejada (dada vuelta parece otro chico)
+  cara: [150, 250, 900, 1600], reflV: [150, 725, 900, 1600], beso: [150, 200, 1000, 1778],
+  reflSangre: [340, 1290, 580, 1031],              // el reflejo dado vuelta, a sangre (tramo 10)
+  orgullo: [180, 250, 760, 640], espejoNar: [230, 290, 520, 703],
+};
+const K = { ancho: [150, 0, 652, 1160], madre: [193, 440, 394, 700], tir: [443, 490, 394, 700], circ: [560, 670, 230, 230] };
+const WT = { eco: [240, 300, 920, 1687], todo6: [2080, 1124, 600, 1067], refl6: [2160, 1551, 360, 640], cara6: [2210, 1160, 360, 640], todo: [0, 0, 3840, 2191] };
+const P = { narc: [120, 300, 370, 658], eco: [90, 40, 370, 658], todo: [40, 0, 539, 959] };
+
+const $ = id => document.getElementById(id);
+const voz = await cargarVoz('audio/voz-editada.json');
+const W = voz.W;
+const DURACION = voz.duracion;
+
+// "todos": una multitud de palabras que después se tachan
+const TODOS = [[0, 0], [110, 40], [20, 120], [120, 170], [0, 250], [110, 300], [30, 380], [120, 430], [10, 510]];
+for (const [x, y] of TODOS) {
+  const d = document.createElement('div');
+  d.className = 'todos'; d.style.position = 'absolute'; d.style.left = x + 'px'; d.style.top = y + 'px';
+  d.innerHTML = 'todos<i></i>';
+  $('todos').appendChild(d);
+}
+const todos = [...$('todos').children];
+
+// ───── Tiempos (todo anclado a la voz) ─────
+const T = {
+  revela: W('sin saber que era él').s + 0.35,
+  e2: W('el poeta romano').s - 0.35, nacio: W('narciso nació').s, adiv: W('un adivino').s, viejo: W('iba a llegar a viejo').s,
+  e3: W('narciso creció').s - 0.3, her: W('tan hermoso').s, org: W('tan orgulloso').s, rech: W('los rechazaba').s,
+  e4: W('una de las que').s - 0.35, abr: W('eco quiso abrazarlo').s, rechazo: W('la rechazó').s, antes: W('antes me muero').s,
+  ent2: W('entregarme a vos', 2).s, avos2: W('a vos', 2).s,
+  e5: W('un día').s - 0.35, vio: W('vio a un chico').s,
+  quiso: W('lo quiso besar').s, beso: W('besó el agua').s,
+  e6: W('hasta que entendió').s - 0.2, ese: W('ese soy yo').s, mirarse: W('no pudo dejar de mirarse').s,
+  e7: W('lo último que dijo').s - 0.25, ad1: W('adiós').s, yEco: W('y eco').s, todavia: W('todavía lo quería').s, ad2: W('adiós', 2).s,
+  seCon: W('se conoció a sí mismo').s, noVie: W('no llegó a viejo').s,
+  e9: W('saberlo no lo salvó', 2).s - 0.45, freud: W('freud').s, nunca: W('narciso nunca empezó').s, reflejo: W('su propio reflejo').s,
+  e10: W('no murió por').s - 0.3, murio: W('murió porque').s,
+  e11: W('quizás').s - 0.35, otro: W('cuando el otro').s, contesta: W('nos contesta').s, algo: W('algo que no dijimos').s,
+};
+T.fin = W('nosotros').e;
+// Eco se deshace mientras su voz rebota (en la versión de 90 s no se dice "avergonzada, se escondió…")
+T.aver = T.avos2 + 0.35; T.voz = T.avos2 + 1.0;
+T.cumplio = T.seCon - 0.3;
+T.vuelta = DURACION - 1.0;
+const escenas = [['e1', -1, T.e2 + 0.9], ['e2', T.e2, T.e3 + 0.9], ['e3', T.e3, T.e4 + 0.9], ['e4', T.e4, T.e5 + 0.9],
+  ['e5', T.e5, T.e6 + 0.5], ['e6', T.e6, T.e7 + 0.6], ['e7', T.e7, T.e9 + 0.9], ['e9', T.e9, T.e10 + 0.9],
+  ['e10', T.e10, T.e11 + 0.9], ['e11', T.e11, 999]];
+const SUBS = subtitulos(voz, [['narciso no se enamoró de sí mismo'], ['se enamoró de un chico'], ['saberlo no lo salvó'],
+  ['iba a llegar a viejo si nunca se conoce a sí mismo'], ['antes me muero que entregarme a vos'], ['entregarme a vos', 2],
+  ['besó el agua'], ['ese soy yo'], ['adiós'], ['adiós', 2], ['se conoció a sí mismo'], ['no llegó a viejo'],
+  ['por qué saberlo no lo salvó'], ['al final uno tiene que empezar a amar para no caer enfermo'], ['narciso nunca empezó'],
+  ['no murió por quererse demasiado'], ['murió porque no pudo querer a otro'],
+  ['quizás querer a alguien empieza cuando el otro nos contesta algo que no dijimos nosotros']], 7);
+
+const aparecer = (el, t, t0, t1 = Infinity, dur = 0.35) => {
+  const o = ease.out(prog(t, t0, t0 + dur)) * (1 - prog(t, t1, t1 + 0.3));
+  el.style.opacity = o; el.style.visibility = o > 0 ? 'visible' : 'hidden';
+};
+// tiempos de cada palabra de una frase de la voz
+const tiemposDe = (frase, n = 1) => { const r = W(frase, n); return frase.split(' ').map((_, k) => voz.palabras[r.i + k].s); };
+const cita2 = [T.viejo, ...tiemposDe('iba a llegar a viejo').slice(1), ...tiemposDe('si nunca se conoce a sí mismo')];
+const cita9 = tiemposDe('al final uno tiene que empezar a amar para no caer enfermo');
+const cita10 = tiemposDe('murió porque no pudo querer a otro');
+const cita11 = tiemposDe('algo que no dijimos nosotros');
+
+function agua(t, escala = 8) {
+  $('aguaRuido').setAttribute('baseFrequency', `${0.004 + 0.0008 * Math.sin(t * 0.9)} ${0.03 + 0.004 * Math.sin(t * 1.3)}`);
+  $('aguaDesp').setAttribute('scale', escala);
+}
+function onda(t, escala) {
+  $('ondaRuido').setAttribute('baseFrequency', `${0.006 + 0.002 * Math.sin(t * 2.1)} ${0.05 + 0.01 * Math.sin(t * 2.7)}`);
+  $('ondaDesp').setAttribute('scale', escala);
+}
+
+function seek(tReal) {
+  for (const [id, a, b] of escenas) $(id).style.display = tReal >= a && tReal < b ? 'block' : 'none';
+  agua(tReal);
+  // al final, el video vuelve a su primer cuadro para que el loop de Instagram no se note
+  const vuelve = tReal >= T.vuelta + 0.6;
+  $('e1').style.zIndex = vuelve ? 30 : '';
+  if (vuelve) $('e1').style.display = 'block';
+  let t = vuelve ? 0 : tReal;
+
+  // 1 · Gancho y revelación
+  if (t < T.e2 + 0.9) {
+    const pr = ease.inOut(prog(t, T.revela, T.revela + 1.9));
+    const lam = $('lam1');
+    lam.style.transform = `translateY(${lerp(270, 0, pr)}px) rotate(${lerp(180, -1, pr)}deg) scale(${lerp(2.32, 1, pr)})`;
+    lam.style.opacity = 1 - prog(t, T.e2, T.e2 + 0.5);
+    encuadre($('p1'), IMGS.caravaggio, entreEncuadres(C.refl, C.todo, ease.inOut(prog(t, T.revela + 0.2, T.revela + 1.9))));
+    $('p1').style.filter = `url(#agua) brightness(${lerp(2.8, 1, pr)}) contrast(${lerp(1.3, 1, pr)}) saturate(${lerp(0.4, 1, pr)})`;
+    // Mitos al revés: la ficha entra dada vuelta y se endereza
+    pieza($('serie'), t, { t0: 0.1, entra: 'fundido', t1: T.revela - 0.2 });
+    $('serie').style.transform = `rotate(${lerp(180, -2, ease.back(prog(t, 0.6, 1.2)))}deg)`;
+    pieza($('tira1'), t, { t0: 0.05, t1: T.revela - 0.25, sale: 'izq' });
+    pieza($('neg1'), t, { t0: W('se enamoró de un chico').s - 0.05, entra: 'izq', dur: 0.4, t1: T.revela - 0.25, sale: 'izq' });
+    const te = T.revela + 1.9;
+    pieza($('tira2'), t, { t0: te - 0.15, t1: T.e2 - 0.1, sale: 'arriba' });
+    trazo($('elCara'), ease.out(prog(t, te, te + 0.5)));
+    punteado($('linea1'), ease.inOut(prog(t, te + 0.35, te + 1.0)), 1, 20);
+    punteado($('elRefl'), ease.out(prog(t, te + 0.9, te + 1.5)), 1, 20);
+    pieza($('fEl'), t, { t0: te + 0.3, entra: 'fundido', t1: W('saberlo no lo salvó').s - 0.2 });
+    pieza($('fRefl'), t, { t0: te + 1.2, entra: 'fundido', t1: W('saberlo no lo salvó').s - 0.2 });
+    pieza($('fCar'), t, { t0: te + 0.6, entra: 'fundido', t1: T.e2 - 0.1 });
+    pieza($('neg2'), t, { t0: W('saberlo no lo salvó').s - 0.05, t1: T.e2 - 0.1, sale: 'fundido' });
+  }
+
+  t = tReal;
+  // 2 · La profecía
+  if (t >= T.e2 && t < T.e3 + 0.9) {
+    marea($('fondo2'), t, T.e2, 0.7);
+    const a = prog(t, T.e2 + 0.3, T.e2 + 0.9);
+    $('p2').style.opacity = ease.out(a);
+    $('velo2').style.opacity = ease.out(prog(t, T.viejo - 0.6, T.viejo));
+    let c = entreEncuadres(K.ancho, [170, 40, 610, 1085], ease.suave(prog(t, T.e2, T.nacio)));
+    c = entreEncuadres(c, K.madre, ease.inOut(prog(t, T.nacio - 0.2, T.nacio + 0.9)));
+    c = entreEncuadres(c, K.tir, ease.inOut(prog(t, T.adiv - 0.1, T.adiv + 0.9)));
+    c = entreEncuadres(c, K.ancho, ease.inOut(prog(t, T.viejo - 0.7, T.viejo + 0.6)));
+    encuadre($('p2'), IMGS.carpioni, c);
+    pieza($('fOv'), t, { t0: W('ovidio').s, entra: 'fundido', t1: T.nacio });
+    pieza($('fNar'), t, { t0: T.nacio + 0.6, t1: T.adiv - 0.1 });
+    pieza($('fTir'), t, { t0: T.adiv + 0.7, t1: T.viejo - 0.6 });
+    porPalabra($('cita2'), t, cita2);
+    $('cita2').style.visibility = t > T.viejo - 0.1 ? 'visible' : 'hidden';
+    pieza($('fCarp'), t, { t0: T.viejo, entra: 'fundido', t1: T.e3 - 0.1 });
+  }
+
+  // 3 · El orgullo
+  if (t >= T.e3 && t < T.e4 + 0.9) {
+    marea($('fondo3'), t, T.e3, 0.6);
+    pieza($('lam3'), t, { t0: T.e3 + 0.25, entra: 'abajo', dur: 0.6, t1: T.e4 - 0.1, sale: 'arriba' });
+    encuadre($('p3'), IMGS.caravaggio, entreEncuadres(C.orgullo, [300, 360, 520, 438], ease.suave(prog(t, T.e3, T.e4))));
+    pieza($('her'), t, { t0: T.her - 0.05, entra: 'izq', dur: 0.4, t1: T.e4 - 0.1, sale: 'izq' });
+    pieza($('org'), t, { t0: T.org - 0.05, entra: 'izq', dur: 0.4, t1: T.e4 - 0.1, sale: 'izq' });
+    const td = W('todos lo deseaban').s;
+    todos.forEach((d, i) => {
+      pieza(d, t, { t0: td + i * 0.08, entra: 'fundido', dur: 0.3, t1: T.e4 - 0.1 });
+      d.querySelector('i').style.transform = `scaleX(${ease.out(prog(t, T.rech + i * 0.09, T.rech + i * 0.09 + 0.25))})`;
+    });
+  }
+
+  // 4 · Eco
+  if (t >= T.e4 && t < T.e5 + 0.9) {
+    marea($('fondo4'), t, T.e4, 0.8);
+    const shake = t > T.rechazo && t < T.rechazo + 0.4 ? Math.sin((t - T.rechazo) * 60) * 12 * (1 - (t - T.rechazo) / 0.4) : 0;
+    const acerca = ease.inOut(prog(t, T.abr, T.abr + 0.8)) * (1 - ease.out(prog(t, T.rechazo, T.rechazo + 0.3)));
+    pieza($('lam4'), t, { t0: T.e4 + 0.4, entra: 'abajo', dur: 0.6, dx: acerca * 40 + shake, escala: 1 + acerca * 0.03 });
+    encuadre($('p4'), IMGS.waterhouse, entreEncuadres(WT.eco, [300, 320, 860, 1577], ease.suave(prog(t, T.e4, T.aver))));
+    // mientras su voz rebota, la figura de Eco se deshace y queda una onda: de ella solo quedó la voz
+    const se = prog(t, T.aver, T.voz + 0.2);
+    $('p4').style.opacity = 1 - ease.inOut(se) * 0.92;
+    $('p4').style.filter = se > 0 ? 'url(#onda)' : 'none';
+    onda(t, 70 * ease.in(se));
+    const pv = prog(t, T.voz - 0.3, T.voz + 0.6);
+    let d = '';
+    for (let x = 20; x <= 468; x += 6) {
+      const env = Math.sin(((x - 20) / 448) * Math.PI);
+      const y = 484 + env * 70 * pv * Math.sin(x * 0.09 - t * 9) * (0.6 + 0.4 * Math.sin(x * 0.023 + t * 2));
+      d += (x === 20 ? 'M' : 'L') + x + ' ' + y.toFixed(1) + ' ';
+    }
+    $('onda4').setAttribute('d', d);
+    $('onda4').style.opacity = pv;
+    pieza($('tEco'), t, { t0: W('era eco').s + 0.1, entra: 'der', dur: 0.45, t1: T.antes - 0.2, sale: 'der' });
+    pieza($('fJuno'), t, { t0: W('castigada').s, t1: T.antes - 0.2 });
+    pieza($('fRep'), t, { t0: W('a repetir').s, t1: T.antes - 0.2 });
+    pieza($('neg4'), t, { t0: T.antes - 0.05, entra: 'der', dur: 0.4, t1: T.e5, sale: 'der' });
+    // la frase de Eco y sus rebotes (los tiempos del eco son los de herramientas/eco.py: cada 0,42 s)
+    aparecer($('eco0'), t, T.ent2 - 0.05, T.e5 + 0.4);
+    ['eco1', 'eco2', 'eco3'].forEach((id, k) => {
+      const t0 = T.avos2 + (k + 1) * 0.42;
+      aparecer($(id), t, t0, T.e5 + 0.4, 0.2);
+      $(id).style.opacity *= [0.6, 0.38, 0.2][k];
+      $(id).style.transform = `translateX(${(t - t0) * 14}px)`;
+    });
+    pieza($('fWat'), t, { t0: T.e4 + 1.2, entra: 'fundido', t1: T.antes });
+  }
+
+  // 5 · El agua
+  if (t >= T.e5 && t < T.e6 + 0.5) {
+    marea($('fondo5'), t, T.e5, 0.8);
+    $('p5').style.opacity = ease.out(prog(t, T.e5 + 0.4, T.e5 + 1.0));
+    let c = entreEncuadres(C.cara, C.reflV, ease.inOut(prog(t, T.vio - 0.3, T.vio + 1.6)));
+    c = entreEncuadres(c, C.beso, ease.inOut(prog(t, T.quiso - 0.1, T.beso + 0.2)));
+    encuadre($('p5'), IMGS.caravaggio, c);
+    const pb = prog(t, T.beso, T.beso + 1.8);
+    const golpe = pb > 0 ? Math.sin(Math.min(pb * 3, 1) * Math.PI / 2) * (1 - ease.out(pb)) : 0;
+    onda(t, 34 * golpe);
+    const brillo = lerp(1, 1.45, ease.inOut(prog(t, T.vio - 0.3, T.vio + 1.6))) - 0.3 * ease.inOut(prog(t, T.quiso - 0.1, T.beso + 0.2));
+    $('p5').style.filter = `url(${pb > 0 && pb < 1 ? '#onda' : '#agua'}) brightness(${brillo})`;
+    // anillos que se abren desde el punto del beso (la línea del agua debajo de la boca)
+    const [cx, cy] = [(640 - C.beso[0]) * (1080 / C.beso[2]), (1370 - C.beso[1]) * (1920 / C.beso[3])];
+    let svg = '';
+    for (let k = 0; k < 4; k++) {
+      const q = prog(t, T.beso + k * 0.22, T.beso + k * 0.22 + 1.6);
+      if (q > 0 && q < 1) svg += `<ellipse cx="${cx}" cy="${cy}" rx="${40 + 460 * ease.out(q)}" ry="${10 + 115 * ease.out(q)}" opacity="${(1 - q) * 0.8}"/>`;
+    }
+    if ($('anillos').innerHTML !== svg) $('anillos').innerHTML = svg;
+    pieza($('beso'), t, { t0: T.beso + 0.15, t1: T.e6 + 0.1, sale: 'fundido' });
+  }
+
+  // 6 · ¡Ese soy yo!
+  if (t >= T.e6 && t < T.e7 + 0.6) {
+    $('e6').style.opacity = ease.out(prog(t, T.e6, T.e6 + 0.5));
+    let c = entreEncuadres(WT.refl6, WT.todo6, ease.inOut(prog(t, T.ese - 0.2, T.ese + 1.2)));
+    c = entreEncuadres(c, WT.cara6, ease.suave(prog(t, T.mirarse - 0.3, T.e7 + 0.4)));
+    encuadre($('p6'), IMGS.waterhouse, c);
+    $('p6').style.filter = 'url(#agua)';
+    $('velo6').style.opacity = 0.5 + 0.5 * ease.inOut(prog(t, T.mirarse, T.e7 + 0.4));
+    pieza($('ese'), t, { t0: T.ese - 0.05, t1: T.mirarse - 0.15, sale: 'arriba' });
+    // el título se refleja en el agua: copia invertida, ondulada y más débil
+    const pe = ease.out(prog(t, T.ese + 0.25, T.ese + 0.9)) * (1 - prog(t, T.mirarse - 0.15, T.mirarse + 0.15));
+    $('eseR').style.opacity = 0.32 * pe;
+    $('eseR').style.visibility = pe > 0 ? 'visible' : 'hidden';
+    $('eseR').style.transform = `scaleY(-0.8) rotate(-2deg)`;
+    $('eseR').style.filter = 'url(#onda)';
+    if (pe > 0) onda(t, 12);
+  }
+
+  // 7 y 8 · Adiós; se cumplió la profecía
+  if (t >= T.e7 && t < T.e9 + 0.9) {
+    $('e7').style.opacity = ease.out(prog(t, T.e7, T.e7 + 0.6));
+    let c = entreEncuadres([140, 380, 300, 534], P.narc, ease.suave(prog(t, T.e7, T.yEco)));
+    c = entreEncuadres(c, P.eco, ease.inOut(prog(t, T.yEco - 0.1, T.yEco + 1.3)));
+    c = entreEncuadres(c, P.todo, ease.inOut(prog(t, T.cumplio - 0.3, T.cumplio + 1.2)));
+    encuadre($('p7'), IMGS.poussin, c);
+    $('p7').style.filter = 'brightness(1.3) contrast(1.05)';
+    $('velo7').style.opacity = 0.05 + 0.6 * ease.inOut(prog(t, T.cumplio - 0.2, T.cumplio + 0.8));
+    pieza($('adios'), t, { t0: T.ad1 - 0.05, t1: T.yEco - 0.05, sale: 'izq' });
+    aparecer($('ad0'), t, T.ad2 - 0.05, T.seCon - 0.1);
+    ['ad1', 'ad2', 'ad3'].forEach((id, k) => {
+      const t0 = T.ad2 + (k + 1) * 0.42;
+      aparecer($(id), t, t0, T.seCon - 0.1, 0.2);
+      $(id).style.opacity *= [0.6, 0.38, 0.2][k];
+      $(id).style.transform = `translate(${(t - t0) * 10}px, ${-(t - t0) * 6}px)`;
+    });
+    pieza($('fTod'), t, { t0: T.todavia, t1: T.seCon - 0.2 });
+    pieza($('fPou'), t, { t0: T.e7 + 0.8, entra: 'fundido', t1: T.yEco });
+    encuadre($('tiresias'), IMGS.carpioni, K.circ);
+    pieza($('tiresias'), t, { t0: T.cumplio + 0.1, t1: T.e9 - 0.1 });
+    pieza($('seCon'), t, { t0: T.seCon - 0.05, t1: T.e9 - 0.1, sale: 'fundido' });
+    pieza($('noVie'), t, { t0: T.noVie - 0.05, entra: 'izq', dur: 0.4, t1: T.e9 - 0.1, sale: 'fundido' });
+  }
+
+  // 9 · Freud
+  if (t >= T.e9 && t < T.e10 + 0.9) {
+    marea($('fondo9'), t, T.e9, 0.8);
+    pieza($('porQue'), t, { t0: T.e9 + 0.45, entra: 'fundido', dur: 0.4, t1: T.nunca - 0.1, sale: 'fundido' });
+    encuadre($('freud'), IMGS.freud, [370, 30, 560, 757]);
+    pieza($('freud'), t, { t0: T.freud - 0.05, dur: 0.5, t1: T.reflejo - 0.1 });
+    encuadre($('narEsp'), IMGS.caravaggio, C.espejoNar);
+    aparecer($('narEsp'), t, T.reflejo - 0.1, T.e10, 0.6);
+    $('narEsp').style.filter = 'url(#agua)';
+    porPalabra($('cita9'), t, cita9);
+    $('cita9').style.visibility = t > cita9[0] - 0.1 ? 'visible' : 'hidden';
+    $('cita9').style.opacity = 1 - prog(t, T.nunca - 0.1, T.nunca + 0.2) * 0.65;
+    pieza($('fFreud'), t, { t0: T.freud + 0.4, entra: 'fundido' });
+    pieza($('nunca'), t, { t0: T.nunca - 0.05, entra: 'izq', dur: 0.45 });
+  }
+
+  // 10 · Al revés
+  if (t >= T.e10 && t < T.e11 + 0.9) {
+    marea($('fondo10'), t, T.e10, 0.7);
+    encuadre($('p10'), IMGS.caravaggio, C.reflSangre);
+    $('p10').style.transform = 'rotate(180deg)';
+    $('p10').style.filter = 'url(#agua) brightness(1.8)';
+    $('p10').style.opacity = 0.28 * ease.out(prog(t, T.e10 + 0.4, T.e10 + 1.2));
+    pieza($('noMurio'), t, { t0: T.e10 + 0.3, entra: 'fundido', dur: 0.3 });
+    encuadre($('p10b'), IMGS.caravaggio, C.todo);
+    pieza($('lam10'), t, { t0: T.e10 + 0.5, entra: 'abajo', dur: 0.6 });
+    const gira = ease.inOut(prog(t, T.murio - 0.1, T.murio + 1.3));
+    $('lam10').style.transform += ` rotate(${lerp(-2, 178, gira)}deg)`;
+    trazo($('tacha'), ease.out(prog(t, T.murio - 0.15, T.murio + 0.3)));
+    porPalabra($('cita10'), t, cita10);
+    $('cita10').style.visibility = t > T.murio - 0.1 ? 'visible' : 'hidden';
+  }
+
+  // 11 · Cierre y vuelta al principio
+  if (t >= T.e11) {
+    marea($('fondo11'), t, T.e11, 0.8);
+    pieza($('cita11a'), t, { t0: T.e11 + 0.35, entra: 'fundido', dur: 0.5 });
+    porPalabra($('cita11b'), t, cita11, 0.3);
+    $('cita11b').style.visibility = t > cita11[0] - 0.1 ? 'visible' : 'hidden';
+    pieza($('lam11'), t, { t0: T.e11 + 0.5, entra: 'abajo', dur: 0.7 });
+    encuadre($('p11'), IMGS.waterhouse, WT.todo);
+    trazo($('mira1'), ease.out(prog(t, T.otro, T.otro + 0.6))); trazo($('punta1'), ease.out(prog(t, T.otro + 0.5, T.otro + 0.7)));
+    pieza($('fMira1'), t, { t0: T.otro + 0.3 });
+    trazo($('mira2'), ease.out(prog(t, T.contesta, T.contesta + 0.5))); trazo($('punta2'), ease.out(prog(t, T.contesta + 0.4, T.contesta + 0.6)));
+    pieza($('fMira2'), t, { t0: T.contesta + 0.3 });
+    // los últimos segundos: la marea vuelve a subir (y después reaparece la escena 1, ver más abajo)
+    marea($('fondo12'), t, T.vuelta, 0.7);
+  }
+
+  const s = SUBS.find(x => t >= x.s && t < x.e);
+  const html = s ? `<span>${s.texto}</span>` : '';
+  if ($('sub').innerHTML !== html) $('sub').innerHTML = html;
+  hervir($('grano'), t);
+}
+
+encuadrar(document, IMGS);
+rasgar(document);
+for (const el of document.querySelectorAll('[data-rot]')) el.style.transform = `rotate(${el.dataset.rot}deg)`;
+await Promise.all([document.fonts.ready, ...Object.values(IMGS).map(im => { const i = new Image(); i.src = im.src; return i.decode(); })]);
+window.seek = seek;
+window.DURACION = DURACION;
+window.T = T;
+seek(0);
+window.listo = true;
+
+if (!location.search.includes('render')) {
+  const audio = new Audio('audio/voz-editada.wav');
+  document.body.addEventListener('click', () => { audio.currentTime = 0; audio.play(); });
+  (function loop() { seek(audio.paused ? 0 : audio.currentTime); requestAnimationFrame(loop); })();
+}
+</script>
+</body>
+</html>

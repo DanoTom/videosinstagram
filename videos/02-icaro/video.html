@@ -9,7 +9,8 @@
   .escena { position: absolute; inset: 0; transform-origin: 50% 45%; }  /* visibles al inicio para medir; seek() las alterna */
   .escena > * { position: absolute; }
   .fondo { inset: -40px 0 0 0; }
-  .sub { left: 80px; right: 150px; top: 1488px; font-weight: 600; font-size: 36px; line-height: 1.5; color: var(--crema); z-index: 40; }
+  /* zona común Instagram + YouTube Shorts: una sola línea entre y 1460 y 1515 */
+  .sub { left: 80px; right: 150px; top: 1460px; font-weight: 600; font-size: 36px; line-height: 1.5; color: var(--crema); z-index: 40; }
   .sub span { background: rgba(17,17,17,.86); padding: 3px 12px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
   svg.marca { position: absolute; inset: 16px; overflow: visible; pointer-events: none; }
   .persona { position: absolute; width: 64px; height: 110px; color: var(--crema); transform-origin: 50% 100%; }
@@ -162,7 +163,7 @@ const IMGS = {
 const TODO = [0, 0, 3840, 2505], PIERNAS = [2900, 1636, 780, 518], PERDIZ = [2915, 1928, 500, 327];
 const SOL = [2382, 493, 300, 300];
 const $ = id => document.getElementById(id);
-const voz = await cargarVoz('audio/voz-editada.json');
+const voz = await cargarVoz('audio/voz-90.json');   // versión de 90 s (YouTube); la publicada en Instagram es voz-editada
 const W = voz.W;
 
 // El grupo de la sala: cinco personas; la del frente (índice 4) es "vos"
@@ -197,14 +198,14 @@ function enRuta(p) {
 // ───── Tiempos (todo anclado a la voz) ─────
 const T = {
   aca: W('acá').s, e3: W('su padre').s - 0.1, e4: W('en el poema').s - 0.1, e5: W('por qué nadie ayuda').s - 0.25,
-  e5d: W('en el cuadro de bruegel').s - 0.1, e6: W('pero en el cuadro hay alguien').s - 0.25, e6b: W('es su sobrino').s - 0.1,
+  e5d: W('al haber tanta gente').s - 0.6, e6: W('pero en el cuadro hay alguien').s - 0.25, e6b: W('es su sobrino').s - 0.1,
   e7: W('bruegel pintó dos').s - 0.25,
 };
 const DURACION = voz.duracion;
 const escenas = [['e1', -1, T.e3 + 0.6], ['e3', T.e3 - 0.1, T.e4 + 0.6], ['e4', T.e4 - 0.1, T.e5 + 0.6],
   ['e5', T.e5, T.e6 + 0.6], ['e6', T.e6, T.e7 + 0.6], ['e7', T.e7, 999]];
 const SUBS = subtitulos(voz, [['en este cuadro hay un hombre que cayó del cielo'], ['lo encontrás'], ['es que nadie lo mira'], ['no le hizo caso'], ['tres testigos'],
-  ['mirando para otro lado'], ['por qué nadie ayuda'], ['cada uno en lo suyo'], ['esta perdiz'], ['del lado de los que miramos']]);
+  ['mirando para otro lado'], ['por qué nadie ayuda'], ['cada uno en lo suyo'], ['esta perdiz'], ['del lado de los que miramos']], 7);
 
 function seek(t) {
   for (const [id, a, b] of escenas) $(id).style.display = t >= a && t < b ? 'block' : 'none';
@@ -243,8 +244,10 @@ function seek(t) {
   if (t >= T.e4 - 0.1 && t < T.e5 + 0.6) {
     pieza($('tira4'), t, { t0: W('tres testigos').s - 0.05, t1: T.e5, sale: 'fundido' });
     pieza($('fichaO'), t, { t0: W('ovidio').s, entra: 'fundido', t1: T.e5 });
-    [['c1', 'r1', 'pescador'], ['c2', 'r2', 'pastor'], ['c3', 'r3', 'campesino']].forEach(([c, r, w]) => {
-      pieza($(c), t, { t0: W(w).s - 0.05, t1: T.e5, sale: 'fundido' });
+    // los tres recortes entran apenas se nombra el poema (antes había ~3 s vacíos) y se acercan despacio mientras se habla de ellos
+    const crece = 1 + 0.07 * ease.suave(prog(t, T.e4, T.e5));
+    [['c1', 'r1', 'pescador'], ['c2', 'r2', 'pastor'], ['c3', 'r3', 'campesino']].forEach(([c, r, w], k) => {
+      pieza($(c), t, { t0: T.e4 + 0.5 + k * 0.35, t1: T.e5, sale: 'fundido', escala: crece });
       pieza($(r), t, { t0: W(w).s + 0.2, entra: 'fundido', t1: T.e5 });
     });
     const tm = W('mirando para otro lado').s;
@@ -259,9 +262,12 @@ function seek(t) {
     const salen = T.e5d - 0.2;
     pieza($('tira6'), t, { t0: W('por qué nadie ayuda').s - 0.05, t1: salen, sale: 'izq' });
     pieza($('fPs'), t, { t0: W('psicología social').s, entra: 'fundido', t1: salen });
-    pieza($('fDL'), t, { t0: W('1968').s, t1: salen, sale: 'fundido' });
+    pieza($('fDL'), t, { t0: W('psicología social').s + 0.5, t1: salen, sale: 'fundido' });   // la voz ya no dice "en 1968": la fecha queda en la ficha
     const tu = W('el único').s, tc = W('corre').s;
-    pieza($('solo'), t, { t0: tu - 0.1, escala: 1.8, t1: salen });
+    // las dos situaciones entran apagadas apenas se hace la pregunta (antes la pantalla quedaba vacía ~10 s) y se encienden con la voz
+    const tq = W('por qué nadie ayuda').e;
+    pieza($('solo'), t, { t0: tq + 0.3, escala: 1.8, t1: salen });
+    if (t < tu - 0.1) $('solo').style.opacity *= 0.35;
     $('solo').style.color = t >= tc ? 'var(--amarillo)' : 'var(--crema)';
     $('resp1').style.opacity = 0.55 * ease.out(prog(t, tu + 0.2, tu + 0.8)) * (1 - prog(t, salen, salen + 0.35));
     const t85 = W('85').s;
@@ -269,7 +275,7 @@ function seek(t) {
     pieza($('n85'), t, { t0: t85 - 0.05, entra: 'fundido', dur: 0.2, t1: salen });
     pieza($('l85'), t, { t0: t85 + 0.3, entra: 'fundido', t1: salen });
     const tg = W('pero cuando cree').s, td = W('se diluye');
-    grupo.forEach((p, i) => pieza(p, t, { t0: tg + 0.3 + i * 0.1, escala: 1.1, t1: salen }));
+    grupo.forEach((p, i) => { pieza(p, t, { t0: tq + 0.5 + i * 0.08, escala: 1.1, t1: salen }); if (t < tg + 0.3 + i * 0.1) p.style.opacity *= 0.35; });
     $('resp2').style.opacity = 0.55 * ease.out(prog(t, tg + 0.5, tg + 1.0)) * (1 - prog(t, td.s - 0.2, td.s + 0.3));
     const pd = ease.inOut(prog(t, td.s - 0.25, td.e + 0.35));
     gotas.forEach((g, i) => {
@@ -346,7 +352,7 @@ seek(0);
 window.listo = true;
 
 if (!location.search.includes('render')) {
-  const audio = new Audio('audio/voz-editada.wav');
+  const audio = new Audio('audio/voz-90.wav');
   document.body.addEventListener('click', () => { audio.currentTime = 0; audio.play(); });
   (function loop() { seek(audio.paused ? 0 : audio.currentTime); requestAnimationFrame(loop); })();
 }

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Portada · Narciso</title>
+<link rel="stylesheet" href="../../diseno/sistema.css">
+<style>
+  body { margin: 0; }
+  #portada { background: #0E2420; }
+</style>
+</head>
+<body>
+<!-- Todo dentro del recorte 3:4 de la grilla del perfil (y 240–1680) -->
+<section class="frame" id="portada">
+  <div class="puntos"></div>
+  <div class="ficha" style="top:290px;left:70px;transform:rotate(-2deg)">Mitos al revés · 1</div>
+  <div class="tira titular" data-rasgado style="top:350px;left:44px;font-size:88px;transform:rotate(-1.5deg)">Narciso no se enamoró<br>de sí mismo.</div>
+  <div class="lamina" style="top:620px;left:190px;width:700px;height:850px;transform:rotate(1deg)">
+    <div class="plate" data-img="caravaggio" data-crop="0,0,1920,2325"></div>
+  </div>
+  <div class="ficha" style="top:1500px;left:210px;transform:rotate(-1deg)">Caravaggio (atrib.) · Narciso, c. 1597–1599</div>
+  <div class="grano"></div>
+</section>
+<script type="module">
+import { encuadrar, rasgar } from '../../diseno/sistema.js';
+encuadrar(document, { caravaggio: { src: 'assets/caravaggio.jpg', w: 1920, h: 2325 } });
+rasgar(document);
+await document.fonts.ready;
+window.listo = true;
+</script>
+</body>
+</html>

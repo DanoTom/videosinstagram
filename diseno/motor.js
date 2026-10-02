@@ -104,15 +104,18 @@ export function pieza(el, t, { t0, t1 = Infinity, entra = 'pegar', sale = 'fundi
 }
 
 // Trazo SVG que se dibuja (path con pathLength="1").
+// Mientras no empezó, se oculta: con stroke-linecap="round" un trazo de largo cero igual deja un punto.
 export function trazo(path, p) {
   path.style.strokeDasharray = '1';
   path.style.strokeDashoffset = String(1 - clamp(p));
+  path.style.visibility = p > 0 ? 'visible' : 'hidden';
 }
 
 // Trazo punteado que avanza: repite el patrón de puntos hasta la fracción p del largo.
 export function punteado(path, p, punto = 1, hueco = 22) {
   const L = path.getTotalLength(), n = Math.floor((L * clamp(p)) / (punto + hueco));
   path.style.strokeDasharray = `${`${punto} ${hueco} `.repeat(n)}0 ${L + 100}`;
+  path.style.visibility = p > 0 ? 'visible' : 'hidden';
 }
 
 // Grano que "hierve" 12 veces por segundo, como el celuloide.
@@ -139,4 +142,24 @@ export function entreEncuadres(a, b, p) {
   const u = Math.abs(wa - wb) < 1e-6 ? p : (1 / wa - 1 / w) / (1 / wa - 1 / wb);
   const cx = lerp(a[0] + wa / 2, b[0] + wb / 2, u), cy = lerp(a[1] + a[3] / 2, b[1] + b[3] / 2, u);
   return [cx - w / 2, cy - h / 2, w, h];
+}
+
+// ───── Transiciones y efectos agregados en el 03 ─────
+// Marea: un fondo de color sube desde abajo con el borde de arriba ondulado, como agua que llena la pantalla.
+export function marea(el, t, t0, dur = 0.8, amp = 1.6) {
+  const p = ease.inOut(prog(t, t0, t0 + dur));
+  const alto = lerp(104, -2 * amp, p), fase = t * 3.2, pts = [];
+  for (let x = 0; x <= 100; x += 4) pts.push(`${x}% ${alto + amp * Math.sin(x * 0.11 + fase) + amp * 0.5 * Math.sin(x * 0.29 - fase * 1.4)}%`);
+  el.style.clipPath = `polygon(${pts.join(',')}, 100% 100%, 0% 100%)`;
+  el.style.visibility = p > 0 ? 'visible' : 'hidden';
+}
+
+// Palabra por palabra: cada <span> del contenedor aparece cuando la voz dice su palabra (tiempos[i]).
+export function porPalabra(el, t, tiempos, dur = 0.25) {
+  [...el.querySelectorAll('span')].forEach((s, i) => {
+    const p = ease.out(prog(t, tiempos[i] - 0.04, tiempos[i] - 0.04 + dur));
+    s.style.opacity = p;
+    s.style.display = 'inline-block';
+    s.style.transform = `translateY(${lerp(18, 0, p)}px)`;
+  });
 }
