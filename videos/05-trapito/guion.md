@@ -102,12 +102,12 @@ personita), coral `#E07A5F` (el trapito y lo que hace lo mismo), salvia `#8FA98B
 
 | # | Tramo | Imagen | Texto en pantalla |
 |---|---|---|---|
-| 1 | Gancho (0–5 s) | **Estreno: la personita.** El nene dormido, abrazado al trapito, se dibuja solo (`dibujo()`): al principio solo está el trapito. 1 s de silencio | "¿Tuviste uno?" |
+| 1 | Gancho (0–5 s) | **Estreno: la personita.** El nene dormido, abrazado al trapito, se dibuja solo (`dibujo()`): al principio solo están el trapito, la frazada a rayas y la luz de un velador. 1 s de silencio | "¿Tuviste uno?" |
 | 2 | Promesa (5–13 s) | El dibujo se achica; del trapito cuelga una etiqueta de museo; un hilo coral cruza la pantalla hasta un cuadro (Khnopff, que vuelve en el tramo 7) | ficha "objeto de estudio" |
 | 3 | Winnicott (13–25 s) | **Estreno: cine de archivo.** *El almuerzo del bebé* (Lumière, 1895) en una lámina, con parpadeo de proyector y la cámara que se acerca al bebé; los tres objetos se dibujan en fila | "Donald Winnicott" · ficha "pediatra y psicoanalista" · "Londres, 1923–1961" · "entre los 4 y los 12 meses" · ficha "Y las madres saben que no hay que lavarlo" · "¿Para qué sirve?" |
-| 4 | Para qué sirve (25–45 s) | *Desayuno en la cama* (Cassatt) sube como una frazada; dos círculos sobre las caras, casi encimados; la pintura se va y los círculos se separan; el de la mamá se va y vuelve; el trapito cae en el hueco; un hilo a cada lado | "bebé" · "mamá" · "suyo, sin ser él" · "con ella, sin ser ella" · "objeto transicional" |
-| 5 | La tarea que nunca termina (45–57 s) | Iris de cine mudo. Los mismos círculos pasan a ser adentro y afuera; la personita de pie, un hilo en cada mano. **Estreno: el hilo que vibra** (`hilo()`) en la tensión, y **la cinta sin fin** (`cinta()`): "una tarea que nunca termina" corre sin parar. En "descansar" crece una zona coral y los hilos se aflojan | ficha "Aceptar la realidad es" · "adentro" · "afuera" |
-| 6 | El trapito, el cajón, el juego y la cultura (57–67 s) | Papel claro: el nene vuelve, se borra y queda el trapito; se dibuja una cómoda, el cajón se abre, el trapito entra y se cierra. Del cajón crece la zona coral: adentro, *Juegos de niños* (Bruegel); después se llena de cuadros de los videos anteriores | "juego" · "cultura" |
+| 4 | Para qué sirve (25–45 s) | Fondo de frazada a cuadros (guinga). *Desayuno en la cama* (Cassatt) sube como una frazada; dos círculos sobre las caras, casi encimados; la pintura se va y cada círculo se lleva su cara (medallones); se separan en diagonal; el de la mamá se va y vuelve; el trapito cae en el hueco; un hilo a cada lado | "bebé" · "mamá" · "suyo, sin ser él" · "con ella, sin ser ella" · "objeto transicional" |
+| 5 | La tarea que nunca termina (45–57 s) | Iris de cine mudo. Los mismos círculos pasan a ser adentro (dibujado: el nene dormido, la imaginación) y afuera (filmado: la película de los Lumière, la realidad y los otros); la personita de pie, un hilo en cada mano. **Estreno: el hilo que vibra** (`hilo()`) en la tensión, y **la cinta sin fin** (`cinta()`): "una tarea que nunca termina" corre sin parar. En "descansar" crece una zona coral y los hilos se aflojan | ficha "Aceptar la realidad es" · "adentro" · "afuera" |
+| 6 | El trapito, el cajón, el juego y la cultura (57–67 s) | Papel claro: el nene vuelve con su luz, se borra y queda el trapito; se dibuja una cómoda, el cajón se abre, el trapito entra y se cierra. Del cajón crece la zona coral: adentro, *Juegos de niños* (Bruegel); después se llena de cuadros de los videos anteriores | "juego" · "cultura" |
 | 7 | La canción (67–78 s) | La portada de *Escenas de niños* (Schumann). Después *Escuchando a Schumann* (Khnopff) a sangre: la cámara va del piano (el que toca casi no se ve) a ella; un hilo coral entra desde afuera del cuadro. Cierra con un iris sobre ella | "viene de afuera" · "y es tuya" · ficha "la que escucha es su madre" |
 | 8 | Cierre (78–86 s) | La personita de grande, en la misma pose del nene; la cinta vuelve; en "ponés esa canción" aparecen los auriculares coral y suben notas; en "descansar" la cinta frena. Se borra y queda el trapito del principio: el loop empalma | — |
 
@@ -173,6 +173,10 @@ Fichas sobre las obras (verificadas en la web el 2 de octubre de 2026):
 - Pausas: 1 s después de la primera pregunta (para acordarse del suyo), 0,4 s después de "el arte.", 0,8 s después de
   "objeto transicional." (el concepto, solo), 0,6 s después de "descansar." y de "cultura.", 0,5 s después de "de quién es."
   y 1,5 s de cola, donde se borra la personita y vuelve el trapito del principio → `audio/voz-editada.wav` (86,3 s).
+- Revisión con `quietud.py` del primer render: 5 tramos "vacíos" (las líneas finas sobre un fondo liso ocupan menos del
+  18 % del cuadro; de 29 a 55 s, casi todo). Se llenó sin salir del estilo: la luz del velador detrás del nene, la frazada
+  a rayas, el fondo de guinga en el tramo de Cassatt, los medallones con las caras, los discos de adentro (dibujado) y
+  afuera (filmado), la cómoda de madera y el cuadro de Khnopff desde "lo que pensó". Segundo render: 0 vacíos, 0 quietos.
 - Animación: `video.html`, con los dibujos en `dibujos.js`. Efectos nuevos, ahora en `diseno/motor.js`: `dibujo()` (un dibujo
   de línea que se hace solo, trazo por trazo, y se borra al revés), `hilo()` (una cuerda que cuelga, se tiende y vibra),
   `cinta()` (texto que corre sin terminar nunca, y puede frenar) y `cine()` (una película cuadro por cuadro en un canvas).
@@ -189,9 +193,9 @@ python3 herramientas/cotejar.py videos/05-trapito/guion.md videos/05-trapito/aud
 # el clip de Lumière (480p de Commons) a cuadros
 ffmpeg -ss 11.5 -t 11 -i repas.webm -vf "fps=12,format=gray" -q:v 8 videos/05-trapito/assets/repas/%03d.jpg
 node herramientas/render.mjs videos/05-trapito/video.html --audio=videos/05-trapito/audio/voz-editada.wav --workers=4
-cd videos/05-trapito   # menos de 30 MB: 240 / 86,3 − 0,13 ≈ 2,65 Mbps de video
-ffmpeg -y -i out/video.mp4 -c:v libx264 -preset slow -b:v 2600k -pass 1 -passlogfile out/ffmpeg2pass -an -f mp4 /dev/null
-ffmpeg -y -i out/video.mp4 -c:v libx264 -preset slow -b:v 2600k -pass 2 -passlogfile out/ffmpeg2pass -pix_fmt yuv420p \
+cd videos/05-trapito   # menos de 30 MB: 240 / 86,3 − 0,13 ≈ 2,65 Mbps; con 2,55 queda en 29,2 MB
+ffmpeg -y -i out/video.mp4 -c:v libx264 -preset slow -b:v 2550k -pass 1 -passlogfile out/ffmpeg2pass -an -f mp4 /dev/null
+ffmpeg -y -i out/video.mp4 -c:v libx264 -preset slow -b:v 2550k -pass 2 -passlogfile out/ffmpeg2pass -pix_fmt yuv420p \
   -c:a aac -b:a 128k -movflags +faststart 05-trapito.mp4
 cd ../..
 python3 herramientas/quietud.py videos/05-trapito/05-trapito.mp4

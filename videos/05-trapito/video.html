@@ -18,6 +18,8 @@
     --trapo2: #F6D7C8;
     --fondo: var(--noche);
     --hueco: var(--tinta);
+    --manta: #3B4F78;   /* la frazada del dibujo, un azul más claro que el fondo */
+    --manta2: #4A5F8C;
   }
   html, body { margin: 0; background: #000; }
   #video { background: var(--noche); }
@@ -29,7 +31,9 @@
   .capa { inset: 0; width: 1080px; height: 1920px; overflow: visible; pointer-events: none; }
   .sub { left: 80px; right: 150px; top: 1460px; font-weight: 600; font-size: 36px; line-height: 1.5; color: var(--crema); z-index: 40; }
   .sub span { background: rgba(20,18,16,.88); padding: 3px 12px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
-  .papel { --linea: var(--tinta); --fondo: var(--crema); --trapo2: #F6D7C8; }
+  .papel { --linea: var(--tinta); --fondo: var(--crema); --trapo2: #F6D7C8; --manta: #CBD5DE; --manta2: #B7C4D0; --madera: #DCC9A6; }
+  .medallon { border-radius: 50%; background-repeat: no-repeat; }
+  #e5 .rotulo { paint-order: stroke; stroke: var(--tinta); stroke-width: 10px; stroke-linejoin: round; }
   .etiqueta { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 54px; line-height: 1; color: var(--crema);
     background: var(--tinta); padding: 8px 20px 14px; white-space: nowrap; }
   .cinta { left: -120px; width: 1320px; overflow: hidden; white-space: nowrap; background: var(--crema); color: var(--tinta);
@@ -48,6 +52,7 @@
 
   <!-- 1 y 2 · GANCHO Y PROMESA: el nene dormido se dibuja solo; después se achica y del trapito sale un hilo hasta un cuadro -->
   <div class="escena" id="e1">
+    <div id="velador" style="left:-100px;top:300px;width:1280px;height:1000px;background:radial-gradient(closest-side, rgba(224,122,95,.42), rgba(224,122,95,0))"></div>
     <svg id="nene1" viewBox="0 0 1000 760" style="left:40px;top:420px;width:1000px;height:760px;overflow:visible"></svg>
     <div class="tira titular" id="tuviste" data-rasgado data-rot="-2" style="top:300px;left:170px;font-size:118px;white-space:nowrap">¿Tuviste uno?</div>
     <div class="lamina" id="lamK1" data-rot="2" style="top:300px;left:560px;width:430px;height:570px"><div class="plate" id="pK1"></div></div>
@@ -75,9 +80,10 @@
 
   <!-- 4 · PARA QUÉ SIRVE: Cassatt; el bebé y la mamá, dos círculos que se separan; el trapito en el medio -->
   <div class="escena" id="e4">
-    <div class="fondo" style="background:var(--salvia)"><div class="puntos" style="position:absolute;inset:0"></div></div>
-    <div class="lamina" id="lamCas" data-rot="-1" style="top:330px;left:60px;width:960px;height:780px"><div class="plate" id="pCas"></div></div>
+    <div class="fondo" style="background-color:var(--salvia);background-image:repeating-linear-gradient(90deg, rgba(40,70,45,.2) 0 44px, transparent 44px 132px), repeating-linear-gradient(0deg, rgba(40,70,45,.2) 0 44px, transparent 44px 132px)"></div>
+    <div class="lamina" id="lamCas" data-rot="0" style="top:330px;left:60px;width:960px;height:780px"><div class="plate" id="pCas"></div></div>
     <div class="ficha" id="fCas" data-rot="1" style="top:1135px;left:90px;font-size:18px">Mary Cassatt · Desayuno en la cama, 1897</div>
+    <div class="medallon" id="medB"></div><div class="medallon" id="medM"></div>
     <svg class="capa" id="capa4" viewBox="0 0 1080 1920" stroke-linecap="round">
       <g id="aros4" fill="none">
         <circle id="cB" class="circulo"/><circle id="cM" class="circulo"/>
@@ -87,18 +93,21 @@
       <path id="hM" fill="none" stroke="var(--coral)" stroke-width="7"/>
       <text id="tB" class="rotulo">bebé</text><text id="tM" class="rotulo">mamá</text>
     </svg>
-    <div id="trapo4c" style="left:450px;top:808px;width:160px;height:148px"><svg id="trapo4" viewBox="0 0 260 240" style="width:160px;height:148px;overflow:visible"></svg></div>
-    <div class="etiqueta" id="suyo" data-rot="-2" style="top:1030px;left:70px">suyo, sin ser él</div>
-    <div class="etiqueta" id="conElla" data-rot="2" style="top:1115px;left:440px">con ella, sin ser ella</div>
-    <div class="tira titular" id="objTr" data-rasgado data-rot="-2" style="top:1220px;left:80px;font-size:94px;white-space:nowrap">objeto transicional</div>
-    <div class="ficha" id="fObj" data-rot="1" style="top:1370px;left:430px;font-size:18px">Winnicott, «Objetos transicionales<br>y fenómenos transicionales», 1951</div>
+    <div id="trapo4c" style="left:433px;top:736px;width:160px;height:148px"><svg id="trapo4" viewBox="0 0 260 240" style="width:160px;height:148px;overflow:visible"></svg></div>
+    <div class="etiqueta" id="suyo" data-rot="-2" style="top:790px;left:60px">suyo, sin ser él</div>
+    <div class="etiqueta" id="conElla" data-rot="2" style="top:650px;left:470px">con ella, sin ser ella</div>
+    <div class="tira titular" id="objTr" data-rasgado data-rot="-2" style="top:1255px;left:70px;font-size:94px;white-space:nowrap">objeto transicional</div>
+    <div class="ficha" id="fObj" data-rot="1" style="top:1150px;left:70px;font-size:18px">Winnicott, «Objetos transicionales<br>y fenómenos transicionales», 1951</div>
   </div>
 
   <!-- 5 · LA TAREA QUE NUNCA TERMINA: adentro y afuera tiran; el hilo vibra; aparece un lugar donde descansar -->
   <div class="escena" id="e5">
     <div class="fondo" style="background:var(--noche)"><div class="puntos" style="position:absolute;inset:0"></div></div>
+    <svg class="capa" id="capa5b" viewBox="0 0 1080 1920"><ellipse id="zona" fill="var(--coral)" opacity=".9"/>
+    </svg>
+    <div class="medallon papel" id="discoA" style="overflow:hidden;background:var(--crema)"><svg id="nene5" viewBox="0 0 1000 760" style="position:absolute;overflow:visible"></svg></div>
+    <div class="medallon" id="discoF" style="overflow:hidden"><canvas id="cine5" width="400" height="400" style="width:100%;height:100%"></canvas></div>
     <svg class="capa" id="capa5" viewBox="0 0 1080 1920" stroke-linecap="round">
-      <ellipse id="zona" fill="var(--coral)" opacity=".9"/>
       <circle id="cA" class="circulo"/><circle id="cF" class="circulo"/>
       <text id="tA" class="rotulo">adentro</text><text id="tF" class="rotulo">afuera</text>
       <path id="hA" fill="none" stroke="var(--coral)" stroke-width="7"/>
@@ -106,7 +115,7 @@
       <path id="brazoI" fill="none" stroke="var(--crema)" stroke-width="9"/>
       <path id="brazoD" fill="none" stroke="var(--crema)" stroke-width="9"/>
     </svg>
-    <svg id="pie" viewBox="0 0 400 600" style="left:340px;top:640px;width:400px;height:600px;overflow:visible"></svg>
+    <svg id="pie" viewBox="0 0 400 600" style="left:340px;top:800px;width:400px;height:600px;overflow:visible"></svg>
     <div class="cinta" id="cinta5" data-rot="-4" style="top:300px"><span></span></div>
     <div class="ficha" id="fAcept" data-rot="-1" style="top:450px;left:70px;font-size:26px">Aceptar la realidad es</div>
   </div>
@@ -114,9 +123,9 @@
   <!-- 6 · DE BEBÉS, EL TRAPITO; EL CAJÓN; SE EXTIENDE: JUEGO Y CULTURA -->
   <div class="escena papel" id="e6">
     <div class="fondo" style="background:var(--crema)"><div class="puntos" style="position:absolute;inset:0;background-image:radial-gradient(rgba(0,0,0,.06) 1.3px, transparent 1.7px)"></div></div>
-    <svg id="nene6" viewBox="0 0 1000 760" style="left:140px;top:300px;width:800px;height:608px;overflow:visible"></svg>
+    <svg id="nene6" viewBox="0 0 1000 760" style="left:40px;top:220px;width:1000px;height:760px;overflow:visible"></svg>
     <svg id="comoda" viewBox="0 0 600 600" style="left:240px;top:820px;width:600px;height:600px;overflow:visible"></svg>
-    <div id="vuelo" style="inset:0"><svg id="trapo6" viewBox="0 0 1000 760" style="position:absolute;left:140px;top:300px;width:800px;height:608px;overflow:visible"></svg></div>
+    <div id="vuelo" style="inset:0"><svg id="trapo6" viewBox="0 0 1000 760" style="position:absolute;left:40px;top:220px;width:1000px;height:760px;overflow:visible"></svg></div>
     <div id="zona6" style="inset:0;background:var(--coral)"></div>
     <div class="plate" id="pJue" style="inset:0"></div>
     <div class="lamina" id="lamN" data-rot="-3" style="top:280px;left:40px;width:440px;height:270px"><div class="plate" data-img="nighthawks" data-crop="0,0,3840,2095"></div></div>
@@ -146,7 +155,8 @@
   <!-- 8 · CIERRE: de grande, la misma pose; la canción; la cinta se frena -->
   <div class="escena" id="e8">
     <div class="fondo" style="background:var(--noche)"><div class="puntos" style="position:absolute;inset:0"></div></div>
-    <div id="brillo" style="left:-60px;top:560px;width:1000px;height:700px;background:radial-gradient(closest-side, rgba(224,122,95,.55), rgba(224,122,95,0))"></div>
+    <div id="velador8" style="left:-100px;top:300px;width:1280px;height:1000px;background:radial-gradient(closest-side, rgba(224,122,95,.42), rgba(224,122,95,0))"></div>
+    <div id="brillo" style="left:-60px;top:560px;width:1000px;height:700px;background:radial-gradient(closest-side, rgba(224,122,95,.45), rgba(224,122,95,0))"></div>
     <svg id="trapo8" viewBox="0 0 1000 760" style="left:40px;top:420px;width:1000px;height:760px;overflow:visible"></svg>
     <svg id="grande" viewBox="0 0 1000 760" style="left:40px;top:420px;width:1000px;height:760px;overflow:visible"></svg>
     <svg class="capa" id="notas" viewBox="0 0 1080 1920" fill="var(--coral)"></svg>
@@ -177,6 +187,8 @@ const IMGS = {
 const CUADROS = Array.from({ length: 132 }, (_, i) => { const im = new Image(); im.src = `assets/repas/${String(i + 1).padStart(3, '0')}.jpg`; return im; });
 // Encuadres (px del original). Los "a sangre" tienen la proporción de la pantalla (0,5625).
 const KH = { mujer1: [780, 330, 440, 587], piano: [0, 0, 700, 1244], mujer: [620, 0, 700, 1244], cerca: [640, 60, 660, 1173] };
+// Las caras de Desayuno en la cama (px del original de 1280)
+const CARA = { bebe: [493, 213], mama: [753, 307] };
 const JU = { centro: [1500, 700, 1100, 1100], mas: [1100, 500, 1700, 1700] };
 
 const $ = id => document.getElementById(id);
@@ -249,6 +261,10 @@ function seek(tReal) {
     n.style.transformOrigin = '515px 540px';
     n.style.transform = `translate(${lerp(0, -255, pe)}px, ${lerp(0, 230, pe)}px) scale(${lerp(1, 0.6, pe) * resp})`;
     n.style.opacity = 1 - prog(t, T.e3, T.e3 + 0.5);
+    // el velador acompaña al nene (mismo punto fijo: el trapito, en 555, 960 de la pantalla)
+    $('velador').style.transformOrigin = '655px 660px';
+    $('velador').style.transform = n.style.transform;
+    $('velador').style.opacity = n.style.opacity;
     pieza($('tuviste'), t, { t0: T.dormir - 0.05, t1: T.e2 + 0.2, sale: 'fundido' });
     // la etiqueta de museo cuelga del trapito: se lo tomó en serio
     const [qx, qy] = vbA(n, 600, 600);
@@ -261,7 +277,7 @@ function seek(tReal) {
     hilo($('hilo1'), [ax, ay], [596, 862], { comba: 70, p: ease.inOut(prog(t, T.penso + 0.3, T.arte + 0.1)), amp: 4 * prog(t, T.arte, T.arte + 0.3), t });
     $('hilo1').style.opacity = 1 - prog(t, T.e3, T.e3 + 0.4);
     encuadre($('pK1'), IMGS.khnopff, KH.mujer1);
-    pieza($('lamK1'), t, { t0: T.necesitamos - 0.1, dur: 0.5, t1: T.e3, sale: 'fundido' });
+    pieza($('lamK1'), t, { t0: T.penso, dur: 0.5, t1: T.e3, sale: 'fundido' });
   }
 
   t = tReal;
@@ -288,31 +304,45 @@ function seek(tReal) {
     // la escena sube como una frazada que se tiende
     const pe = ease.inOut(prog(t, T.e4, T.e4 + 0.7));
     $('e4').style.clipPath = pe >= 1 ? 'none' : `inset(${lerp(100, 0, pe)}% 0 0 0)`;
-    encuadre($('pCas'), IMGS.cassatt, entreEncuadres([0, 0, 1280, 1017], [120, 0, 1100, 874], ease.suave(prog(t, T.e4, T.descubre))));
+    const cCas = entreEncuadres([0, 0, 1280, 1017], [120, 0, 1100, 874], ease.suave(prog(t, T.e4, T.descubre)));
+    encuadre($('pCas'), IMGS.cassatt, cCas);
     pieza($('fCas'), t, { t0: T.e4 + 0.8, entra: 'fundido', t1: T.descubre - 0.1 });
-    const pd = ease.inOut(prog(t, T.descubre - 0.1, T.descubre + 0.9));
+    const pd = ease.inOut(prog(t, T.descubre, T.descubre + 0.9));
     $('lamCas').style.opacity = 1 - pd;
-    $('lamCas').style.transform = `translateY(${pd * 120}px) rotate(${lerp(-1, 3, pd)}deg)`;
-    // los dos círculos: primero sobre las caras de Cassatt, casi encimados; después se separan
+    $('lamCas').style.transform = `translateY(${pd * 160}px) rotate(${lerp(0, 4, pd)}deg)`;
+    // las caras en la pantalla, según el encuadre de la lámina (plato de 928×748 en 76, 346)
+    const kc = Math.max(928 / cCas[2], 748 / cCas[3]);
+    const enLamina = ([fx, fy]) => [76 + (fx - cCas[0]) * kc + (928 - cCas[2] * kc) / 2, 346 + (fy - cCas[1]) * kc + (748 - cCas[3] * kc) / 2];
+    // los dos círculos: primero sobre las caras, casi encimados; se llevan las caras y se separan en diagonal
     const sep = ease.inOut(prog(t, T.descubre + 0.3, T.descubre + 1.6));
     const ida = ease.in(prog(t, T.va, T.va + 0.4)), vuelta = ease.out(prog(t, T.vuelve, T.vuelve + 0.6));
     const resp = Math.sin(t * 2.2) * 2;
-    const B = [lerp(318, 230, sep), lerp(452, 880, sep), lerp(108, 95, sep) + resp];
-    const M = [lerp(454, 850, sep) + 520 * ida * (1 - vuelta), lerp(490, 880, sep), lerp(150, 125, sep) - resp];
+    const cb = enLamina(CARA.bebe), cm = enLamina(CARA.mama);
+    const B = [lerp(cb[0], 260, sep), lerp(cb[1], 590, sep), lerp(100, 140, sep) + resp];
+    const M = [lerp(cm[0], 800, sep) + 480 * ida * (1 - vuelta), lerp(cm[1], 1040, sep) + 300 * ida * (1 - vuelta), lerp(118, 170, sep) - resp];
     const pB = prog(t, T.bebe - 0.1, T.bebe + 0.6), pM = prog(t, T.mama - 0.15, T.mama + 0.55);
     for (const [c, [x, y, r], p] of [['cB', B, pB], ['cM', M, pM]]) {
       const el = $(c); el.setAttribute('cx', x); el.setAttribute('cy', y); el.setAttribute('r', r); el.setAttribute('pathLength', 1);
       trazo(el, ease.inOut(p));
     }
+    // cada medallón lleva su cara: al principio calza justo con la pintura; después crece con su círculo
+    for (const [id, [x, y, r], cara, r0] of [['medB', B, CARA.bebe, 100], ['medM', M, CARA.mama, 118]]) {
+      const el = $(id), km = kc * r / r0;
+      Object.assign(el.style, { left: `${x - r}px`, top: `${y - r}px`, width: `${2 * r}px`, height: `${2 * r}px`,
+        backgroundImage: `url(${IMGS.cassatt.src})`, backgroundSize: `${1280 * km}px ${1017 * km}px`,
+        backgroundPosition: `${r - cara[0] * km}px ${r - cara[1] * km}px`, opacity: prog(t, T.descubre - 0.3, T.descubre) });
+    }
     $('tB').setAttribute('x', B[0]); $('tB').setAttribute('y', B[1] - B[2] - 22);
     $('tM').setAttribute('x', M[0]); $('tM').setAttribute('y', M[1] - M[2] - 22);
     aparecer($('tB'), t, T.descubre + 0.8, T.e5);
     aparecer($('tM'), t, T.descubre + 1.0, T.e5);
-    // el trapito cae en el hueco; los dos hilos
+    // el trapito cae en el hueco; un hilo a cada lado, de borde a borde
     dibujo($('trapo4'), 1);
     pieza($('trapo4c'), t, { t0: T.trapito + 0.1, t1: T.e5 + 0.1, sale: 'fundido' });
-    hilo($('hB'), [B[0] + B[2], B[1]], [462, 880], { p: ease.inOut(prog(t, T.suyo - 0.3, T.suyo + 0.4)), comba: 18, amp: 2, t });
-    hilo($('hM'), [598, 880], [M[0] - M[2], M[1]], { p: ease.inOut(prog(t, T.conElla - 0.3, T.conElla + 0.4)), comba: 18, amp: 2, t: t + 0.4 });
+    const TR = [513, 810];
+    const borde = ([x, y, r], [tx, ty], k) => { const d = Math.hypot(tx - x, ty - y); return [x + (tx - x) * k / d, y + (ty - y) * k / d]; };
+    hilo($('hB'), borde(B, TR, B[2]), borde([...TR, 0], [B[0], B[1]], 82), { p: ease.inOut(prog(t, T.suyo - 0.3, T.suyo + 0.4)), comba: 14, amp: 2, t });
+    hilo($('hM'), borde([...TR, 0], [M[0], M[1]], 82), borde(M, TR, M[2]), { p: ease.inOut(prog(t, T.conElla - 0.3, T.conElla + 0.4)), comba: 14, amp: 2, t: t + 0.4 });
     for (const h of ['hB', 'hM']) {
       $(h).style.opacity = 1 - prog(t, T.e5, T.e5 + 0.3);
       for (const k of ['d', 'style']) $(h + '2').setAttribute(k, $(h).getAttribute(k) || '');
@@ -325,31 +355,41 @@ function seek(tReal) {
 
   // 5 · La tarea que nunca termina
   if (t >= T.e5 && t < T.e6 + 0.8) {
-    iris($('e5'), prog(t, T.e5, T.e5 + 0.8), 540, 880);
-    // los círculos de antes pasan a ser adentro y afuera; en la tensión se alejan
+    iris($('e5'), prog(t, T.e5, T.e5 + 0.8), 540, 900);
+    // los círculos de antes pasan a ser adentro (coral) y afuera (la película: el mundo real, los otros); en la tensión
+    // se alejan
     const g = ease.inOut(prog(t, T.e5, T.e5 + 1.2));
     const ten = ease.inOut(prog(t, T.nadie, T.nadie + 1.2)) * (1 - ease.inOut(prog(t, T.necesitamos2, T.necesitamos2 + 1.2)));
-    const A = [lerp(230, 170, g) - 40 * ten, lerp(880, 920, g), lerp(95, 130, g)], F = [lerp(850, 910, g) + 40 * ten, lerp(880, 920, g), lerp(125, 130, g)];
+    const A = [lerp(260, 190, g) - 40 * ten, lerp(590, 700, g), lerp(140, 190, g)];
+    const F = [lerp(800, 890, g) + 40 * ten, lerp(1040, 700, g), lerp(170, 190, g)];
     for (const [c, [x, y, r]] of [['cA', A], ['cF', F]]) { $(c).setAttribute('cx', x); $(c).setAttribute('cy', y); $(c).setAttribute('r', r); }
-    $('tA').setAttribute('x', A[0]); $('tA').setAttribute('y', A[1] + 16); $('tF').setAttribute('x', F[0]); $('tF').setAttribute('y', F[1] + 16);
+    for (const [id, [x, y, r]] of [['discoA', A], ['discoF', F]])
+      Object.assign($(id).style, { left: `${x - r}px`, top: `${y - r}px`, width: `${2 * r}px`, height: `${2 * r}px` });
+    // adentro, dibujado (la imaginación); afuera, filmado (la realidad, los otros)
+    const n5 = $('nene5'), w5 = 2.3 * A[2];
+    Object.assign(n5.style, { width: `${w5}px`, height: `${w5 * 0.76}px`, left: `${A[2] - w5 * 0.5}px`, top: `${A[2] - w5 * 0.42}px` });
+    dibujo(n5, 1, { rellenos: [-1] });
+    cine($('cine5'), CUADROS, T.e5 + ((t - T.e5) % 10.9), T.e5, 12, [100, 20, 440, 440]);
+    $('tA').setAttribute('x', A[0]); $('tA').setAttribute('y', A[1] + A[2] + 60); $('tF').setAttribute('x', F[0]); $('tF').setAttribute('y', F[1] + F[2] + 60);
     aparecer($('tA'), t, T.adentro - 0.05); aparecer($('tF'), t, T.afuera - 0.05);
     // la personita en el medio, con un hilo en cada mano
     dibujo($('pie'), prog(t, T.e5 + 0.4, T.aceptar - 0.1));
     const temblor = Math.sin(t * 47) * 2.5 * ten;
     $('pie').style.transform = `translateX(${temblor}px)`;
     const baja = ease.inOut(prog(t, T.necesitamos2 + 0.2, T.necesitamos2 + 1.2));
-    const hI = [lerp(lerp(420, 400, ten), 476, baja) + temblor, lerp(910, 1000, baja)], hD = [lerp(lerp(660, 680, ten), 604, baja) + temblor, lerp(910, 1000, baja)];
+    const hI = [lerp(lerp(410, 395, ten), 476, baja) + temblor, lerp(920, 1110, baja)], hD = [lerp(lerp(670, 685, ten), 604, baja) + temblor, lerp(920, 1110, baja)];
     const pb = ease.inOut(prog(t, T.aceptar - 0.4, T.aceptar + 0.3));
-    $('brazoI').setAttribute('d', `M${512 + temblor} 840 L ${lerp(512, hI[0], pb)} ${lerp(840, hI[1], pb)}`);
-    $('brazoD').setAttribute('d', `M${568 + temblor} 840 L ${lerp(568, hD[0], pb)} ${lerp(840, hD[1], pb)}`);
+    $('brazoI').setAttribute('d', `M${512 + temblor} 1000 L ${lerp(512, hI[0], pb)} ${lerp(1000, hI[1], pb)}`);
+    $('brazoD').setAttribute('d', `M${568 + temblor} 1000 L ${lerp(568, hD[0], pb)} ${lerp(1000, hD[1], pb)}`);
     for (const b of ['brazoI', 'brazoD']) $(b).style.visibility = pb > 0 ? 'visible' : 'hidden';
     const ph = ease.inOut(prog(t, T.aceptar, T.aceptar + 0.8));
     const opts = { comba: lerp(4, 90, baja), amp: 11 * ten, t };
-    hilo($('hA'), hI, [A[0] + A[2], A[1]], { ...opts, p: ph });
-    hilo($('hF'), hD, [F[0] - F[2], F[1]], { ...opts, p: ph, t: t + 0.13 });
+    const alBorde = ([x, y, r], [hx, hy]) => { const d = Math.hypot(hx - x, hy - y); return [x + (hx - x) * r / d, y + (hy - y) * r / d]; };
+    hilo($('hA'), hI, alBorde(A, hI), { ...opts, p: ph });
+    hilo($('hF'), hD, alBorde(F, hD), { ...opts, p: ph, t: t + 0.13 });
     // el lugar donde descansar: una zona coral que crece detrás
     const z = ease.out(prog(t, T.necesitamos2 + 0.4, T.descansar + 0.6));
-    $('zona').setAttribute('cx', 540); $('zona').setAttribute('cy', 960);
+    $('zona').setAttribute('cx', 540); $('zona').setAttribute('cy', 1080);
     $('zona').setAttribute('rx', 260 * z); $('zona').setAttribute('ry', 330 * z);
     // la cinta sin fin
     pieza($('cinta5'), t, { t0: T.aceptar - 0.1, entra: 'der', dur: 0.6, t1: T.e6 - 0.2, sale: 'fundido' });
@@ -362,16 +402,16 @@ function seek(tReal) {
     iris($('e6'), prog(t, T.e6, T.e6 + 0.8), 540, 840);
     const n = $('nene6');
     const pd = t < T.anios ? prog(t, T.e6 + 0.2, T.e6 + 1.5) : 1 - prog(t, T.anios, T.anios + 0.7);
-    dibujo(n, ease.inOut(pd), { rellenos: [2] });
-    // el trapito suelto vuela al cajón
+    dibujo(n, ease.inOut(pd), { rellenos: [0.3, 0.7] });
+    // el trapito suelto (con su luz) vuela al cajón
     const tr = $('trapo6');
     dibujo(tr, 1, { rellenos: [-1] });
     const vu = ease.inOut(prog(t, T.cajon - 0.05, T.cajon + 0.55));
-    tr.style.transformOrigin = '420px 432px';  // el centro del trapito, en px del svg (800 de ancho)
-    tr.style.transform = `translate(${lerp(0, -12, vu)}px, ${lerp(0, 300, vu)}px) scale(${lerp(1, 0.55, vu)}) rotate(${lerp(0, 8, vu)}deg)`;
+    tr.style.transformOrigin = '515px 540px';  // el centro del trapito, en px del svg
+    tr.style.transform = `translate(${lerp(0, -15, vu)}px, ${lerp(0, 260, vu)}px) scale(${lerp(1, 0.55, vu)}) rotate(${lerp(0, 8, vu)}deg)`;
     // la cómoda se dibuja; el cajón se abre y se cierra
     const c = $('comoda');
-    dibujo(c, prog(t, T.anios + 0.1, T.cajon - 0.1), { rellenos: [2] });
+    dibujo(c, prog(t, T.anios + 0.1, T.cajon - 0.1), { rellenos: [0.6, 1] });
     const ab = ease.out(prog(t, T.cajon - 0.3, T.cajon)) * (1 - ease.inOut(prog(t, T.cajon + 0.55, T.cajon + 0.95)));
     const fr = c.querySelector('#frente');
     fr.style.transformOrigin = '300px 250px';
@@ -432,6 +472,7 @@ function seek(tReal) {
     }
     if ($('notas').innerHTML !== svg) $('notas').innerHTML = svg;
     aparecer($('brillo'), t, T.lugar - 0.2, T.nunca2 + 0.2, 1.0);
+    g.querySelector('.manta').style.opacity = 1 - ease.inOut(prog(t, T.nunca2 + 0.5, T.vuelta - 0.1));
     // mientras se borra, vuelve el trapito del principio, en el mismo lugar: así el loop empalma
     dibujo($('trapo8'), 1, { rellenos: [-1] });
     $('trapo8').style.opacity = ease.inOut(prog(t, T.nunca2 + 0.5, T.vuelta - 0.1));
@@ -446,15 +487,18 @@ function seek(tReal) {
 }
 
 // ───── Armado ─────
-$('nene1').innerHTML = D.nene; $('nene6').innerHTML = D.nene; $('grande').innerHTML = D.grande; $('pie').innerHTML = D.dePie;
+$('nene1').innerHTML = D.nene; $('nene6').innerHTML = D.nene; $('nene5').innerHTML = D.nene; $('grande').innerHTML = D.grande; $('pie').innerHTML = D.dePie;
 $('ob1').innerHTML = D.sabana; $('ob2').innerHTML = D.panuelo; $('ob3').innerHTML = D.muneco;
 $('comoda').innerHTML = D.comoda + D.cajon;
-// el trapito solo (para que vuele al cajón): solo sus rellenos
-$('trapo6').innerHTML = D.nene.replace(/<g class="trazos"[\s\S]*$/, '');
-$('trapo6').querySelector('.relleno').remove();  // sin el cachete
-$('nene6').querySelector('.rellenos').style.display = 'none';
+// el trapito solo (para que vuele al cajón, con su luz) y el trapito con la frazada (el final, que empalma con el principio)
+const piezas = sel => { const tpl = document.createElement('template'); tpl.innerHTML = `<svg>${D.nene}</svg>`;
+  return [...tpl.content.querySelectorAll(sel)].map(e => e.outerHTML).join(''); };
+$('trapo6').innerHTML = `<defs><radialGradient id="luzTrapo"><stop offset="0" stop-color="#E07A5F" stop-opacity=".5"/>` +
+  `<stop offset="1" stop-color="#E07A5F" stop-opacity="0"/></radialGradient></defs>` +
+  `<ellipse cx="515" cy="520" rx="520" ry="400" fill="url(#luzTrapo)"/><g class="rellenos">${piezas('.trapo')}</g>`;
+$('trapo8').innerHTML = `<g class="rellenos">${piezas('.manta, .trapo')}</g>`;
+$('nene6').querySelector('.trapo').style.display = 'none';
 $('trapo4').innerHTML = D.panuelo;
-$('trapo8').innerHTML = $('trapo6').innerHTML;
 for (const id of ['cinta5', 'cinta8']) $(id).firstElementChild.textContent = 'una tarea que nunca termina · '.repeat(6);
 encuadrar(document, IMGS);
 rasgar(document);

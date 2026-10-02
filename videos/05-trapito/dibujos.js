@@ -11,10 +11,14 @@ const C = (d, w = 5) => `<path class="costura" d="${d}" fill="none" stroke="var(
 // punta que sube hasta el cachete (la que se frota).
 export const nene = `
 <g class="rellenos">
+  <path class="relleno manta" d="M226 474 C 280 500, 330 504, 386 494 L 644 480 C 740 448, 840 432, 930 446 L 948 640 C 700 664, 420 664, 186 646 C 190 570, 202 510, 226 474 Z" fill="var(--manta)"/>
+  <path class="relleno manta" d="M196 572 C 400 590, 700 584, 942 552 M192 616 C 420 632, 700 628, 946 600" fill="none" stroke="var(--manta2)" stroke-width="15"/>
   ${R('M262 392 a 26 18 0 1 0 52 0 a 26 18 0 1 0 -52 0', 'fill="#E8907F" opacity=".85" data-desde=".3"')}
+  <g class="trapo">
   ${R('M392 478 C 460 456, 560 452, 640 470 C 660 520, 652 576, 634 610 C 554 628, 456 626, 392 606 C 376 562, 378 516, 392 478 Z', 'fill="var(--trapo)"')}
   ${R('M560 458 C 590 452, 620 456, 640 470 C 646 492, 646 508, 642 520 C 620 500, 590 480, 560 458 Z', 'fill="var(--trapo2)" opacity=".55"')}
   ${C('M410 494 C 470 476, 560 472, 624 486 C 638 526, 634 568, 620 594 C 552 608, 464 608, 408 592 C 396 560, 398 524, 410 494 Z')}
+  </g>
 </g>
 <g class="trazos" fill="none" stroke="var(--linea)" stroke-linecap="round" stroke-linejoin="round">
   ${P('M478 318 C 478 404, 418 458, 346 458 C 266 458, 214 400, 216 326 C 218 248, 278 196, 350 198 C 426 200, 478 246, 478 318')}
@@ -32,6 +36,10 @@ export const nene = `
 
 // 8 · La misma pose, de grande: pelo corto, auriculares coral, la frazada más larga (viewBox 0 0 1000 760)
 export const grande = `
+<g class="manta">
+  <path d="M200 480 C 260 506, 340 508, 430 496 C 580 474, 760 446, 960 456 L 972 640 C 700 664, 420 664, 176 646 C 178 584, 184 520, 200 480 Z" fill="var(--manta)"/>
+  <path d="M184 572 C 400 590, 700 580, 966 552 M180 616 C 420 632, 700 626, 968 600" fill="none" stroke="var(--manta2)" stroke-width="15"/>
+</g>
 <g class="trazos" fill="none" stroke="var(--linea)" stroke-linecap="round" stroke-linejoin="round">
   ${P('M452 334 C 452 402, 404 446, 342 446 C 276 446, 230 400, 230 336 C 230 270, 280 224, 342 224 C 406 224, 452 270, 452 334')}
   ${P('M234 318 C 236 262, 282 228, 340 228 C 400 228, 448 262, 450 318 C 420 282, 384 270, 352 286 C 320 268, 266 280, 234 318', 7)}
@@ -97,6 +105,7 @@ export const muneco = `
 // 6 · La cómoda (viewBox 0 0 600 600). El cajón de arriba es aparte (#cajon) para abrirlo: cuando se abre baja y se agranda,
 // y arriba aparece su interior (#hueco).
 export const comoda = `
+<g class="rellenos">${R('M90 160 L 510 160 L 510 520 L 90 520 Z', 'fill="var(--madera)"')}</g>
 <g class="trazos" fill="none" stroke="var(--linea)" stroke-linecap="round" stroke-linejoin="round">
   ${P('M90 160 L 510 160 L 510 520 L 90 520 Z', 9)}
   ${P('M90 340 L 510 340 M270 430 L 330 430', 9)}
@@ -106,5 +115,5 @@ export const cajon = `
 <g fill="none" stroke="var(--linea)" stroke-linecap="round" stroke-linejoin="round" stroke-width="9">
   <path id="hueco" d="M96 166 L 504 166 L 504 330 L 96 330 Z" fill="var(--hueco)" stroke="none"/>
   <g id="dentro"></g>
-  <g id="frente"><path d="M90 160 L 510 160 L 510 340 L 90 340 Z" fill="var(--fondo)"/><path d="M270 250 L 330 250"/></g>
+  <g id="frente"><path d="M90 160 L 510 160 L 510 340 L 90 340 Z" fill="var(--madera)"/><path d="M270 250 L 330 250"/></g>
 </g>`;
