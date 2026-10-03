@@ -38,6 +38,8 @@ Freud escribió que, en el fondo, nadie cree en su propia muerte. Y en La transi
 
 Soy psicólogo. Si te interesa, suscribite. También escribo El Reflejo, un newsletter para pensar con más tiempo: el link está en el perfil del canal.
 
+¿Te pasó alguna vez no poder disfrutar algo porque sabías que se iba a terminar?
+
 Obras: Hans Holbein el Joven, Los embajadores, 1533, y Autorretrato, c. 1542–1543 · Gustav Klimt, Litzlberg am Attersee, c. 1910–1912, y Jardín con girasoles, c. 1906–1907 · Philip Reinagle, La flor de una noche (The Night-Blowing Cereus), 1807 · Lou Andreas-Salomé y Rainer Maria Rilke en Rusia, 1900 (foto anónima) · Foto de Freud: Max Halberstadt, c. 1921.
 Fuentes: Sigmund Freud, De guerra y muerte. Temas de actualidad (1915) y La transitoriedad (1916) · National Gallery, Londres.
 
