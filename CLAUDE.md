@@ -21,6 +21,12 @@ Antes de escribir un guion, leer:
 videos 01 a 05). Las pruebas (riso, crayón, fibras, obra en riso) no lo convencieron: prefiere el original, aunque tampoco es
 lo que busca, y más adelante quizás se pruebe algo que no sea ilustración. Lo aprendido, en `docs/busqueda-de-estilo.md`.
 
+**Recurso aprobado: las secuencias en silueta** (06; decisión de Dano, 3/10/2026: "ahora sí es viable"). Ilustración y
+animación al estilo de la intro de *Las Chicas Superpoderosas*: un personaje en silueta negra, articulado, y un color plano
+por plano. No reemplaza el sistema: se usa en lugares puntuales, donde no hay fuentes visuales (obras, fotos, cine de
+archivo) para contar algo, o donde dramáticamente rinde más. Cómo y cuándo: `docs/guia-visual.md` § "Secuencias en silueta";
+el personaje, en `videos/06-stendhal/siluetas.js`.
+
 Uno de cada tres videos es del formato E, "Cómo funciona" (más psicología, con la obra como puerta de entrada): ver
 `docs/estrategia-contenido.md` y los recursos visuales de `docs/guia-visual.md` § "Explicar psicología". Los números de cada
 video se anotan en `docs/resultados.md`.

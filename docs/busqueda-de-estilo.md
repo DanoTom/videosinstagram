@@ -63,6 +63,11 @@ líneas azules se recortan del amarillo para que no salgan verdes).
 
 ## Un recurso puntual que sí quedó: la secuencia en silueta (06)
 
+**Aprobado (3/10/2026).** Después de la versión 2 del 06, Dano: "ahora sí mejoró muchísimo. Dejemos asentado ahora que sí
+es viable este nuevo estilo de ilustración y animación que aprendimos, para hacer uso en lugares puntuales donde no tengamos
+fuentes o donde sea mejor dramáticamente para el video". Las reglas de uso están en `docs/guia-visual.md` § "Secuencias en
+silueta". La búsqueda de un estilo general sigue en pausa.
+
 Con la búsqueda en pausa, Dano propuso para el 06 un recurso acotado: escenas en silueta como las de la intro de *Las
 Chicas Superpoderosas* (el diseño de mediados de siglo de UPA), "para partes muy puntuales" y "dedicándole especial
 atención a la animación para que no resulte algo pobre". No reemplaza el sistema: lo interrumpe unos 15 s (en el 06, el

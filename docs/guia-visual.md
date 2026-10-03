@@ -81,6 +81,36 @@ cada vez.
 Lo que no: diagramas de clase (cajas y flechas con texto), íconos genéricos de bancos de imágenes, cerebros, fotos de
 consultorio, y nada que sugiera un diagnóstico.
 
+## Secuencias en silueta (recurso puntual)
+
+Aprobado por Dano después del 06 (3/10/2026): "ahora sí es viable este nuevo estilo de ilustración y animación". Un
+personaje en silueta negra, articulado, al estilo de la intro de *Las Chicas Superpoderosas* (el diseño de mediados de siglo
+de UPA). Primer uso: el tramo de Stendhal en el 06 (14,6 a 29,4 s).
+
+**Cuándo:**
+- **Donde no hay fuentes visuales.** Lo que cuenta un relato y no quedó en ninguna obra, foto ni película: un escritor que
+  sale de una iglesia con palpitaciones, alguien que camina con miedo de caerse.
+- **Donde dramáticamente rinde más** que una obra: una escena con acción, con un cuerpo que siente algo (el corazón, el
+  mareo, que se le va la vida).
+- **Poco:** un tramo de 10 a 20 s por video, y no en todos. El sistema de siempre (láminas, tiras, fichas) sigue siendo la
+  base; la silueta lo interrumpe y vuelve.
+
+**Cómo:**
+- **El personaje** está en `videos/06-stendhal/siluetas.js`. Para otro video se copia y se cambia la cabeza y la ropa
+  (galera, levita); las piernas (con cinemática inversa), los brazos, los guantes, el ojo, la boca, el parpadeo y la
+  respiración sirven para cualquiera.
+- **Un color plano por plano**, un corte cada 1 a 2,5 s anclado a la voz, ángulos extremos, animación a 12 cuadros por
+  segundo (`doce(t)`) con la cámara a 30.
+- **Una metáfora por plano**, no la ilustración literal de la frase.
+- **Entrar y salir con un pase** (la cortina de su perfil, un iris, un destello).
+- **Los principios de la animación**, que son lo que hace que no se vea pobre: pies que no patinan (la figura avanza una
+  `ZANCADA` por ciclo, o el piso se mueve a esa velocidad), superposición, aplastar y estirar, anticipación, que respire y
+  parpadee aunque esté quieto, una boca que cambia con lo que siente. El detalle, en `docs/busqueda-de-estilo.md`.
+- **Que la silueta no se pierda:** nunca negro sobre negro; fondos de color, y si hay edificios o muebles, en un tono medio.
+
+**Revisión:** tiras a 12 cuadros por segundo de cada plano (`--tira=a:b --fps=12`) para ver que los pies pisen y que los
+movimientos tengan envión y asiento, además de las hojas de siempre.
+
 ## Variar de un video a otro
 
 Pedido de Dano al ver el storyboard del 03: tener una gama reconocible, pero no repetir la misma paleta ni los mismos efectos
