@@ -33,12 +33,15 @@ export async function cargarVoz(url) {
 }
 
 // ───── Subtítulos: frases cortas sincronizadas; se omiten las que ya están escritas en pantalla ─────
-export function subtitulos(voz, ocultar, maxPalabras = 8) {
-  const oculta = new Set();
+// cortar: frases después de las cuales el subtítulo se corta sí o sí (por ejemplo, antes de una pausa dramática, para que
+// el subtítulo no adelante lo que la voz todavía no dijo)
+export function subtitulos(voz, ocultar, maxPalabras = 8, cortar = []) {
+  const oculta = new Set(), corta = new Set();
   for (const [frase, n] of ocultar) {
     const r = voz.W(frase, n);
     for (let k = r.i; k < r.i + frase.split(' ').length; k++) oculta.add(k);
   }
+  for (const [frase, n] of cortar) { const r = voz.W(frase, n); corta.add(r.i + frase.split(' ').length - 1); }
   // Primero frases (cortan en . ? ! y en comas si ya hay 3 palabras); después, las largas se parten en partes parejas
   const frases = [];
   let cur = [];
@@ -46,7 +49,7 @@ export function subtitulos(voz, ocultar, maxPalabras = 8) {
   voz.palabras.forEach((p, k) => {
     if (oculta.has(k)) return cerrar();
     cur.push(p);
-    if (/[.?!]$/.test(p.w) || (/,$/.test(p.w) && cur.length >= 3)) cerrar();
+    if (/[.?!]$/.test(p.w) || (/,$/.test(p.w) && cur.length >= 3) || corta.has(k)) cerrar();
   });
   cerrar();
   // Las frases largas se parten cerca del medio, prefiriendo cortar después de una coma o antes de un nexo

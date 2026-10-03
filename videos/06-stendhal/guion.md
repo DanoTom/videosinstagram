@@ -167,6 +167,10 @@ amarillo de la nave `#EFE3A0`, rojo `#B3262E`.
    `herramientas/recortar.py` → `audio/voz-recortada.json` (el .wav recortado no se sube).
 3. **Pausas:** 1 s después del gancho y 1,3 s de cola: `herramientas/pausas.py … "arte.:1.0" --cola=1.3` →
    `audio/voz-editada.wav` y `.json` (88,9 s). `cotejar.py`: 229 palabras, 0 diferencias.
+   Después, a pedido de Dano, 0,5 s más después de "escalofrío" para darle dramatismo al final (whisper pegaba las dos
+   palabras: el hueco real está entre 85,98 y 86,05 s, y ahí cae el corte): `pausas.py … "escalofrío:0,5"` sobre la voz
+   editada → 89,4 s. El escalofrío sobre la Venus dura toda la pausa, y el subtítulo corta en "escalofrío" (el cuarto
+   argumento nuevo de `subtitulos()`) para no adelantar "frente a algo que nos supera".
 4. **Video:** `video.html` (todo anclado a la voz con `W('palabra')`), `siluetas.js` (el Stendhal articulado, la cortina,
    Florencia y las casas en silueta). Revisión con hojas y tiras, sobre todo de la secuencia en silueta (14,6 a 29,4 s).
    **Versión 2** (después de verla Dano: "hay detalles de la animación y el dibujo mejorables"): piernas con cinemática
@@ -179,4 +183,4 @@ amarillo de la nave `#EFE3A0`, rojo `#B3262E`.
    node herramientas/render.mjs videos/06-stendhal/video.html --audio=videos/06-stendhal/audio/voz-editada.wav --workers=4 --out=video.mp4
    python3 herramientas/quietud.py videos/06-stendhal/out/video.mp4
    ```
-6. **MP4 para mandar** (< 30 MB): 240 / 88,9 − 0,13 ≈ 2,57 Mbps → 2500k, en dos pasadas, como en el 03.
+6. **MP4 para mandar** (< 30 MB): 240 / 89,4 − 0,13 ≈ 2,55 Mbps → 2450k, en dos pasadas, como en el 03 (29,2 MB).
