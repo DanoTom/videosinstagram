@@ -51,6 +51,71 @@ python3 herramientas/cotejar.py videos/NN/guion.md videos/NN/audio/voz-editada.j
 python3 herramientas/quietud.py videos/NN/NN.mp4                                       # pantalla vacía o quieta
 ```
 
+## Explicar psicología (formato E)
+
+El desafío que planteó Dano: explicar un mecanismo psíquico con imágenes atractivas, no con palabras flotando. Recursos,
+todos posibles con el sistema (`sistema.css`, `motor.js`); cada video del formato E usa dos o tres y estrena uno:
+
+1. **Quien mira hace el experimento.** El "¿La ves?" del 02 y el 04 llevado a la psicología: una figura ambigua, una mancha
+   de tinta, una ilusión. El concepto se vive antes de explicarse.
+2. **Una personita que vive el mecanismo.** Un personaje simple y recurrente (como las personitas del 02), dibujado con
+   `trazo()`, con dos capas: lo que muestra y lo que siente (una sombra, un hilo, un color). Puede ser la firma del formato.
+3. **Metáforas hechas objeto.** Proyectar es un proyector que tira su imagen sobre otro; un recuerdo, un cajón que se abre;
+   un vínculo, un hilo que se estira con la distancia. La metáfora se arma en pantalla y se mueve.
+4. **Escenas cotidianas en collage**, con fotos de época de dominio público (Biblioteca del Congreso de Estados Unidos, FSA)
+   y recortes: la situación que quien mira reconoce.
+5. **Datos que se ven:** personitas que se cuentan, barras, líneas de tiempo (como el 85 % → 31 % del 02).
+6. **Palabras que hacen lo que dicen.** No flotan: "reprimir" se hunde debajo de una línea, "negar" se tacha y vuelve a
+   aparecer, "proyectar" sale disparada hacia otro. Una o dos por video, no más.
+7. **La obra como espejo emocional.** El arte sigue estando, como imagen del estado interior o como cierre.
+8. **Cine de archivo de dominio público** (desde el 05). Películas de hace más de cien años que están en Wikimedia Commons:
+   los Lumière, Edison, noticieros. Sirven para el mundo real (bebés, familias, la calle) y ya son un dato en sí ("una de
+   las primeras películas de la historia es un bebé comiendo"). Se pasan a una secuencia de cuadros con ffmpeg y
+   `video.html` muestra el cuadro de cada instante, así el render sigue siendo exacto. Bancos de video modernos (Pexels,
+   Pixabay) no: se ven genéricos, rompen la estética de papel y grano, y además no se pueden bajar desde este entorno.
+
+**Alternar** (pedido de Dano): ningún video del formato E usa todos los recursos, y dos seguidos no repiten la misma
+combinación. Lo de afuera (la escena, el archivo, la obra) y lo de adentro (la personita, la metáfora) se combinan distinto
+cada vez.
+
+Lo que no: diagramas de clase (cajas y flechas con texto), íconos genéricos de bancos de imágenes, cerebros, fotos de
+consultorio, y nada que sugiera un diagnóstico.
+
+## Secuencias en silueta (recurso puntual)
+
+Aprobado por Dano después del 06 (3/10/2026): "ahora sí es viable este nuevo estilo de ilustración y animación". Un
+personaje en silueta negra, articulado, al estilo de la intro de *Las Chicas Superpoderosas* (el diseño de mediados de siglo
+de UPA). Primer uso: el tramo de Stendhal en el 06 (14,6 a 29,4 s).
+
+**Cuándo:**
+- **Donde no hay fuentes visuales.** Lo que cuenta un relato y no quedó en ninguna obra, foto ni película: un escritor que
+  sale de una iglesia con palpitaciones, alguien que camina con miedo de caerse.
+- **Donde dramáticamente rinde más** que una obra: una escena con acción, con un cuerpo que siente algo (el corazón, el
+  mareo, que se le va la vida).
+- **Poco:** un tramo de 10 a 20 s por video, y no en todos. El sistema de siempre (láminas, tiras, fichas) sigue siendo la
+  base; la silueta lo interrumpe y vuelve.
+
+**Cómo:**
+- **El personaje** está en `videos/06-stendhal/siluetas.js`. Para otro video se copia y se cambia la cabeza y la ropa
+  (galera, levita); las piernas (con cinemática inversa), los brazos, los guantes, el ojo, la boca, el parpadeo y la
+  respiración sirven para cualquiera.
+- **Un color plano por plano**, un corte cada 1 a 2,5 s anclado a la voz, ángulos extremos, animación a 12 cuadros por
+  segundo (`doce(t)`) con la cámara a 30.
+- **Una metáfora por plano**, no la ilustración literal de la frase.
+- **Entrar y salir con un pase** (la cortina de su perfil, un iris, un destello).
+- **Los principios de la animación**, que son lo que hace que no se vea pobre: pies que no patinan (la figura avanza una
+  `ZANCADA` por ciclo, o el piso se mueve a esa velocidad), superposición, aplastar y estirar, anticipación, que respire y
+  parpadee aunque esté quieto, una boca que cambia con lo que siente. El detalle, en `docs/busqueda-de-estilo.md`.
+- **Que la silueta no se pierda:** nunca negro sobre negro; fondos de color, y si hay edificios o muebles, en un tono medio.
+
+**Lo que más funcionó** (Dano, después de mostrarlo): el plano del mareo del 06, él caminando con los brazos abiertos en
+un travelling de costado, con la calle que se ladea y las casas, el farol y el empedrado que pasan a distintas velocidades.
+Es el que produce el "wow" en quien lo mira. Pista para los próximos: una acción física del personaje (caminar, tambalear)
+con la cámara que lo acompaña y profundidad por capas rinde más que un plano quieto con un efecto.
+
+**Revisión:** tiras a 12 cuadros por segundo de cada plano (`--tira=a:b --fps=12`) para ver que los pies pisen y que los
+movimientos tengan envión y asiento, además de las hojas de siempre.
+
 ## Variar de un video a otro
 
 Pedido de Dano al ver el storyboard del 03: tener una gama reconocible, pero no repetir la misma paleta ni los mismos efectos
@@ -76,3 +141,5 @@ oscura); lo que cambia en cada video es el color, las composiciones y los efecto
 | 02 · Ícaro | noche `#15233A`, teal `#0F5E5A`, papel tibio `#E7D9C0`, amarillo `#E9C46A`, rojo | zoom logarítmico dentro del cuadro, aro que busca, flechas de mirada, papel rasgado que sube, conteo de porcentajes |
 | 03 · Narciso | estanque `#0E2420`, rosa Eco `#E5BDB3`, vino `#3E1820`, pétalo `#F2EEE4`, azafrán `#E8A33D` | obras a sangre con cámara, giro de 180°, **marea** (`marea()` en `motor.js`), **agua** (filtros SVG de desplazamiento), **eco tipográfico** sincronizado con el eco de la voz, citas palabra por palabra (`porPalabra()`), título reflejado, final que vuelve al primer cuadro |
 | 04 · Los embajadores | nogal `#16120E`, hueso `#ECE4D2`, lacre `#B8362C`, oro viejo `#C49A45`, pizarra `#232A31` | **anamorfosis animada** (`anamorfosis()`: el cuadro se comprime en la dirección de la mancha y la calavera se endereza), **desteñir** (`destenir()`: un paisaje se queda sin color de arriba hacia abajo), **tinta** (`tinta()`: citas escritas línea por línea), plano visto desde arriba, líneas de catálogo, pantalla partida, transiciones de costado, final que vuelve al primer cuadro |
+| 05 · El trapito | azul frazada `#24324A`, algodón `#F1E8D8`, coral `#E07A5F`, salvia `#8FA98B`, tinta `#1D1A17` | **la personita** (`dibujo()`: dibujos de línea que se hacen solos y se borran al revés, en `videos/05-trapito/dibujos.js`), **cine de archivo** (`cine()`: Lumière, 1895, cuadro por cuadro), **el hilo** (`hilo()`: cuelga, se tiende y vibra con la tensión), **la cinta sin fin** (`cinta()`: "una tarea que nunca termina" corre y frena), círculos que se llevan las caras de la pintura (medallones), adentro dibujado y afuera filmado, fondo de guinga, la luz de un velador, la frazada que sube, iris de cine mudo, un color (el coral) para todo lo que hace lo mismo que el trapito, final que vuelve al primer cuadro |
+| 06 · El síndrome de Stendhal | piedra serena `#3E4945`, papel de fresco `#F2E9DA`, terracota `#C0603A`, azul Volterrano `#26386A`, oro viejo `#D9A441` | **el pulso** (`pulso()`, `ritmo()`, `latido()` en `motor.js`: un electrocardiograma con un ritmo en latidos por minuto anclado a la voz), **la secuencia en silueta** (idea de Dano, la intro de *Las Chicas Superpoderosas*: Stendhal articulado en `videos/06-stendhal/siluetas.js`, un color plano por plano, cortes cada 1–2,5 s, animación limitada a 12 cuadros por segundo, piernas con cinemática inversa para que los pies no patinen; solo para el tramo de Stendhal), la cortina (la silueta de perfil que entra a cámara y tapa el retrato), el iris que se abre y se cierra, el negro que se escurre de la figura, el vaso que rebalsa, un corazón que late con el pulso, final que vuelve al primer cuadro |

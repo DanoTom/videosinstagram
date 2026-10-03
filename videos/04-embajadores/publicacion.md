@@ -8,7 +8,7 @@ En el medio de *Los embajadores*, de Hans Holbein (1533), hay una calavera. De f
 
 Freud escribió que, en el fondo, nadie cree en su propia muerte. Y en *La transitoriedad* contó un paseo de verano con un joven poeta (quizás Rilke) que no podía disfrutar del paisaje porque todo iba a terminar. Freud le contestó que era al revés: lo que no dura no vale menos, vale más.
 
-Lacan leyó esa calavera como una mirada que nos descoloca, y Žižek tituló un libro por ella: *Mirando al sesgo*.
+Lacan leyó esa calavera como una mirada que nos descoloca, y Žižek tituló un libro con esa forma de mirar: *Mirando al sesgo*.
 
 Si te interesa, seguime por acá. Y si querés pensarlo con más tiempo, escribo El Reflejo (link en la bio).
 

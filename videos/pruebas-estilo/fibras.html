@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Prueba de estilo · Fibras</title>
+<link rel="stylesheet" href="../../diseno/sistema.css">
+<style>
+  html, body { margin: 0; background: #000; }
+  canvas { display: block; }
+</style>
+</head>
+<body>
+<div class="frame" id="video"><canvas id="lienzo" width="1080" height="1920"></canvas></div>
+<script type="module">
+// Prueba C · Fibras: lámina científica viva, como la mosca. El mecanismo del 05 contado sin palabras: una sola masa
+// (el bebé con la mamá) que se divide; en el medio aparece un nodo (el trapito) y miles de fibras los unen; por las
+// fibras corre algo en las dos direcciones.
+import { azar, ruido } from '../../diseno/estilos/ruido.js';
+
+const W = 1080, H = 1920, DURACION = 9;
+const ctx = document.getElementById('lienzo').getContext('2d');
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const prog = (t, a, b) => clamp((t - a) / (b - a));
+const io = p => (p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2);
+const lerp = (a, b, p) => a + (b - a) * p;
+const CY = 930;
+
+// ── material fijo (semillas fijas: cada cuadro sale igual)
+const r = azar(5);
+const lobulo = (n, semilla) => {   // puntos de un lóbulo en coordenadas unitarias (más densos hacia el borde, como un corte)
+  const q = azar(semilla), pts = [];
+  for (let i = 0; i < n; i++) { const a = q() * Math.PI * 2, d = Math.pow(q(), 0.35); pts.push([Math.cos(a) * d, Math.sin(a) * d, q()]); }
+  return pts;
+};
+const PB = lobulo(1600, 11), PM = lobulo(2400, 12), PN = lobulo(380, 13);
+// fibras radiales de cada lóbulo: del hilio (el lado de adentro) hacia el borde
+const radiales = (n, semilla) => { const q = azar(semilla); return Array.from({ length: n }, () => ({ a: (q() - 0.5) * 2.4, l: 0.75 + q() * 0.25, c: q() })); };
+const RB = radiales(110, 21), RM = radiales(150, 22);
+// haces entre cada lóbulo y el nodo
+const haz = (n, semilla) => { const q = azar(semilla); return Array.from({ length: n }, () => ({ a: (q() - 0.5) * 2, b: (q() - 0.5) * 2, c: q(), v: q() })); };
+const HB = haz(170, 31), HM = haz(210, 32);
+const estrellas = Array.from({ length: 900 }, () => [r() * W, r() * H, r()]);
+
+function cubica(p0, p1, p2, p3, u) {
+  const m = 1 - u;
+  return [m * m * m * p0[0] + 3 * m * m * u * p1[0] + 3 * m * u * u * p2[0] + u * u * u * p3[0],
+          m * m * m * p0[1] + 3 * m * m * u * p1[1] + 3 * m * u * u * p2[1] + u * u * u * p3[1]];
+}
+function trazarCubica(p0, p1, p2, p3, hasta = 1) {
+  ctx.beginPath(); ctx.moveTo(p0[0], p0[1]);
+  for (let i = 1; i <= 28 * hasta; i++) { const p = cubica(p0, p1, p2, p3, i / 28); ctx.lineTo(p[0], p[1]); }
+  ctx.stroke();
+}
+function rotulo(texto, x, y, ax, ay, o, der = false) {
+  ctx.globalAlpha = o; ctx.strokeStyle = '#AEB8E8'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(ax, ay); ctx.lineTo(x, y); ctx.lineTo(x + (der ? 40 : -40), y); ctx.stroke();
+  ctx.beginPath(); ctx.arc(ax, ay, 5, 0, 7); ctx.stroke();
+  ctx.fillStyle = '#DDE3FF'; ctx.font = '24px "Space Mono"'; ctx.textAlign = der ? 'left' : 'right';
+  ctx.fillText(texto, x + (der ? 50 : -50), y + 8); ctx.globalAlpha = 1;
+}
+
+function seek(t) {
+  ctx.globalCompositeOperation = 'source-over'; ctx.globalAlpha = 1;
+  ctx.fillStyle = '#0A0F24'; ctx.fillRect(0, 0, W, H);
+  // estrellas (polvo) y líneas de construcción
+  for (const [x, y, b] of estrellas) { ctx.fillStyle = `rgba(200,210,255,${0.12 + 0.3 * b * (0.6 + 0.4 * Math.sin(t * 2 + b * 40))})`; ctx.fillRect(x, y, 1.6, 1.6); }
+  const pc = io(prog(t, 0.2, 1.6));
+  ctx.strokeStyle = 'rgba(120,135,200,.35)'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.moveTo(540, lerp(CY, 300, pc)); ctx.lineTo(540, lerp(CY, 1560, pc)); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(lerp(540, 70, pc), 560); ctx.lineTo(lerp(540, 1010, pc), 560); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(lerp(540, 200, pc), 1330); ctx.lineTo(lerp(540, 880, pc), 1330); ctx.stroke();
+  for (let x = 200; x <= 880; x += 34) { ctx.beginPath(); ctx.moveTo(x, 1330); ctx.lineTo(x, 1330 - (x % 170 === 30 ? 16 : 8) * pc); ctx.stroke(); }
+
+  // ── la separación: una sola masa que se divide en dos
+  const sep = io(prog(t, 1.4, 3.8));
+  const B = { x: lerp(500, 250, sep), y: CY, rx: lerp(250, 175, sep), ry: lerp(300, 230, sep) };
+  const M = { x: lerp(580, 820, sep), y: CY, rx: lerp(250, 215, sep), ry: lerp(300, 290, sep) };
+  ctx.globalCompositeOperation = 'lighter';
+  // contornos finos (dos elipses concéntricas por lóbulo)
+  for (const [L, k] of [[B, 0], [M, 1]]) {
+    ctx.strokeStyle = `rgba(150,165,230,${0.35})`; ctx.lineWidth = 1.4;
+    for (const f of [1.0, 1.12]) { ctx.beginPath(); ctx.ellipse(L.x, L.y, L.rx * f, L.ry * f, 0, 0, 7); ctx.stroke(); }
+  }
+  // puntos de cada lóbulo
+  for (const [L, P, col] of [[B, PB, '170,225,255'], [M, PM, '205,190,255']]) {
+    for (const [px, py, b] of P) {
+      const tw = 0.5 + 0.5 * Math.sin(t * 3 + b * 50);
+      ctx.fillStyle = `rgba(${col},${0.22 + 0.5 * b * tw})`;
+      ctx.fillRect(L.x + px * L.rx, L.y + py * L.ry, 2, 2);
+    }
+  }
+  // fibras radiales que respiran
+  for (const [L, R, lado, col] of [[B, RB, 1, '120,200,255'], [M, RM, -1, '170,160,255']]) {
+    const hx = L.x + lado * L.rx * 0.55, hy = L.y;
+    for (const f of R) {
+      const a = f.a + (lado < 0 ? Math.PI : 0) + 0.05 * Math.sin(t * 1.3 + f.c * 9);
+      const ex = L.x + Math.cos(a + Math.PI) * L.rx * f.l * -1 * -1, ey = L.y + Math.sin(a + Math.PI) * L.ry * f.l;
+      const tx = L.x - lado * Math.cos(f.a) * L.rx * f.l, ty = L.y + Math.sin(f.a) * L.ry * f.l * 0.95;
+      ctx.strokeStyle = `rgba(${col},${0.16 + 0.12 * f.c})`; ctx.lineWidth = 1.1;
+      trazarCubica([hx, hy], [lerp(hx, tx, 0.4), hy + (ty - hy) * 0.1], [lerp(hx, tx, 0.7), ty], [tx, ty]);
+    }
+  }
+
+  // ── el nodo del medio: el trapito
+  const pn = io(prog(t, 3.8, 4.8));
+  const N = { x: 540, y: CY + 70, r: 70 };
+  if (pn > 0) {
+    const g = ctx.createRadialGradient(N.x, N.y, 0, N.x, N.y, 190 * pn);
+    g.addColorStop(0, 'rgba(255,110,150,.55)'); g.addColorStop(1, 'rgba(255,110,150,0)');
+    ctx.fillStyle = g; ctx.fillRect(N.x - 200, N.y - 200, 400, 400);
+    for (const [px, py, b] of PN) {
+      ctx.fillStyle = `rgba(255,${120 + 80 * b},${170 + 40 * b},${(0.3 + 0.6 * b) * pn})`;
+      ctx.fillRect(N.x + px * N.r * pn, N.y + py * N.r * pn * 0.8, 2.2, 2.2);
+    }
+  }
+  // ── los haces: del bebé al nodo y del nodo a la mamá
+  const ph = io(prog(t, 4.3, 6.2));
+  const extremos = (lado, f, L) => {
+    const p0 = [L.x + lado * L.rx * 0.8, L.y + f.a * L.ry * 0.55];
+    const p3 = [N.x + f.b * 26, N.y + f.b * 18];
+    return [p0, [lerp(p0[0], p3[0], 0.45), p0[1] + (N.y - p0[1]) * 0.15 + f.c * 30 - 15], [lerp(p0[0], p3[0], 0.8), N.y - 30 + f.a * 50], p3];
+  };
+  if (ph > 0) {
+    for (const [H, L, lado, col] of [[HB, B, 1, '110,235,200'], [HM, M, -1, '120,200,255']]) {
+      ctx.strokeStyle = `rgba(${col},.2)`; ctx.lineWidth = 1.1;
+      for (const f of H) { const [p0, p1, p2, p3] = extremos(lado, f, L); trazarCubica(p0, p1, p2, p3, ph * (0.85 + 0.15 * f.v)); }
+    }
+  }
+  // ── lo que corre por las fibras, en las dos direcciones
+  const pf = prog(t, 5.6, 6.4);
+  if (pf > 0) {
+    for (const [H, L, lado] of [[HB, B, 1], [HM, M, -1]]) {
+      H.forEach((f, i) => {
+        if (i % 2) return;
+        let u = (t * (0.18 + 0.2 * f.v) + f.c) % 1; if (i % 4 === 0) u = 1 - u;
+        const p = cubica(...extremos(lado, f, L), u);
+        ctx.fillStyle = `rgba(230,250,255,${0.8 * pf * Math.sin(Math.PI * u)})`;
+        ctx.beginPath(); ctx.arc(p[0], p[1], 2.6, 0, 7); ctx.fill();
+      });
+    }
+  }
+  ctx.globalCompositeOperation = 'source-over';
+
+  // ── rótulos de lámina
+  const pr = prog(t, 2.6, 3.2), prn = prog(t, 5.0, 5.6);
+  rotulo('BEBÉ', 170, 560 + 70, B.x - 40, B.y - B.ry * 0.7, pr);
+  rotulo('MAMÁ', 920, 560 + 70, M.x + 60, M.y - M.ry * 0.75, pr, true);
+  rotulo('OBJETO TRANSICIONAL', 700, 1240, N.x + 30, N.y + 40, prn, true);
+  ctx.globalAlpha = prog(t, 0.6, 1.4);
+  ctx.fillStyle = '#F1E8D8'; ctx.font = 'italic 76px "Instrument Serif"'; ctx.textAlign = 'center';
+  ctx.fillText('La separación, de a poco', 540, 420);
+  ctx.fillStyle = '#8F9AD0'; ctx.font = '22px "Space Mono"';
+  ctx.fillText('FIG. 1 · WINNICOTT, 1951', 540, 470);
+  ctx.globalAlpha = 1;
+}
+
+await Promise.all([document.fonts.load('24px "Space Mono"'), document.fonts.load('italic 76px "Instrument Serif"')]);
+window.seek = seek; window.DURACION = DURACION; seek(0); window.listo = true;
+</script>
+</body>
+</html>

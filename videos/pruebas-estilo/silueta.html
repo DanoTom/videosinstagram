@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Prueba · Escena en silueta (Stendhal)</title>
+<link rel="stylesheet" href="../../diseno/sistema.css">
+<style>
+  html, body { margin: 0; background: #000; }
+  #video { background: #C0603A; }
+  .plano { position: absolute; inset: 0; overflow: hidden; }
+  .plano > * { position: absolute; }
+  svg { overflow: visible; }
+  .sil { fill: #141414; }
+  .blanco { fill: #F4EEE3; }
+  .corte { fill: none; stroke: #F4EEE3; stroke-width: 6; stroke-linejoin: round; stroke-linecap: round; }
+  .trazo { fill: none; stroke: #141414; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+</style>
+</head>
+<body>
+<div class="frame" id="video">
+  <!-- Plano 1 · Llega a Florencia: contrapicado, la cúpula al fondo (terracota) -->
+  <div class="plano" id="p1" style="background:#C0603A">
+    <svg id="cupula" viewBox="0 0 1080 1920" style="inset:0;width:1080px;height:1920px">
+      <path class="sil" d="M60 1180 Q 60 760 400 720 Q 740 760 740 1180 Z" opacity=".35"/>
+      <path class="sil" d="M370 720 L 430 720 L 420 620 L 380 620 Z" opacity=".35"/>
+      <path class="sil" d="M-20 1180 L 1100 1180 L 1100 1920 L -20 1920 Z" opacity=".35"/>
+    </svg>
+    <svg id="s1" viewBox="0 0 400 1000" style="left:430px;top:420px;width:640px;height:1600px"></svg>
+  </div>
+  <!-- Plano 2 · Entra a Santa Croce: perspectiva a un punto, en línea, sobre amarillo -->
+  <div class="plano" id="p2" style="background:#EFE3A0">
+    <svg id="nave" viewBox="0 0 1080 1920" style="inset:0;width:1080px;height:1920px"></svg>
+    <svg id="s2" viewBox="0 0 400 1000" style="left:505px;top:930px;width:70px;height:175px"></svg>
+  </div>
+  <!-- Plano 3 · Mira los frescos: picado hacia arriba, el techo gira (azul) -->
+  <div class="plano" id="p3" style="background:#26386A">
+    <div id="fresco" style="left:90px;top:170px;width:900px;height:900px;border-radius:50%;overflow:hidden;box-shadow:0 0 0 18px #141414">
+      <div id="frescoImg" style="position:absolute;inset:-120px;background-size:cover;background-position:center"></div>
+    </div>
+    <svg id="s3" viewBox="0 0 400 1000" style="left:330px;top:980px;width:820px;height:2050px"></svg>
+  </div>
+  <!-- Plano 4 · Sale con palpitaciones y miedo de caerse: rojo, calle inclinada, un estallido que late -->
+  <div class="plano" id="p4" style="background:#B3262E">
+    <svg id="calle" viewBox="0 0 1080 1920" style="inset:0;width:1080px;height:1920px"></svg>
+    <svg id="s4" viewBox="0 0 400 1000" style="left:300px;top:640px;width:480px;height:1200px"></svg>
+  </div>
+  <div class="grano" id="grano"></div>
+</div>
+<script type="module">
+import { prog, lerp, ease, hervir } from '../../diseno/motor.js';
+const $ = id => document.getElementById(id);
+
+// ── Stendhal en silueta (de perfil, mirando a la derecha; caja 400×1000): galera, levita con faldones, panza,
+// cuello y corbata blancos, guante blanco. Las piernas y el brazo cambian según la pose.
+const CABEZA = 'M160 205 L 292 200 L 298 238 L 334 268 L 300 282 L 306 296 L 298 322 L 258 334 L 240 350 L 176 352 L 150 300 Z';
+const GALERA = 'M150 40 L 270 30 L 262 192 L 158 196 Z M118 190 L 302 178 L 306 200 L 116 214 Z';
+const CUERPO = 'M150 345 L 245 352 L 292 410 L 322 500 L 318 590 L 282 640 L 210 650 L 178 640 L 150 560 L 140 450 Z M150 560 L 178 640 L 150 790 L 112 776 Z';
+const CUELLO = 'M232 338 L 262 330 L 252 380 L 216 372 Z M236 368 L 272 374 L 252 414 L 230 404 Z';
+const PECHERA = 'M246 356 L 290 412 L 300 476 L 262 424 Z';
+const OJO = 'M262 246 L 286 242 L 284 250 L 262 254 Z';
+const brazo = pose => pose === 'pecho'
+  ? 'M205 385 L 245 378 L 262 470 L 300 455 L 312 478 L 250 512 L 222 500 Z'
+  : 'M215 380 L 250 375 L 285 520 L 318 556 L 296 580 L 250 540 Z';
+const mano = pose => pose === 'pecho' ? 'M296 452 L 330 440 L 342 470 L 312 486 Z' : 'M300 556 L 334 570 L 330 600 L 296 590 Z';
+const piernas = paso => paso
+  ? 'M228 640 L 266 640 L 290 900 L 256 904 Z M186 640 L 222 640 L 168 892 L 132 886 Z M250 896 L 318 892 L 320 914 L 248 918 Z M118 882 L 176 884 L 176 906 L 116 904 Z'
+  : 'M218 640 L 256 640 L 238 904 L 204 902 Z M190 640 L 226 640 L 212 900 L 178 900 Z M200 896 L 270 894 L 272 916 L 198 918 Z M160 894 L 222 894 L 222 914 L 158 914 Z';
+function stendhal(svg, { paso = 0, pose = 'abajo', solo } = {}) {
+  const partes = solo === 'cabeza'
+    ? `<path class="sil" d="${GALERA}"/><path class="sil" d="${CABEZA}"/><path class="blanco" d="${OJO}"/><path class="sil" d="M150 345 L 245 352 L 300 430 L 330 600 L 120 600 Z"/><path class="blanco" d="${CUELLO}"/>`
+    : `<path class="sil" d="${piernas(paso)}"/><path class="sil" d="${CUERPO}"/><path class="blanco" d="${PECHERA}"/>
+       <path class="sil" d="${GALERA}"/><path class="sil" d="${CABEZA}"/><path class="blanco" d="${OJO}"/><path class="blanco" d="${CUELLO}"/>
+       <path class="sil" d="${brazo(pose)}"/><path class="corte" d="${brazo(pose)}" style="stroke-width:5"/><path class="blanco" d="${mano(pose)}"/>`;
+  if (svg._ultimo !== partes) { svg.innerHTML = partes; svg._ultimo = partes; }
+}
+
+// la nave de Santa Croce en perspectiva: columnas y arcos que fugan a un punto
+const F = [540, 1000];
+let nave = '';
+for (let k = 0; k < 7; k++) {
+  const s = Math.pow(0.62, k), w = 900 * s, h = 1500 * s, x0 = F[0] - w / 2, y0 = F[1] - h * 0.62;
+  nave += `<path class="trazo" d="M${x0} ${y0 + h} L ${x0} ${y0 + h * 0.35} Q ${F[0]} ${y0 - h * 0.15} ${x0 + w} ${y0 + h * 0.35} L ${x0 + w} ${y0 + h}" stroke-width="${2 + 6 * s}"/>`;
+}
+for (const x of [-200, 140, 940, 1280]) nave += `<path class="trazo" d="M${x} 1920 L ${F[0]} ${F[1]}" stroke-width="3"/>`;
+nave += `<path class="trazo" d="M-100 ${F[1] + 460} L 1180 ${F[1] + 460}" stroke-width="3" opacity=".5"/>`;
+$('nave').innerHTML = nave;
+const img = new Image(); img.src = 'assets/volterrano.jpg';
+$('frescoImg').style.backgroundImage = `url(${img.src})`;
+
+const DURACION = 8.4, CORTES = [0, 2.1, 4.2, 6.2];
+function seek(t) {
+  const plano = CORTES.filter(c => t >= c).length;   // 1 a 4
+  for (let i = 1; i <= 4; i++) $('p' + i).style.display = i === plano ? 'block' : 'none';
+  const paso = Math.floor(t * 6) % 2;                  // caminata "en dos", como el dibujo animado limitado
+  const tp = t - CORTES[plano - 1];
+  if (plano === 1) {   // contrapicado que se acerca; camina en el lugar
+    stendhal($('s1'), { paso });
+    const z = lerp(1, 1.12, ease.suave(prog(tp, 0, 2.1)));
+    $('p1').style.transform = `scale(${z}) rotate(${lerp(-3, -1, prog(tp, 0, 2.1))}deg)`;
+  } else if (plano === 2) {   // la cámara entra a la nave; él camina hacia el fondo
+    stendhal($('s2'), { paso });
+    const z = lerp(1, 1.5, ease.inOut(prog(tp, 0, 2.0)));
+    $('nave').style.transform = `scale(${z})`; $('nave').style.transformOrigin = '540px 1000px';
+    $('s2').style.transform = `translateY(${lerp(140, -20, prog(tp, 0, 2))}px) scale(${lerp(1.6, 0.8, prog(tp, 0, 2))})`;
+  } else if (plano === 3) {   // mira para arriba: el fresco gira, la cabeza en primer plano
+    stendhal($('s3'), { solo: 'cabeza' });
+    $('s3').style.transform = 'rotate(-28deg)';
+    $('frescoImg').style.transform = `rotate(${lerp(0, 40, prog(tp, 0, 2))}deg) scale(${lerp(1, 1.15, prog(tp, 0, 2))})`;
+  } else {   // sale: la calle se inclina de un lado al otro, el estallido late con el corazón
+    stendhal($('s4'), { paso, pose: 'pecho' });
+    const tamb = Math.sin(tp * 3.2) * 9 + Math.sin(tp * 7.1) * 2;
+    $('s4').style.transform = `rotate(${tamb}deg)`; $('s4').style.transformOrigin = '50% 92%';
+    const lat = (tp * 2.6) % 1, golpe = lat < 0.12 ? 1 : lat < 0.24 ? 0.4 : lat < 0.34 ? 0.85 : 0;   // ta-tum
+    let calle = '';
+    for (let k = 0; k < 9; k++) { const x = -400 + k * 240; calle += `<path class="corte" d="M${x} 1920 L 540 1180" style="stroke-width:4;opacity:.55"/>`; }
+    const r = 330 + 70 * golpe, pts = [];
+    for (let i = 0; i < 22; i++) { const a = (i / 22) * Math.PI * 2, rr = i % 2 ? r * 0.62 : r; pts.push(`${540 + Math.cos(a) * rr} ${840 + Math.sin(a) * rr}`); }
+    calle += `<path class="blanco" d="M${pts.join(' L ')} Z"/>`;
+    $('calle').innerHTML = calle;
+    $('calle').style.transform = `rotate(${-tamb * 0.6}deg)`;
+    $('p4').style.transform = `translate(${golpe * 6}px, ${golpe * -4}px)`;
+  }
+  hervir($('grano'), t);
+}
+await img.decode().catch(() => {});
+window.seek = seek; window.DURACION = DURACION; seek(0); window.listo = true;
+</script>
+</body>
+</html>

@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>05 · El trapito</title>
+<link rel="stylesheet" href="../../diseno/sistema.css">
+<style>
+  /* Paleta del 05, sacada de una frazada de bebé y de Cassatt: azul frazada (fondo), algodón (papel y la personita),
+     coral (el trapito y todo lo que hace lo mismo que él), salvia (fondo de tramo) y tinta. */
+  :root {
+    --noche: #24324A;
+    --crema: #F1E8D8;
+    --coral: #E07A5F;
+    --salvia: #8FA98B;
+    --tinta: #1D1A17;
+    --linea: var(--crema);
+    --trapo: var(--coral);
+    --trapo2: #F6D7C8;
+    --fondo: var(--noche);
+    --hueco: var(--tinta);
+    --manta: #3B4F78;   /* la frazada del dibujo, un azul más claro que el fondo */
+    --manta2: #4A5F8C;
+  }
+  html, body { margin: 0; background: #000; }
+  #video { background: var(--noche); }
+  .escena { position: absolute; inset: 0; }
+  .escena > * { position: absolute; }
+  .fondo { inset: 0; }
+  .sangre { inset: 0; }
+  .velo { inset: 0; pointer-events: none; }
+  .capa { inset: 0; width: 1080px; height: 1920px; overflow: visible; pointer-events: none; }
+  .sub { left: 80px; right: 150px; top: 1460px; font-weight: 600; font-size: 36px; line-height: 1.5; color: var(--crema); z-index: 40; }
+  .sub span { background: rgba(20,18,16,.88); padding: 3px 12px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+  .papel { --linea: var(--tinta); --fondo: var(--crema); --trapo2: #F6D7C8; --manta: #CBD5DE; --manta2: #B7C4D0; --madera: #DCC9A6; }
+  .medallon { border-radius: 50%; background-repeat: no-repeat; }
+  #e5 .rotulo { paint-order: stroke; stroke: var(--tinta); stroke-width: 10px; stroke-linejoin: round; }
+  .etiqueta { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 54px; line-height: 1; color: var(--crema);
+    background: var(--tinta); padding: 8px 20px 14px; white-space: nowrap; }
+  .cinta { left: -120px; width: 1320px; overflow: hidden; white-space: nowrap; background: var(--crema); color: var(--tinta);
+    font-weight: 800; letter-spacing: -.03em; font-size: 62px; padding: 18px 0 14px; box-shadow: 0 14px 24px rgba(0,0,0,.35); }
+  .cinta span { display: inline-block; }
+  .circulo { fill: none; stroke: var(--crema); stroke-width: 7; }
+  #e4 .circulo { stroke: var(--tinta); }
+  #e4 .rotulo { fill: var(--tinta); }
+  .rotulo { font-family: 'Instrument Serif', serif; font-style: italic; fill: var(--crema); font-size: 52px; text-anchor: middle; }
+  canvas { display: block; }
+</style>
+</head>
+<body>
+<div class="frame" id="video">
+  <div class="puntos" style="position:absolute;inset:0"></div>
+
+  <!-- 1 y 2 · GANCHO Y PROMESA: el nene dormido se dibuja solo; después se achica y del trapito sale un hilo hasta un cuadro -->
+  <div class="escena" id="e1">
+    <div id="velador" style="left:-100px;top:300px;width:1280px;height:1000px;background:radial-gradient(closest-side, rgba(224,122,95,.42), rgba(224,122,95,0))"></div>
+    <svg id="nene1" viewBox="0 0 1000 760" style="left:40px;top:420px;width:1000px;height:760px;overflow:visible"></svg>
+    <div class="tira titular" id="tuviste" data-rasgado data-rot="-2" style="top:300px;left:170px;font-size:118px;white-space:nowrap">¿Tuviste uno?</div>
+    <div class="lamina" id="lamK1" data-rot="2" style="top:300px;left:560px;width:430px;height:570px"><div class="plate" id="pK1"></div></div>
+    <svg class="capa" id="capa1" viewBox="0 0 1080 1920" fill="none" stroke-linecap="round">
+      <path id="hilo1" stroke="var(--coral)" stroke-width="8"/>
+      <path id="cordel" stroke="var(--crema)" stroke-width="3"/>
+    </svg>
+    <div class="ficha" id="estudio" data-rot="5" style="top:1300px;left:390px">objeto de estudio</div>
+  </div>
+
+  <!-- 3 · WINNICOTT: cine de archivo (Lumière, 1895) y los tres objetos -->
+  <div class="escena" id="e3">
+    <div class="lamina" id="lamCine" data-rot="-1" style="top:290px;left:60px;width:960px;height:728px"><canvas id="cine" width="928" height="696"></canvas></div>
+    <div class="ficha" id="fLum" data-rot="-2" style="top:262px;left:80px;font-size:18px">Louis Lumière · El almuerzo del bebé, 1895<br>estuvo en la primera función pública de cine</div>
+    <div class="tira titular" id="fWin" data-rasgado data-rot="-2" style="top:1100px;left:70px;font-size:96px;white-space:nowrap">Donald Winnicott</div>
+    <div class="ficha" id="fPed" data-rot="1" style="top:1262px;left:110px">pediatra y psicoanalista</div>
+    <div class="ficha" id="fLon" data-rot="-1" style="top:1262px;left:520px">Londres, 1923–1961</div>
+    <div class="etiqueta" id="fMeses" data-rot="-2" style="top:1130px;left:70px">entre los 4 y los 12 meses</div>
+    <svg id="ob1" viewBox="0 0 260 240" style="left:70px;top:1062px;width:280px;height:258px"></svg>
+    <svg id="ob2" viewBox="0 0 260 240" style="left:400px;top:1062px;width:280px;height:258px"></svg>
+    <svg id="ob3" viewBox="0 0 260 240" style="left:730px;top:1062px;width:280px;height:258px"></svg>
+    <div class="ficha" id="fMadres" data-rot="-1" style="top:1345px;left:70px;font-size:25px">Y las madres saben que no hay que lavarlo</div>
+    <div class="tira titular" id="sirve" data-rasgado data-rot="-2" style="top:860px;left:150px;font-size:110px;white-space:nowrap">¿Para qué sirve?</div>
+  </div>
+
+  <!-- 4 · PARA QUÉ SIRVE: Cassatt; el bebé y la mamá, dos círculos que se separan; el trapito en el medio -->
+  <div class="escena" id="e4">
+    <div class="fondo" style="background-color:var(--salvia);background-image:repeating-linear-gradient(90deg, rgba(40,70,45,.2) 0 44px, transparent 44px 132px), repeating-linear-gradient(0deg, rgba(40,70,45,.2) 0 44px, transparent 44px 132px)"></div>
+    <div class="lamina" id="lamCas" data-rot="0" style="top:330px;left:60px;width:960px;height:780px"><div class="plate" id="pCas"></div></div>
+    <div class="ficha" id="fCas" data-rot="1" style="top:1135px;left:90px;font-size:18px">Mary Cassatt · Desayuno en la cama, 1897</div>
+    <div class="medallon" id="medB"></div><div class="medallon" id="medM"></div>
+    <svg class="capa" id="capa4" viewBox="0 0 1080 1920" stroke-linecap="round">
+      <g id="aros4" fill="none">
+        <circle id="cB" class="circulo"/><circle id="cM" class="circulo"/>
+      </g>
+      <path id="hB2" fill="none" stroke="var(--tinta)" stroke-width="14"/><path id="hM2" fill="none" stroke="var(--tinta)" stroke-width="14"/>
+      <path id="hB" fill="none" stroke="var(--coral)" stroke-width="7"/>
+      <path id="hM" fill="none" stroke="var(--coral)" stroke-width="7"/>
+      <text id="tB" class="rotulo">bebé</text><text id="tM" class="rotulo">mamá</text>
+    </svg>
+    <div id="trapo4c" style="left:433px;top:736px;width:160px;height:148px"><svg id="trapo4" viewBox="0 0 260 240" style="width:160px;height:148px;overflow:visible"></svg></div>
+    <div class="etiqueta" id="suyo" data-rot="-2" style="top:790px;left:60px">suyo, sin ser él</div>
+    <div class="etiqueta" id="conElla" data-rot="2" style="top:650px;left:470px">con ella, sin ser ella</div>
+    <div class="tira titular" id="objTr" data-rasgado data-rot="-2" style="top:1255px;left:70px;font-size:94px;white-space:nowrap">objeto transicional</div>
+    <div class="ficha" id="fObj" data-rot="1" style="top:1150px;left:70px;font-size:18px">Winnicott, «Objetos transicionales<br>y fenómenos transicionales», 1951</div>
+  </div>
+
+  <!-- 5 · LA TAREA QUE NUNCA TERMINA: adentro y afuera tiran; el hilo vibra; aparece un lugar donde descansar -->
+  <div class="escena" id="e5">
+    <div class="fondo" style="background:var(--noche)"><div class="puntos" style="position:absolute;inset:0"></div></div>
+    <svg class="capa" id="capa5b" viewBox="0 0 1080 1920"><ellipse id="zona" fill="var(--coral)" opacity=".9"/>
+    </svg>
+    <div class="medallon papel" id="discoA" style="overflow:hidden;background:var(--crema)"><svg id="nene5" viewBox="0 0 1000 760" style="position:absolute;overflow:visible"></svg></div>
+    <div class="medallon" id="discoF" style="overflow:hidden"><canvas id="cine5" width="400" height="400" style="width:100%;height:100%"></canvas></div>
+    <svg class="capa" id="capa5" viewBox="0 0 1080 1920" stroke-linecap="round">
+      <circle id="cA" class="circulo"/><circle id="cF" class="circulo"/>
+      <text id="tA" class="rotulo">adentro</text><text id="tF" class="rotulo">afuera</text>
+      <path id="hA" fill="none" stroke="var(--coral)" stroke-width="7"/>
+      <path id="hF" fill="none" stroke="var(--coral)" stroke-width="7"/>
+      <path id="brazoI" fill="none" stroke="var(--crema)" stroke-width="9"/>
+      <path id="brazoD" fill="none" stroke="var(--crema)" stroke-width="9"/>
+    </svg>
+    <svg id="pie" viewBox="0 0 400 600" style="left:340px;top:800px;width:400px;height:600px;overflow:visible"></svg>
+    <div class="cinta" id="cinta5" data-rot="-4" style="top:300px"><span></span></div>
+    <div class="ficha" id="fAcept" data-rot="-1" style="top:450px;left:70px;font-size:26px">Aceptar la realidad es</div>
+  </div>
+
+  <!-- 6 · DE BEBÉS, EL TRAPITO; EL CAJÓN; SE EXTIENDE: JUEGO Y CULTURA -->
+  <div class="escena papel" id="e6">
+    <div class="fondo" style="background:var(--crema)"><div class="puntos" style="position:absolute;inset:0;background-image:radial-gradient(rgba(0,0,0,.06) 1.3px, transparent 1.7px)"></div></div>
+    <svg id="nene6" viewBox="0 0 1000 760" style="left:40px;top:220px;width:1000px;height:760px;overflow:visible"></svg>
+    <svg id="comoda" viewBox="0 0 600 600" style="left:240px;top:820px;width:600px;height:600px;overflow:visible"></svg>
+    <div id="vuelo" style="inset:0"><svg id="trapo6" viewBox="0 0 1000 760" style="position:absolute;left:40px;top:220px;width:1000px;height:760px;overflow:visible"></svg></div>
+    <div id="zona6" style="inset:0;background:var(--coral)"></div>
+    <div class="plate" id="pJue" style="inset:0"></div>
+    <div class="lamina" id="lamN" data-rot="-3" style="top:280px;left:40px;width:440px;height:270px"><div class="plate" data-img="nighthawks" data-crop="0,0,3840,2095"></div></div>
+    <div class="lamina" id="lamI" data-rot="2.5" style="top:300px;left:590px;width:450px;height:310px"><div class="plate" data-img="icaro" data-crop="0,0,3840,2505"></div></div>
+    <div class="lamina" id="lamC" data-rot="2" style="top:1060px;left:50px;width:300px;height:370px"><div class="plate" data-img="caravaggio" data-crop="0,0,1920,2325"></div></div>
+    <div class="lamina" id="lamE" data-rot="-2" style="top:1070px;left:720px;width:330px;height:330px"><div class="plate" data-img="embajadores" data-crop="0,0,3840,3784"></div></div>
+    <div class="etiqueta" id="juego" data-rot="-2" style="top:1185px;left:440px">juego</div>
+    <div class="etiqueta" id="cultura" data-rot="2" style="top:1275px;left:420px">cultura</div>
+    <div class="ficha" id="fJue" data-rot="-1" style="top:1370px;left:70px;font-size:18px">Pieter Bruegel el Viejo · Juegos de niños, 1560</div>
+  </div>
+
+  <!-- 7 · LA CANCIÓN: la escribió otro (Schumann); cuando suena, habla de vos (Khnopff) -->
+  <div class="escena" id="e7">
+    <div class="fondo" style="background:var(--tinta)"><div class="puntos" style="position:absolute;inset:0"></div></div>
+    <div class="plate sangre" id="pK"></div>
+    <div class="velo" style="background:linear-gradient(to bottom, rgba(29,26,23,.55) 6%, rgba(29,26,23,0) 22%, rgba(29,26,23,0) 66%, rgba(29,26,23,.7) 86%)"></div>
+    <div class="lamina" id="lamS" data-rot="-2" style="top:330px;left:230px;width:620px;height:775px"><div class="plate" data-img="partitura" data-crop="0,0,945,1181"></div></div>
+    <div class="ficha" id="fSch" data-rot="1" style="top:1135px;left:250px">Robert Schumann · Escenas de niños, 1838</div>
+    <svg class="capa" id="capa7" viewBox="0 0 1080 1920" fill="none" stroke-linecap="round">
+      <path id="hilo7" stroke="var(--coral)" stroke-width="9"/>
+    </svg>
+    <div class="etiqueta" id="deAfuera" data-rot="-2" style="top:400px;left:60px">viene de afuera</div>
+    <div class="etiqueta" id="esTuya" data-rot="2" style="top:930px;left:560px">y es tuya</div>
+    <div class="ficha" id="fKh" data-rot="-1" style="top:1340px;left:70px;font-size:18px">Fernand Khnopff · Escuchando a Schumann, 1883<br>la que escucha es su madre</div>
+  </div>
+
+  <!-- 8 · CIERRE: de grande, la misma pose; la canción; la cinta se frena -->
+  <div class="escena" id="e8">
+    <div class="fondo" style="background:var(--noche)"><div class="puntos" style="position:absolute;inset:0"></div></div>
+    <div id="velador8" style="left:-100px;top:300px;width:1280px;height:1000px;background:radial-gradient(closest-side, rgba(224,122,95,.42), rgba(224,122,95,0))"></div>
+    <div id="brillo" style="left:-60px;top:560px;width:1000px;height:700px;background:radial-gradient(closest-side, rgba(224,122,95,.45), rgba(224,122,95,0))"></div>
+    <svg id="trapo8" viewBox="0 0 1000 760" style="left:40px;top:420px;width:1000px;height:760px;overflow:visible"></svg>
+    <svg id="grande" viewBox="0 0 1000 760" style="left:40px;top:420px;width:1000px;height:760px;overflow:visible"></svg>
+    <svg class="capa" id="notas" viewBox="0 0 1080 1920" fill="var(--coral)"></svg>
+    <div class="cinta" id="cinta8" data-rot="-4" style="top:300px"><span></span></div>
+  </div>
+
+  <div class="sub" id="sub"></div>
+  <div class="grano" id="grano"></div>
+</div>
+
+<script type="module">
+import { encuadrar, rasgar } from '../../diseno/sistema.js';
+import { cargarVoz, subtitulos, pieza, trazo, hervir, prog, lerp, ease, clamp, encuadre, entreEncuadres,
+  dibujo, hilo, cinta, cine } from '../../diseno/motor.js';
+import * as D from './dibujos.js';
+
+const IMGS = {
+  khnopff:   { src: 'assets/khnopff.jpg',   w: 1920, h: 1669 },
+  cassatt:   { src: 'assets/cassatt.jpg',   w: 1280, h: 1017 },
+  juegos:    { src: 'assets/juegos.jpg',    w: 3840, h: 2789 },
+  partitura: { src: 'assets/partitura.jpg', w: 945,  h: 1181 },
+  nighthawks: { src: '../01-no-hay-nadie/assets/nighthawks.jpg', w: 3840, h: 2095 },
+  icaro:     { src: '../02-icaro/assets/icaro.jpg', w: 3840, h: 2505 },
+  caravaggio: { src: '../03-narciso/assets/caravaggio.jpg', w: 1920, h: 2325 },
+  embajadores: { src: '../04-embajadores/assets/embajadores.jpg', w: 3840, h: 3784 },
+};
+// El almuerzo del bebé: 132 cuadros a 12 por segundo (11 s de la película, desde el segundo 11,5)
+const CUADROS = Array.from({ length: 132 }, (_, i) => { const im = new Image(); im.src = `assets/repas/${String(i + 1).padStart(3, '0')}.jpg`; return im; });
+// Encuadres (px del original). Los "a sangre" tienen la proporción de la pantalla (0,5625).
+const KH = { mujer1: [780, 330, 440, 587], piano: [0, 0, 700, 1244], mujer: [620, 0, 700, 1244], cerca: [640, 60, 660, 1173] };
+// Las caras de Desayuno en la cama (px del original de 1280)
+const CARA = { bebe: [493, 213], mama: [753, 307] };
+const JU = { centro: [1500, 700, 1100, 1100], mas: [1100, 500, 1700, 1700] };
+
+const $ = id => document.getElementById(id);
+const voz = await cargarVoz('audio/voz-editada.json');
+const W = voz.W;
+const DURACION = voz.duracion;
+
+// ───── Tiempos (todo anclado a la voz) ─────
+const T = {
+  dormir: W('dormir').e, e2: W('un pediatra').s - 0.3, serio: W('en serio').s, penso: W('lo que pensó').s,
+  necesitamos: W('necesitamos el arte').s, arte: W('arte').s,
+  e3: W('donald').s - 0.45, donald: W('donald').s, cuarenta: W('casi cuarenta').s, antes: W('antes del año').s,
+  sabana: W('sábana').s, panuelo: W('pañuelo').s, muneco: W('muñeco').s, para: W('para qué sirve').s,
+  e4: W('al principio').s - 0.4, bebe: W('el bebé').s, mama: W('su mamá').s, descubre: W('de a poco').s,
+  va: W('se va').s, vuelve: W('vuelve').s, trapito: W('el trapito ayuda').s, suyo: W('suyo').s, conElla: W('con ella').s,
+  objTr: W('objeto transicional').s,
+  e5: W('y decía').s - 0.35, aceptar: W('aceptar la realidad').s, nadie: W('nadie se libra').s, adentro: W('adentro').s,
+  afuera: W('afuera').s, necesitamos2: W('necesitamos un lugar').s, descansar: W('descansar').s,
+  e6: W('de bebés').s - 0.35, anios: W('con los años').s, cajon: W('un cajón').s, pero: W('pero lo que hacía').s,
+  extiende: W('se extiende').s,
+  juego: W('juego').s, despues: W('después').s, cultura: W('cultura').s,
+  e7: W('pensalo así').s - 0.35, cancion: W('una canción').s, suena: W('pero cuando suena').s, parece: W('parece que habla').s,
+  viene: W('viene de afuera').s, tuya: W('es tuya').s, quien: W('de quién es').e,
+  e8: W('por eso').s - 0.35, pesa: W('el día pesa').s, pones: W('ponés esa canción').s, lugar: W('un lugar para').s,
+  descansar2: W('descansar', 2).s, nunca2: W('nunca termina', 2).e,
+};
+T.vuelta = DURACION - 0.6;
+const escenas = [['e1', -1, T.e3 + 0.7], ['e3', T.e3, T.e4 + 0.8], ['e4', T.e4, T.e5 + 0.8], ['e5', T.e5, T.e6 + 0.8],
+  ['e6', T.e6, T.e7 + 0.6], ['e7', T.e7, T.e8 + 0.1], ['e8', T.e8, 999]];
+const SUBS = subtitulos(voz, [['para qué sirve'], ['suyo sin ser él'], ['con ella sin ser ella'], ['objeto transicional'],
+  ['aceptar la realidad es una tarea que nunca termina'], ['viene de afuera y es tuya']], 7);
+
+const aparecer = (el, t, t0, t1 = Infinity, dur = 0.35) => {
+  const o = ease.out(prog(t, t0, t0 + dur)) * (t1 === Infinity ? 1 : 1 - prog(t, t1, t1 + 0.3));
+  el.style.opacity = o; el.style.visibility = o > 0 ? 'visible' : 'hidden';
+};
+// Iris de cine mudo: la escena se abre (o se cierra) en un círculo
+const iris = (el, p, x, y) => { el.style.clipPath = p >= 1 ? 'none' : `circle(${lerp(0, 1500, ease.inOut(p))}px at ${x}px ${y}px)`; };
+// Punto de un dibujo (coordenadas de su viewBox) en la pantalla, con la transformación que tenga
+const vbA = (svg, x, y) => {
+  const r = svg.viewBox.baseVal, k = svg.clientWidth / r.width, m = new DOMMatrix(getComputedStyle(svg).transform === 'none' ? undefined : getComputedStyle(svg).transform);
+  const ox = parseFloat(svg.style.left), oy = parseFloat(svg.style.top);
+  const [cx, cy] = (getComputedStyle(svg).transformOrigin || '0 0').split(' ').map(parseFloat);
+  const p = m.transformPoint(new DOMPoint(x * k - cx, y * k - cy));
+  return [ox + cx + p.x, oy + cy + p.y];
+};
+// Cinta sin fin: cuánto avanzó, integrando una velocidad que puede frenar
+const avance = (t, t0, vel, frenaDesde = Infinity, frenaDur = 0.8) => {
+  if (t < t0) return 0;
+  if (t < frenaDesde) return (t - t0) * vel;
+  const d = Math.min(t - frenaDesde, frenaDur);
+  return (frenaDesde - t0) * vel + vel * (d - d * d / (2 * frenaDur));
+};
+const nota = (x, y, s, o) => `<g transform="translate(${x} ${y}) scale(${s})" opacity="${o}"><ellipse cx="0" cy="0" rx="15" ry="11" transform="rotate(-20)"/>` +
+  `<rect x="10" y="-62" width="6" height="62"/><path d="M16 -62 C 30 -52, 40 -44, 34 -26 C 32 -38, 26 -44, 16 -46 Z"/></g>`;
+
+function seek(tReal) {
+  // al final, el video vuelve a su primer cuadro para que el loop no se note
+  const vuelve = tReal >= T.vuelta;
+  for (const [id, a, b] of escenas) $(id).style.display = (vuelve ? id === 'e1' : tReal >= a && tReal < b) ? 'block' : 'none';
+  let t = vuelve ? 0 : tReal;
+
+  // 1 y 2 · Gancho y promesa
+  if (t < T.e3 + 0.7) {
+    const n = $('nene1');
+    dibujo(n, ease.inOut(prog(t, 0.05, 2.7)), { rellenos: [-1] });
+    // respira; en la promesa se achica abajo a la izquierda
+    const pe = ease.inOut(prog(t, T.e2, T.e2 + 1.1));
+    const resp = 1 + 0.012 * Math.sin(t * 1.9);
+    n.style.transformOrigin = '515px 540px';
+    n.style.transform = `translate(${lerp(0, -255, pe)}px, ${lerp(0, 230, pe)}px) scale(${lerp(1, 0.6, pe) * resp})`;
+    n.style.opacity = 1 - prog(t, T.e3, T.e3 + 0.5);
+    // el velador acompaña al nene (mismo punto fijo: el trapito, en 555, 960 de la pantalla)
+    $('velador').style.transformOrigin = '655px 660px';
+    $('velador').style.transform = n.style.transform;
+    $('velador').style.opacity = n.style.opacity;
+    pieza($('tuviste'), t, { t0: T.dormir - 0.05, t1: T.e2 + 0.2, sale: 'fundido' });
+    // la etiqueta de museo cuelga del trapito: se lo tomó en serio
+    const [qx, qy] = vbA(n, 600, 600);
+    pieza($('estudio'), t, { t0: T.serio - 0.1, entra: 'pegar', t1: T.e3, sale: 'fundido' });
+    const ps = prog(t, T.serio - 0.1, T.serio + 0.3) * (1 - prog(t, T.e3, T.e3 + 0.3));
+    $('cordel').setAttribute('d', `M${qx} ${qy} L 420 1306`);
+    $('cordel').style.opacity = ps;
+    // el hilo: del trapito al cuadro
+    const [ax, ay] = vbA(n, 640, 480);
+    hilo($('hilo1'), [ax, ay], [596, 862], { comba: 70, p: ease.inOut(prog(t, T.penso + 0.3, T.arte + 0.1)), amp: 4 * prog(t, T.arte, T.arte + 0.3), t });
+    $('hilo1').style.opacity = 1 - prog(t, T.e3, T.e3 + 0.4);
+    encuadre($('pK1'), IMGS.khnopff, KH.mujer1);
+    pieza($('lamK1'), t, { t0: T.penso, dur: 0.5, t1: T.e3, sale: 'fundido' });
+  }
+
+  t = tReal;
+  // 3 · Winnicott: cine de archivo y los objetos
+  if (t >= T.e3 && t < T.e4 + 0.8) {
+    pieza($('lamCine'), t, { t0: T.e3, entra: 'abajo', dur: 0.6, t1: T.e4 - 0.1, sale: 'fundido' });
+    const rc = entreEncuadres([0, 0, 640, 480], [120, 40, 400, 300], ease.suave(prog(t, T.e3, T.para)));
+    cine($('cine'), CUADROS, t, T.e3 + 0.1, 12, rc);
+    pieza($('fLum'), t, { t0: T.e3 + 0.7, entra: 'fundido', t1: T.e4 - 0.1 });
+    pieza($('fWin'), t, { t0: T.donald - 0.05, t1: T.antes - 0.2 });
+    pieza($('fPed'), t, { t0: T.donald + 0.6, entra: 'fundido', t1: T.antes - 0.2 });
+    pieza($('fLon'), t, { t0: T.cuarenta - 0.1, entra: 'fundido', t1: T.antes - 0.2 });
+    pieza($('fMeses'), t, { t0: T.antes, entra: 'izq', dur: 0.4, t1: T.sabana - 0.3 });
+    [['ob1', T.sabana], ['ob2', T.panuelo], ['ob3', T.muneco]].forEach(([id, t0]) => {
+      dibujo($(id), prog(t, t0 - 0.1, t0 + 0.55), { rellenos: [0.5, 1] });
+      $(id).style.opacity = 1 - prog(t, T.e4 - 0.1, T.e4 + 0.3);
+    });
+    pieza($('fMadres'), t, { t0: T.panuelo - 0.1, entra: 'izq', dur: 0.4, t1: T.e4 - 0.1 });
+    pieza($('sirve'), t, { t0: T.para - 0.05, t1: T.e4 + 0.2, sale: 'fundido' });
+  }
+
+  // 4 · Para qué sirve: el bebé y la mamá
+  if (t >= T.e4 && t < T.e5 + 0.8) {
+    // la escena sube como una frazada que se tiende
+    const pe = ease.inOut(prog(t, T.e4, T.e4 + 0.7));
+    $('e4').style.clipPath = pe >= 1 ? 'none' : `inset(${lerp(100, 0, pe)}% 0 0 0)`;
+    const cCas = entreEncuadres([0, 0, 1280, 1017], [120, 0, 1100, 874], ease.suave(prog(t, T.e4, T.descubre)));
+    encuadre($('pCas'), IMGS.cassatt, cCas);
+    pieza($('fCas'), t, { t0: T.e4 + 0.8, entra: 'fundido', t1: T.descubre - 0.1 });
+    const pd = ease.inOut(prog(t, T.descubre, T.descubre + 0.9));
+    $('lamCas').style.opacity = 1 - pd;
+    $('lamCas').style.transform = `translateY(${pd * 160}px) rotate(${lerp(0, 4, pd)}deg)`;
+    // las caras en la pantalla, según el encuadre de la lámina (plato de 928×748 en 76, 346)
+    const kc = Math.max(928 / cCas[2], 748 / cCas[3]);
+    const enLamina = ([fx, fy]) => [76 + (fx - cCas[0]) * kc + (928 - cCas[2] * kc) / 2, 346 + (fy - cCas[1]) * kc + (748 - cCas[3] * kc) / 2];
+    // los dos círculos: primero sobre las caras, casi encimados; se llevan las caras y se separan en diagonal
+    const sep = ease.inOut(prog(t, T.descubre + 0.3, T.descubre + 1.6));
+    const ida = ease.in(prog(t, T.va, T.va + 0.4)), vuelta = ease.out(prog(t, T.vuelve, T.vuelve + 0.6));
+    const resp = Math.sin(t * 2.2) * 2;
+    const cb = enLamina(CARA.bebe), cm = enLamina(CARA.mama);
+    const B = [lerp(cb[0], 260, sep), lerp(cb[1], 590, sep), lerp(100, 140, sep) + resp];
+    const M = [lerp(cm[0], 800, sep) + 480 * ida * (1 - vuelta), lerp(cm[1], 1040, sep) + 300 * ida * (1 - vuelta), lerp(118, 170, sep) - resp];
+    const pB = prog(t, T.bebe - 0.1, T.bebe + 0.6), pM = prog(t, T.mama - 0.15, T.mama + 0.55);
+    for (const [c, [x, y, r], p] of [['cB', B, pB], ['cM', M, pM]]) {
+      const el = $(c); el.setAttribute('cx', x); el.setAttribute('cy', y); el.setAttribute('r', r); el.setAttribute('pathLength', 1);
+      trazo(el, ease.inOut(p));
+    }
+    // cada medallón lleva su cara: al principio calza justo con la pintura; después crece con su círculo
+    for (const [id, [x, y, r], cara, r0] of [['medB', B, CARA.bebe, 100], ['medM', M, CARA.mama, 118]]) {
+      const el = $(id), km = kc * r / r0;
+      Object.assign(el.style, { left: `${x - r}px`, top: `${y - r}px`, width: `${2 * r}px`, height: `${2 * r}px`,
+        backgroundImage: `url(${IMGS.cassatt.src})`, backgroundSize: `${1280 * km}px ${1017 * km}px`,
+        backgroundPosition: `${r - cara[0] * km}px ${r - cara[1] * km}px`, opacity: prog(t, T.descubre - 0.3, T.descubre) });
+    }
+    $('tB').setAttribute('x', B[0]); $('tB').setAttribute('y', B[1] - B[2] - 22);
+    $('tM').setAttribute('x', M[0]); $('tM').setAttribute('y', M[1] - M[2] - 22);
+    aparecer($('tB'), t, T.descubre + 0.8, T.e5);
+    aparecer($('tM'), t, T.descubre + 1.0, T.e5);
+    // el trapito cae en el hueco; un hilo a cada lado, de borde a borde
+    dibujo($('trapo4'), 1);
+    pieza($('trapo4c'), t, { t0: T.trapito + 0.1, t1: T.e5 + 0.1, sale: 'fundido' });
+    const TR = [513, 810];
+    const borde = ([x, y, r], [tx, ty], k) => { const d = Math.hypot(tx - x, ty - y); return [x + (tx - x) * k / d, y + (ty - y) * k / d]; };
+    hilo($('hB'), borde(B, TR, B[2]), borde([...TR, 0], [B[0], B[1]], 82), { p: ease.inOut(prog(t, T.suyo - 0.3, T.suyo + 0.4)), comba: 14, amp: 2, t });
+    hilo($('hM'), borde([...TR, 0], [M[0], M[1]], 82), borde(M, TR, M[2]), { p: ease.inOut(prog(t, T.conElla - 0.3, T.conElla + 0.4)), comba: 14, amp: 2, t: t + 0.4 });
+    for (const h of ['hB', 'hM']) {
+      $(h).style.opacity = 1 - prog(t, T.e5, T.e5 + 0.3);
+      for (const k of ['d', 'style']) $(h + '2').setAttribute(k, $(h).getAttribute(k) || '');
+    }
+    pieza($('suyo'), t, { t0: T.suyo - 0.05, entra: 'izq', dur: 0.4, t1: T.e5 });
+    pieza($('conElla'), t, { t0: T.conElla - 0.05, entra: 'der', dur: 0.4, t1: T.e5 });
+    pieza($('objTr'), t, { t0: T.objTr - 0.05, t1: T.e5 + 0.1 });
+    pieza($('fObj'), t, { t0: T.objTr + 0.7, entra: 'fundido', t1: T.e5 + 0.1 });
+  }
+
+  // 5 · La tarea que nunca termina
+  if (t >= T.e5 && t < T.e6 + 0.8) {
+    iris($('e5'), prog(t, T.e5, T.e5 + 0.8), 540, 900);
+    // los círculos de antes pasan a ser adentro (coral) y afuera (la película: el mundo real, los otros); en la tensión
+    // se alejan
+    const g = ease.inOut(prog(t, T.e5, T.e5 + 1.2));
+    const ten = ease.inOut(prog(t, T.nadie, T.nadie + 1.2)) * (1 - ease.inOut(prog(t, T.necesitamos2, T.necesitamos2 + 1.2)));
+    const A = [lerp(260, 190, g) - 40 * ten, lerp(590, 700, g), lerp(140, 190, g)];
+    const F = [lerp(800, 890, g) + 40 * ten, lerp(1040, 700, g), lerp(170, 190, g)];
+    for (const [c, [x, y, r]] of [['cA', A], ['cF', F]]) { $(c).setAttribute('cx', x); $(c).setAttribute('cy', y); $(c).setAttribute('r', r); }
+    for (const [id, [x, y, r]] of [['discoA', A], ['discoF', F]])
+      Object.assign($(id).style, { left: `${x - r}px`, top: `${y - r}px`, width: `${2 * r}px`, height: `${2 * r}px` });
+    // adentro, dibujado (la imaginación); afuera, filmado (la realidad, los otros)
+    const n5 = $('nene5'), w5 = 2.3 * A[2];
+    Object.assign(n5.style, { width: `${w5}px`, height: `${w5 * 0.76}px`, left: `${A[2] - w5 * 0.5}px`, top: `${A[2] - w5 * 0.42}px` });
+    dibujo(n5, 1, { rellenos: [-1] });
+    cine($('cine5'), CUADROS, T.e5 + ((t - T.e5) % 10.9), T.e5, 12, [100, 20, 440, 440]);
+    $('tA').setAttribute('x', A[0]); $('tA').setAttribute('y', A[1] + A[2] + 60); $('tF').setAttribute('x', F[0]); $('tF').setAttribute('y', F[1] + F[2] + 60);
+    aparecer($('tA'), t, T.adentro - 0.05); aparecer($('tF'), t, T.afuera - 0.05);
+    // la personita en el medio, con un hilo en cada mano
+    dibujo($('pie'), prog(t, T.e5 + 0.4, T.aceptar - 0.1));
+    const temblor = Math.sin(t * 47) * 2.5 * ten;
+    $('pie').style.transform = `translateX(${temblor}px)`;
+    const baja = ease.inOut(prog(t, T.necesitamos2 + 0.2, T.necesitamos2 + 1.2));
+    const hI = [lerp(lerp(410, 395, ten), 476, baja) + temblor, lerp(920, 1110, baja)], hD = [lerp(lerp(670, 685, ten), 604, baja) + temblor, lerp(920, 1110, baja)];
+    const pb = ease.inOut(prog(t, T.aceptar - 0.4, T.aceptar + 0.3));
+    $('brazoI').setAttribute('d', `M${512 + temblor} 1000 L ${lerp(512, hI[0], pb)} ${lerp(1000, hI[1], pb)}`);
+    $('brazoD').setAttribute('d', `M${568 + temblor} 1000 L ${lerp(568, hD[0], pb)} ${lerp(1000, hD[1], pb)}`);
+    for (const b of ['brazoI', 'brazoD']) $(b).style.visibility = pb > 0 ? 'visible' : 'hidden';
+    const ph = ease.inOut(prog(t, T.aceptar, T.aceptar + 0.8));
+    const opts = { comba: lerp(4, 90, baja), amp: 11 * ten, t };
+    const alBorde = ([x, y, r], [hx, hy]) => { const d = Math.hypot(hx - x, hy - y); return [x + (hx - x) * r / d, y + (hy - y) * r / d]; };
+    hilo($('hA'), hI, alBorde(A, hI), { ...opts, p: ph });
+    hilo($('hF'), hD, alBorde(F, hD), { ...opts, p: ph, t: t + 0.13 });
+    // el lugar donde descansar: una zona coral que crece detrás
+    const z = ease.out(prog(t, T.necesitamos2 + 0.4, T.descansar + 0.6));
+    $('zona').setAttribute('cx', 540); $('zona').setAttribute('cy', 1080);
+    $('zona').setAttribute('rx', 260 * z); $('zona').setAttribute('ry', 330 * z);
+    // la cinta sin fin
+    pieza($('cinta5'), t, { t0: T.aceptar - 0.1, entra: 'der', dur: 0.6, t1: T.e6 - 0.2, sale: 'fundido' });
+    cinta($('cinta5'), avance(t, T.aceptar - 0.1, 150));
+    pieza($('fAcept'), t, { t0: T.aceptar - 0.05, entra: 'fundido', t1: T.nadie });
+  }
+
+  // 6 · De bebés, el trapito; el cajón; se extiende
+  if (t >= T.e6 && t < T.e7 + 0.6) {
+    iris($('e6'), prog(t, T.e6, T.e6 + 0.8), 540, 840);
+    const n = $('nene6');
+    const pd = t < T.anios ? prog(t, T.e6 + 0.2, T.e6 + 1.5) : 1 - prog(t, T.anios, T.anios + 0.7);
+    dibujo(n, ease.inOut(pd), { rellenos: [0.3, 0.7] });
+    // el trapito suelto (con su luz) vuela al cajón
+    const tr = $('trapo6');
+    dibujo(tr, 1, { rellenos: [-1] });
+    const vu = ease.inOut(prog(t, T.cajon - 0.05, T.cajon + 0.55));
+    tr.style.transformOrigin = '515px 540px';  // el centro del trapito, en px del svg
+    tr.style.transform = `translate(${lerp(0, -15, vu)}px, ${lerp(0, 260, vu)}px) scale(${lerp(1, 0.55, vu)}) rotate(${lerp(0, 8, vu)}deg)`;
+    // la cómoda se dibuja; el cajón se abre y se cierra
+    const c = $('comoda');
+    dibujo(c, prog(t, T.anios + 0.1, T.cajon - 0.1), { rellenos: [0.6, 1] });
+    const ab = ease.out(prog(t, T.cajon - 0.3, T.cajon)) * (1 - ease.inOut(prog(t, T.cajon + 0.55, T.cajon + 0.95)));
+    const fr = c.querySelector('#frente');
+    fr.style.transformOrigin = '300px 250px';
+    fr.style.transform = `translate(0, ${70 * ab}px) scale(${1 + 0.05 * ab})`;
+    c.querySelector('#hueco').style.opacity = ab;
+    c.querySelector('#frente').style.opacity = prog(t, T.cajon - 0.5, T.cajon - 0.3);
+    // el trapito entra en el cajón: lo que pasa del borde del frente queda oculto
+    const borde = 820 + 160 + 70 * ab;
+    $('vuelo').style.clipPath = vu > 0.5 ? `inset(0 0 ${1920 - borde}px 0)` : 'none';
+    $('vuelo').style.visibility = t < T.cajon + 1.0 ? 'visible' : 'hidden';
+    c.style.opacity = 1 - prog(t, T.extiende + 0.2, T.extiende + 0.8);
+    // se extiende: una zona coral crece desde el cajón; adentro, el juego; después, la cultura
+    const z = ease.inOut(prog(t, T.pero, T.extiende + 0.7)), zz = ease.inOut(prog(t, T.despues - 0.1, T.cultura + 0.4));
+    const zr = lerp(0, 400, z) + lerp(0, 1200, zz), zy = lerp(1040, 800, z);
+    $('zona6').style.clipPath = `circle(${zr}px at 540px ${zy}px)`;
+    const jr = Math.max(0, lerp(0, 370, ease.out(prog(t, T.juego - 0.25, T.juego + 0.5))) - 40 * zz);
+    $('pJue').style.clipPath = `circle(${jr}px at 540px 800px)`;
+    $('pJue').style.visibility = jr > 0 ? 'visible' : 'hidden';
+    encuadre($('pJue'), IMGS.juegos, entreEncuadres(JU.centro, JU.mas, ease.suave(prog(t, T.juego, T.e7 + 0.6))));
+    pieza($('juego'), t, { t0: T.juego - 0.05, t1: T.e7 });
+    pieza($('fJue'), t, { t0: T.juego + 0.4, entra: 'fundido', t1: T.despues });
+    [['lamN', 0], ['lamI', 0.15], ['lamC', 0.3], ['lamE', 0.45]].forEach(([id, d]) => pieza($(id), t, { t0: T.despues + d, t1: T.e7 + 0.1, sale: 'fundido' }));
+    pieza($('cultura'), t, { t0: T.cultura - 0.05, t1: T.e7 });
+  }
+
+  // 7 · La canción
+  if (t >= T.e7 && t < T.e8 + 0.1) {
+    $('e7').style.opacity = ease.out(prog(t, T.e7, T.e7 + 0.5));
+    let k = entreEncuadres(KH.piano, KH.mujer, ease.inOut(prog(t, T.suena + 0.1, T.parece)));
+    k = entreEncuadres(k, KH.cerca, ease.suave(prog(t, T.parece, T.e8 + 0.1)));
+    encuadre($('pK'), IMGS.khnopff, k);
+    aparecer($('pK'), t, T.suena - 0.1, Infinity, 0.5);
+    pieza($('lamS'), t, { t0: T.e7 + 0.35, dur: 0.5, t1: T.suena - 0.05, sale: 'izq' });
+    pieza($('fSch'), t, { t0: T.cancion + 0.4, entra: 'fundido', t1: T.suena - 0.05, sale: 'izq' });
+    pieza($('fKh'), t, { t0: T.suena + 0.8, entra: 'fundido' });
+    // la música viene de afuera del cuadro (el que toca no se ve) y llega a ella
+    hilo($('hilo7'), [-30, 600], [430, 600], { comba: -60, amp: 5, t, p: ease.inOut(prog(t, T.viene - 0.1, T.viene + 0.6)) });
+    pieza($('deAfuera'), t, { t0: T.viene + 0.1, entra: 'izq', dur: 0.4 });
+    pieza($('esTuya'), t, { t0: T.tuya - 0.05 });
+    // iris que se cierra sobre ella, como en el cine mudo
+    iris($('e7'), 1 - prog(t, T.quien + 0.05, T.e8 + 0.1), 560, 560);
+  }
+
+  // 8 · Cierre
+  if (t >= T.e8) {
+    const g = $('grande');
+    const pg = t < T.nunca2 + 0.15 ? prog(t, T.e8 + 0.1, T.pesa + 0.2) : 1 - prog(t, T.nunca2 + 0.15, T.vuelta - 0.05);
+    dibujo(g, ease.inOut(pg), { rellenos: [2] });
+    const au = ease.back(prog(t, T.pones - 0.05, T.pones + 0.4)) * (1 - prog(t, T.nunca2 + 0.1, T.vuelta - 0.1));
+    for (const r of g.querySelectorAll('.relleno')) r.style.opacity = clamp(au * 3);
+    g.querySelector('.rellenos').style.transformOrigin = '342px 300px';
+    g.querySelector('.rellenos').style.transform = `scale(${lerp(1.25, 1, clamp(au))})`;
+    // las notas suben de los auriculares
+    let svg = '';
+    if (t > T.pones + 0.3) for (let i = 0; i < 4; i++) {
+      const f = ((t - T.pones - 0.3) * 0.45 + i * 0.25) % 1, x = 520 + i * 70 + Math.sin(t * 2 + i) * 20, y = 760 - f * 360;
+      svg += nota(x, y, 0.9 + 0.2 * (i % 2), (Math.sin(Math.PI * f) * au).toFixed(2));
+    }
+    if ($('notas').innerHTML !== svg) $('notas').innerHTML = svg;
+    aparecer($('brillo'), t, T.lugar - 0.2, T.nunca2 + 0.2, 1.0);
+    g.querySelector('.manta').style.opacity = 1 - ease.inOut(prog(t, T.nunca2 + 0.5, T.vuelta - 0.1));
+    // mientras se borra, vuelve el trapito del principio, en el mismo lugar: así el loop empalma
+    dibujo($('trapo8'), 1, { rellenos: [-1] });
+    $('trapo8').style.opacity = ease.inOut(prog(t, T.nunca2 + 0.5, T.vuelta - 0.1));
+    pieza($('cinta8'), t, { t0: T.pesa - 0.1, entra: 'der', dur: 0.6, t1: T.nunca2 + 0.2, sale: 'fundido' });
+    cinta($('cinta8'), avance(t, T.pesa - 0.1, 170, T.descansar2, 1.0));
+  }
+
+  const sb = SUBS.find(x => t >= x.s && t < x.e);
+  const html = sb ? `<span>${sb.texto}</span>` : '';
+  if ($('sub').innerHTML !== html) $('sub').innerHTML = html;
+  hervir($('grano'), t);
+}
+
+// ───── Armado ─────
+$('nene1').innerHTML = D.nene; $('nene6').innerHTML = D.nene; $('nene5').innerHTML = D.nene; $('grande').innerHTML = D.grande; $('pie').innerHTML = D.dePie;
+$('ob1').innerHTML = D.sabana; $('ob2').innerHTML = D.panuelo; $('ob3').innerHTML = D.muneco;
+$('comoda').innerHTML = D.comoda + D.cajon;
+// el trapito solo (para que vuele al cajón, con su luz) y el trapito con la frazada (el final, que empalma con el principio)
+const piezas = sel => { const tpl = document.createElement('template'); tpl.innerHTML = `<svg>${D.nene}</svg>`;
+  return [...tpl.content.querySelectorAll(sel)].map(e => e.outerHTML).join(''); };
+$('trapo6').innerHTML = `<defs><radialGradient id="luzTrapo"><stop offset="0" stop-color="#E07A5F" stop-opacity=".5"/>` +
+  `<stop offset="1" stop-color="#E07A5F" stop-opacity="0"/></radialGradient></defs>` +
+  `<ellipse cx="515" cy="520" rx="520" ry="400" fill="url(#luzTrapo)"/><g class="rellenos">${piezas('.trapo')}</g>`;
+$('trapo8').innerHTML = `<g class="rellenos">${piezas('.manta, .trapo')}</g>`;
+$('nene6').querySelector('.trapo').style.display = 'none';
+$('trapo4').innerHTML = D.panuelo;
+for (const id of ['cinta5', 'cinta8']) $(id).firstElementChild.textContent = 'una tarea que nunca termina · '.repeat(6);
+encuadrar(document, IMGS);
+rasgar(document);
+for (const el of document.querySelectorAll('[data-rot]')) el.style.transform = `rotate(${el.dataset.rot}deg)`;
+await Promise.all([document.fonts.ready, ...Object.values(IMGS).map(im => { const i = new Image(); i.src = im.src; return i.decode(); }),
+  ...CUADROS.map(im => (im.complete ? Promise.resolve() : new Promise(ok => { im.onload = ok; im.onerror = ok; })))]);
+// los largos de los trazos se miden con todo a la vista
+for (const id of ['e1', 'e3', 'e4', 'e5', 'e6', 'e7', 'e8']) $(id).style.display = 'block';
+for (const s of document.querySelectorAll('svg')) if (s.querySelector('path[pathLength]')) dibujo(s, 0);
+window.seek = seek;
+window.DURACION = DURACION;
+window.T = T;
+seek(0);
+window.listo = true;
+
+if (!location.search.includes('render')) {
+  const audio = new Audio('audio/voz-editada.wav');
+  document.body.addEventListener('click', () => { audio.currentTime = 0; audio.play(); });
+  (function loop() { seek(audio.paused ? 0 : audio.currentTime); requestAnimationFrame(loop); })();
+}
+</script>
+</body>
+</html>

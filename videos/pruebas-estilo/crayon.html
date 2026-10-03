@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Prueba de estilo · Crayón</title>
+<link rel="stylesheet" href="../../diseno/sistema.css">
+<style>
+  html, body { margin: 0; background: #000; }
+  canvas { display: block; }
+</style>
+</head>
+<body>
+<div class="frame" id="video"><canvas id="lienzo" width="1080" height="1920"></canvas></div>
+<script type="module">
+// Prueba B · Crayón sobre papel: lápices de cera que agarran solo en el diente del papel, en vetas; el dibujo se
+// "vuelve a pintar" 8 veces por segundo. Misma escena que el gancho del 05, con un velador.
+import { Cera, CRAYONES } from '../../diseno/estilos/cera.js';
+import { muestrear, ubicar, lineaViva, rellenoVivo, rayado } from '../../diseno/estilos/trazo.js';
+import { azar, hervor, paso } from '../../diseno/estilos/ruido.js';
+import * as D from '../05-trapito/dibujos.js';
+
+const W = 1080, H = 1920, DURACION = 6;
+const lienzo = document.getElementById('lienzo').getContext('2d');
+const cera = new Cera(W, H, [
+  { id: 'celeste', color: CRAYONES.celeste, angulo: 35 },
+  { id: 'amarillo', color: CRAYONES.amarillo, angulo: 70 },
+  { id: 'rosa', color: CRAYONES.rosa, angulo: 20 },
+  { id: 'azul', color: CRAYONES.azul, angulo: -15 },
+  { id: 'coral', color: CRAYONES.rojo, angulo: 8 },
+  { id: 'marron', color: CRAYONES.marron, angulo: 85 },
+  { id: 'grafito', color: CRAYONES.grafito, angulo: 50 },
+]);
+
+const tpl = document.createElement('template'); tpl.innerHTML = `<svg>${D.nene}</svg>`;
+const trazos = [...tpl.content.querySelectorAll('.trazos path')].map(p => ({ d: p.getAttribute('d'), w: +p.getAttribute('stroke-width') }));
+const forma = sel => tpl.content.querySelector(sel).getAttribute('d');
+const TRAPO = forma('.trapo .relleno'), MANTA = forma('.manta'), RAYAS = tpl.content.querySelectorAll('.manta')[1].getAttribute('d');
+const CABEZA = trazos[0].d, CACHETE = 'M262 392 a 26 18 0 1 0 52 0 a 26 18 0 1 0 -52 0';
+const ALMOHADA = 'M150 300 C 140 230, 200 200, 300 205 L 560 214 C 640 216, 660 270, 650 330 C 645 380, 600 420, 520 430 L 230 440 C 160 440, 150 380, 150 300 Z';
+const POS = { x: -40, y: 700, s: 1.08 };
+const LAMP = { x: 850, y: 700 };   // el velador, sobre una mesita
+
+function seek(t) {
+  const hv = hervor(t, 8), ta = paso(t, 12), rnd = azar(hv * 131 + 7);
+  const at = (d, p = 4) => ubicar(muestrear(d, p), POS);
+  const resp = 1 + 0.018 * Math.sin((ta * 2 * Math.PI) / 3), base = POS.y + 640 * POS.s;
+  const respira = (c, f) => { c.save(); c.translate(0, base); c.scale(1, resp); c.translate(0, -base); f(); c.restore(); };
+  cera.limpiar();
+  const K = id => cera.ctx(id);
+  const [ce, am, ro, az, co, gr, ma] = ['celeste', 'amarillo', 'rosa', 'azul', 'coral', 'grafito', 'marron'].map(K);
+  for (const c of [ce, am, ro, az, co, gr, ma]) { c.fillStyle = '#000'; c.globalAlpha = 1; c.globalCompositeOperation = 'source-over'; }
+
+  // ── la noche: celeste a garabatos, que se aclara cerca del velador
+  ce.save(); ce.globalAlpha = 0.62; ce.fillRect(0, 0, W, H); ce.restore();
+  ce.globalCompositeOperation = 'destination-out';
+  let g = ce.createRadialGradient(LAMP.x - 80, LAMP.y + 260, 0, LAMP.x - 80, LAMP.y + 260, 700);
+  g.addColorStop(0, 'rgba(0,0,0,1)'); g.addColorStop(0.6, 'rgba(0,0,0,.5)'); g.addColorStop(1, 'rgba(0,0,0,0)');
+  ce.fillStyle = g; ce.fillRect(0, 0, W, H); ce.globalCompositeOperation = 'source-over'; ce.fillStyle = '#000';
+  // garabatos de la noche (trazos sueltos que se ven)
+  for (let k = 0; k < 40; k++) {
+    const r2 = azar(k * 17 + 1), y0 = 60 + k * 47, pts = [];
+    for (let x = -40; x < 1120; x += 10) pts.push([x, y0 + (x - 540) * 0.04 * (r2() - 0.5) + Math.sin(x / 140 + k) * 4]);
+    ce.globalAlpha = 0.35 + 0.3 * r2(); lineaViva(ce, pts, { ancho: 16, temblor: 6, semilla: hv * 3 + k });
+  }
+  ce.globalAlpha = 1;
+  // la luz del velador: amarillo en rayos de crayón
+  const pulso = 1 + 0.05 * Math.sin(ta * 2.4);
+  for (let k = 0; k < 30; k++) {
+    const a = -Math.PI * 0.98 + (k / 30) * Math.PI * 1.15, r0 = 120, r1 = (230 + 120 * azar(k + 5)()) * pulso;
+    const pts = []; for (let r = r0; r < r1; r += 8) pts.push([LAMP.x + Math.cos(a) * r, LAMP.y + 70 + Math.sin(a) * r * 0.9]);
+    am.globalAlpha = 0.5; lineaViva(am, pts, { ancho: 16, temblor: 4, semilla: hv * 7 + k });
+  }
+  am.globalAlpha = 1;
+  g = am.createRadialGradient(LAMP.x - 40, LAMP.y + 120, 0, LAMP.x - 40, LAMP.y + 120, 420 * pulso);
+  g.addColorStop(0, 'rgba(0,0,0,.7)'); g.addColorStop(1, 'rgba(0,0,0,0)'); am.fillStyle = g; am.fillRect(0, 0, W, H); am.fillStyle = '#000';
+  // el velador: pantalla amarilla y pie
+  const PANT = `M${LAMP.x - 70} ${LAMP.y} L ${LAMP.x + 70} ${LAMP.y} L ${LAMP.x + 110} ${LAMP.y + 120} L ${LAMP.x - 110} ${LAMP.y + 120} Z`;
+  rellenoVivo(am, ubicar(muestrear(PANT, 4), { s: 1 }), { temblor: 3, semilla: hv });
+  for (const pts of ubicar(muestrear(PANT, 4), { s: 1 })) lineaViva(gr, pts, { ancho: 6, temblor: 2.5, semilla: hv + 1 });
+  for (const pts of ubicar(muestrear(`M${LAMP.x} ${LAMP.y + 120} L ${LAMP.x} ${LAMP.y + 250} M${LAMP.x - 60} ${LAMP.y + 254} L ${LAMP.x + 60} ${LAMP.y + 250}`, 4), { s: 1 }))
+    lineaViva(gr, pts, { ancho: 9, temblor: 2.5, semilla: hv + 2 });
+  co.save(); rellenoVivo(co, ubicar(muestrear(PANT, 4), { s: 1 }), { temblor: 3, semilla: hv }); co.globalCompositeOperation = 'source-in';
+  co.fillStyle = 'rgba(0,0,0,.35)'; co.fillRect(0, 0, W, H); co.restore(); co.fillStyle = '#000';
+  // la mesita
+  const MESA = `M${LAMP.x - 130} ${LAMP.y + 254} L ${LAMP.x + 130} ${LAMP.y + 254} L ${LAMP.x + 124} ${LAMP.y + 470} L ${LAMP.x - 124} ${LAMP.y + 470} Z`;
+  for (const c of [ce, am]) { c.globalCompositeOperation = 'destination-out'; rellenoVivo(c, ubicar(muestrear(MESA, 4), { s: 1 }), { temblor: 3, semilla: hv }); c.globalCompositeOperation = 'source-over'; }
+  ma.globalAlpha = 0.8; rellenoVivo(ma, ubicar(muestrear(MESA, 4), { s: 1 }), { temblor: 3, semilla: hv }); ma.globalAlpha = 1;
+  for (const pts of ubicar(muestrear(MESA + ` M${LAMP.x - 100} ${LAMP.y + 340} L ${LAMP.x + 100} ${LAMP.y + 340}`, 4), { s: 1 })) lineaViva(gr, pts, { ancho: 6, temblor: 2.5, semilla: hv + 3 });
+
+  // ── la almohada, la cabeza y la frazada tapan la noche
+  for (const c of [ce, am]) { c.globalCompositeOperation = 'destination-out';
+    rellenoVivo(c, at(ALMOHADA), { temblor: 3, semilla: hv + 4 });
+    respira(c, () => rellenoVivo(c, at(MANTA), { temblor: 3, semilla: hv }));
+    c.globalCompositeOperation = 'source-over'; }
+  ro.globalAlpha = 0.5; rellenoVivo(ro, at(ALMOHADA), { temblor: 3, semilla: hv + 4 }); ro.globalAlpha = 1;
+  ro.globalCompositeOperation = 'destination-out'; rellenoVivo(ro, at(CABEZA), { temblor: 2, semilla: hv }); ro.globalCompositeOperation = 'source-over';
+  ro.globalAlpha = 0.9; rellenoVivo(ro, at(CACHETE), { temblor: 2.5, semilla: hv }); ro.globalAlpha = 1;
+  am.globalAlpha = 0.18; rellenoVivo(am, at(CABEZA), { temblor: 2, semilla: hv }); am.globalAlpha = 1;
+  // la frazada azul con rayas amarillas
+  respira(az, () => { az.globalAlpha = 0.85; rellenoVivo(az, at(MANTA), { temblor: 3, semilla: hv }); az.globalAlpha = 1;
+    az.globalCompositeOperation = 'destination-out'; for (const pts of at(RAYAS)) lineaViva(az, pts, { ancho: 20, temblor: 3, semilla: hv + 5 }); az.globalCompositeOperation = 'source-over'; });
+  respira(am, () => { for (const pts of at(RAYAS)) lineaViva(am, pts, { ancho: 17, temblor: 3, semilla: hv + 5 }); });
+  // el trapito, rojo coral, con la costura
+  respira(az, () => { az.globalCompositeOperation = 'destination-out'; rellenoVivo(az, at(TRAPO), { temblor: 3, semilla: hv + 1 }); az.globalCompositeOperation = 'source-over'; });
+  respira(co, () => { rellenoVivo(co, at(TRAPO), { temblor: 3, semilla: hv + 1 });
+    co.globalCompositeOperation = 'destination-out';
+    const cs = at('M410 494 C 470 476, 560 472, 624 486 C 638 526, 634 568, 620 594 C 552 608, 464 608, 408 592 C 396 560, 398 524, 410 494 Z', 3)[0];
+    cs.forEach(([x, y], i) => { if (i % 6 < 3) { co.beginPath(); co.arc(x, y, 3.5, 0, 7); co.fill(); } });
+    co.globalCompositeOperation = 'source-over'; });
+
+  // ── las líneas en grafito
+  trazos.forEach((tr, k) => {
+    const listas = at(tr.d), mueve = k >= 6 && k <= 8;
+    if (k >= 9) {
+      const f = (ta / 3 + (k - 9) * 0.35) % 1;
+      gr.save(); gr.translate(f * 60, -f * 120); gr.globalAlpha = Math.sin(Math.PI * f);
+      for (const pts of listas) lineaViva(gr, pts, { ancho: tr.w * 1.6, temblor: 2, semilla: hv + k });
+      gr.restore(); return;
+    }
+    const dib = () => { for (const pts of listas) lineaViva(gr, pts, { ancho: tr.w * 1.25, temblor: 2.6, semilla: hv * 13 + k * 7 }); };
+    mueve ? respira(gr, dib) : dib();
+  });
+  for (const pts of at(ALMOHADA)) lineaViva(gr, pts, { ancho: 6, temblor: 2.5, semilla: hv * 3 + 1 });
+  // sombra debajo de la cama
+  gr.save(); gr.beginPath(); gr.rect(0, base + 10, W, 60); gr.clip(); gr.globalAlpha = 0.3;
+  rayado(gr, [60, base + 10, 960, 60], { angulo: 4, sep: 9, ancho: 3, semilla: hv + 3 }); gr.restore();
+
+  // ── el título, escrito con crayón rojo
+  co.save(); co.translate(90, 410); co.rotate(-0.03); co.font = 'italic 150px "Instrument Serif"'; co.fillText('¿Tuviste uno?', 0, 0); co.restore();
+  for (const c of [ce]) { c.save(); c.globalCompositeOperation = 'destination-out'; c.translate(90, 410); c.rotate(-0.03); c.font = 'italic 150px "Instrument Serif"'; c.lineWidth = 10; c.strokeText('¿Tuviste uno?', 0, 0); c.fillText('¿Tuviste uno?', 0, 0); c.restore(); }
+
+  cera.pintar(lienzo, { hervor: hv, orden: ['celeste', 'amarillo', 'marron', 'rosa', 'azul', 'coral', 'grafito'] });
+}
+
+await document.fonts.load('italic 150px "Instrument Serif"');
+window.seek = seek; window.DURACION = DURACION; seek(0); window.listo = true;
+</script>
+</body>
+</html>

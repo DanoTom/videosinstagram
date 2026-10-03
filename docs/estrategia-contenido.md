@@ -29,12 +29,42 @@ segundo; con pausas y la cola da 80–88 s).
 Señales que busca Instagram: tiempo de visualización y **envíos por mensaje**. Un tema que dan ganas de mandarle a alguien
 ("mirá, somos nosotros") vale más que uno que solo gusta.
 
-## Cuatro formatos
+## Cinco formatos
 
 - **A · La historia detrás** (60–88 s). Un artista, un hecho de su vida, un concepto. Es el motor de alcance.
 - **B · Leer un cuadro** (45–60 s). La obra como un caso: los detalles son pistas, como en una sesión. Es el que más invita a volver a verlo.
 - **C · Mitos al revés** (serie). Mitos que conocemos mal. Ya lo hiciste con Narciso en El Reflejo. Una serie genera costumbre, y la costumbre genera seguidores.
 - **D · Lo que nos pasa** (formato El Reflejo). Un proceso (memoria, vergüenza) visto en 3 obras. Para usar de vez en cuando; es el que más se guarda.
+- **E · Cómo funciona** (desde el 05, octubre de 2026). Más psicología: un mecanismo psíquico explicado a fondo. La obra, la
+  historia o el experimento siguen siendo la puerta de entrada, pero el cuerpo del video es cómo funciona algo en nosotros
+  (más o menos 20 % arte, 20 % historia, 60 % psicología; en los otros formatos es al revés). Ver abajo.
+
+## Formato E · Cómo funciona
+
+Idea de Dano (2/10/2026): probar, cada tanto, videos con más contenido de psicología, y ver cómo responde la gente. El
+riesgo es parecerse a cualquier cuenta de "psicología en 60 segundos", con consejos y conceptos sueltos. Lo que lo evita:
+
+- **Siempre entra por algo concreto:** una escena de la vida cotidiana ("¿tuviste un trapito sin el que no te podías
+  dormir?"), un caso, un experimento clásico o una obra. El gancho no es un concepto.
+- **Un solo mecanismo, contado como proceso** (regla 5 de la guía de escritura), con alguien que lo vive y algo en juego.
+- **Quien mira se reconoce:** el video le explica algo que le pasó o le pasa (regla 13).
+- **De dónde viene el conocimiento** (Freud, Winnicott, un experimento con su año) y **el debate cuando lo hay** (por
+  ejemplo, que un test o un experimento famoso no se replicó bien).
+- **Nunca recetas, consejos clínicos ni diagnósticos.** Se explica, no se indica qué hacer.
+- **El arte sigue estando**, como imagen del estado interior o como cierre (el vínculo entre arte y mente es la marca).
+- **Lo visual no son palabras flotando:** recursos propios en `docs/guia-visual.md` § "Explicar psicología".
+
+**Cuántos y cómo se mide:** uno de cada tres videos, intercalado con los otros formatos. Se comparan los números de cada
+video en [resultados.md](resultados.md); después de seis videos se decide la proporción.
+
+**Temas para el formato E** (verificar todo antes de escribir):
+
+| Tema | Gancho posible | Imágenes |
+|---|---|---|
+| El objeto transicional (Winnicott) · **05, hecho** | "¿Tuviste un trapito, una mantita o un peluche sin el que no te podías dormir?" | Pinturas de madres e hijos (Cassatt, Morisot), la personita con su manta, el hilo que se estira |
+| Proyección (las manchas de Rorschach, 1921, de dominio público) | "¿Qué ves en esta mancha?" | Las láminas originales; la mancha se transforma en lo que cada uno ve. Contar el debate sobre la validez del test |
+| Duelo y melancolía (Freud, 1917) | La diferencia entre perder a alguien y perderse uno con esa pérdida | Durero, *Melencolia I*; Käthe Kollwitz (de dominio público desde 2016) |
+| El juego del carretel (Freud, *Más allá del principio de placer*, 1920) | "Un nene de un año y medio tiraba un carretel y decía «o-o-o». Era su nieto." | Un carretel dibujado con `trazo()`; el hilo que va y vuelve |
 
 ## Banco de temas
 
@@ -58,6 +88,10 @@ Más ideas, con autores que leyeron estas obras desde la psicología y la filoso
 | 13 | B | Esperanza | Watts, *Esperanza* | "Se llama Esperanza. Tiene los ojos vendados y a su lira le queda una sola cuerda." |
 | 14 | A | Trauma, reparación (tema delicado) | Artemisia Gentileschi, *Judith y Holofernes* | "En el juicio, para probar que decía la verdad, la torturaron a ella." |
 | 15 | B | Identificación | Friedrich, *Caminante sobre el mar de niebla* | "Nunca le vemos la cara. Por eso puede ser cualquiera." |
+| 16 | A | Emoción estética, expectativas (**06, hecho**) | El síndrome de Stendhal: Botticelli, Volterrano, Zoffany | "En Florencia, una psiquiatra atendió a más de cien turistas que se descompusieron frente a obras de arte." |
+| 17 | B | Percepción: pareidolia | Arcimboldo, *El hortelano* (c. 1590): plato de verduras que, dado vuelta, es una cara | "¿Qué ves? Ahora dalo vuelta." |
+| 18 | A | Emociones que fueron enfermedades | La nostalgia: Johannes Hofer, 1688, los soldados suizos | "La nostalgia era una enfermedad. Podía matar." |
+| 19 | D | Mirar despacio | En el Met se mira cada obra maestra 17 s (mediana; Smith y Smith, 2001): el video propone mirar una de verdad | "¿Cuánto tiempo mirás un cuadro en un museo?" |
 
 ## Por dónde empezar
 
@@ -68,6 +102,8 @@ Más ideas, con autores que leyeron estas obras desde la psicología y la filoso
 4. **04 · Los embajadores** (B), hecho: la calavera que solo se ve de costado (Holbein), Freud sobre la muerte propia y
    *La transitoriedad* (el paseo con el poeta, el duelo por adelantado). Es la pista ★★ más cercana al 02, por el juego de buscar algo escondido en el cuadro.
 5. Después, alternar temas de este banco con las otras pistas ★★ del [banco de pistas](banco-de-pistas.md).
+6. **06 · El síndrome de Stendhal** (A), elegido por Dano el 3/10/2026 entre ocho temas nuevos (16 a 19 de la tabla y cuatro
+   del banco), "para atraer interés". Es el primero del formato A en reels.
 
 ## Cómo aprender de cada video
 

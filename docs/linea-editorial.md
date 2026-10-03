@@ -14,6 +14,9 @@
   Mostrar la obra y nombrar un concepto no alcanza. Cómo se escribe: regla 13 de `docs/guia-de-escritura.md`.
 - **Cada video estrena algo** (un efecto o un movimiento nuevo, aunque sea en un momento corto), dentro del sistema visual
   propio: regla 17 de `docs/guia-visual.md`.
+- **Más psicología, de a poco** (Dano, 2/10/2026): uno de cada tres videos es del formato E, "Cómo funciona"
+  (`docs/estrategia-contenido.md`), para probar si la gente responde a más contenido de psicología. La obra o la cultura
+  sigue siendo la puerta de entrada. Se mide en `docs/resultados.md` y a los seis videos se decide la proporción.
 - Tono: el de El Reflejo, sin que sea obligatorio.
 - Meta: 1 video por semana es un éxito; 2 es un éxito rotundo.
 - **Ritmo (decisión de Dano, 2/10/2026):** sin compromiso fijo; se alternan semanas de 1 y de 2 videos según cuántos haya
@@ -25,7 +28,7 @@
   Los guiones se escriben para 80–88 s (190 a 220 palabras). Si una voz ya grabada queda larga, se acorta con
   `herramientas/recortar.py` (frases enteras y silencios largos; ver el 03).
 - Voz: la de Dano cuando pueda grabar; ElevenLabs cuando no. En ElevenLabs funcionó la voz "Javier – Deep, Confident and Measured"
-  con velocidad 1,00, estabilidad 30 y similitud 0 (videos 02 y 04), y con velocidad 1,03, estabilidad 30 y similitud 47 (video 03).
+  con velocidad 1,00, estabilidad 30 y similitud 0 (videos 02, 04 y 05), y con velocidad 1,03, estabilidad 30 y similitud 47 (video 03).
   Si un tramo se regraba con otros ajustes, conviene regrabar el guion entero.
 - Dano sube cada reel terminado a una carpeta de su Drive (el link no va acá porque el repo es público). Con el conector de
   Google Drive se encuentran buscando el nombre del archivo (por ejemplo `title contains '02-icaro'`), y con el id se bajan a
