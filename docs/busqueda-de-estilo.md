@@ -1,4 +1,8 @@
-# Búsqueda de estilo (octubre de 2026)
+# Búsqueda de estilo (octubre de 2026) · en pausa
+
+> **Decisión de Dano (3/10/2026):** pausar la búsqueda y seguir con el sistema visual de siempre. Las pruebas "no están tan
+> mal", pero prefiere el original, que tampoco es todavía lo que quisiera. Más adelante quizás se busque otra cosa que no sea
+> ilustración, para lograr una pieza a la altura de las redes. No retomar sin que él lo pida.
 
 Después del 05, Dano: "no está mal, pero lo noto muy simple y sin espíritu propio; tenemos que encontrar otros estilos de
 animación". Mandó como referencia unas animaciones hechas enteramente en JavaScript (un teléfono que suena, una fogata, un
