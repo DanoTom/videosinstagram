@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Portada · El síndrome de Stendhal</title>
+<link rel="stylesheet" href="../../diseno/sistema.css">
+<style>
+  body { margin: 0; }
+  #portada { background: #26386A; }
+  #portada > * { position: absolute; }
+  svg { overflow: visible; }
+</style>
+</head>
+<body>
+<!-- Todo dentro del recorte 3:4 de la grilla del perfil (y 240–1680) -->
+<section class="frame" id="portada">
+  <svg id="anillos" viewBox="0 0 1080 1920" style="inset:0;width:1080px;height:1920px"></svg>
+  <div style="left:330px;top:300px;width:640px;height:640px;border-radius:50%;overflow:hidden;box-shadow:0 0 0 16px #141414, 0 0 0 26px #F4EEE3, 0 0 0 40px #141414">
+    <div class="plate" id="fresco" style="position:absolute;inset:0"></div>
+  </div>
+  <svg id="fig" viewBox="0 0 400 1000" style="left:20px;top:700px;width:560px;height:1400px"></svg>
+  <div class="tira titular" data-rasgado style="top:1240px;left:300px;font-size:120px;white-space:nowrap;transform:rotate(-2deg)">El síndrome</div>
+  <div class="tira titular" data-rasgado style="top:1385px;left:360px;font-size:120px;white-space:nowrap;transform:rotate(1deg)">de Stendhal</div>
+  <div class="negro serif" style="top:1555px;left:330px;font-size:52px;transform:rotate(-1deg)">cuando el arte te descompone</div>
+  <div class="grano"></div>
+</section>
+<script type="module">
+import { rasgar, encuadrar } from '../../diseno/sistema.js';
+import { encuadre } from '../../diseno/motor.js';
+import { stendhal } from './siluetas.js';
+const $ = id => document.getElementById(id);
+let a = '';
+for (let k = 0; k < 6; k++) a += `<circle cx="650" cy="620" r="${360 + k * 90}" fill="none" stroke="#F4EEE3" stroke-width="${7 - k}" opacity="${0.9 - k * 0.12}"/>`;
+for (let k = 0; k < 16; k++) { const g = (k / 16) * Math.PI * 2; a += `<path d="M${650 + Math.cos(g) * 360} ${620 + Math.sin(g) * 360} L ${650 + Math.cos(g) * 1500} ${620 + Math.sin(g) * 1500}" stroke="#F4EEE3" stroke-width="3" opacity=".5"/>`; }
+$('anillos').innerHTML = a;
+$('fig').innerHTML = stendhal({ camina: 0, mira: -30 });
+const img = new Image(); img.src = 'assets/volterrano.jpg'; await img.decode();
+encuadre($('fresco'), { src: img.src, w: 1920, h: 1631 }, [420, 60, 1000, 1000]);
+rasgar(document);
+await document.fonts.ready;
+window.listo = true;
+</script>
+</body>
+</html>

@@ -60,3 +60,23 @@ líneas azules se recortan del amarillo para que no salgan verdes).
 - **Tiempo de render.** Cada cuadro de riso es una cuenta por píxel: unos 0,5 s por cuadro con 4 procesos; un reel de 90 s
   tarda unos 6 minutos. Está bien.
 - **Legibilidad.** Los subtítulos y las fichas tienen que seguir leyéndose sobre la trama: banda de papel sin tinta debajo.
+
+## Un recurso puntual que sí quedó: la secuencia en silueta (06)
+
+Con la búsqueda en pausa, Dano propuso para el 06 un recurso acotado: escenas en silueta como las de la intro de *Las
+Chicas Superpoderosas* (el diseño de mediados de siglo de UPA), "para partes muy puntuales" y "dedicándole especial
+atención a la animación para que no resulte algo pobre". No reemplaza el sistema: lo interrumpe unos 15 s (en el 06, el
+tramo de Stendhal) y vuelve. La prueba es `videos/pruebas-estilo/silueta.html`; lo que quedó, `videos/06-stendhal/siluetas.js`.
+
+Lo que hace que no se vea pobre:
+
+- **Una figura articulada**, no poses sueltas: caderas, rodillas, codos, faldones, cabeza y galera se mueven por separado,
+  así la caminata, el tambaleo y la galera que salta salen fluidos. A 12 cuadros por segundo (el dibujo animado limitado),
+  pero la cámara se mueve a 30.
+- **Un color plano por plano** y un corte cada 1 a 2,5 s, sincronizado con la voz. Ángulos extremos: contrapicado de la
+  fachada, la nave en perspectiva, la cabeza que mira hacia arriba, el iris.
+- **Pocos detalles en blanco** (cuello, corbata, guante, ojo) y una línea blanca que separa el brazo del cuerpo. Si el
+  fondo es negro, la figura se pierde: cambiar el color del fondo (la fachada de Santa Croce pasó de negro a marrón).
+- **Una metáfora por plano**, no una ilustración de la frase: el corazón es un estallido que late, "se le iba la vida" es
+  el negro que se le escurre de arriba abajo, "miedo de caerse" son los brazos abiertos y la calle que se ladea.
+- **Entrar y salir con un pase**: la silueta de perfil que entra a cámara y tapa el retrato; un destello blanco para volver.

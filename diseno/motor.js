@@ -59,7 +59,8 @@ export function subtitulos(voz, ocultar, maxPalabras = 8) {
     let mejor = Math.ceil(f.length / 2), puntaje = Infinity;
     for (let i = 3; i <= f.length - 3; i++) {
       const bonus = /,$/.test(f[i - 1].w) ? 3 : NEXOS.has(f[i].n) ? 2.5 : 0;
-      const p = Math.abs(i - f.length / 2) - bonus + (DEBILES.has(f[i - 1].n) ? 5 : 0);
+      const nombre = /^[«¿¡]?[A-ZÁÉÍÓÚÑ]/.test(f[i - 1].w) && /^[A-ZÁÉÍÓÚÑ]/.test(f[i].w);   // "Santa / Croce" no se separa
+      const p = Math.abs(i - f.length / 2) - bonus + (DEBILES.has(f[i - 1].n) ? 5 : 0) + (nombre ? 5 : 0);
       if (p <= puntaje) { puntaje = p; mejor = i; }
     }
     return [...partir(f.slice(0, mejor)), ...partir(f.slice(mejor))];
@@ -240,4 +241,38 @@ export function cine(canvas, cuadros, t, t0, fps = 12, recorte) {
   const [sx, sy, sw, sh] = recorte || [0, 0, im.naturalWidth, im.naturalHeight];
   canvas.getContext('2d').drawImage(im, sx, sy, sw, sh, 0, 0, canvas.width, canvas.height);
   canvas.style.filter = `brightness(${(1 + 0.05 * Math.sin(k * 2.7) + 0.03 * Math.sin(k * 7.3)).toFixed(3)}) contrast(1.05)`;
+}
+
+// ───── Estrenado en el 06 ─────
+// Pulso: una línea de electrocardiograma que corre de derecha a izquierda. `fase(τ)` dice cuántos latidos van hasta el
+// instante τ (así el ritmo puede acelerarse y frenarse sin saltos). La forma de cada latido: onda P, complejo QRS y onda T.
+export const latido = u => {
+  const g = (c, w, h) => h * Math.exp(-((u - c) ** 2) / (2 * w * w));
+  return g(0.12, 0.025, 0.12) - g(0.22, 0.008, 0.18) + g(0.245, 0.011, 1) - g(0.272, 0.009, 0.32) + g(0.46, 0.045, 0.24);
+};
+export function pulso(path, t, { x0 = 0, x1 = 1080, y = 960, amp = 120, vel = 420, fase }) {
+  const pts = [];
+  for (let x = x0; x <= x1; x += 3) {
+    const f = fase(t - (x1 - x) / vel);
+    pts.push(`${x} ${(y - amp * latido(f - Math.floor(f))).toFixed(1)}`);
+  }
+  path.setAttribute('d', 'M' + pts.join(' L '));
+}
+// Ritmo cardíaco a partir de puntos clave [[tiempo, latidos por minuto], …]: devuelve fase(τ), la integral del ritmo
+export function ritmo(claves, duracion, paso = 0.01) {
+  const bpm = t => {
+    if (t <= claves[0][0]) return claves[0][1];
+    for (let i = 1; i < claves.length; i++) if (t <= claves[i][0]) {
+      const [a, va] = claves[i - 1], [b, vb] = claves[i], p = (t - a) / (b - a);
+      return va + (vb - va) * (-(Math.cos(Math.PI * p) - 1) / 2);
+    }
+    return claves[claves.length - 1][1];
+  };
+  const F = [0];
+  for (let i = 1; i * paso <= duracion + 2; i++) F.push(F[i - 1] + (bpm(i * paso) / 60) * paso);
+  return tau => {
+    if (tau <= 0) return (tau * claves[0][1]) / 60;
+    const i = Math.min(F.length - 2, Math.floor(tau / paso)), r = tau / paso - i;
+    return F[i] + (F[i + 1] - F[i]) * r;
+  };
 }

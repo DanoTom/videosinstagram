@@ -1,0 +1,614 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>06 · El síndrome de Stendhal</title>
+<link rel="stylesheet" href="../../diseno/sistema.css">
+<style>
+  /* Paleta del 06, sacada de Florencia: piedra serena (fondo), papel de fresco, terracota de las cúpulas (el pulso y los
+     acentos), azul de los cielos de Volterrano y oro viejo. La secuencia en silueta usa un color plano por plano. */
+  :root {
+    --noche: #3E4945;
+    --crema: #F2E9DA;
+    --rojo: #C0603A;
+    --amarillo: #D9A441;
+    --azul: #26386A;
+    --tinta: #141414;
+  }
+  html, body { margin: 0; background: #000; }
+  #video { background: var(--noche); }
+  .escena { position: absolute; inset: 0; }
+  .escena > * { position: absolute; }
+  .fondo, .sangre, .velo { inset: 0; }
+  .velo { pointer-events: none; }
+  .capa { inset: 0; width: 1080px; height: 1920px; overflow: visible; pointer-events: none; }
+  .sub { left: 80px; right: 150px; top: 1460px; font-weight: 600; font-size: 36px; line-height: 1.5; color: var(--crema); z-index: 40; }
+  .sub span { background: rgba(20,20,20,.88); padding: 3px 12px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+  .etiqueta { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 58px; line-height: 1; color: var(--crema);
+    background: var(--tinta); padding: 8px 20px 14px; white-space: nowrap; }
+  .plano { position: absolute; inset: 0; overflow: hidden; display: none; }
+  .plano > * { position: absolute; }
+  svg { overflow: visible; }
+  .num { font-weight: 800; letter-spacing: -.05em; line-height: .8; color: #F4EEE3; }
+  .persona { position: absolute; width: 30px; height: 50px; }
+  .persona::before { content: ''; position: absolute; left: 7px; top: 0; width: 16px; height: 16px; border-radius: 50%; background: currentColor; }
+  .persona::after { content: ''; position: absolute; left: 0; top: 19px; width: 30px; height: 31px; border-radius: 14px 14px 4px 4px; background: currentColor; }
+  canvas { display: block; }
+</style>
+</head>
+<body>
+<div class="frame" id="video">
+  <div class="puntos" style="position:absolute;inset:0"></div>
+
+  <!-- 1 · GANCHO: la Venus de Botticelli y un pulso que se dispara -->
+  <div class="escena" id="e1">
+    <div class="plate sangre" id="pVen"></div>
+    <div class="velo" style="background:linear-gradient(to bottom, rgba(20,20,20,.55) 4%, rgba(20,20,20,0) 20%, rgba(20,20,20,0) 62%, rgba(20,20,20,.75) 84%)"></div>
+    <svg class="capa" viewBox="0 0 1080 1920" fill="none" stroke-linejoin="round">
+      <path id="pul1b" stroke="rgba(20,20,20,.85)" stroke-width="15"/><path id="pul1" stroke="var(--crema)" stroke-width="7"/>
+      <circle id="pul1p" r="12" fill="var(--rojo)" stroke="var(--crema)" stroke-width="4"/>
+    </svg>
+    <div class="tira titular" id="cien" data-rasgado data-rot="-3" style="top:300px;left:90px;font-size:150px;white-space:nowrap">+100</div>
+    <div class="negro serif" id="cienT" data-rot="-2" style="top:470px;left:120px;font-size:56px">turistas, frente a obras de arte</div>
+    <div class="ficha" id="fVen" data-rot="-1" style="top:1385px;left:70px;font-size:18px">Sandro Botticelli · El nacimiento de Venus, c. 1485 · Uffizi, Florencia</div>
+  </div>
+
+  <!-- 2 · PROMESA: turistas del siglo XVIII frente a los cuadros de los Uffizi -->
+  <div class="escena" id="e2">
+    <div class="plate sangre" id="pTri"></div>
+    <div class="velo" style="background:linear-gradient(to bottom, rgba(20,20,20,.5) 5%, rgba(20,20,20,0) 22%, rgba(20,20,20,0) 66%, rgba(20,20,20,.7) 86%)"></div>
+    <div class="ficha" id="fTri" data-rot="-1" style="top:1385px;left:70px;font-size:18px">Johan Zoffany · La Tribuna de los Uffizi, 1772–1777</div>
+  </div>
+
+  <!-- 3 · STENDHAL: el retrato, que se vuelve silueta -->
+  <div class="escena" id="e3">
+    <div class="fondo" style="background:var(--noche)"><div class="puntos" style="position:absolute;inset:0"></div></div>
+    <div class="lamina" id="lamSt" data-rot="-2" style="top:330px;left:150px;width:780px;height:960px"><div class="plate" id="pSt"></div></div>
+    <div class="tira titular" id="nomSt" data-rasgado data-rot="-2" style="top:1180px;left:130px;font-size:120px;white-space:nowrap">Stendhal</div>
+    <div class="ficha" id="fSt" data-rot="1" style="top:1330px;left:160px">Henri Beyle (1783–1842) · retrato de Olof Södermark, 1840</div>
+    <div id="negro3" style="inset:0;background:#141414;opacity:0"></div>
+    <svg id="cortina" viewBox="0 0 400 1000" style="left:300px;top:430px;width:400px;height:1000px;transform-origin:240px 265px"></svg>
+  </div>
+
+  <!-- 4 · LA SECUENCIA EN SILUETA (estreno): ocho planos, un color plano por plano -->
+  <div class="escena" id="e4">
+    <!-- S1 · 1817, llega a Florencia -->
+    <div class="plano" id="s1" style="background:#C0603A">
+      <div id="sol1" style="left:240px;top:520px;width:600px;height:600px;border-radius:50%;background:#E3A272"></div>
+      <div class="num" id="anio" style="top:250px;left:70px;font-size:330px">1817</div>
+      <svg id="ciudad" viewBox="0 0 1080 700" style="left:0;top:700px;width:1080px;height:700px"></svg>
+      <div style="left:0;top:1400px;width:1080px;height:600px;background:#5E2A18"></div>
+      <svg id="fig1" viewBox="0 0 400 1000" style="left:0;top:480px;width:360px;height:900px"></svg>
+    </div>
+    <!-- S2 · la fachada de Santa Croce, vista desde abajo -->
+    <div class="plano" id="s2" style="background:#9FC0C8">
+      <svg id="fachada" viewBox="0 0 1080 1920" style="inset:0;width:1080px;height:1920px"></svg>
+      <svg id="fig2" viewBox="0 0 400 1000" style="left:0;top:1022px;width:160px;height:400px"></svg>
+    </div>
+    <!-- S3 · la nave, en perspectiva -->
+    <div class="plano" id="s3" style="background:#EFE3A0">
+      <svg id="nave" viewBox="0 0 1080 1920" style="inset:0;width:1080px;height:1920px"></svg>
+    </div>
+    <!-- S4 · mira hacia arriba: el fresco gira, se le cae la galera -->
+    <div class="plano" id="s4" style="background:#26386A">
+      <svg id="anillos" viewBox="0 0 1080 1920" style="inset:0;width:1080px;height:1920px"></svg>
+      <div id="fresco" style="left:260px;top:120px;width:700px;height:700px;border-radius:50%;overflow:hidden;box-shadow:0 0 0 16px #141414, 0 0 0 26px #F4EEE3, 0 0 0 40px #141414">
+        <div class="plate" id="pFre" style="position:absolute;inset:-160px"></div>
+      </div>
+      <svg id="fig4" viewBox="0 0 400 1000" style="left:60px;top:745px;width:520px;height:1300px"></svg>
+    </div>
+    <!-- S5 · palpitaciones -->
+    <div class="plano" id="s5" style="background:#B3262E">
+      <svg id="estallido" viewBox="0 0 1080 1920" style="inset:0;width:1080px;height:1920px"></svg>
+      <svg id="fig5" viewBox="0 0 400 1000" style="left:230px;top:330px;width:600px;height:1500px"></svg>
+    </div>
+    <!-- S6 · «lo que en Berlín llaman nervios» -->
+    <div class="plano" id="s6" style="background:#141414">
+      <div id="iris6" style="inset:0;background:#F4EEE3">
+      <div id="cita6" style="position:absolute;left:120px;top:470px;width:840px;text-align:center;color:#141414">
+        <div class="serif" style="font-size:84px;line-height:1.05"><span>«lo</span> <span>que</span> <span>en</span> <span>Berlín</span><br><span>llaman</span></div>
+        <div class="titular" id="nervios" style="font-size:176px;margin-top:20px;letter-spacing:-.04em"><span>nervios»</span></div>
+      </div>
+      <svg id="fig6" viewBox="0 0 400 1000" style="position:absolute;left:543px;top:780px;width:520px;height:1300px;transform:scaleX(-1)"></svg>
+      </div>
+    </div>
+    <!-- S7 · se le iba la vida: desde arriba, el color se va -->
+    <div class="plano" id="s7" style="background:#B3262E">
+      <div id="sol7" style="left:190px;top:330px;width:700px;height:700px;border-radius:50%;background:#C94A3E"></div>
+      <svg id="fig7" viewBox="0 0 400 1000" style="left:270px;top:250px;width:500px;height:1250px"></svg>
+    </div>
+    <!-- S8 · camina con miedo de caerse: la calle se inclina -->
+    <div class="plano" id="s8" style="background:#D9A441">
+      <svg id="calle" viewBox="0 0 1080 1920" style="left:-200px;top:-200px;width:1480px;height:2320px"></svg>
+      <svg id="fig8" viewBox="0 0 400 1000" style="left:330px;top:520px;width:380px;height:950px"></svg>
+    </div>
+    <div id="flash" style="inset:0;background:#F4EEE3;opacity:0"></div>
+  </div>
+
+  <!-- 5 · MAGHERINI: el hospital y los síntomas -->
+  <div class="escena" id="e5">
+    <div class="fondo" style="background:var(--noche)"><div class="puntos" style="position:absolute;inset:0"></div></div>
+    <div class="lamina" id="lamHos" data-rot="-1" style="top:300px;left:60px;width:960px;height:730px"><div class="plate" id="pHos" data-img="hospital" data-crop="40,40,1840,1340" style="filter:sepia(.35)"></div></div>
+    <div class="ficha" id="fHos" data-rot="-1" style="top:248px;left:80px;font-size:18px">Hospital de Santa Maria Nuova, Florencia · grabado del siglo XVIII<br>B. S. Sgrilli según G. Zocchi · Wellcome Collection, CC BY 4.0</div>
+    <div class="tira titular" id="sig" data-rasgado data-rot="-2" style="top:1060px;left:80px;font-size:60px;white-space:nowrap">más de un siglo y medio después</div>
+    <div class="ficha" id="fMag" data-rot="1" style="top:1080px;left:110px;font-size:24px">Graziella Magherini · psiquiatra<br>jefa de salud mental del hospital</div>
+    <svg class="capa" viewBox="0 0 1080 1920" fill="none" stroke-linejoin="round">
+      <path id="pul5b" stroke="rgba(20,20,20,.85)" stroke-width="15"/><path id="pul5" stroke="var(--crema)" stroke-width="7"/>
+    </svg>
+    <div class="etiqueta" id="sin1" data-rot="-3" style="top:1200px;left:70px">palpitaciones</div>
+    <div class="etiqueta" id="sin2" data-rot="2" style="top:1210px;left:520px">mareos</div>
+    <div class="etiqueta" id="sin3" data-rot="1" style="top:1300px;left:150px">angustia</div>
+    <div class="etiqueta" id="sin4" data-rot="-2" style="top:1310px;left:470px">algo más serio</div>
+  </div>
+
+  <!-- 6 y 7 · 106 CASOS; A QUIÉNES LES PASABA -->
+  <div class="escena" id="e6">
+    <div class="fondo" style="background:var(--noche)"><div class="puntos" style="position:absolute;inset:0"></div></div>
+    <div id="personas" style="left:0;top:0;width:1080px;height:1920px"></div>
+    <div class="num" id="cuenta" style="top:290px;left:70px;font-size:220px;color:var(--crema)">0</div>
+    <div class="ficha" id="fCasos" data-rot="-1" style="top:470px;left:80px">casos · hospital de Santa Maria Nuova</div>
+    <div class="tira titular" id="sindrome" data-rasgado data-rot="-2" style="top:1180px;left:60px;font-size:94px;white-space:nowrap">síndrome de Stendhal</div>
+    <div class="ficha" id="fLibro" data-rot="1" style="top:1330px;left:90px;font-size:18px">G. Magherini, La sindrome di Stendhal, 1989<br>no figura en los manuales de diagnóstico</div>
+    <div class="tira titular" id="quienes" data-rasgado data-rot="-2" style="top:300px;left:90px;font-size:96px;white-space:nowrap">¿A quiénes?</div>
+    <div class="etiqueta" id="eExt" data-rot="-2" style="top:1180px;left:70px">extranjeros</div>
+    <div class="etiqueta" id="eSol" data-rot="2" style="top:1180px;left:470px">muchos, solos</div>
+    <div class="etiqueta" id="eAgo" data-rot="-1" style="top:1275px;left:250px">agotados por el viaje</div>
+    <div id="cajaIt" style="left:640px;top:280px;width:360px;height:220px;border:5px dashed var(--crema)"></div>
+    <div class="num" id="cero" style="top:300px;left:770px;font-size:180px;color:var(--rojo)">0</div>
+    <div class="ficha" id="fIt" data-rot="1" style="top:470px;left:680px">italianos</div>
+  </div>
+
+  <!-- 7b · crecieron rodeados de estas obras: Florencia (Cole) -->
+  <div class="escena" id="e7">
+    <div class="plate sangre" id="pCol"></div>
+    <div class="velo" style="background:linear-gradient(to bottom, rgba(20,20,20,.5) 5%, rgba(20,20,20,0) 22%, rgba(20,20,20,0) 66%, rgba(20,20,20,.7) 86%)"></div>
+    <div class="ficha" id="fCol" data-rot="-1" style="top:1385px;left:70px;font-size:18px">Thomas Cole · Vista de Florencia desde San Miniato, 1837</div>
+  </div>
+
+  <!-- 8 · POR QUÉ: el vaso que rebalsa -->
+  <div class="escena" id="e8">
+    <div class="fondo" style="background:#2E3634"><div class="puntos" style="position:absolute;inset:0"></div></div>
+    <div class="tira titular" id="porque" data-rasgado data-rot="-2" style="top:290px;left:80px;font-size:88px;white-space:nowrap">¿Y por qué a ellos sí?</div>
+    <svg class="capa" id="vaso" viewBox="0 0 1080 1920" stroke-linejoin="round" stroke-linecap="round"></svg>
+    <div class="lamina" id="lamOb" data-rot="-4" style="top:560px;left:70px;width:250px;height:330px"><div class="plate" data-img="venus" data-crop="1900,250,600,792"></div></div>
+    <div class="etiqueta" id="vObra" data-rot="-2" style="top:930px;left:60px;font-size:48px">la obra</div>
+    <div class="etiqueta" id="vViaje" data-rot="2" style="top:700px;left:770px;font-size:48px">el viaje</div>
+    <div class="etiqueta" id="vSens" data-rot="-2" style="top:1030px;left:50px;font-size:44px;line-height:1.05">una sensibilidad<br>previa</div>
+    <div class="etiqueta" id="vPiel" data-rot="1" style="top:1300px;left:250px;font-size:56px">a flor de piel</div>
+    <div class="etiqueta" id="vPropio" data-rot="-2" style="top:1300px;left:280px;font-size:56px">algo propio</div>
+  </div>
+
+  <!-- 9 · UNA SEÑAL AMBIGUA: el mismo pulso, tres cuadros -->
+  <div class="escena" id="e9">
+    <div class="fondo" style="background:var(--noche)"><div class="puntos" style="position:absolute;inset:0"></div></div>
+    <div class="lamina" id="lamA" data-rot="-1" style="top:290px;left:60px;width:960px;height:340px"><div class="plate" data-img="medusa" data-crop="300,700,1320,495"></div></div>
+    <div class="lamina" id="lamB" data-rot="1" style="top:670px;left:60px;width:960px;height:340px"><div class="plate" data-img="beso" data-crop="420,500,1100,412"></div></div>
+    <div class="lamina" id="lamC" data-rot="-1" style="top:1050px;left:60px;width:960px;height:340px"><div class="plate" data-img="volterrano" data-crop="420,160,1240,465"></div></div>
+    <svg class="capa" viewBox="0 0 1080 1920" fill="none" stroke-linejoin="round">
+      <g id="corazon9"><path d="M540 1240 C 300 1080 180 960 180 820 C 180 700 270 620 370 620 C 450 620 510 670 540 730 C 570 670 630 620 710 620 C 810 620 900 700 900 820 C 900 960 780 1080 540 1240 Z" fill="var(--rojo)"/>
+        <path d="M300 760 C 310 700 350 668 400 664" stroke="var(--crema)" stroke-width="12" stroke-linecap="round" opacity=".7"/></g>
+      <path id="pul9b" stroke="rgba(20,20,20,.9)" stroke-width="16"/><path id="pul9" stroke="var(--crema)" stroke-width="7"/>
+    </svg>
+    <div class="etiqueta" id="lMie" data-rot="-3" style="top:310px;left:80px">miedo</div>
+    <div class="etiqueta" id="lAmo" data-rot="2" style="top:690px;left:780px">amor</div>
+    <div class="etiqueta" id="lAso" data-rot="-2" style="top:1070px;left:80px">asombro</div>
+    <div class="tira titular" id="pista" data-rasgado data-rot="-2" style="top:640px;left:200px;font-size:96px;white-space:nowrap">una pista</div>
+    <div class="tira titular" id="ambigua" data-rasgado data-rot="-2" style="top:860px;left:110px;font-size:96px;white-space:nowrap">una señal ambigua</div>
+    <div class="ficha" id="fDos" data-rot="1" style="top:1405px;left:300px;font-size:18px">Schachter y Singer, teoría de los dos factores, 1962</div>
+    <div class="ficha" id="fOb9" data-rot="-1" style="top:236px;left:250px;font-size:16px">Caravaggio, Medusa · Hayez, El beso<br>Volterrano, Sibilas, Santa Croce (foto: Sailko, CC BY 3.0)</div>
+  </div>
+
+  <!-- 10 · CIERRE: nervios, síndrome, un escalofrío -->
+  <div class="escena" id="e10">
+    <div class="fondo" style="background:var(--noche)"><div class="puntos" style="position:absolute;inset:0"></div></div>
+    <div class="lamina" id="lamN" data-rot="-3" style="top:360px;left:60px;width:440px;height:560px"><div class="plate" data-img="stendhal" data-crop="420,240,1000,1272"></div></div>
+    <div class="etiqueta" id="eNer" data-rot="-2" style="top:950px;left:90px;font-size:72px">«nervios»</div>
+    <div class="lamina" id="lamS" data-rot="2" style="top:520px;left:560px;width:460px;height:345px"><div class="plate" data-img="hospital" data-crop="40,40,1840,1380" style="filter:sepia(.35)"></div></div>
+    <div class="etiqueta" id="eSin" data-rot="2" style="top:900px;left:590px;font-size:72px">«síndrome»</div>
+    <div class="plate sangre" id="pVen2"></div>
+    <svg class="capa" viewBox="0 0 1080 1920" fill="none" stroke-linejoin="round">
+      <path id="pul10b" stroke="rgba(20,20,20,.85)" stroke-width="15"/><path id="pul10" stroke="var(--crema)" stroke-width="7"/>
+    </svg>
+  </div>
+
+  <div class="sub" id="sub"></div>
+  <div class="grano" id="grano"></div>
+</div>
+
+<script type="module">
+import { encuadrar, rasgar } from '../../diseno/sistema.js';
+import { cargarVoz, subtitulos, pieza, hervir, prog, lerp, ease, clamp, encuadre, entreEncuadres, porPalabra,
+  pulso, ritmo, latido, marea } from '../../diseno/motor.js';
+import { stendhal, florencia, perfil } from './siluetas.js';
+
+const IMGS = {
+  venus:      { src: 'assets/venus.jpg',      w: 3840, h: 2412 },
+  tribuna:    { src: 'assets/tribuna.jpg',    w: 3840, h: 3048 },
+  stendhal:   { src: 'assets/stendhal.jpg',   w: 1920, h: 2462 },
+  hospital:   { src: 'assets/hospital.jpg',   w: 1920, h: 1428 },
+  cole:       { src: 'assets/cole.jpg',       w: 3840, h: 2369 },
+  beso:       { src: 'assets/beso.jpg',       w: 1920, h: 2396 },
+  volterrano: { src: 'assets/volterrano.jpg', w: 1920, h: 1631 },
+  medusa:     { src: '../01-no-hay-nadie/assets/medusa.jpg', w: 1920, h: 1968 },
+};
+const VEN = { todo: [1430, 0, 1357, 2412], cara: [1720, 160, 820, 1458], mano: [1650, 480, 900, 1600] };
+const TRI = { a: [2300, 700, 1350, 2400], b: [2480, 640, 1250, 2222] };
+const COL = { a: [2000, 0, 1330, 2365], b: [2500, 100, 1240, 2204] };
+
+const $ = id => document.getElementById(id);
+const voz = await cargarVoz('audio/voz-editada.json');
+const W = voz.W;
+const DURACION = voz.duracion;
+
+// ───── Tiempos (todo anclado a la voz) ─────
+const T = {
+  cien: W('cien turistas').s, descomp: W('descompusieron').s, arte: W('obras de arte').e,
+  e2: W('y lo que les pasaba').s - 0.3, bello: W('bello').s,
+  e3: W('todo empieza').s - 0.25, stendhal: W('stendhal').s,
+  e4: W('en 1817').s, anio: W('1817').s, llego: W('llegó a florencia').s,
+  entro: W('entró').s - 0.15, croce: W('santa croce').s, ver: W('a ver unos frescos').s, frescos: W('frescos').s,
+  salir: W('al salir').s, palp: W('tenía palpitaciones').s + 0.2, cita: W('lo que en berlín').s - 0.15, aclaro: W('aclaró').s,
+  sentia: W('sentía que').s - 0.1, caminaba: W('y caminaba').s - 0.05,
+  e5: W('más de un siglo').s - 0.05, magherini: W('graziella magherini').s, mismo: W('con lo mismo').s,
+  palp2: W('palpitaciones', 2).s, mareos: W('mareos').s, angustia: W('angustia').s, serio: W('algo más serio').s,
+  e6: W('juntó').s - 0.2, casos: W('ciento seis casos').s, sindrome: W('síndrome de stendhal').s,
+  quienes: W('a quiénes').s, ext: W('extranjeros').s, solos: W('muchos viajando solos').s, agotados: W('agotados').s,
+  ninguno: W('ninguno era italiano').s, e7: W('la explicación habitual').s - 0.1, crecieron: W('crecieron').s,
+  e8: W('y por qué a ellos').s - 0.25, obraSola: W('la obra sola').s, pesaban: W('pesaban').s, viaje: W('el viaje', 2).s,
+  sens: W('una sensibilidad previa').s, lejos: W('lejos de casa').s, piel: W('flor de piel').s, toca: W('la obra toca').s,
+  propio: W('algo propio').s, quizas: W('algo que quizás').s,
+  e9: W('la psicología').s - 0.2, pista: W('una pista').s, corazon: W('un corazón acelerado').s, ambigua: W('señal ambigua').s,
+  miedo: W('miedo', 2).s, amor: W('amor').s, asombro: W('asombro').s, contexto: W('el contexto').s,
+  e10: W('stendhal le decía').s - 0.2, nervios: W('nervios', 2).s, ella: W('ella síndrome').s, casi: W('casi todos').s,
+  escalofrio: W('escalofrío').s, supera: W('supera').e,
+};
+T.vuelta = DURACION - 0.6;
+// los planos de la secuencia en silueta
+const S = [T.e4, T.entro, T.croce - 0.05, T.frescos - 0.1, T.salir - 0.05, T.cita, T.sentia, T.caminaba, T.e5];
+const escenas = [['e1', -1, T.e2 + 0.6], ['e2', T.e2, T.e3 + 0.7], ['e3', T.e3, T.e4], ['e4', T.e4, T.e5 + 0.35],
+  ['e5', T.e5, T.e6 + 0.6], ['e6', T.e6, T.e7 + 0.6], ['e7', T.e7, T.e8 + 0.6], ['e8', T.e8, T.e9 + 0.6],
+  ['e9', T.e9, T.e10 + 0.6], ['e10', T.e10, 999]];
+const SUBS = subtitulos(voz, [['lo que en berlín llaman nervios'], ['síndrome de stendhal'], ['y por qué a ellos sí']], 7);
+
+// el corazón: tranquilo, se dispara con los turistas, con Stendhal, con los síntomas y con la "señal ambigua"
+const fase = ritmo([[0, 66], [T.descomp, 70], [T.descomp + 1.2, 145], [T.arte + 1, 150], [T.e2 + 1, 80], [T.salir, 96], [T.palp - 0.6, 100],
+  [T.palp, 150], [T.sentia, 140], [T.e5, 96], [T.palp2, 110], [T.palp2 + 0.8, 140], [T.e6, 90], [T.corazon - 0.4, 80],
+  [T.corazon + 0.6, 140], [T.contexto + 1, 130], [T.e10, 84], [T.casi, 72], [DURACION, 66]], DURACION);
+const beat = t => latido(fase(t) - Math.floor(fase(t)) + 0.0);
+
+const aparecer = (el, t, t0, t1 = Infinity, dur = 0.35) => {
+  const o = ease.out(prog(t, t0, t0 + dur)) * (t1 === Infinity ? 1 : 1 - prog(t, t1, t1 + 0.3));
+  el.style.opacity = o; el.style.visibility = o > 0 ? 'visible' : 'hidden';
+};
+const fig = (svg, opts) => { const h = stendhal(opts); if (svg._h !== h) { svg.innerHTML = h; svg._h = h; } };
+const tiemposDe = (frase, n = 1) => { const r = W(frase, n); return frase.split(' ').map((_, k) => voz.palabras[r.i + k].s); };
+const cita6 = tiemposDe('lo que en berlín llaman nervios');
+const doce = t => Math.floor(t * 12) / 12;   // el dibujo animado limitado: 12 cuadros por segundo
+
+// ───── Dibujos fijos de la secuencia en silueta ─────
+$('ciudad').innerHTML = florencia('#7E3A22');
+$('cortina').innerHTML = perfil(-4);
+{ // la fachada desnuda de 1817 (el mármol llegó en 1863), vista desde abajo, y la plaza adelante
+  let f = `<path d="M-60 1400 L 170 330 L 910 330 L 1140 1400 Z" fill="#6B5040"/>`;
+  f += `<path d="M150 340 L 540 120 L 930 340 Z" fill="#6B5040"/>`;
+  f += `<path d="M410 1400 L 410 1010 Q 540 880 670 1010 L 670 1400 Z" fill="#F2D27A"/>`;
+  for (const x of [190, 790]) f += `<path d="M${x} 1400 L ${x} 1210 Q ${x + 50} 1150 ${x + 100} 1210 L ${x + 100} 1400 Z" fill="none" stroke="#F4EEE3" stroke-width="6"/>`;
+  f += `<circle cx="540" cy="580" r="120" fill="none" stroke="#F4EEE3" stroke-width="10"/>`;
+  for (let k = 0; k < 12; k++) { const a = (k / 12) * Math.PI * 2; f += `<path d="M540 580 L ${540 + Math.cos(a) * 112} ${580 + Math.sin(a) * 112}" stroke="#F4EEE3" stroke-width="5"/>`; }
+  f += `<path d="M235 400 L 845 400 M290 1080 L 310 780 M790 1080 L 770 780" stroke="#F4EEE3" stroke-width="6"/>`;
+  f += `<text x="540" y="320" text-anchor="middle" font-family="Instrument Serif" font-style="italic" font-size="78" fill="#F4EEE3">Santa Croce</text>`;
+  f += `<path d="M-200 1400 L 1280 1400 L 1280 2100 L -200 2100 Z" fill="#6E8E96"/>`;
+  for (let k = 1; k < 8; k++) { const y = 1400 + Math.pow(k / 8, 1.8) * 620; f += `<path d="M-200 ${y} L 1280 ${y}" stroke="#141414" stroke-width="3" opacity=".35"/>`; }
+  for (let k = -6; k <= 6; k++) f += `<path d="M${540 + k * 90} 1400 L ${540 + k * 420} 2100" stroke="#141414" stroke-width="3" opacity=".35"/>`;
+  $('fachada').innerHTML = f;
+}
+{ // los anillos de la cúpula, para el vértigo
+  let a = '';
+  for (let k = 0; k < 6; k++) a += `<circle cx="610" cy="470" r="${390 + k * 90}" fill="none" stroke="#F4EEE3" stroke-width="${7 - k}" opacity="${0.9 - k * 0.12}"/>`;
+  for (let k = 0; k < 16; k++) { const g = (k / 16) * Math.PI * 2; a += `<path d="M${610 + Math.cos(g) * 390} ${470 + Math.sin(g) * 390} L ${610 + Math.cos(g) * 1500} ${470 + Math.sin(g) * 1500}" stroke="#F4EEE3" stroke-width="3" opacity=".5"/>`; }
+  $('anillos').innerHTML = a;
+}
+{ // la calle en perspectiva: edificios negros que fugan, ventanas, adoquines
+  let c = `<path d="M0 0 L 470 760 L 470 1060 L 0 1920 Z" fill="#141414"/><path d="M1080 0 L 610 760 L 610 1060 L 1080 1920 Z" fill="#141414"/>`;
+  for (let k = 0; k < 5; k++) {
+    const s = Math.pow(0.62, k), y0 = 820 - 640 * s, y1 = 820 - 380 * s, xL = 470 - 430 * s, w = 60 * s;
+    c += `<rect x="${xL}" y="${y0}" width="${w}" height="${y1 - y0}" fill="#F4EEE3"/>`;
+    c += `<rect x="${1080 - xL - w}" y="${y0 + 40 * s}" width="${w}" height="${y1 - y0}" fill="#F4EEE3"/>`;
+  }
+  for (let k = 0; k < 9; k++) { const x = -300 + k * 210; c += `<path d="M${x} 1920 L 540 1060" stroke="#141414" stroke-width="4" opacity=".55"/>`; }
+  for (let k = 1; k < 7; k++) { const y = 1060 + Math.pow(k / 7, 2) * 860; c += `<path d="M0 ${y} L 1080 ${y}" stroke="#141414" stroke-width="3" opacity=".4"/>`; }
+  $('calle').innerHTML = c;
+}
+
+// ───── seek ─────
+function seek(tReal) {
+  const vuelve = tReal >= T.vuelta;
+  for (const [id, a, b] of escenas) $(id).style.display = (vuelve ? id === 'e1' : tReal >= a && tReal < b) ? 'block' : 'none';
+  let t = vuelve ? 0 : tReal;
+
+  // 1 · Gancho
+  if (t < T.e2 + 0.6) {
+    encuadre($('pVen'), IMGS.venus, entreEncuadres(VEN.todo, VEN.cara, ease.suave(prog(t, 0, T.e2 + 0.6))));
+    pulso($('pul1'), t, { x0: -20, x1: 900, y: 1180, amp: 150, fase });
+    $('pul1b').setAttribute('d', $('pul1').getAttribute('d'));
+    const f = fase(t), u = f - Math.floor(f);
+    $('pul1p').setAttribute('cx', 900); $('pul1p').setAttribute('cy', 1180 - 150 * latido(u));
+    pieza($('cien'), t, { t0: T.cien - 0.1, t1: T.e2 + 0.1, sale: 'fundido' });
+    pieza($('cienT'), t, { t0: T.cien + 0.4, entra: 'izq', dur: 0.4, t1: T.e2 + 0.1, sale: 'fundido' });
+    pieza($('fVen'), t, { t0: 1.2, entra: 'fundido', t1: T.e2 });
+  }
+
+  t = tReal;
+  // 2 · Promesa: los turistas de Zoffany
+  if (t >= T.e2 && t < T.e3 + 0.7) {
+    $('e2').style.opacity = ease.out(prog(t, T.e2, T.e2 + 0.5));
+    encuadre($('pTri'), IMGS.tribuna, entreEncuadres(TRI.a, TRI.b, ease.suave(prog(t, T.e2, T.e3 + 0.7))));
+    pieza($('fTri'), t, { t0: T.e2 + 0.6, entra: 'fundido', t1: T.e3 });
+  }
+
+  // 3 · Stendhal: el retrato, que al final se oscurece hasta volverse silueta
+  if (t >= T.e3 && t < T.e4) {
+    $('e3').style.opacity = ease.out(prog(t, T.e3, T.e3 + 0.4));
+    encuadre($('pSt'), IMGS.stendhal, entreEncuadres([300, 150, 1320, 1625], [480, 300, 960, 1182], ease.suave(prog(t, T.e3, T.e4))));
+    pieza($('lamSt'), t, { t0: T.e3 + 0.05, dur: 0.5 });
+    pieza($('nomSt'), t, { t0: T.stendhal - 0.05 });
+    pieza($('fSt'), t, { t0: T.e3 + 0.6, entra: 'fundido', t1: T.e4 - 0.4 });
+    // la cortina: su silueta de perfil entra a la cámara y tapa todo (del retrato a la silueta)
+    const c = prog(t, T.e4 - 0.42, T.e4);
+    $('cortina').style.visibility = c > 0 ? 'visible' : 'hidden';
+    $('cortina').style.transform = `translate(${lerp(330, 0, ease.out(Math.min(1, c * 1.6)))}px, ${lerp(160, 0, ease.out(Math.min(1, c * 1.6)))}px) scale(${lerp(1, 18, ease.in(c))})`;
+    $('negro3').style.opacity = prog(c, 0.8, 0.95);
+  }
+
+  // 4 · La secuencia en silueta
+  if (t >= T.e4 && t < T.e5 + 0.35) {
+    const plano = S.filter(c => t >= c).length;   // 1 a 8 (9 = ya pasó)
+    for (let i = 1; i <= 8; i++) $('s' + i).style.display = i === Math.min(plano, 8) ? 'block' : 'none';
+    const ta = doce(t), b = beat(t);
+    // S1 · 1817: el sol, la ciudad; él entra caminando desde la izquierda; el año cae como un sello
+    if (plano === 1) {
+      const p = prog(ta, S[0], S[1]), x = lerp(-340, 560, p);
+      fig($('fig1'), { phi: (x + 340) / 268 });
+      $('fig1').style.left = `${x}px`;
+      $('s1').style.transform = `scale(${lerp(1.06, 1, ease.out(p))})`;
+      $('ciudad').style.transform = `translateX(${lerp(60, -60, p)}px)`;
+      $('sol1').style.transform = `translateY(${lerp(30, -20, p)}px)`;
+      pieza($('anio'), t, { t0: T.anio - 0.05, dur: 0.4 });
+    }
+    // S2 · la fachada desde abajo: la cámara baja; él cruza la puerta iluminada
+    if (plano === 2) {
+      const p = prog(ta, S[1], S[2]), x = lerp(250, 454, ease.out(prog(ta, S[1], S[2] - 0.3)));
+      fig($('fig2'), { phi: x / 120, camina: 1 - prog(ta, S[2] - 0.4, S[2] - 0.25) * 0.6 });
+      const dentro = ease.in(prog(ta, S[2] - 0.4, S[2] - 0.05));
+      $('fig2').style.left = `${x}px`;
+      $('fig2').style.transform = `translateY(${-90 * dentro}px) scale(${1 - 0.4 * dentro})`;
+      $('fachada').style.transform = `translateY(${lerp(-160, 0, ease.out(p))}px) scale(${lerp(1.12, 1, ease.out(p))})`;
+    }
+    // S3 · la nave: la cámara avanza entre los arcos; la luz entra en diagonal
+    if (plano === 3) {
+      const p = ease.inOut(prog(t, S[2], S[3])), z = lerp(1, 1.9, p);
+      let n = '';
+      for (let k = 0; k < 8; k++) {
+        const s = Math.pow(0.66, k) * z, w = 940 * s, h = 1560 * s, x0 = 540 - w / 2, y0 = 1010 - h * 0.6;
+        if (w > 4000) continue;
+        n += `<path d="M${x0} ${y0 + h} L ${x0} ${y0 + h * 0.36} Q 540 ${y0 - h * 0.16} ${x0 + w} ${y0 + h * 0.36} L ${x0 + w} ${y0 + h}" fill="none" stroke="#141414" stroke-width="${Math.min(14, 2 + 7 * s)}"/>`;
+      }
+      for (const x of [-260, 120, 960, 1340]) n += `<path d="M${x} 1920 L 540 1010" stroke="#141414" stroke-width="4"/>`;
+      for (let k = 0; k < 3; k++) n += `<path d="M${-100 + k * 230} -40 L ${120 + k * 230} -40 L ${640 + k * 120} 1500 L ${520 + k * 120} 1500 Z" fill="#FFFFFF" opacity=".22"/>`;
+      const r = Array.from({ length: 36 }, (_, i) => i);
+      for (const i of r) { const x = (i * 97) % 1080, y = ((i * 211) % 1500) + ((t * 40 + i * 13) % 60); n += `<circle cx="${x}" cy="${y}" r="3" fill="#FFFFFF" opacity=".7"/>`; }
+      const fs = 150 * z, fx = 540 - fs * 0.25, fy = 1010 - fs * 0.62;
+      n += `<g transform="translate(${fx} ${fy}) scale(${fs / 1000})">${stendhal({ phi: ta * 1.6 })}</g>`;
+      $('nave').innerHTML = n;
+    }
+    // S4 · mira hacia arriba: el fresco gira y se acerca, los anillos se alejan (vértigo); se le cae la galera
+    if (plano === 4) {
+      const p = prog(t, S[3], S[4]);
+      encuadre($('pFre'), IMGS.volterrano, [420, 80, 1000, 1000]);
+      $('pFre').style.transform = `rotate(${lerp(-6, 34, p)}deg) scale(${lerp(1, 1.3, ease.inOut(p))})`;
+      $('anillos').style.transform = `scale(${lerp(1.1, 0.82, ease.inOut(p))}) rotate(${lerp(0, -14, p)}deg)`;
+      $('anillos').style.transformOrigin = '610px 470px';
+      fig($('fig4'), { camina: 0, mira: lerp(-8, -32, ease.out(prog(ta, S[3], S[3] + 0.3))), galera: prog(ta, S[3] + 0.3, S[4]) });
+    }
+    // S5 · palpitaciones: el estallido late con el corazón; la cámara tiembla con cada golpe
+    if (plano === 5) {
+      const r = 300 + 170 * b, pts = [];
+      for (let i = 0; i < 26; i++) { const a = (i / 26) * Math.PI * 2 + 0.2, rr = i % 2 ? r * 0.6 : r; pts.push(`${560 + Math.cos(a) * rr} ${820 + Math.sin(a) * rr}`); }
+      let e = `<path d="M${pts.join(' L ')} Z" fill="#F4EEE3"/>`;
+      for (let k = 0; k < 5; k++) { const a = -0.7 + k * 0.35, r0 = 90 + 50 * b, r1 = 150 + 90 * b; e += `<path d="M${700 + Math.cos(a) * r0} ${1030 + Math.sin(a) * r0} L ${700 + Math.cos(a) * r1} ${1030 + Math.sin(a) * r1}" stroke="#F4EEE3" stroke-width="10" stroke-linecap="round" opacity="${Math.min(1, b * 1.6)}"/>`; }
+      $('estallido').innerHTML = e;
+      fig($('fig5'), { phi: 0.1, camina: 0.15, brazoDelante: 'pecho', alza: 46 * b });
+      $('fig5').style.transform = `scale(${1 + 0.035 * b}, ${1 - 0.012 * b})`;
+      $('fig5').style.transformOrigin = '50% 95%';
+      $('s5').style.transform = `translate(${b * 10}px, ${-b * 6}px) scale(${1 + b * 0.015})`;
+    }
+    // S6 · «lo que en Berlín llaman nervios», palabra por palabra; la palabra "nervios" tiembla
+    if (plano === 6) {
+      porPalabra($('cita6'), t, cita6, 0.18);
+      const tb = Math.sin(t * 40) * 3 * prog(t, cita6[5], cita6[5] + 0.2);
+      $('nervios').style.transform = `translate(${tb}px, ${-tb}px) rotate(${tb * 0.4}deg)`;
+      fig($('fig6'), { camina: 0, mira: lerp(0, -10, ease.back(prog(ta, T.aclaro - 0.1, T.aclaro + 0.3))), alza: 30 * ease.out(prog(ta, T.aclaro - 0.1, T.aclaro + 0.15)) * (1 - ease.in(prog(ta, T.aclaro + 0.15, T.aclaro + 0.45))) });
+      $('fig6').style.transform = `translateX(${lerp(-160, 0, ease.out(prog(t, S[5] + 0.2, S[5] + 0.7)))}px) scaleX(-1)`;
+      const abre = ease.out(prog(t, S[5], S[5] + 0.4)), cierra = ease.inOut(prog(t, S[6] - 0.4, S[6] - 0.04));
+      $('iris6').style.clipPath = `circle(${lerp(80, 520, abre) * (1 - cierra) + 150 * cierra * (1 - prog(t, S[6] - 0.15, S[6] - 0.04))}px at ${lerp(540, 690, cierra)}px ${lerp(830, 1040, cierra)}px)`;
+    }
+    // S7 · se le iba la vida: el negro se le escurre de arriba abajo y se junta en un charco; el color del plano se apaga
+    if (plano === 7) {
+      const p = prog(t, S[6], S[7]), baja = ease.inOut(prog(ta, S[6] + 0.1, S[7] - 0.15));
+      const nivel = lerp(30, 960, baja);
+      const cuerpo = stendhal({ camina: 0, inclina: lerp(0, 4, p), mira: lerp(0, 14, ease.out(p)), brazoDelante: 'pecho' });
+      const h = `<defs><clipPath id="vida"><rect x="-200" y="${nivel}" width="800" height="1200"/></clipPath></defs>
+        <g opacity=".2">${cuerpo}</g><g clip-path="url(#vida)">${cuerpo}</g>
+        <ellipse cx="215" cy="948" rx="${200 * baja}" ry="${24 * baja}" fill="#141414"/>`;
+      if ($('fig7')._h !== h) { $('fig7').innerHTML = h; $('fig7')._h = h; }
+      const g = ease.inOut(p);
+      $('s7').style.background = `rgb(${Math.round(lerp(179, 128, g))},${Math.round(lerp(38, 126, g))},${Math.round(lerp(46, 120, g))})`;
+      $('sol7').style.background = `rgb(${Math.round(lerp(201, 146, g))},${Math.round(lerp(74, 143, g))},${Math.round(lerp(62, 136, g))})`;
+      $('sol7').style.transform = `translateY(${lerp(0, 120, g)}px) scale(${lerp(1, 0.9, g)})`;
+      $('s7').style.transform = `scale(${lerp(1.08, 1, ease.out(p))})`;
+    }
+    // S8 · camina con miedo de caerse: la calle se ladea de un lado al otro, él trastabilla y se apoya
+    if (plano === 8) {
+      const p = prog(t, S[7], S[8]), lado = Math.sin((t - S[7]) * 3.4) * 9 + Math.sin((t - S[7]) * 7.3) * 2.5;
+      $('calle').style.transform = `rotate(${-lado * 0.7}deg) scale(1.05)`;
+      const phi = (ta - S[7]) * 1.1 + 0.18 * Math.sin((ta - S[7]) * 5);
+      const vaiven = Math.sin((ta - S[7]) * 6) * 14 + lado * 1.2;
+      let m = '';
+      for (let k = 0; k < 3; k++) {
+        const a = ta * 7 + k * 2.1, x = 230 + Math.cos(a) * 130, y = 26 + Math.sin(a) * 30, r = 22 - 4 * Math.sin(a);
+        m += `<path d="M${x} ${y - r} L ${x + r * 0.3} ${y - r * 0.3} L ${x + r} ${y} L ${x + r * 0.3} ${y + r * 0.3} L ${x} ${y + r} L ${x - r * 0.3} ${y + r * 0.3} L ${x - r} ${y} L ${x - r * 0.3} ${y - r * 0.3} Z" fill="${Math.sin(a) > 0 ? '#141414' : '#F4EEE3'}"/>`;
+      }
+      const h = stendhal({ phi, inclina: lado, brazoDelante: 'equilibrio', vaiven }) + `<g transform="rotate(${lado} 210 960)">${m}</g>`;
+      if ($('fig8')._h !== h) { $('fig8').innerHTML = h; $('fig8')._h = h; }
+      $('fig8').style.transform = `translateX(${lerp(-60, 60, p)}px)`;
+    }
+    $('flash').style.opacity = 1 - prog(t, T.e5 - 0.05, T.e5 + 0.3) - (t < T.e5 - 0.12 ? 1 : 0);
+  }
+
+  // 5 · Magherini: el hospital y los síntomas
+  if (t >= T.e5 && t < T.e6 + 0.6) {
+    pieza($('lamHos'), t, { t0: T.e5 + 0.1, entra: 'abajo', dur: 0.55, t1: T.e6, sale: 'fundido' });
+    pieza($('fHos'), t, { t0: T.e5 + 0.6, entra: 'fundido', t1: T.e6 });
+    pieza($('sig'), t, { t0: T.e5 + 0.2, t1: T.magherini - 0.15, sale: 'izq' });
+    pieza($('fMag'), t, { t0: T.magherini - 0.05, entra: 'izq', dur: 0.4, t1: T.palp2 - 0.3, sale: 'fundido' });
+    const vis = prog(t, T.mismo, T.mismo + 0.4) * (1 - prog(t, T.e6, T.e6 + 0.3));
+    pulso($('pul5'), t, { x0: -20, x1: 1100, y: 1110, amp: 120, fase });
+    $('pul5b').setAttribute('d', $('pul5').getAttribute('d'));
+    for (const id of ['pul5', 'pul5b']) $(id).style.opacity = vis;
+    [['sin1', T.palp2], ['sin2', T.mareos], ['sin3', T.angustia], ['sin4', T.serio]].forEach(([id, t0]) => pieza($(id), t, { t0: t0 - 0.05, t1: T.e6 }));
+  }
+
+  // 6 y 7 · 106 casos; a quiénes les pasaba
+  if (t >= T.e6 && t < T.e7 + 0.6) {
+    const n = Math.round(lerp(0, 106, ease.inOut(prog(t, T.casos - 0.3, T.casos + 1.4))));
+    $('cuenta').textContent = n;
+    pieza($('cuenta'), t, { t0: T.casos - 0.35, entra: 'fundido', t1: T.quienes - 0.2 });
+    pieza($('fCasos'), t, { t0: T.casos + 0.2, entra: 'fundido', t1: T.quienes - 0.2 });
+    pieza($('sindrome'), t, { t0: T.sindrome - 0.05, t1: T.quienes - 0.1 });
+    pieza($('fLibro'), t, { t0: T.sindrome + 0.5, entra: 'fundido', t1: T.quienes - 0.1 });
+    pieza($('quienes'), t, { t0: T.quienes - 0.05, t1: T.e7 });
+    const ps = $('personas').children, solo = ease.inOut(prog(t, T.solos, T.solos + 0.7)), cansa = ease.inOut(prog(t, T.agotados, T.agotados + 0.7));
+    const resalta = prog(t, T.ext, T.ext + 0.4);
+    for (let i = 0; i < ps.length; i++) {
+      const el = ps[i], c = i % 13, f = Math.floor(i / 13);
+      let x = 95 + c * 68, y = 560 + f * 78;
+      const r = ((i * 37) % 11) / 11;
+      if (r > 0.45) { x += (r - 0.7) * 160 * solo; y += ((i * 53) % 7 - 3) * 14 * solo; }
+      el.style.left = `${x}px`; el.style.top = `${y + 12 * cansa}px`;
+      el.style.transform = `rotate(${(i % 2 ? 1 : -1) * 14 * cansa}deg) scale(${1 - 0.1 * cansa})`;
+      el.style.opacity = t > T.casos - 0.3 + i * 0.016 ? (t > T.e7 ? 0 : 1) : 0;
+      el.style.color = resalta > 0.5 ? '#F2E9DA' : '#9AA8A2';
+    }
+    pieza($('eExt'), t, { t0: T.ext - 0.05, t1: T.e7 });
+    pieza($('eSol'), t, { t0: T.solos - 0.05, t1: T.e7 });
+    pieza($('eAgo'), t, { t0: T.agotados - 0.05, t1: T.e7 });
+    for (const id of ['cajaIt', 'cero', 'fIt']) aparecer($(id), t, T.ninguno - 0.05, T.e7 - 0.1);
+    $('cero').style.transform = `scale(${lerp(1.4, 1, ease.back(prog(t, T.ninguno + 0.3, T.ninguno + 0.7)))})`;
+  }
+
+  // 7b · Florencia: crecieron rodeados de estas obras
+  if (t >= T.e7 && t < T.e8 + 0.6) {
+    $('e7').style.opacity = ease.out(prog(t, T.e7, T.e7 + 0.5));
+    encuadre($('pCol'), IMGS.cole, entreEncuadres(COL.a, COL.b, ease.suave(prog(t, T.e7, T.e8 + 0.6))));
+    pieza($('fCol'), t, { t0: T.e7 + 0.5, entra: 'fundido', t1: T.e8 });
+  }
+
+  // 8 · Por qué: el vaso que rebalsa
+  if (t >= T.e8 && t < T.e9 + 0.6) {
+    $('e8').style.opacity = ease.out(prog(t, T.e8, T.e8 + 0.4));
+    pieza($('porque'), t, { t0: T.e8 + 0.1, t1: T.e9 });
+    // el nivel sube con la obra, el viaje y la sensibilidad; tiembla "a flor de piel" y rebalsa con "algo propio"
+    const n1 = ease.out(prog(t, T.obraSola, T.obraSola + 0.8)) * 0.3, n2 = ease.out(prog(t, T.viaje, T.viaje + 0.7)) * 0.3,
+      n3 = ease.out(prog(t, T.sens, T.sens + 0.8)) * 0.3, n4 = ease.out(prog(t, T.toca, T.toca + 0.9)) * 0.22;
+    const nivel = n1 + n2 + n3 + n4, tiembla = prog(t, T.lejos, T.lejos + 0.6) * (1 - prog(t, T.e9 - 0.2, T.e9 + 0.3));
+    const top = 640, bot = 1220, xL = 410, xR = 750, yN = bot - (bot - top) * Math.min(nivel, 1.02);
+    let v = '';
+    const ola = []; for (let x = xL + 6; x <= xR - 6; x += 8) ola.push(`${x} ${yN + Math.sin(x * 0.05 + t * 9) * 10 * tiembla}`);
+    v += `<path d="M${xL + 6} ${bot - 6} L ${ola.join(' L ')} L ${xR - 6} ${bot - 6} Z" fill="var(--rojo)"/>`;
+    const rebalsa = ease.out(prog(t, T.toca + 0.6, T.quizas + 1.2));
+    if (rebalsa > 0) for (const [x0, d] of [[xL, -1], [xR, 1]]) v += `<path d="M${x0} ${top + 4} Q ${x0 + d * 40} ${top + 30} ${x0 + d * 30} ${top + 40 + 560 * rebalsa}" fill="none" stroke="var(--rojo)" stroke-width="${18 * Math.min(1, rebalsa * 3)}"/>`;
+    v += `<path d="M${xL} ${top - 20} L ${xL + 20} ${bot} L ${xR - 20} ${bot} L ${xR} ${top - 20}" fill="none" stroke="var(--crema)" stroke-width="10"/>`;
+    v = `<path d="M${xL} ${top - 20} L ${xL + 20} ${bot} L ${xR - 20} ${bot} L ${xR} ${top - 20} Z" fill="var(--crema)" opacity=".13"/>` + v;
+    for (const [k, l] of [[0.3, 1], [0.6, 2], [0.9, 3]]) v += `<path d="M${xR - 14} ${bot - (bot - top) * k} L ${xR + 26} ${bot - (bot - top) * k}" stroke="var(--crema)" stroke-width="5" opacity="${0.5}"/>`;
+    // la valija del viaje (cae) y la marca de la sensibilidad
+    const cv = ease.out(prog(t, T.viaje - 0.3, T.viaje + 0.2));
+    if (cv > 0) v += `<g transform="translate(860 ${lerp(500, 900, cv)})" stroke="var(--crema)" stroke-width="7" fill="none"><rect x="-70" y="-50" width="140" height="100" rx="12"/><path d="M-26 -50 L -26 -74 L 26 -74 L 26 -50 M-70 -10 L 70 -10"/></g>`;
+    $('vaso').innerHTML = v;
+    $('vaso').style.opacity = ease.out(prog(t, T.e8 + 0.3, T.e8 + 0.7));
+    pieza($('lamOb'), t, { t0: T.e8 + 1.0, t1: T.e9 });
+    pieza($('vObra'), t, { t0: T.obraSola + 0.2, entra: 'fundido', t1: T.e9 });
+    pieza($('vViaje'), t, { t0: T.viaje + 0.15, t1: T.e9 });
+    pieza($('vSens'), t, { t0: T.sens - 0.05, t1: T.e9 });
+    pieza($('vPiel'), t, { t0: T.piel - 0.05, t1: T.propio - 0.15, sale: 'fundido' });
+    pieza($('vPropio'), t, { t0: T.propio - 0.05, t1: T.e9 });
+  }
+
+  // 9 · Una señal ambigua: el mismo pulso cruza los tres cuadros
+  if (t >= T.e9 && t < T.e10 + 0.6) {
+    $('e9').style.opacity = ease.out(prog(t, T.e9, T.e9 + 0.4));
+    pieza($('pista'), t, { t0: T.pista - 0.05, t1: T.ambigua - 0.15, sale: 'fundido' });
+    pieza($('ambigua'), t, { t0: T.ambigua - 0.05, t1: T.miedo - 0.15, sale: 'fundido' });
+    pieza($('lamA'), t, { t0: T.miedo - 0.1, entra: 'izq', dur: 0.45 });
+    pieza($('lamB'), t, { t0: T.amor - 0.1, entra: 'der', dur: 0.45 });
+    pieza($('lamC'), t, { t0: T.asombro - 0.1, entra: 'izq', dur: 0.45 });
+    pieza($('lMie'), t, { t0: T.miedo + 0.05 }); pieza($('lAmo'), t, { t0: T.amor + 0.05 }); pieza($('lAso'), t, { t0: T.asombro + 0.05 });
+    pieza($('fOb9'), t, { t0: T.asombro + 0.4, entra: 'fundido' });
+    pieza($('fDos'), t, { t0: T.contexto - 0.1, entra: 'fundido' });
+    // el pulso: al principio solo, en el centro; después corre vertical por los tres cuadros
+    pulso($('pul9'), t, { x0: -20, x1: 1100, y: 1000, amp: 140, fase });
+    $('pul9b').setAttribute('d', $('pul9').getAttribute('d'));
+    for (const id of ['pul9', 'pul9b']) $(id).style.opacity = prog(t, T.e9 + 0.2, T.e9 + 0.6);
+    // el corazón acelerado: late con el pulso y se va cuando llegan los cuadros
+    const co = ease.back(prog(t, T.corazon - 0.15, T.corazon + 0.3)) * (1 - ease.in(prog(t, T.miedo - 0.35, T.miedo)));
+    $('corazon9').style.opacity = Math.min(1, co);
+    $('corazon9').setAttribute('transform', `translate(540 930) scale(${co * (1 + 0.07 * beat(t))}) translate(-540 -930)`);
+    // el contexto: en "el contexto ayuda a decidir", cada cuadro se enciende y los otros se apagan, por turno
+    const turno = t < T.contexto ? -1 : Math.floor((t - T.contexto) * 2.2) % 3;
+    ['lamA', 'lamB', 'lamC'].forEach((id, i) => { $(id).style.filter = turno < 0 || turno === i ? 'none' : 'brightness(.45)'; });
+  }
+
+  // 10 · Cierre: «nervios», «síndrome», y un escalofrío frente a la Venus (que vuelve al principio)
+  if (t >= T.e10) {
+    $('e10').style.opacity = ease.out(prog(t, T.e10, T.e10 + 0.4));
+    pieza($('lamN'), t, { t0: T.e10 + 0.1, dur: 0.5, t1: T.casi - 0.1, sale: 'fundido' });
+    pieza($('eNer'), t, { t0: T.nervios - 0.05, t1: T.casi - 0.1, sale: 'fundido' });
+    pieza($('lamS'), t, { t0: T.ella - 0.1, dur: 0.5, t1: T.casi - 0.1, sale: 'fundido' });
+    pieza($('eSin'), t, { t0: T.ella + 0.3, t1: T.casi - 0.1, sale: 'fundido' });
+    const pv = ease.inOut(prog(t, T.casi - 0.2, T.casi + 0.6));
+    $('pVen2').style.opacity = pv; $('pVen2').style.visibility = pv > 0 ? 'visible' : 'hidden';
+    encuadre($('pVen2'), IMGS.venus, entreEncuadres(VEN.cara, VEN.todo, ease.suave(prog(t, T.casi, T.vuelta))));
+    // el escalofrío: una onda que recorre la imagen de abajo hacia arriba
+    const esc = prog(t, T.escalofrio, T.escalofrio + 0.9);
+    $('pVen2').style.filter = esc > 0 && esc < 1 ? `brightness(${1 + 0.18 * Math.sin(Math.PI * esc)})` : 'none';
+    $('pVen2').style.transform = esc > 0 && esc < 1 ? `translateX(${Math.sin(esc * 50) * 6 * Math.sin(Math.PI * esc)}px)` : 'none';
+    pulso($('pul10'), t, { x0: -20, x1: 900, y: 1180, amp: 150, fase });
+    $('pul10b').setAttribute('d', $('pul10').getAttribute('d'));
+    for (const id of ['pul10', 'pul10b']) $(id).style.opacity = pv;
+  }
+
+  const sb = SUBS.find(x => t >= x.s && t < x.e);
+  const html = sb ? `<span>${sb.texto}</span>` : '';
+  if ($('sub').innerHTML !== html) $('sub').innerHTML = html;
+  hervir($('grano'), t);
+}
+
+// ───── Armado ─────
+for (let i = 0; i < 106; i++) { const d = document.createElement('div'); d.className = 'persona'; $('personas').appendChild(d); }
+encuadrar(document, IMGS);
+rasgar(document);
+for (const el of document.querySelectorAll('[data-rot]')) el.style.transform = `rotate(${el.dataset.rot}deg)`;
+await Promise.all([document.fonts.ready, ...Object.values(IMGS).map(im => { const i = new Image(); i.src = im.src; return i.decode(); })]);
+window.seek = seek;
+window.DURACION = DURACION;
+window.T = T;
+seek(0);
+window.listo = true;
+
+if (!location.search.includes('render')) {
+  const audio = new Audio('audio/voz-editada.wav');
+  document.body.addEventListener('click', () => { audio.currentTime = 0; audio.play(); });
+  (function loop() { seek(audio.paused ? 0 : audio.currentTime); requestAnimationFrame(loop); })();
+}
+</script>
+</body>
+</html>
