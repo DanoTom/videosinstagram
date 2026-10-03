@@ -28,6 +28,8 @@ voz duraba 108,7 s; con el método de los 90 s se sacaron cuatro frases de la gr
 > La psicología agrega una pista: un corazón acelerado es una señal ambigua. Puede ser miedo, amor, asombro. El contexto ayuda a decidir.
 >
 > Stendhal le decía «nervios». Ella, «síndrome». Casi todos lo conocemos como un escalofrío frente a algo que nos supera.
+>
+> ¿Y a vos? ¿Qué te dio un escalofrío así?
 
 **Qué se sacó de la grabación y por qué** (método de los 90 s, `docs/guia-de-escritura.md`):
 
@@ -171,6 +173,12 @@ amarillo de la nave `#EFE3A0`, rojo `#B3262E`.
    palabras: el hueco real está entre 85,98 y 86,05 s, y ahí cae el corte): `pausas.py … "escalofrío:0.5"` sobre la voz
    editada → 89,4 s. El escalofrío sobre la Venus dura toda la pausa, y el subtítulo corta en "escalofrío" (el cuarto
    argumento nuevo de `subtitulos()`) para no adelantar "frente a algo que nos supera".
+   **La pregunta del final** (pedido de Dano, otra toma completa: `audio/voz-elevenlabs-v2.mp3`, 119 s): de esa toma se
+   tomó solo "¿Y a vos? ¿Qué te dio un escalofrío así?" (116,50 a 119,12 s, al 95,5 % del volumen para emparejar) y se pegó
+   después de "supera", con 0,55 s de silencio antes y 0,75 s de cola. Todo lo anterior queda igual (la voz que Dano ya
+   había aprobado). Para no pasar los 90 s, la voz entera va un 2,5 % más rápida (`atempo=1.025`, no se nota): 89,6 s.
+   cotejar: 238 palabras, 0 diferencias. En pantalla, la pregunta abajo, sobre la caracola (arriba taparía la cara de la
+   Venus), sin subtítulos, con un último escalofrío y el pulso que se acelera.
 4. **Video:** `video.html` (todo anclado a la voz con `W('palabra')`), `siluetas.js` (el Stendhal articulado, la cortina,
    Florencia y las casas en silueta). Revisión con hojas y tiras, sobre todo de la secuencia en silueta (14,6 a 29,4 s).
    **Versión 2** (después de verla Dano: "hay detalles de la animación y el dibujo mejorables"): piernas con cinemática
@@ -183,4 +191,4 @@ amarillo de la nave `#EFE3A0`, rojo `#B3262E`.
    node herramientas/render.mjs videos/06-stendhal/video.html --audio=videos/06-stendhal/audio/voz-editada.wav --workers=4 --out=video.mp4
    python3 herramientas/quietud.py videos/06-stendhal/out/video.mp4
    ```
-6. **MP4 para mandar** (< 30 MB): 240 / 89,4 − 0,13 ≈ 2,55 Mbps → 2450k, en dos pasadas, como en el 03 (29,2 MB).
+6. **MP4 para mandar** (< 30 MB): 240 / 89,6 − 0,13 ≈ 2,55 Mbps → 2450k, en dos pasadas, como en el 03.

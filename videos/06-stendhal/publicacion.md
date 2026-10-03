@@ -12,7 +12,7 @@ Un dato más: Stendhal fecha la escena el 22 de enero de 1817, pero la escribió
 
 Si te interesa, seguime por acá. Y si querés pensarlo con más tiempo, escribo El Reflejo (link en la bio).
 
-¿Te pasó alguna vez, frente a un cuadro, una música o un paisaje?
+¿Y a vos? ¿Qué obra, qué música o qué paisaje te dio un escalofrío así?
 
 —
 Obras: Sandro Botticelli, El nacimiento de Venus, c. 1485 · Johan Zoffany, La Tribuna de los Uffizi, 1772–1777 · Olof Johan Södermark, Retrato de Stendhal, 1840 · B. S. Sgrilli según G. Zocchi, Hospital de Santa Maria Nuova, siglo XVIII (Wellcome Collection, CC BY 4.0) · Thomas Cole, Vista de Florencia desde San Miniato, 1837 · Caravaggio, Medusa, c. 1597 · Francesco Hayez, El beso, 1859 · Volterrano, Coronación de la Virgen y sibilas, capilla Niccolini, Santa Croce, 1653–1661 (foto: Sailko, CC BY 3.0) · Foto de Graziella Magherini: The Telegraph.
@@ -37,6 +37,8 @@ En Florencia, la psiquiatra Graziella Magherini atendió a más de cien turistas
 A los italianos no les pasaba. Para Magherini, la obra sola no alcanza: pesan el viaje, estar lejos de casa, y que la obra toque algo propio. Y la psicología agrega una pista: un corazón acelerado es una señal ambigua; el contexto ayuda a decidir si es miedo, amor o asombro.
 
 Soy psicólogo. Si te interesa, suscribite. También escribo El Reflejo, un newsletter para pensar con más tiempo: el link está en el perfil del canal.
+
+¿Y a vos? ¿Qué obra, qué música o qué paisaje te dio un escalofrío así?
 
 Obras: Sandro Botticelli, El nacimiento de Venus, c. 1485 · Johan Zoffany, La Tribuna de los Uffizi, 1772–1777 · Olof Johan Södermark, Retrato de Stendhal, 1840 · B. S. Sgrilli según G. Zocchi, Hospital de Santa Maria Nuova, siglo XVIII (Wellcome Collection, CC BY 4.0) · Thomas Cole, Vista de Florencia desde San Miniato, 1837 · Caravaggio, Medusa, c. 1597 · Francesco Hayez, El beso, 1859 · Volterrano, Coronación de la Virgen y sibilas, capilla Niccolini, Santa Croce, 1653–1661 (foto: Sailko, CC BY 3.0) · Foto de Graziella Magherini: The Telegraph.
 Fuentes: Stendhal, Roma, Nápoles y Florencia (1826) · Graziella Magherini, La sindrome di Stendhal (1989) · Palacios-Sánchez y otros, "Stendhal syndrome: a clinical and historical overview", Arquivos de Neuro-Psiquiatria, 2018 · S. Schachter y J. Singer, "Cognitive, social, and physiological determinants of emotional state", Psychological Review, 1962.

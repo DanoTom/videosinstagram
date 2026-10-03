@@ -217,6 +217,9 @@
     <svg class="capa" viewBox="0 0 1080 1920" fill="none" stroke-linejoin="round">
       <path id="pul10b" stroke="rgba(20,20,20,.85)" stroke-width="15"/><path id="pul10" stroke="var(--crema)" stroke-width="7"/>
     </svg>
+    <!-- la pregunta del final: abajo, sobre la caracola (arriba taparía la cara de la Venus); los subtítulos se ocultan -->
+    <div class="tira titular" id="yavos" data-rasgado data-rot="-3" style="top:1235px;left:90px;font-size:120px;white-space:nowrap">¿Y a vos?</div>
+    <div class="negro serif" id="preg" data-rot="-2" style="top:1385px;left:110px;font-size:56px">¿Qué te dio un escalofrío así?</div>
   </div>
 
   <div class="sub" id="sub"></div>
@@ -270,19 +273,20 @@ const T = {
   miedo: W('miedo', 2).s, amor: W('amor').s, asombro: W('asombro').s, contexto: W('el contexto').s,
   e10: W('stendhal le decía').s - 0.2, nervios: W('nervios', 2).s, ella: W('ella síndrome').s, casi: W('casi todos').s,
   escalofrio: W('escalofrío').s, frente: W('frente a algo').s, supera: W('supera').e,
+  yavos: W('y a vos').s, preg: W('qué te dio').s, esc2: W('escalofrío', 2).s,
 };
-T.vuelta = DURACION - 0.6;
+T.vuelta = DURACION - 0.35;
 // los planos de la secuencia en silueta
 const S = [T.e4, T.entro, T.croce - 0.05, T.frescos - 0.1, T.salir - 0.05, T.cita, T.sentia, T.caminaba, T.e5];
 const escenas = [['e1', -1, T.e2 + 0.6], ['e2', T.e2, T.e3 + 0.7], ['e3', T.e3, T.e4], ['e4', T.e4, T.e5 + 0.35],
   ['e5', T.e5, T.e6 + 0.6], ['e6', T.e6, T.e7 + 0.6], ['e7', T.e7, T.e8 + 0.6], ['e8', T.e8, T.e9 + 0.6],
   ['e9', T.e9, T.e10 + 0.6], ['e10', T.e10, 999]];
-const SUBS = subtitulos(voz, [['lo que en berlín llaman nervios'], ['síndrome de stendhal'], ['y por qué a ellos sí']], 7, [['escalofrío']]);
+const SUBS = subtitulos(voz, [['lo que en berlín llaman nervios'], ['síndrome de stendhal'], ['y por qué a ellos sí'], ['y a vos qué te dio un escalofrío así']], 7, [['escalofrío']]);
 
 // el corazón: tranquilo, se dispara con los turistas, con Stendhal, con los síntomas y con la "señal ambigua"
 const fase = ritmo([[0, 66], [T.descomp, 70], [T.descomp + 1.2, 145], [T.arte + 1, 150], [T.e2 + 1, 80], [T.salir, 96], [T.palp - 0.6, 100],
   [T.palp, 150], [T.sentia, 140], [T.e5, 96], [T.palp2, 110], [T.palp2 + 0.8, 140], [T.e6, 90], [T.corazon - 0.4, 80],
-  [T.corazon + 0.6, 140], [T.contexto + 1, 130], [T.e10, 84], [T.casi, 72], [DURACION, 66]], DURACION);
+  [T.corazon + 0.6, 140], [T.contexto + 1, 130], [T.e10, 84], [T.casi, 72], [T.yavos, 70], [T.esc2 + 0.3, 118], [DURACION, 96]], DURACION);
 const beat = t => latido(fase(t) - Math.floor(fase(t)) + 0.0);
 
 const aparecer = (el, t, t0, t1 = Infinity, dur = 0.35) => {
@@ -629,8 +633,12 @@ function seek(tReal) {
     encuadre($('pVen2'), IMGS.venus, entreEncuadres(VEN.cara, VEN.todo, ease.suave(prog(t, T.casi, T.vuelta))));
     // el escalofrío: una onda que recorre la imagen de abajo hacia arriba
     const esc = prog(t, T.escalofrio, T.frente + 0.2);   // dura toda la pausa después de "escalofrío"
-    $('pVen2').style.filter = esc > 0 && esc < 1 ? `brightness(${1 + 0.18 * Math.sin(Math.PI * esc)})` : 'none';
-    $('pVen2').style.transform = esc > 0 && esc < 1 ? `translateX(${Math.sin(esc * 50) * 6 * Math.sin(Math.PI * esc)}px)` : 'none';
+    // y otro, más corto, con el "escalofrío" de la pregunta
+    const esc2 = prog(t, T.esc2, T.esc2 + 0.6), e = esc > 0 && esc < 1 ? esc : esc2 > 0 && esc2 < 1 ? esc2 : 0;
+    $('pVen2').style.filter = e ? `brightness(${1 + 0.18 * Math.sin(Math.PI * e)})` : 'none';
+    $('pVen2').style.transform = e ? `translateX(${Math.sin(e * 50) * 6 * Math.sin(Math.PI * e)}px)` : 'none';
+    pieza($('yavos'), t, { t0: T.yavos - 0.05 });
+    pieza($('preg'), t, { t0: T.preg - 0.05, entra: 'izq', dur: 0.35 });
     pulso($('pul10'), t, { x0: -20, x1: 900, y: 1180, amp: 150, fase });
     $('pul10b').setAttribute('d', $('pul10').getAttribute('d'));
     for (const id of ['pul10', 'pul10b']) $(id).style.opacity = pv;

@@ -108,6 +108,11 @@ de UPA). Primer uso: el tramo de Stendhal en el 06 (14,6 a 29,4 s).
   parpadee aunque esté quieto, una boca que cambia con lo que siente. El detalle, en `docs/busqueda-de-estilo.md`.
 - **Que la silueta no se pierda:** nunca negro sobre negro; fondos de color, y si hay edificios o muebles, en un tono medio.
 
+**Lo que más funcionó** (Dano, después de mostrarlo): el plano del mareo del 06, él caminando con los brazos abiertos en
+un travelling de costado, con la calle que se ladea y las casas, el farol y el empedrado que pasan a distintas velocidades.
+Es el que produce el "wow" en quien lo mira. Pista para los próximos: una acción física del personaje (caminar, tambalear)
+con la cámara que lo acompaña y profundidad por capas rinde más que un plano quieto con un efecto.
+
 **Revisión:** tiras a 12 cuadros por segundo de cada plano (`--tira=a:b --fps=12`) para ver que los pies pisen y que los
 movimientos tengan envión y asiento, además de las hojas de siempre.
 
