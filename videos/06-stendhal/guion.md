@@ -168,7 +168,7 @@ amarillo de la nave `#EFE3A0`, rojo `#B3262E`.
 3. **Pausas:** 1 s después del gancho y 1,3 s de cola: `herramientas/pausas.py … "arte.:1.0" --cola=1.3` →
    `audio/voz-editada.wav` y `.json` (88,9 s). `cotejar.py`: 229 palabras, 0 diferencias.
    Después, a pedido de Dano, 0,5 s más después de "escalofrío" para darle dramatismo al final (whisper pegaba las dos
-   palabras: el hueco real está entre 85,98 y 86,05 s, y ahí cae el corte): `pausas.py … "escalofrío:0,5"` sobre la voz
+   palabras: el hueco real está entre 85,98 y 86,05 s, y ahí cae el corte): `pausas.py … "escalofrío:0.5"` sobre la voz
    editada → 89,4 s. El escalofrío sobre la Venus dura toda la pausa, y el subtítulo corta en "escalofrío" (el cuarto
    argumento nuevo de `subtitulos()`) para no adelantar "frente a algo que nos supera".
 4. **Video:** `video.html` (todo anclado a la voz con `W('palabra')`), `siluetas.js` (el Stendhal articulado, la cortina,
