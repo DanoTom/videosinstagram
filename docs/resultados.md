@@ -16,3 +16,4 @@ YouTube Studio. Siempre los mismos, para poder comparar.
 | 03 · Narciso | C | | | | | | | | |
 | 04 · Los embajadores | B | | | | | | | | |
 | 05 · El trapito (Winnicott) | E | | | | | | | | Primera prueba del formato E |
+| 06 · El síndrome de Stendhal | A | | | | | | | | Primero del formato A |
