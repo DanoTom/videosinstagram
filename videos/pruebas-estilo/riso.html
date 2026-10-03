@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Prueba de estilo · Riso</title>
+<link rel="stylesheet" href="../../diseno/sistema.css">
+<style>
+  html, body { margin: 0; background: #000; }
+  canvas { display: block; }
+</style>
+</head>
+<body>
+<div class="frame" id="video"><canvas id="lienzo" width="1080" height="1920"></canvas></div>
+<script type="module">
+// Prueba A · Risografía: tres tintas (azul, rosa flúor, amarillo) en trama de puntos, desregistro, grano que respira y
+// líneas que hierven a 10 cuadros por segundo. Misma escena que el gancho del 05.
+import { Riso, TINTAS } from '../../diseno/estilos/riso.js';
+import { muestrear, ubicar, lineaViva, rellenoVivo, rayado } from '../../diseno/estilos/trazo.js';
+import { azar, hervor, paso } from '../../diseno/estilos/ruido.js';
+import * as D from '../05-trapito/dibujos.js';
+
+const W = 1080, H = 1920, DURACION = 6;
+const lienzo = document.getElementById('lienzo').getContext('2d');
+const riso = new Riso(W, H, [
+  { id: 'amarillo', color: TINTAS.amarillo, angulo: 5, celda: 10, opacidad: 0.95 },
+  { id: 'rosa', color: TINTAS.rosaFluo, angulo: 75, celda: 10, opacidad: 0.9 },
+  { id: 'azul', color: TINTAS.azul, angulo: 15, celda: 10, opacidad: 0.92 },
+]);
+
+// El dibujo del nene (el mismo del 05), leído de dibujos.js
+const tpl = document.createElement('template'); tpl.innerHTML = `<svg>${D.nene}</svg>`;
+const trazos = [...tpl.content.querySelectorAll('.trazos path')].map(p => ({ d: p.getAttribute('d'), w: +p.getAttribute('stroke-width') }));
+const forma = sel => tpl.content.querySelector(sel).getAttribute('d');
+const TRAPO = forma('.trapo .relleno'), MANTA = forma('.manta'), RAYAS = tpl.content.querySelectorAll('.manta')[1].getAttribute('d');
+const CABEZA = trazos[0].d, CACHETE = 'M262 392 a 26 18 0 1 0 52 0 a 26 18 0 1 0 -52 0', CACHETE2 = 'M426 392 a 24 17 0 1 0 48 0 a 24 17 0 1 0 -48 0';
+const POS = { x: -20, y: 560, s: 1.12 };
+const C = { x: -20 + 515 * 1.12, y: 560 + 540 * 1.12 };   // el trapito en la pantalla
+
+function seek(t) {
+  const hv = hervor(t, 10), ta = paso(t, 12), rnd = azar(hv * 977 + 3);
+  const resp = 1 + 0.018 * Math.sin((ta * 2 * Math.PI) / 3);
+  const pos = { ...POS, y: POS.y + 0 };
+  const at = (d, paso = 4) => ubicar(muestrear(d, paso), pos);
+  riso.limpiar();
+  const az = riso.ctx('azul'), ro = riso.ctx('rosa'), am = riso.ctx('amarillo');
+  for (const c of [az, ro, am]) { c.save(); c.globalCompositeOperation = 'source-over'; }
+
+  // ── la noche: azul denso que se abre alrededor del trapito
+  az.fillStyle = 'rgba(0,0,0,.93)'; az.fillRect(0, 0, W, H);
+  az.globalCompositeOperation = 'destination-out';
+  let g = az.createRadialGradient(C.x, C.y - 60, 0, C.x, C.y - 60, 760);
+  g.addColorStop(0, 'rgba(0,0,0,.92)'); g.addColorStop(0.55, 'rgba(0,0,0,.45)'); g.addColorStop(1, 'rgba(0,0,0,0)');
+  az.fillStyle = g; az.fillRect(0, 0, W, H);
+  // la luz: amarillo en trama, más rosa en el borde (de lejos se ve naranja)
+  const pulso = 1 + 0.04 * Math.sin(ta * 2.2);
+  g = am.createRadialGradient(C.x, C.y - 60, 0, C.x, C.y - 60, 640 * pulso);
+  g.addColorStop(0, 'rgba(0,0,0,1)'); g.addColorStop(0.5, 'rgba(0,0,0,.55)'); g.addColorStop(1, 'rgba(0,0,0,0)');
+  am.fillStyle = g; am.fillRect(0, 0, W, H);
+  g = ro.createRadialGradient(C.x, C.y - 60, 180, C.x, C.y - 60, 720 * pulso);
+  g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(0.45, 'rgba(0,0,0,.42)'); g.addColorStop(1, 'rgba(0,0,0,0)');
+  ro.fillStyle = g; ro.fillRect(0, 0, W, H);
+  // estrellas
+  const r2 = azar(11);
+  for (let i = 0; i < 90; i++) {
+    const x = r2() * W, y = r2() * 1100, s = 2 + r2() * 5, brilla = rnd() > 0.75 ? 1.6 : 1;
+    az.globalCompositeOperation = 'destination-out'; az.fillStyle = '#000';
+    az.beginPath(); az.arc(x, y, s * brilla + 2, 0, 7); az.fill();
+    am.fillStyle = '#000'; am.beginPath(); am.arc(x, y, s * brilla, 0, 7); am.fill();
+  }
+
+  // ── ondas que salen del trapito (como el teléfono que suena, pero en calma)
+  for (let k = 0; k < 3; k++) {
+    const f = ((ta / 2 + k / 3) % 1), r = 170 + f * 520;
+    const pts = []; for (let a = 0; a <= 360; a += 3) pts.push([C.x + Math.cos(a * Math.PI / 180) * r * 1.15, C.y - 60 + Math.sin(a * Math.PI / 180) * r * 0.82]);
+    am.globalAlpha = 1 - f; am.fillStyle = '#000';
+    lineaViva(am, pts, { ancho: 9 * (1 - f) + 2, temblor: 3, semilla: hv + k * 31 });
+    az.globalCompositeOperation = 'destination-out'; az.globalAlpha = (1 - f) * 0.9;
+    lineaViva(az, pts, { ancho: 12 * (1 - f) + 3, temblor: 3, semilla: hv + k * 31 });
+    am.globalAlpha = 1; az.globalAlpha = 1;
+  }
+
+  // ── la respiración: la frazada y el trapito suben y bajan
+  const respira = (c, f) => { c.save(); c.translate(0, C.y + 60); c.scale(1, resp); c.translate(0, -(C.y + 60)); f(); c.restore(); };
+  // recortes en todas las tintas: cabeza, frazada y trapito tapan la noche
+  for (const c of [az, ro, am]) {
+    c.globalCompositeOperation = 'destination-out'; c.fillStyle = '#000';
+    rellenoVivo(c, at(CABEZA), { temblor: 1.5, semilla: hv });
+    respira(c, () => { rellenoVivo(c, at(MANTA), { temblor: 2, semilla: hv }); rellenoVivo(c, at(TRAPO), { temblor: 2, semilla: hv + 1 }); });
+    c.globalCompositeOperation = 'source-over';
+  }
+  // la almohada: rosa en trama, detrás de la cabeza (recortada por la cabeza)
+  const ALMOHADA = 'M150 300 C 140 230, 200 200, 300 205 L 560 214 C 640 216, 660 270, 650 330 C 645 380, 600 420, 520 430 L 230 440 C 160 440, 150 380, 150 300 Z';
+  for (const c of [az, am]) { c.globalCompositeOperation = 'destination-out'; c.fillStyle = 'rgba(0,0,0,.8)'; rellenoVivo(c, at(ALMOHADA), { temblor: 2, semilla: hv + 4 }); c.globalCompositeOperation = 'source-over'; }
+  ro.save(); ro.fillStyle = 'rgba(0,0,0,.42)'; rellenoVivo(ro, at(ALMOHADA), { temblor: 2, semilla: hv + 4 });
+  ro.globalCompositeOperation = 'destination-out'; ro.fillStyle = '#000'; rellenoVivo(ro, at(CABEZA), { temblor: 1.5, semilla: hv }); ro.restore();
+  az.fillStyle = '#000'; for (const pts of at(ALMOHADA)) lineaViva(az, pts, { ancho: 6, temblor: 2, semilla: hv * 3 + 1 });
+  // la cara: un poco de amarillo y rosa (piel en trama)
+  am.fillStyle = 'rgba(0,0,0,.28)'; rellenoVivo(am, at(CABEZA), { temblor: 1.5, semilla: hv });
+  ro.fillStyle = 'rgba(0,0,0,.12)'; rellenoVivo(ro, at(CABEZA), { temblor: 1.5, semilla: hv });
+  ro.fillStyle = 'rgba(0,0,0,.85)'; rellenoVivo(ro, at(CACHETE), { temblor: 1.2, semilla: hv });
+  // la frazada: azul en trama con rayas rosas; sombra rayada abajo
+  respira(az, () => { az.fillStyle = 'rgba(0,0,0,.5)'; rellenoVivo(az, at(MANTA), { temblor: 2, semilla: hv }); });
+  respira(ro, () => { ro.fillStyle = '#000'; for (const pts of at(RAYAS)) lineaViva(ro, pts, { ancho: 17, temblor: 2.5, semilla: hv + 5 }); });
+  respira(az, () => {
+    az.save(); az.beginPath(); for (const pts of at(MANTA)) pts.forEach(([x, y], i) => (i ? az.lineTo(x, y) : az.moveTo(x, y))); az.clip();
+    az.fillStyle = '#000'; rayado(az, [160, 1200, 900, 110], { angulo: -32, sep: 13, ancho: 3.2, semilla: hv });
+    az.restore();
+  });
+  // el trapito: rosa + amarillo llenos (encimados dan coral), sin azul debajo, con la costura en blanco papel
+  respira(az, () => { az.globalCompositeOperation = 'destination-out'; az.fillStyle = '#000'; rellenoVivo(az, at(TRAPO), { temblor: 2, semilla: hv + 1 }); az.globalCompositeOperation = 'source-over'; });
+  respira(ro, () => { ro.fillStyle = '#000'; rellenoVivo(ro, at(TRAPO), { temblor: 2, semilla: hv + 1 }); });
+  respira(am, () => { am.fillStyle = '#000'; rellenoVivo(am, at(TRAPO), { temblor: 2, semilla: hv + 2 }); });
+  const costura = at('M410 494 C 470 476, 560 472, 624 486 C 638 526, 634 568, 620 594 C 552 608, 464 608, 408 592 C 396 560, 398 524, 410 494 Z', 3)[0];
+  for (const c of [ro, am]) respira(c, () => {
+    c.globalCompositeOperation = 'destination-out'; c.fillStyle = '#000';
+    costura.forEach(([x, y], i) => { if (i % 5 < 2) { c.beginPath(); c.arc(x, y, 3.2, 0, 7); c.fill(); } });
+    c.globalCompositeOperation = 'source-over';
+  });
+
+  // ── las líneas, en azul, que hierven
+  az.fillStyle = '#000';
+  trazos.forEach((tr, k) => {
+    const listas = at(tr.d);
+    const mueve = k >= 6 && k <= 8;   // la frazada y el brazo respiran
+    const zz = k >= 9;
+    if (zz) {   // las zetas suben y se van
+      const f = (ta / 3 + (k - 9) * 0.35) % 1;
+      for (const c of [az, am]) {
+        c.save(); c.translate(f * 60, -f * 120); c.globalAlpha = Math.sin(Math.PI * f);
+        if (c === az) { c.globalCompositeOperation = 'destination-out'; for (const pts of listas) lineaViva(c, pts, { ancho: tr.w * 2.4 + 8, temblor: 1.5, semilla: hv + k }); }
+        else for (const pts of listas) lineaViva(c, pts, { ancho: tr.w * 2.2, temblor: 1.5, semilla: hv + k });
+        if (c === am) { ro.save(); ro.translate(f * 60, -f * 120); ro.globalAlpha = Math.sin(Math.PI * f); ro.fillStyle = '#000';
+          for (const pts of listas) lineaViva(ro, pts, { ancho: tr.w * 2.2, temblor: 1.5, semilla: hv + k }); ro.restore(); }
+        c.restore();
+      }
+      return;
+    }
+    const dib = c => () => { for (const pts of listas) lineaViva(c, pts, { ancho: tr.w * 1.35 + (c === az ? 0 : 2), temblor: 2.2, semilla: hv * 13 + k * 7 }); };
+    for (const c of [ro, am]) { c.globalCompositeOperation = 'destination-out'; c.fillStyle = '#000'; mueve ? respira(c, dib(c)) : dib(c)(); c.globalCompositeOperation = 'source-over'; }
+    mueve ? respira(az, dib(az)) : dib(az)();
+  });
+
+  // sombra rayada del lado de la cara que no da a la luz, y brillos en blanco papel
+  az.save(); az.beginPath(); for (const pts of at(CABEZA)) pts.forEach(([x, y], i) => (i ? az.lineTo(x, y) : az.moveTo(x, y))); az.clip();
+  az.fillStyle = '#000'; rayado(az, [pos.x + 200 * pos.s, pos.y + 330 * pos.s, 140 * pos.s, 140 * pos.s], { angulo: 55, sep: 11, ancho: 2.4, semilla: hv + 9, largo: 0.5 });
+  az.restore();
+  for (const c of [az, ro, am]) {
+    c.globalCompositeOperation = 'destination-out'; c.fillStyle = '#000';
+    for (const pts of at('M262 268 C 284 238, 314 224, 344 222')) lineaViva(c, pts, { ancho: 9, temblor: 1.5, semilla: hv + 2 });
+    respira(c, () => { for (const pts of at('M420 500 C 470 486, 520 484, 560 488')) lineaViva(c, pts, { ancho: 8, temblor: 1.5, semilla: hv + 3 }); });
+    c.globalCompositeOperation = 'source-over';
+  }
+
+  // ── el título: tira amarilla rasgada con letras azules (y un poco corridas en rosa)
+  const tira = [[120, 300], [960, 286], [968, 432], [128, 446]];
+  const borde = []; for (let i = 0; i < tira.length; i++) { const a = tira[i], b = tira[(i + 1) % 4]; for (let u = 0; u < 1; u += 0.04) borde.push([a[0] + (b[0] - a[0]) * u, a[1] + (b[1] - a[1]) * u + ((i % 2 === 0) ? (rnd() - 0.5) * 10 : 0)]); }
+  for (const c of [az, ro]) { c.globalCompositeOperation = 'destination-out'; c.fillStyle = '#000'; rellenoVivo(c, [borde], { temblor: 1, semilla: hv }); c.globalCompositeOperation = 'source-over'; }
+  am.fillStyle = '#000'; rellenoVivo(am, [borde], { temblor: 1, semilla: hv });
+  for (const c of [az, am]) {
+    c.save(); c.translate(540, 400); c.rotate(-0.012); c.font = '800 112px "Inter Tight"'; c.textAlign = 'center';
+    if (c === am) { c.globalCompositeOperation = 'destination-out'; c.lineWidth = 3; c.strokeText('¿Tuviste uno?', 0, 0); }
+    c.fillStyle = '#000'; c.fillText('¿Tuviste uno?', 0, 0); c.restore();
+  }
+  for (const c of [az, ro, am]) c.restore();
+
+  riso.imprimir(lienzo, { papel: '#F4EEE2', hervor: hv,
+    desregistro: { azul: [0, 0], rosa: [4 + (rnd() - 0.5) * 2, -3 + (rnd() - 0.5) * 2], amarillo: [-3 + (rnd() - 0.5) * 2, 3] } });
+}
+
+await document.fonts.load('800 112px "Inter Tight"');
+window.seek = seek; window.DURACION = DURACION; seek(0); window.listo = true;
+</script>
+</body>
+</html>

@@ -17,6 +17,10 @@ Antes de escribir un guion, leer:
   efectos de un video a otro (antes de diseñar, mirar el reel anterior terminado, que está en el Drive de Dano: ver
   `docs/linea-editorial.md`).
 
+**Búsqueda de estilo en curso** (octubre de 2026, después del 05): Dano pidió un estilo de animación con más espíritu
+propio. Pruebas (riso, crayón, fibras, obra en riso) y lo aprendido en `docs/busqueda-de-estilo.md`; el motor de texturas
+está en `diseno/estilos/`.
+
 Uno de cada tres videos es del formato E, "Cómo funciona" (más psicología, con la obra como puerta de entrada): ver
 `docs/estrategia-contenido.md` y los recursos visuales de `docs/guia-visual.md` § "Explicar psicología". Los números de cada
 video se anotan en `docs/resultados.md`.
