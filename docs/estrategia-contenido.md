@@ -88,7 +88,7 @@ Más ideas, con autores que leyeron estas obras desde la psicología y la filoso
 | 13 | B | Esperanza | Watts, *Esperanza* | "Se llama Esperanza. Tiene los ojos vendados y a su lira le queda una sola cuerda." |
 | 14 | A | Trauma, reparación (tema delicado) | Artemisia Gentileschi, *Judith y Holofernes* | "En el juicio, para probar que decía la verdad, la torturaron a ella." |
 | 15 | B | Identificación | Friedrich, *Caminante sobre el mar de niebla* | "Nunca le vemos la cara. Por eso puede ser cualquiera." |
-| 16 | A | Emoción estética, expectativas (**06, en producción**) | El síndrome de Stendhal: Botticelli, Volterrano, Zoffany | "En Florencia, una psiquiatra atendió a más de cien turistas que se descompusieron frente a obras de arte." |
+| 16 | A | Emoción estética, expectativas (**06, hecho**) | El síndrome de Stendhal: Botticelli, Volterrano, Zoffany | "En Florencia, una psiquiatra atendió a más de cien turistas que se descompusieron frente a obras de arte." |
 | 17 | B | Percepción: pareidolia | Arcimboldo, *El hortelano* (c. 1590): plato de verduras que, dado vuelta, es una cara | "¿Qué ves? Ahora dalo vuelta." |
 | 18 | A | Emociones que fueron enfermedades | La nostalgia: Johannes Hofer, 1688, los soldados suizos | "La nostalgia era una enfermedad. Podía matar." |
 | 19 | D | Mirar despacio | En el Met se mira cada obra maestra 17 s (mediana; Smith y Smith, 2001): el video propone mirar una de verdad | "¿Cuánto tiempo mirás un cuadro en un museo?" |

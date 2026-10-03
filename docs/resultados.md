@@ -12,8 +12,8 @@ YouTube Studio. Siempre los mismos, para poder comparar.
 
 | Video | Formato | Publicado (IG / YT) | Reproducciones (IG / YT) | Pasan los 3 s | Visto en promedio | Envíos | Guardados | Seguidores | Notas |
 |---|---|---|---|---|---|---|---|---|---|
-| 02 · Ícaro | B | | | | | | | | En YouTube, la versión de 90 s |
+| 02 · Ícaro | B | sí (antes) / 3/10/2026 | | | | | | | En YouTube, la versión de 90 s |
 | 03 · Narciso | C | | | | | | | | |
-| 04 · Los embajadores | B | | | | | | | | |
+| 04 · Los embajadores | B | 3/10/2026 / 3/10/2026 | | | | | | | |
 | 05 · El trapito (Winnicott) | E | | | | | | | | Primera prueba del formato E |
 | 06 · El síndrome de Stendhal | A | | | | | | | | Primero del formato A |
