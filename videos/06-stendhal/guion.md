@@ -1,12 +1,45 @@
 # 06 · El síndrome de Stendhal: cuando lo bello nos desborda
 
-Formato A (*La historia detrás*) · Duración estimada: 86 s · 1080×1920.
+Formato A (*La historia detrás*) · Duración: 89 s · 1080×1920.
 
 Elegido por Dano (3/10/2026) entre ocho temas nuevos, "para atraer interés": una historia rara y verdadera (turistas que
 terminan en el hospital por mirar arte), una ciudad que todos conocen y una pregunta que le sirve a cualquiera. Es el primer
 video del formato A en reels.
 
-## Guion (voz en off) · versión 1 (propuesta)
+## Guion (voz en off) · versión 2 de Dano, recortada (grabada)
+
+Dano reescribió el guion y lo grabó (ElevenLabs, mismos ajustes: velocidad 1,00, estabilidad 30, similitud 0). Sumó la
+llegada de Stendhal, el trance, "lo que en Berlín llaman nervios", que no es un diagnóstico oficial, que muchos viajaban
+solos, la "señal ambigua" y un cierre que rima ("Stendhal le decía «nervios». Ella, «síndrome»"). Tenía 289 palabras y la
+voz duraba 108,7 s; con el método de los 90 s se sacaron cuatro frases de la grabación (`recortar.py`) y quedó en 86,6 s:
+
+> En Florencia, una psiquiatra atendió a más de cien turistas que se descompusieron frente a obras de arte.
+>
+> Y lo que les pasaba explica algo que nos pasa a todos frente a lo bello.
+>
+> Todo empieza con un escritor francés, Stendhal. En 1817 llegó a Florencia. Entró a la iglesia de Santa Croce a ver unos frescos. Al salir, tenía palpitaciones, «lo que en Berlín llaman nervios», aclaró. Sentía que se le iba la vida y caminaba con miedo de caerse.
+>
+> Más de un siglo y medio después, la psiquiatra Graziella Magherini empezó a recibir turistas con lo mismo: palpitaciones, mareos, angustia, a veces algo más serio. Juntó ciento seis casos y los llamó síndrome de Stendhal.
+>
+> ¿A quiénes les pasaba? A extranjeros, muchos viajando solos, agotados por el viaje. Ninguno era italiano. La explicación habitual: crecieron rodeados de estas obras.
+>
+> ¿Y por qué a ellos sí? Para Magherini, la obra sola no alcanza: pesaban también el viaje y una sensibilidad previa. Lejos de casa, uno llega con todo a flor de piel, y la obra toca algo propio, algo que quizás no se sabía que estaba ahí.
+>
+> La psicología agrega una pista: un corazón acelerado es una señal ambigua. Puede ser miedo, amor, asombro. El contexto ayuda a decidir.
+>
+> Stendhal le decía «nervios». Ella, «síndrome». Casi todos lo conocemos como un escalofrío frente a algo que nos supera.
+
+**Qué se sacó de la grabación y por qué** (método de los 90 s, `docs/guia-de-escritura.md`):
+
+| Frase | Por qué |
+|---|---|
+| Había estudiado tanto sus vistas que la conocía antes de pisarla. | Lindo, pero no es un paso de la historia. Además, lo que se encontró es que estudió mapas, y en su viaje real (1811), no en el de 1817 que cuenta el libro (Aeon, "What Stendhal says about the purpose and promise of art") |
+| Ya venía como en trance: por la idea de estar ahí y por las tumbas de las personalidades que acababa de ver. | Es la frase de Stendhal («J'étais déjà dans une sorte d'extase, par l'idée d'être à Florence, et le voisinage des grands hommes dont je venais de voir les tombeaux»), pero lo mismo lo dice después "lejos de casa, uno llega con todo a flor de piel". Puede ir en pantalla, como cita, mientras se ve la nave |
+| No es un diagnóstico oficial, pero el nombre quedó. | Pasa a una ficha en pantalla ("no figura en los manuales de diagnóstico") |
+| Magherini decía que ella solo veía los casos extremos; las versiones leves, según ella, son mucho más comunes. | No se encontró en las fuentes que Magherini lo dijera. El cierre se entiende igual sin esta frase |
+
+### Versión 1 (de Claude, 219 palabras)
+
 
 > En Florencia, una psiquiatra atendió a más de cien turistas que se descompusieron frente a obras de arte.
 >
