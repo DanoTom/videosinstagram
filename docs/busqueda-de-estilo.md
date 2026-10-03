@@ -80,3 +80,18 @@ Lo que hace que no se vea pobre:
 - **Una metáfora por plano**, no una ilustración de la frase: el corazón es un estallido que late, "se le iba la vida" es
   el negro que se le escurre de arriba abajo, "miedo de caerse" son los brazos abiertos y la calle que se ladea.
 - **Entrar y salir con un pase**: la silueta de perfil que entra a cámara y tapa el retrato; un destello blanco para volver.
+
+Lo que agregó la versión 2, después de que Dano la viera ("hay detalles de la animación y el dibujo mejorables"). Son los
+principios clásicos de la animación, aplicados a mano en `siluetas.js`:
+
+- **Los pies no patinan.** Las piernas van con cinemática inversa: el pie apoyado queda clavado mientras la cadera avanza,
+  y la cadera sube y baja sola. La figura tiene que avanzar exactamente una zancada (`ZANCADA`) por ciclo; si la cámara la
+  acompaña, el piso es el que se mueve a esa velocidad.
+- **Superposición y seguimiento:** el antebrazo llega un poco después que el brazo, los faldones después que las piernas.
+- **Aplastar y estirar:** la galera salta con cada latido y se aplasta al caer.
+- **Anticipación:** antes de mirar hacia arriba, y antes de "aclaró", la cabeza baja un poco.
+- **Que esté vivo aunque esté quieto:** parpadea cada tanto, respira (más rápido cuando le late el corazón).
+- **Expresión:** la boca cambia con lo que siente (sonríe al llegar, "o" de asombro frente al fresco, para abajo cuando se
+  le va la vida). En silueta, la cara es el ojo y la boca: tienen que estar bien dibujados, no ser rayitas.
+- **Que la puesta en escena no se contradiga:** si camina de perfil, la cámara lo acompaña de costado (travelling), no una
+  calle que se va al fondo. Y que la figura no se pierda contra un fondo del mismo negro.

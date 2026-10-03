@@ -5,3 +5,4 @@ __pycache__/
 videos/*/*.mp4
 ffmpeg2pass-*
 videos/*/audio/voz-recortada.wav
+videos/06-stendhal/assets/magherini.jpg

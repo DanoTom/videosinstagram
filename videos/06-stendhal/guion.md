@@ -113,8 +113,8 @@ amarillo de la nave `#EFE3A0`, rojo `#B3262E`.
 | 1 | Gancho | *El nacimiento de Venus* a sangre, la cámara se acerca a la cara; el pulso cruza la pantalla y se dispara con "descompusieron". 1 s de silencio | "+100" · "turistas, frente a obras de arte" |
 | 2 | Promesa | *La Tribuna de los Uffizi* (Zoffany): turistas del siglo XVIII mirando cuadros | — |
 | 3 | Stendhal | Su retrato en lámina. Al final, **la cortina**: su silueta de perfil entra a cámara, crece y tapa todo (del retrato a la silueta) | "Stendhal" · ficha "Henri Beyle (1783–1842)" |
-| 4 | La secuencia en silueta | S1 terracota: el sol, Florencia en silueta, él camina de izquierda a derecha y cae el sello "1817". S2: la fachada desnuda de Santa Croce (el mármol es de 1863) vista desde abajo; cruza la plaza y entra por la puerta iluminada. S3: la nave en perspectiva, la cámara avanza entre los arcos. S4 azul: mira hacia arriba, el fresco de Volterrano gira y se acerca, los anillos se alejan (vértigo) y se le cae la galera. S5 rojo: "Al salir, tenía palpitaciones", un estallido que late con el corazón, la galera salta con cada golpe. S6: la cita palabra por palabra dentro de un iris que se abre; en "aclaró" la galera salta, y el iris se cierra sobre su cabeza. S7: "se le iba la vida", el negro se le escurre de arriba abajo y se junta en un charco; el rojo se apaga a gris. S8 oro: la calle en perspectiva se ladea, él camina con los brazos abiertos y unas estrellitas le giran sobre la galera. Destello blanco y vuelta al hospital | "1817" · "Santa Croce" · «lo que en Berlín llaman nervios» |
-| 5 | Magherini | El hospital de Santa Maria Nuova (grabado) entra desde abajo; el pulso vuelve con "con lo mismo" | "más de un siglo y medio después" · ficha "Graziella Magherini" · "palpitaciones" "mareos" "angustia" "algo más serio" |
+| 4 | La secuencia en silueta | S1 terracota: el sol, Florencia en silueta, él camina de izquierda a derecha y cae el sello "1817". S2: la fachada desnuda de Santa Croce (el mármol es de 1863) vista desde abajo; cruza la plaza y entra por la puerta iluminada. S3: la nave en perspectiva, la cámara avanza entre los arcos. S4 azul: mira hacia arriba, el fresco de Volterrano gira y se acerca, los anillos se alejan (vértigo) y se le cae la galera. S5 rojo: "Al salir, tenía palpitaciones", un estallido que late con el corazón, la galera salta con cada golpe. S6: la cita palabra por palabra dentro de un iris que se abre; en "aclaró" la galera salta, y el iris se cierra sobre su cabeza. S7: "se le iba la vida", el negro se le escurre de arriba abajo y se junta en un charco; el rojo se apaga a gris. S8 oro: travelling de costado por una calle de Florencia (casas, farol y empedrado pasan a distintas velocidades), el plano se ladea, él camina con los brazos abiertos y unas estrellitas le giran sobre la galera. Destello blanco y vuelta al hospital | "1817" · "Santa Croce" · «lo que en Berlín llaman nervios» |
+| 5 | Magherini | El hospital de Santa Maria Nuova (grabado) entra desde abajo; con su nombre entra su foto, con *La sindrome di Stendhal* en la mano (la cámara se acerca a ella y al libro); el pulso vuelve con "con lo mismo" | "más de un siglo y medio después" · ficha "Graziella Magherini (1927–2023) · psiquiatra" · "palpitaciones" "mareos" "angustia" "algo más serio" |
 | 6 | 106 casos | 106 personitas que aparecen con un contador | "106" · "síndrome de Stendhal" · ficha "no figura en los manuales de diagnóstico" |
 | 7 | A quiénes | Las personitas se separan (solos) y se inclinan (agotados); caja "italianos" con un 0 rojo. Después, Florencia (Cole) a sangre: crecieron rodeados de estas obras | "¿A quiénes?" · "extranjeros" · "muchos, solos" · "agotados por el viaje" · "0 italianos" |
 | 8 | Por qué | **El vaso que rebalsa**: sube con la obra, el viaje (una valija que cae) y la sensibilidad previa; tiembla "a flor de piel" y rebalsa con "algo propio" | "¿Y por qué a ellos sí?" · "la obra" · "el viaje" · "una sensibilidad previa" · "a flor de piel" · "algo propio" |
@@ -133,6 +133,10 @@ amarillo de la nave `#EFE3A0`, rojo `#B3262E`.
 - Johan Zoffany, *La Tribuna de los Uffizi*, 1772–1777, Royal Collection.
 - Caravaggio, *Medusa*, c. 1597, Uffizi (ya bajada para el 01).
 - Francesco Hayez, *El beso*, 1859, Pinacoteca de Brera.
+- Foto de Graziella Magherini con su libro, publicada en el obituario de *The Telegraph* (diciembre de 2023). La eligió Dano;
+  no es de licencia libre: va con crédito ("foto: The Telegraph") en la ficha y en la descripción, y **no se sube al repo**
+  (es público; está en `.gitignore`). Para bajarla de nuevo:
+  `curl -o videos/06-stendhal/assets/magherini.jpg "https://www.telegraph.co.uk/content/dam/obituaries/2023/12/18/TELEMMGLPICT000000446332_17029159093030_trans_NvBQzQNjv4BqHgTv8HPfBVpZECAYOC1TIwwOewSo5Wh7oA-l6QjaX_g.jpeg?imwidth=1920"`
 
 ## Fuentes
 
@@ -146,6 +150,7 @@ amarillo de la nave `#EFE3A0`, rojo `#B3262E`.
 | A extranjeros, muchos viajando solos, agotados por el viaje | "Personas impresionables, de entre 26 y 40 años, estresadas por el viaje", muchas veces viajando solas; más de la mitad, del norte de Europa (ItaloAmericano, "Stendhal syndrome Florence"; Mental Floss; *The Letter* 31, 2004) |
 | Ninguno era italiano. La explicación habitual: crecieron rodeados de estas obras | Según Magherini, los italianos parecían "inmunes" porque crecen rodeados de arte (ItaloAmericano; Mental Floss). La versión 1 decía "casi nunca"; Dano lo grabó como "ninguno era italiano", que es lo que dicen las fuentes de divulgación. ◇ Confirmar con el libro |
 | «Lo que en Berlín llaman nervios», aclaró | «j'avais un battement de cœur, ce qu'on appelle des nerfs à Berlin» (*Rome, Naples et Florence*, 1826) |
+| Ficha: Graziella Magherini (1927–2023), psiquiatra | Nació en Florencia el 23 de agosto de 1927 y murió el 10 de diciembre de 2023; trabajó como psiquiatra en el hospital de Santa Maria Nuova (Wikipedia, "Graziella Magherini"; obituario de *The Telegraph*, 2023) |
 | Ficha: no figura en los manuales de diagnóstico | No está en el DSM-5 (*Arquivos de Neuro-Psiquiatria*, 2018) |
 | La psicología: un corazón acelerado es una señal ambigua; el contexto ayuda a decidir | Schachter y Singer (1962): la activación del cuerpo es parecida en emociones distintas, y lo que la nombra es cómo la persona interpreta la situación |
 | Para Magherini, la obra sola no alcanza: el viaje, las expectativas y lo propio que la obra despierta | Magherini, psiquiatra de formación psicoanalítica: el encuentro con la obra, en una ciudad extraña y lejos de casa, reactiva vivencias propias. ◇ Dano: confirmar la formulación con el libro o una entrevista |
@@ -162,8 +167,13 @@ amarillo de la nave `#EFE3A0`, rojo `#B3262E`.
    `herramientas/recortar.py` → `audio/voz-recortada.json` (el .wav recortado no se sube).
 3. **Pausas:** 1 s después del gancho y 1,3 s de cola: `herramientas/pausas.py … "arte.:1.0" --cola=1.3` →
    `audio/voz-editada.wav` y `.json` (88,9 s). `cotejar.py`: 229 palabras, 0 diferencias.
-4. **Video:** `video.html` (todo anclado a la voz con `W('palabra')`), `siluetas.js` (el Stendhal articulado, la cortina
-   y Florencia en silueta). Revisión con hojas y tiras, sobre todo de la secuencia en silueta (14,6 a 29,4 s).
+4. **Video:** `video.html` (todo anclado a la voz con `W('palabra')`), `siluetas.js` (el Stendhal articulado, la cortina,
+   Florencia y las casas en silueta). Revisión con hojas y tiras, sobre todo de la secuencia en silueta (14,6 a 29,4 s).
+   **Versión 2** (después de verla Dano: "hay detalles de la animación y el dibujo mejorables"): piernas con cinemática
+   inversa (el pie apoyado no patina), guantes con pulgar, ojo con pupila que parpadea, boca con expresión, galera que se
+   aplasta y se estira, respiración, anticipación antes de mirar hacia arriba y en "aclaró", gotas en "se le iba la vida",
+   el plano 8 rehecho como travelling de costado, el líquido del vaso recortado con la forma del vaso (se salía por
+   abajo) y la foto de Magherini.
 5. **Render y controles:**
    ```
    node herramientas/render.mjs videos/06-stendhal/video.html --audio=videos/06-stendhal/audio/voz-editada.wav --workers=4 --out=video.mp4

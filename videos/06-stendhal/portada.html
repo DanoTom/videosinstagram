@@ -33,7 +33,7 @@ let a = '';
 for (let k = 0; k < 6; k++) a += `<circle cx="650" cy="620" r="${360 + k * 90}" fill="none" stroke="#F4EEE3" stroke-width="${7 - k}" opacity="${0.9 - k * 0.12}"/>`;
 for (let k = 0; k < 16; k++) { const g = (k / 16) * Math.PI * 2; a += `<path d="M${650 + Math.cos(g) * 360} ${620 + Math.sin(g) * 360} L ${650 + Math.cos(g) * 1500} ${620 + Math.sin(g) * 1500}" stroke="#F4EEE3" stroke-width="3" opacity=".5"/>`; }
 $('anillos').innerHTML = a;
-$('fig').innerHTML = stendhal({ camina: 0, mira: -30 });
+$('fig').innerHTML = stendhal({ camina: 0, mira: -30, boca: 'o' });
 const img = new Image(); img.src = 'assets/volterrano.jpg'; await img.decode();
 encuadre($('fresco'), { src: img.src, w: 1920, h: 1631 }, [420, 60, 1000, 1000]);
 rasgar(document);
