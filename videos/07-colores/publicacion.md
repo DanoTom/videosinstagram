@@ -12,7 +12,7 @@ La oveja negra valía menos porque su lana no se podía teñir. Y la bandera roj
 
 No queda solo en las palabras. En 1988, Mark Frank y Thomas Gilovich mostraron a árbitros la misma jugada, filmada con el equipo de blanco y con el equipo de negro: con el de negro estaban más dispuestos a cobrar falta y la juzgaban más sucia.
 
-Roland Barthes decía que el mito convierte la historia en naturaleza. Con los colores pasa eso: alguien los decidió, y por eso parecen naturales.
+Fuera de la cancha pasa algo parecido: repetimos esas frases y miramos a los demás con esos colores: así se arma un prejuicio, que se mete en cómo juzgamos a alguien y en cómo nos vinculamos. Y como nadie recuerda quién lo decidió, parece natural. Roland Barthes lo llamaba mito: convertir la historia en naturaleza.
 
 Si te interesa, seguime por acá. Y si querés pensarlo con más tiempo, escribo El Reflejo (link en la bio).
 
@@ -40,7 +40,7 @@ Si a alguien se le ponen azules los labios, es una emergencia. Pero si alguien t
 
 «Sangre azul» viene de Castilla, o eso se dice: algunas familias tomaban las venas que se veían en la piel clara como prueba de no tener sangre mora ni judía; en 1449, en Toledo, un estatuto les prohibió los oficios públicos a los descendientes de judíos, aunque fueran cristianos. La oveja negra valía menos porque su lana no se podía teñir. La bandera roja anunciaba la ley marcial en París, hasta que en 1791 la guardia disparó contra la multitud y los revolucionarios levantaron esa misma bandera por sus muertos.
 
-Y no son solo palabras: en 1988, dos psicólogos de Cornell mostraron que la misma jugada parece más violenta si la hace un equipo vestido de negro.
+Y no son solo palabras: en 1988, dos psicólogos de Cornell mostraron que la misma jugada parece más violenta si la hace un equipo vestido de negro. Repetimos esas frases y miramos a los demás con esos colores: así se arma un prejuicio, que cambia cómo juzgamos y cómo nos vinculamos. Y como nadie recuerda quién lo decidió, parece natural.
 
 Soy psicólogo. Si te interesa, suscribite. También escribo El Reflejo, un newsletter para pensar con más tiempo: el link está en el perfil del canal.
 

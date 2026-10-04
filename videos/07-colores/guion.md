@@ -29,9 +29,13 @@ psicología como giro. Idea y estructura de Dano (4/10/2026). Duración prevista
 >
 > Todo eso quedó en el lenguaje: oveja negra, sangre azul, guante blanco, números rojos. Y no son solo palabras: en 1988, dos psicólogos mostraron que la misma jugada parece más violenta si la hace un equipo vestido de negro.
 >
-> Repetimos esos colores sin saber que alguien los decidió. Por eso parecen naturales.
+> Repetimos esas frases y miramos a los demás con esos colores: así se arma un prejuicio. Y como nadie recuerda quién lo decidió, parece natural.
 
-219 palabras: unos 83 s de voz con los ajustes de siempre de ElevenLabs, más 1 s después del gancho y la cola: 85–86 s.
+231 palabras (el cierre es la versión 2: ver la tabla). La voz editada dura 88,6 s.
+
+**Versión 1 del cierre** (la de la primera voz): "Repetimos esos colores sin saber que alguien los decidió. Por eso parecen
+naturales." Dano, al ver el video (4/10/2026): la frase queda indirecta; quería decir que no son solo frases, que cambian cómo
+nos vinculamos y cómo vemos a los demás (el prejuicio), y que ese modo de relacionarse se naturaliza.
 
 ### Qué cambió respecto de la estructura, y por qué
 
@@ -42,6 +46,7 @@ psicología como giro. Idea y estructura de Dano (4/10/2026). Duración prevista
 | "La sangre nunca es azul" va en pantalla, no en la voz | Es un dato lindo (las venas parecen azules por cómo la luz atraviesa la piel), pero son 13 palabras; en una ficha se lee igual |
 | En el rojo, "una bandera roja anunciaba la ley marcial" y "En 1791 la izaron en el Campo de Marte" | La ley marcial con la bandera roja es de 1789; en 1791 se usó en el Campo de Marte. Así no queda un "ese día" sin referente |
 | Se suma el giro de psicología: el experimento de 1988 con equipos vestidos de negro | El canal es de divulgación (regla 13): "por eso parece natural" se vuelve algo que se puede mostrar. No es solo vocabulario: el color cambia cómo juzgamos lo que vemos |
+| Cierre, versión 2 (pedido de Dano): "Repetimos esas frases y miramos a los demás con esos colores: así se arma un prejuicio. Y como nadie recuerda quién lo decidió, parece natural." | "Repetimos esos colores" era indirecto (se repiten frases, no colores) y no nombraba lo que acaba de mostrar el experimento: un prejuicio, juzgar por el color antes de mirar. Ahora el cierre va de las frases a cómo miramos a los demás, le pone nombre y termina en la naturalización; "nadie recuerda quién lo decidió" rima con la pregunta del gancho y con el título |
 
 ### Qué se lleva quien mira
 
@@ -166,3 +171,11 @@ que es lo que más funcionó.
    vacíos (el árbol, líneas finas sobre papel liso; el arranque del lenguaje) y se les puso fondo: la hoja del linaje y una
    página de diccionario. Después, 0 vacíos y 0 quietos. Dos pasadas a 2,55 Mbps (un poco menos que 240 / 87,9 − 0,13, para
    no rozar el límite) → `07-colores.mp4`, 29,3 MB.
+6. **Cierre, versión 2** (Dano, 4/10/2026, después de ver el video): nueva toma de ElevenLabs desde "Y no son solo
+   palabras" hasta el final (`audio/voz-cierre.mp3`, 19,3 s; así la entonación entra natural). Empalme a mano (numpy): la
+   voz de antes hasta "rojos.", con la pausa después de "color?" en 0,75 s; la toma nueva entera, con el volumen igualado y
+   0,45 s menos en el hueco después de "1988,"; cola de 0,85 s. Sin acelerar daba 90,0 s: todo con `atempo` 1,015 →
+   `voz-editada.wav`, 88,6 s. `cotejar.py`: 231/231; `quietud.py`: 0 vacíos y 0 quietos; a 2,52 Mbps, `07-colores.mp4` pesa 29,3 MB. En el video, el cierre nuevo: con "miramos a los demás con esos
+   colores" entran tres filtros (azul, gris, rojo), como gelatinas de luz, y tiñen al caballero; con "así se arma un
+   prejuicio" se apilan sobre la cara (tira "un prejuicio"); con "nadie recuerda quién lo decidió" los marcos se borran y el
+   tinte se disuelve, y la cámara vuelve a la cara del principio, en color, para que el loop empalme.
