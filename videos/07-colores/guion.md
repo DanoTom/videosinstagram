@@ -77,8 +77,8 @@ psicología como giro. Idea y estructura de Dano (4/10/2026). Duración prevista
   en pantalla.
 - **El experimento de 1988.** Frank y Gilovich hicieron dos cosas: miraron los registros de sanciones de la NFL y la NHL
   (los equipos de negro estaban entre los más sancionados, y al cambiar a camiseta negra las sanciones subían) y dos
-  experimentos de laboratorio (la misma jugada filmada, con el equipo defensor de negro o de blanco, parecía más violenta de
-  negro; y quienes se vestían de negro elegían juegos más agresivos). La voz dice solo lo segundo. Un estudio de 2012
+  experimentos de laboratorio (la misma jugada filmada, con el equipo defensor de negro o de blanco: 20 árbitros por versión, más
+  dispuestos a sancionar al de negro; y quienes se vestían de negro elegían juegos más agresivos). La voz dice solo lo segundo. Un estudio de 2012
   (Webster, Urland y Correll) encontró el mismo efecto en más de 52.000 partidos de la NHL entre 1984 y 2010; otro, de
   2011 (Caldwell y Burger), lo discutió ◇ (no se leyó completo).
 
@@ -119,7 +119,7 @@ que es lo que más funcionó.
 
 | Lo que dice la voz o la pantalla | Fuente |
 |---|---|
-| Labios azules: falta de oxígeno, una emergencia | Cianosis: coloración azulada de piel y labios por poco oxígeno en la sangre; si aparece de golpe, es una urgencia médica (MedlinePlus, "Coloración azulada de la piel") ◇ confirmar la página |
+| Labios azules: falta de oxígeno, una emergencia | ✓ Cianosis: coloración azul violácea de la piel, los labios y las uñas por más hemoglobina sin oxígeno en la sangre de los capilares; se recomienda buscar atención médica en cuanto aparece (Manual MSD/empendium, "Cianosis"; MedlinePlus, "Skin discoloration - bluish") |
 | La sangre nunca es azul; las venas lo parecen por la piel | A. Kienle y otros, "Why do veins appear blue? A new look at an old question", *Applied Optics* 35 (7), 1996, pp. 1151–1160: el color depende de cómo la piel dispersa y absorbe la luz, del oxígeno de la sangre, del diámetro y la profundidad de la vena y de la percepción |
 | "Sangre azul", de Castilla: familias que se decían libres de sangre mora o judía; la piel clara dejaba ver las venas (se dice) | Etymonline, "blue blood": desde 1809 en inglés, traducción de *sangre azul* "claimed by certain families of Castile that held themselves uncontaminated by Moorish or Jewish admixture", "probably" por las venas visibles en la piel clara; World Wide Words, "Blue blood"; Maria Edgeworth, *Helen*, 1834 («of the *sangre azul*, the blue blood») |
 | 1449, Toledo: el primer estatuto de limpieza de sangre prohibió los cargos públicos a los descendientes de judíos, aunque fueran cristianos | Sentencia-Estatuto de Pero Sarmiento, Ayuntamiento de Toledo, 5 de junio de 1449: los conversos de origen judío no podían ocupar oficios ni beneficios públicos; Juan II la aprobó en 1451. Considerado el primer estatuto de limpieza de sangre (e-Humanista/Conversos 13, monográfico; Hispanopedia, "Estatutos de limpieza de sangre") |
@@ -127,11 +127,17 @@ que es lo que más funcionó.
 | París: la bandera roja anunciaba la ley marcial; en 1791 la izaron en el Campo de Marte y la guardia disparó contra la multitud | Ley marcial del 21 de octubre de 1789 (la bandera roja como señal para que se dispersen las reuniones); 17 de julio de 1791: el alcalde Bailly hizo izar la bandera roja y la Guardia Nacional de La Fayette disparó contra los que firmaban una petición; "varias decenas de muertos" (Hérodote, "17 juillet 1791"; Wikipedia, "Champ de Mars massacre") |
 | Los revolucionarios levantaron esa misma bandera en honor a sus muertos | "Inverting the original symbolism, the Jacobins protested this action by flying a red flag to honour the «martyrs' blood»" (Wikipedia, "Red flag (politics)"); Jean Jaurès, *Historia socialista de la Revolución francesa*: la bandera de la ley marcial pasó a los insurrectos del 10 de agosto de 1792 |
 | Pantalla: «Ley marcial del pueblo soberano contra la rebelión del poder ejecutivo» (1792) | Wikipedia, "Insurrection of 10 August 1792" |
-| 1988: la misma jugada parece más violenta si la hace un equipo vestido de negro | M. G. Frank y T. Gilovich, "The dark side of self- and social perception: Black uniforms and aggression in professional sports", *Journal of Personality and Social Psychology* 54 (1), 1988, pp. 74–85 (Cornell). ◇ Confirmar con el artículo los detalles del experimento (quiénes miraron la jugada: árbitros y aficionados) |
-| (Pantalla) Barthes: el mito convierte la historia en naturaleza | Roland Barthes, *Mitologías* (1957), "El mito, hoy". ◇ Buscar la frase exacta en la traducción de Siglo XXI antes de citarla entre comillas |
+| 1988: la misma jugada parece más violenta si la hace un equipo vestido de negro | M. G. Frank y T. Gilovich, "The dark side of self- and social perception: Black uniforms and aggression in professional sports", *Journal of Personality and Social Psychology* 54 (1), 1988, pp. 74–85 (Cornell). ✓ El experimento: dos jugadas de fútbol americano filmadas igual, con el equipo defensor de blanco o de negro; 20 árbitros universitarios y de secundaria vieron cada versión, y con el equipo de negro estaban más dispuestos a sancionarlo y lo juzgaban más "sucio" (*Sports Illustrated*, "Dark forces", 17/4/1989). Ficha posible: "20 árbitros por versión" |
+| (Pantalla) Barthes: el mito convierte la historia en naturaleza | Roland Barthes, *Mitologías* (1957), "El mito, hoy": el mito tiene a su cargo convertir una intención histórica en naturaleza, una contingencia en eternidad. Va como paráfrasis, sin comillas: el texto de la traducción de Siglo XXI no se pudo leer desde acá |
 | (Contexto, no va en la voz) La asociación automática blanco = moral, negro = inmoral | G. D. Sherman y G. L. Clore, "The color of sin", *Psychological Science* 20 (8), 2009: en una tarea de Stroop se nombra más rápido el color negro de palabras inmorales y el blanco de palabras morales |
 
 ## Producción
 
-Pendiente: visto bueno de Dano al guion → storyboard → voz → `herramientas/transcribir.py` → `herramientas/pausas.py`
-(1 s después del gancho) → `video.html` → `herramientas/render.mjs`.
+1. **Guion:** aprobado por Dano (4/10/2026: "me cierra el guion así").
+2. **Storyboard:** `storyboard.html` → `storyboard.jpg` (13 cuadros). Prototipos: el tinte (`mancha()` y `gris()` en
+   `diseno/motor.js`) y el teñido en silueta (`siluetas.js`: el tintorero, la oveja, la tina y el vellón). Para el video:
+   los labios azules más sutiles (que el tinte se note en los labios, no como una mancha encima) y ropa de jugador para el
+   experimento (en el storyboard son el tintorero, invertido en blanco).
+3. **Voz:** pendiente, la graba Dano con ElevenLabs (la misma voz y los mismos ajustes que el 06).
+4. Después: `herramientas/transcribir.py` → `herramientas/pausas.py` (1 s después del gancho) → `video.html` →
+   `herramientas/render.mjs`.
