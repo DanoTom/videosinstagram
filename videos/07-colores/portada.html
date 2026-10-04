@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Portada · Los colores que alguien decidió</title>
+<link rel="stylesheet" href="../../diseno/sistema.css">
+<style>
+  body { margin: 0; }
+  #portada { background: #D9A441; }
+  #portada > * { position: absolute; }
+  svg { overflow: visible; }
+</style>
+</head>
+<body>
+<!-- Todo dentro del recorte 3:4 de la grilla del perfil (y 240–1680) -->
+<section class="frame" id="portada">
+  <svg id="fondo" viewBox="0 0 1080 1920" style="inset:0;width:1080px;height:1920px"></svg>
+  <div style="left:330px;top:280px;width:640px;height:640px;border-radius:50%;overflow:hidden;box-shadow:0 0 0 16px #141414, 0 0 0 26px #F4EEE3, 0 0 0 40px #141414">
+    <svg id="cara" style="position:absolute;inset:0;width:640px;height:640px"></svg>
+  </div>
+  <svg id="frente" viewBox="0 0 1080 1920" style="inset:0;width:1080px;height:1920px"></svg>
+  <div class="tira titular" data-rasgado style="top:1180px;left:120px;font-size:120px;white-space:nowrap;transform:rotate(-2deg)">Los colores</div>
+  <div class="tira titular" data-rasgado style="top:1325px;left:150px;font-size:90px;white-space:nowrap;transform:rotate(1deg)">que alguien <span style="color:#B8282E">decidió</span></div>
+  <div class="negro serif" style="top:1470px;left:170px;font-size:50px;transform:rotate(-1deg)">sangre azul, oveja negra, bandera roja</div>
+  <div class="grano"></div>
+</section>
+<script type="module">
+import { rasgar } from '../../diseno/sistema.js';
+import { mancha } from '../../diseno/motor.js';
+import { oveja, tina, vellon } from './siluetas.js';
+const $ = id => document.getElementById(id);
+// la cara de El Greco, con los labios azules
+const img = new Image(); img.src = 'assets/caballero.jpg'; await img.decode();
+const W = 1920, H = Math.round(img.naturalHeight * W / img.naturalWidth);
+$('cara').setAttribute('viewBox', '560 470 580 580');
+$('cara').setAttribute('preserveAspectRatio', 'xMidYMid slice');
+$('cara').innerHTML = `<defs>${mancha('lab1', { x: 850, y: 834, r: 60, ry: 24, semilla: 3, grano: 0.04, borde: 10 })}${mancha('lab2', { x: 850, y: 836, r: 42, ry: 11, semilla: 5, grano: 0.06, borde: 6 })}</defs>
+  <image href="${img.src}" width="${W}" height="${H}"/>
+  <rect width="${W}" height="${H}" fill="#5468B8" style="mix-blend-mode:color" opacity=".3" mask="url(#lab1)"/>
+  <rect width="${W}" height="${H}" fill="#4A62C0" style="mix-blend-mode:color" opacity=".55" mask="url(#lab2)"/>`;
+// detrás: el tendedero de madejas y tres manchas de tinte
+let f = `<path d="M-20 200 L 1100 200" stroke="#141414" stroke-width="6"/>`;
+['#B8282E', '#2C4BA0', '#F4EEE3', '#E0A93A', '#B8282E', '#5B7A3A', '#2C4BA0', '#F4EEE3', '#E0A93A'].forEach((c, i) => {
+  f += `<g transform="translate(${30 + i * 130} 200) rotate(${(i % 3) - 1})"><path d="M-26 0 Q -36 100 -22 190 L 22 190 Q 36 100 26 0 Z" fill="${c}" stroke="#141414" stroke-width="4"/></g>`;
+});
+$('fondo').innerHTML = f;
+// adelante: la tina roja y el vellón negro que sale negro (goteando rojo), y la oveja negra
+$('frente').innerHTML = `<g transform="translate(-40 840) scale(1.05)">${tina('#B8282E', { ola: 1, amp: 8 })}</g>
+  <g transform="translate(60 640) scale(1.1)"><path d="M110 -400 L 110 0" stroke="#141414" stroke-width="12"/>${vellon('#141414', { gotea: 0.45, colorGota: '#B8282E' })}</g>
+  <g transform="translate(700 960) scale(.62)">${oveja({ lana: '#141414', mira: -0.6, ceno: -0.6, oreja: 40, come: 0.2 })}</g>`;
+rasgar(document);
+await document.fonts.ready;
+window.listo = true;
+</script>
+</body>
+</html>

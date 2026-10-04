@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Storyboard · Los colores que alguien decidió</title>
+<link rel="stylesheet" href="../../diseno/sistema.css">
+<style>
+  /* Paleta del 07: lana cruda (el papel de fondo), tinta negra, índigo (el azul del vestido de la infanta), carmín (la
+     bandera) y pizarra para los tramos oscuros. El color es el protagonista: casi todo empieza en gris y se tiñe. */
+  :root { --noche: #2B2F36; --crema: #EFE8DA; --lana: #E6DDCB; --tinta: #161616; --azul: #2C4BA0; --rojo: #B8282E; --amarillo: #D9A441; }
+  body { margin: 0; background: #777; display: flex; flex-wrap: wrap; gap: 40px; padding: 40px; }
+  .frame.lana { background: var(--lana); color: var(--tinta); }
+  .sub { left: 80px; right: 150px; top: 1460px; font-weight: 600; font-size: 36px; line-height: 1.5; color: var(--crema); z-index: 5; }
+  .sub span { background: rgba(20,20,20,.88); padding: 3px 12px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+  svg.lienzo { position: absolute; inset: 0; width: 1080px; height: 1920px; }
+  .etiqueta { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 58px; line-height: 1; color: var(--crema);
+    background: var(--tinta); padding: 8px 20px 14px; white-space: nowrap; }
+  .num { font-weight: 800; letter-spacing: -.05em; line-height: .8; }
+  .nota { left: 40px; top: 1780px; font-family: 'Space Mono', monospace; font-size: 22px; color: #fff; background: #000; padding: 6px 12px; z-index: 9; }
+</style>
+</head>
+<body>
+
+<!-- 1 · GANCHO (a): los labios se tiñen de azul -->
+<section class="frame" id="f1">
+  <svg class="lienzo" id="l1"></svg>
+  <div class="etiqueta" style="top:300px;left:80px;font-size:64px;transform:rotate(-2deg)">le falta oxígeno</div>
+  <div class="sub"><span>Si a alguien se le ponen azules los labios, es una emergencia:</span></div>
+  <div class="nota">1 · 0–3 s · el tinte entra en los labios</div>
+</section>
+
+<!-- 2 · GANCHO (b): el azul se va de los labios y sube por las venas de la mano -->
+<section class="frame" id="f2">
+  <svg class="lienzo" id="l2"></svg>
+  <div class="tira titular" data-rasgado style="top:290px;left:80px;font-size:120px;transform:rotate(-3deg);color:var(--azul)">sangre azul</div>
+  <div class="negro serif" style="top:450px;left:120px;font-size:56px;transform:rotate(-2deg)">= noble</div>
+  <div class="sub"><span>Pero si alguien tiene sangre azul, es noble.</span></div>
+  <div class="nota">2 · 3–6 s · cámara atrás; el azul en la mano</div>
+</section>
+
+<!-- 3 · LA PREGUNTA: tres manchas de tinte -->
+<section class="frame lana" id="f3">
+  <svg class="lienzo" id="l3"></svg>
+  <div class="tira titular" data-rasgado style="top:1180px;left:70px;font-size:84px;line-height:.95;transform:rotate(-2deg);background:var(--tinta);color:var(--crema)">¿Quién decidió<br>qué significa<br>cada color?</div>
+  <div class="nota">3 · 6–9 s · tres gotas que caen y se abren</div>
+</section>
+
+<!-- 4 · AZUL (a): la infanta en gris, el azul se difunde desde el vestido -->
+<section class="frame" id="f4">
+  <svg class="lienzo" id="l4"></svg>
+  <div class="tira titular" data-rasgado style="top:1120px;left:80px;font-size:96px;transform:rotate(-2deg)">El azul, <span style="color:var(--azul)">por pureza</span></div>
+  <div class="ficha" style="top:1330px;left:80px;font-size:18px;transform:rotate(-1deg)">la sangre nunca es azul: las venas lo parecen<br>por cómo la luz atraviesa la piel · Kienle y otros, 1996</div>
+  <div class="sub"><span>Se dice que viene de Castilla: en la piel clara</span></div>
+  <div class="nota">4 · el tinte azul se difunde desde el vestido</div>
+</section>
+
+<!-- 5 · AZUL (b): Toledo, 1449 -->
+<section class="frame" id="f5">
+  <svg class="lienzo" id="l5"></svg>
+  <div class="num" style="top:300px;left:70px;font-size:260px;color:var(--crema)">1449</div>
+  <div class="etiqueta" style="top:530px;left:80px">Toledo</div>
+  <div class="ficha" style="top:1300px;left:80px;font-size:18px;transform:rotate(-1deg)">Sentencia-Estatuto de Pero Sarmiento<br>el primer estatuto de limpieza de sangre</div>
+  <div class="sub"><span>a los descendientes de judíos, aunque fueran cristianos.</span></div>
+  <div class="nota">5 · El Greco, Vista de Toledo, en gris; el cielo se tiñe</div>
+</section>
+
+<!-- 6 · NEGRO (a): la secuencia en silueta del teñido -->
+<section class="frame" id="f6" style="background:#D9A441">
+  <svg class="lienzo" id="l6" viewBox="0 0 1080 1920"></svg>
+  <div class="tira titular" data-rasgado style="top:290px;left:80px;font-size:96px;transform:rotate(-2deg)">El negro, <span style="color:var(--tinta)">por plata</span></div>
+  <div class="sub"><span>la blanca, que se teñía de cualquier color, era la valiosa.</span></div>
+  <div class="nota">6 · silueta: el vellón blanco sale de la tina rojo</div>
+</section>
+
+<!-- 7 · NEGRO (b): el vellón negro sale negro; la oveja negra queda aparte -->
+<section class="frame" id="f7" style="background:#8FA6C4">
+  <svg class="lienzo" id="l7" viewBox="0 0 1080 1920"></svg>
+  <div class="sub"><span>La lana de la oveja negra no se puede teñir, así que valía menos;</span></div>
+  <div class="nota">7 · silueta: el negro sale negro · travelling</div>
+</section>
+
+<!-- 8 · NEGRO (c): el juicio moral -->
+<section class="frame" id="f8">
+  <div class="puntos" style="position:absolute;inset:0"></div>
+  <div class="lamina" style="top:330px;left:70px;width:940px;height:640px;transform:rotate(-1deg)"><div class="plate" data-img="agnus" data-crop="80,240,1760,1198"></div></div>
+  <div class="ficha" style="top:300px;left:90px;font-size:18px">Francisco de Zurbarán · Agnus Dei, 1635–1640 · Prado</div>
+  <div class="tira titular" data-rasgado style="top:1040px;left:70px;font-size:76px;line-height:.95;transform:rotate(-2deg)">Lo que era mercado<br>se volvió juicio moral</div>
+  <div class="sub"><span>Lo que era mercado se volvió juicio moral.</span></div>
+  <div class="nota">8 · el cordero blanco: la pureza</div>
+</section>
+
+<!-- 9 · ROJO (a): la ley marcial, 1791 -->
+<section class="frame" id="f9">
+  <svg class="lienzo" id="l9"></svg>
+  <div class="tira titular" data-rasgado style="top:290px;left:80px;font-size:96px;transform:rotate(-2deg)">El rojo, <span style="color:var(--rojo)">por poder</span></div>
+  <div class="ficha" style="top:1210px;left:80px;font-size:18px;transform:rotate(-1deg)">Prieur y Berthault · Publicación de la ley marcial<br>en el Campo de Marte, 17 de julio de 1791</div>
+  <div class="sub"><span>En 1791 la izaron en el Campo de Marte,</span></div>
+  <div class="nota">9 · grabado en gris; solo la bandera se tiñe de rojo</div>
+</section>
+
+<!-- 10 · ROJO (b): la misma bandera, del otro lado -->
+<section class="frame" id="f10" style="background:var(--tinta)">
+  <svg class="lienzo" id="l10" viewBox="0 0 1080 1920"></svg>
+  <div class="tira titular" data-rasgado style="top:1180px;left:70px;font-size:96px;transform:rotate(-2deg)">Mismo color,<br>bando opuesto</div>
+  <div class="ficha" style="top:1400px;left:80px;font-size:16px">la bandera de los que tomaron las Tullerías, 10 de agosto de 1792</div>
+  <div class="nota">10 · la bandera flamea; la leyenda cambia</div>
+</section>
+
+<!-- 11 · EL LENGUAJE: las cuatro frases, cada una en su color -->
+<section class="frame lana" id="f11">
+  <div class="tira titular" data-rasgado style="top:360px;left:90px;font-size:120px;transform:rotate(-3deg);background:var(--tinta);color:var(--crema)">oveja negra</div>
+  <div class="tira titular" data-rasgado style="top:600px;left:200px;font-size:120px;transform:rotate(2deg);background:var(--azul);color:var(--crema)">sangre azul</div>
+  <div class="tira titular" data-rasgado style="top:840px;left:70px;font-size:120px;transform:rotate(-1deg);background:#fff;color:var(--tinta)">guante blanco</div>
+  <div class="tira titular" data-rasgado style="top:1080px;left:160px;font-size:120px;transform:rotate(2deg);background:var(--rojo);color:var(--crema)">números rojos</div>
+  <div class="sub"><span>Todo eso quedó en el lenguaje:</span></div>
+  <div class="nota">11 · cada frase cae en su color, como una gota</div>
+</section>
+
+<!-- 12 · EL GIRO: la misma jugada, de blanco y de negro -->
+<section class="frame" id="f12" style="background:#3E6B4A">
+  <svg class="lienzo" id="l12" viewBox="0 0 1080 1920"></svg>
+  <div class="ficha" style="top:300px;left:80px;font-size:20px">Frank y Gilovich · Cornell, 1988<br>la misma jugada filmada dos veces · 20 árbitros por versión</div>
+  <div class="sub"><span>la misma jugada parece más violenta si la hace un equipo vestido de negro.</span></div>
+  <div class="nota">12 · la misma jugada; el medidor sube solo con el negro</div>
+</section>
+
+<!-- 13 · CIERRE: el caballero sin color -->
+<section class="frame" id="f13">
+  <svg class="lienzo" id="l13"></svg>
+  <div class="tira titular" data-rasgado style="top:1180px;left:70px;font-size:96px;transform:rotate(-2deg)">Por eso parecen<br>naturales</div>
+  <div class="ficha" style="top:1400px;left:80px;font-size:18px">Roland Barthes: el mito convierte la historia en naturaleza<br>(Mitologías, 1957)</div>
+  <div class="nota">13 · el color se va; vuelve al primer cuadro (loop)</div>
+</section>
+
+<script type="module">
+import { encuadrar, rasgar } from '../../diseno/sistema.js';
+import { mancha, gris } from '../../diseno/motor.js';
+import { figura, oveja, tina, vellon, manoSumerge } from './siluetas.js';
+const $ = id => document.getElementById(id);
+const IMGS = {
+  caballero: { src: 'assets/caballero.jpg', w: 1920, h: 2460 },
+  infanta: { src: 'assets/infanta.jpg', w: 1920, h: 2283 },
+  toledo: { src: 'assets/toledo.jpg', w: 1920, h: 0 },
+  agnus: { src: 'assets/agnus.jpg', w: 1920, h: 0 },
+  leymarcial: { src: 'assets/leymarcial.jpg', w: 1920, h: 1747 },
+};
+await Promise.all(Object.values(IMGS).map(im => new Promise(ok => { const i = new Image(); i.onload = () => { im.h = Math.round(i.naturalHeight * im.w / i.naturalWidth); ok(); }; i.src = im.src; })));
+
+// una imagen recortada (viewBox = crop) con una capa en gris y otra en color, la de color con una mancha de tinte
+function lienzo(svg, img, crop, { gris: enGris = false, manchas = [], tintes = [] } = {}) {
+  const im = IMGS[img];
+  svg.setAttribute('viewBox', crop.join(' '));
+  svg.setAttribute('preserveAspectRatio', 'xMidYMid slice');
+  let d = gris('g-' + svg.id), cap = `<image href="${im.src}" width="${im.w}" height="${im.h}" ${enGris ? `filter="url(#g-${svg.id})"` : ''}/>`;
+  manchas.forEach((m, i) => { d += mancha(`${svg.id}-m${i}`, m); cap += `<image href="${im.src}" width="${im.w}" height="${im.h}" mask="url(#${svg.id}-m${i})"/>`; });
+  tintes.forEach((m, i) => { d += mancha(`${svg.id}-t${i}`, m); cap += `<rect x="0" y="0" width="${im.w}" height="${im.h}" fill="${m.color}" style="mix-blend-mode:${m.modo || 'multiply'}" opacity="${m.op || 0.85}" mask="url(#${svg.id}-t${i})"/>`; });
+  svg.innerHTML = `<defs>${d}</defs>${cap}`;
+}
+// 1 · los labios azules (cara en primer plano)
+lienzo($('l1'), 'caballero', [560, 380, 600, 1067], { tintes: [{ x: 850, y: 802, r: 30, color: '#4A6FD8', grano: 0.04, borde: 16, modo: 'color', op: 0.7 }] });
+// 2 · el caballero entero; el azul en la mano
+lienzo($('l2'), 'caballero', [268, 0, 1384, 2460], { tintes: [{ x: 600, y: 1740, r: 170, color: '#3A5BC8', grano: 0.02, borde: 60, modo: 'color', op: 0.8 }] });
+// 3 · tres gotas
+$('l3').setAttribute('viewBox', '0 0 1080 1920');
+$('l3').innerHTML = `<defs>${mancha('g1', { x: 270, y: 640, r: 150, semilla: 3, borde: 90 })}${mancha('g2', { x: 560, y: 760, r: 170, semilla: 9, borde: 90 })}${mancha('g3', { x: 830, y: 600, r: 140, semilla: 5, borde: 90 })}</defs>
+  <rect width="1080" height="1920" fill="#2C4BA0" mask="url(#g1)"/><rect width="1080" height="1920" fill="#161616" mask="url(#g2)"/><rect width="1080" height="1920" fill="#B8282E" mask="url(#g3)"/>`;
+// 4 · la infanta en gris, el azul se difunde desde el vestido
+lienzo($('l4'), 'infanta', [520, 0, 1284, 2283], { gris: true, manchas: [{ x: 1000, y: 1250, r: 520, semilla: 4, grano: 0.006, borde: 160 }] });
+// 5 · Toledo en gris, el cielo se tiñe
+lienzo($('l5'), 'toledo', [380, 0, 1080 * IMGS.toledo.h / 1920, IMGS.toledo.h], { gris: true, manchas: [{ x: 700, y: 250, r: 420, semilla: 2, grano: 0.006, borde: 150 }] });
+// 9 · el grabado en gris; la bandera, roja
+lienzo($('l9'), 'leymarcial', [900, 560, 760, 1351], { gris: true, tintes: [{ x: 1475, y: 990, r: 40, color: '#D0302A', grano: 0.05, borde: 14, modo: 'color', op: 1 }] });
+
+// 6 · el tintorero: el vellón blanco sale rojo de la tina
+{
+  const k = 1.0, X = 120, Y = 560, baja = 0.25, m = manoSumerge({ baja });
+  const hx = X + m[0] * k, hy = Y + m[1] * k;
+  let o = `<rect x="0" y="1500" width="1080" height="420" fill="#8A5A2B"/>`;
+  o += `<g transform="translate(560 1250)">${tina('#B8282E', { ola: 1 })}</g>`;
+  o += `<g transform="translate(-80 1360) scale(.55)">${tina('#2C4BA0', { ola: 2 })}</g><g transform="translate(860 1360) scale(.55)">${tina('#D9A441', { ola: 3 })}</g>`;
+  o += `<g transform="translate(${X} ${Y}) scale(${k})">${figura({ camina: 0, brazos: 'sumerge', baja, boca: 0.4 })}</g>`;
+  o += `<path d="M${hx} ${hy} L ${hx + 330} ${hy + 60}" stroke="#161616" stroke-width="14" stroke-linecap="round"/>`;
+  o += `<g transform="translate(${hx + 230} ${hy + 60})">${vellon('#B8282E', { gotea: 0.4 })}</g>`;
+  $('l6').innerHTML = o;
+}
+// 7 · el vellón negro sale negro; el rebaño blanco, y la oveja negra aparte
+{
+  let o = `<rect x="0" y="1380" width="1080" height="540" fill="#4F6B3A"/>`;
+  for (const [x, y, s] of [[60, 1150, .62], [300, 1180, .62], [540, 1140, .62]]) o += `<g transform="translate(${x} ${y}) scale(${s})">${oveja({ lana: '#F4EEE3', come: x === 300 ? 1 : 0 })}</g>`;
+  o += `<g transform="translate(790 1190) scale(.62)">${oveja({ lana: '#161616' })}</g>`;
+  o += `<g transform="translate(330 420) scale(.9)"><path d="M110 -400 L 110 0" stroke="#161616" stroke-width="12"/>${vellon('#161616', { gotea: 0.6 })}</g>`;
+  o += `<g transform="translate(230 760)">${tina('#B8282E', { ola: 4 })}</g>`;
+  $('l7').innerHTML = o;
+}
+// 10 · la bandera roja, con la leyenda de 1792
+{
+  const pts = []; for (let x = 0; x <= 700; x += 20) pts.push(`${260 + x} ${380 + Math.sin(x * 0.012) * 40}`);
+  const bot = []; for (let x = 700; x >= 0; x -= 20) bot.push(`${260 + x} ${980 + Math.sin(x * 0.012 + 0.6) * 40}`);
+  $('l10').innerHTML = `<rect x="236" y="300" width="22" height="1500" fill="#E6DDCB"/><path d="M${pts.join(' L ')} L ${bot.join(' L ')} Z" fill="#B8282E"/>
+    <text x="610" y="560" text-anchor="middle" font-family="Instrument Serif" font-style="italic" font-size="52" fill="#EFE8DA">Loi martiale</text>
+    <text x="610" y="640" text-anchor="middle" font-family="Instrument Serif" font-style="italic" font-size="44" fill="#EFE8DA">du peuple souverain</text>
+    <text x="610" y="720" text-anchor="middle" font-family="Instrument Serif" font-style="italic" font-size="38" fill="#EFE8DA">contre la rébellion</text>
+    <text x="610" y="790" text-anchor="middle" font-family="Instrument Serif" font-style="italic" font-size="38" fill="#EFE8DA">du pouvoir exécutif</text>`;
+}
+// 12 · la misma jugada, de blanco y de negro, y el medidor
+{
+  let o = '';
+  for (const [x, cam, nivel] of [[60, '#F4EEE3', 0.3], [560, '#161616', 0.8]]) {
+    o += `<rect x="${x}" y="520" width="460" height="760" rx="20" fill="#2F5639"/>`;
+    o += `<g transform="translate(${x + 40} 600) scale(.62)" style="${cam === '#F4EEE3' ? 'filter:invert(1)' : ''}">${figura({ fase: 0.3, inclina: -14, brazos: 'equilibrio', vaiven: 12, boca: -0.4 })}</g>`;
+    o += `<rect x="${x + 40}" y="1310" width="380" height="36" fill="#1F3A27"/><rect x="${x + 40}" y="1310" width="${380 * nivel}" height="36" fill="${cam === '#161616' ? '#B8282E' : '#EFE8DA'}"/>`;
+  }
+  o += `<text x="540" y="1400" text-anchor="middle" font-family="Space Mono" font-size="24" fill="#EFE8DA">¿LA SANCIONARÍAS?</text>`;
+  $('l12').innerHTML = o;
+}
+// 13 · el caballero en gris
+lienzo($('l13'), 'caballero', [268, 0, 1384, 2460], { gris: true });
+
+encuadrar(document, IMGS);
+rasgar(document);
+await document.fonts.ready;
+window.listo = true; window.seek = () => {}; window.DURACION = 1;
+</script>
+</body>
+</html>

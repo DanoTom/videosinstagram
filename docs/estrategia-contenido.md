@@ -92,6 +92,7 @@ Más ideas, con autores que leyeron estas obras desde la psicología y la filoso
 | 17 | B | Percepción: pareidolia | Arcimboldo, *El hortelano* (c. 1590): plato de verduras que, dado vuelta, es una cara | "¿Qué ves? Ahora dalo vuelta." |
 | 18 | A | Emociones que fueron enfermedades | La nostalgia: Johannes Hofer, 1688, los soldados suizos | "La nostalgia era una enfermedad. Podía matar." |
 | 19 | D | Mirar despacio | En el Met se mira cada obra maestra 17 s (mediana; Smith y Smith, 2001): el video propone mirar una de verdad | "¿Cuánto tiempo mirás un cuadro en un museo?" |
+| 20 | D | Lenguaje e ideología: cómo un significado se vuelve "natural" (idea de Dano; **07, hecho**) | El Greco, *El caballero de la mano en el pecho*; Velázquez; El Greco, *Vista de Toledo*; Prieur, la ley marcial en el Campo de Marte (1791) | "Si a alguien se le ponen azules los labios, es una emergencia. Pero si alguien tiene sangre azul, es noble." |
 
 ## Por dónde empezar
 
