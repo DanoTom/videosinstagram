@@ -177,7 +177,7 @@ que es lo que más funcionó.
    0,12 s menos en el silencio después de "palabras."; cola de 0,85 s; todo con `atempo` 1,015 → `voz-editada.wav`, 89,1 s.
    Ojo: en la primera versión del empalme se achicó el "hueco" que whisper marcaba después de "1988," y se cortó "…y ocho"
    (Dano lo escuchó): whisper termina "mil novecientos ochenta y ocho" antes de tiempo. Antes de cortar un hueco, mirar la
-   energía del audio, no solo los tiempos de whisper. `cotejar.py`: 231/231; `quietud.py`: 0 vacíos y 0 quietos; a 2,52 Mbps, `07-colores.mp4` pesa 29,3 MB. En el video, el cierre nuevo: con "miramos a los demás con esos
+   energía del audio, no solo los tiempos de whisper. `cotejar.py`: 231/231; `quietud.py`: 0 vacíos y 0 quietos; a 2,5 Mbps, `07-colores.mp4` pesa 29,4 MB. En el video, el cierre nuevo: con "miramos a los demás con esos
    colores" entran tres filtros (azul, gris, rojo), como gelatinas de luz, y tiñen al caballero; con "así se arma un
    prejuicio" se apilan sobre la cara (tira "un prejuicio"); con "nadie recuerda quién lo decidió" los marcos se borran y el
    tinte se disuelve, y la cámara vuelve a la cara del principio, en color, para que el loop empalme.
