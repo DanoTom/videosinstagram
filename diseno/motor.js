@@ -285,12 +285,12 @@ export function ritmo(claves, duracion, paso = 0.01) {
 // el lugar, así que al crecer r el borde avanza sobre el mismo "papel", como tinta que se corre. Se usa con dos capas de la
 // misma imagen: la de abajo en gris (filtro `gris`) y la de arriba en color con mask="url(#id)". Para teñir de un color
 // (los labios de azul), la capa de arriba es un rect del color con mix-blend-mode: multiply o color.
-export function mancha(id, { x, y, r, semilla = 7, grano = 0.012, borde = 70 }) {
+export function mancha(id, { x, y, r, ry = null, semilla = 7, grano = 0.012, borde = 70 }) {
   return `<filter id="${id}-f" x="-100%" y="-100%" width="300%" height="300%" primitiveUnits="userSpaceOnUse">
       <feTurbulence type="fractalNoise" baseFrequency="${grano}" numOctaves="3" seed="${semilla}" result="ruido"/>
       <feDisplacementMap in="SourceGraphic" in2="ruido" scale="${borde}" xChannelSelector="R" yChannelSelector="G"/>
     </filter>
     <mask id="${id}" maskUnits="userSpaceOnUse" x="-4000" y="-4000" width="12000" height="12000">
-      <circle cx="${x}" cy="${y}" r="${Math.max(0.01, r).toFixed(1)}" fill="#fff" filter="url(#${id}-f)"/></mask>`;
+      ${ry == null ? `<circle cx="${x}" cy="${y}" r="${Math.max(0.01, r).toFixed(1)}"` : `<ellipse cx="${x}" cy="${y}" rx="${Math.max(0.01, r).toFixed(1)}" ry="${Math.max(0.01, ry).toFixed(1)}"`} fill="#fff" filter="url(#${id}-f)"/></mask>`;
 }
 export const gris = id => `<filter id="${id}"><feColorMatrix type="saturate" values="0"/></filter>`;

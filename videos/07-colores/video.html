@@ -1,0 +1,999 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>07 · Los colores que alguien decidió</title>
+<link rel="stylesheet" href="../../diseno/sistema.css">
+<style>
+  /* Paleta del 07: lana cruda (el papel), tinta negra, índigo (el vestido de la infanta), carmín (la bandera), pizarra
+     para los tramos oscuros y el amarillo de la tina y del pañuelo del árbitro. Casi todo empieza en gris y se tiñe. */
+  :root { --noche: #2B2F36; --crema: #EFE8DA; --lana: #E6DDCB; --tinta: #161616; --azul: #2C4BA0; --rojo: #B8282E; --amarillo: #D9A441; }
+  html, body { margin: 0; background: #000; }
+  #video { background: var(--noche); }
+  .escena, .plano { position: absolute; inset: 0; overflow: hidden; }
+  .escena > *, .plano > * { position: absolute; }
+  .plano { display: none; }
+  svg { overflow: visible; }
+  svg.lienzo { inset: 0; width: 1080px; height: 1920px; }
+  .sub { left: 80px; right: 150px; top: 1460px; font-weight: 600; font-size: 36px; line-height: 1.5; color: var(--crema); z-index: 40; }
+  .sub span { background: rgba(20,20,20,.88); padding: 3px 12px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+  .etiqueta { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 58px; line-height: 1; color: var(--crema);
+    background: var(--tinta); padding: 8px 20px 14px; white-space: nowrap; }
+  .num { font-weight: 800; letter-spacing: -.05em; line-height: .8; }
+  .persona { position: absolute; width: 30px; height: 50px; }
+  .persona::before { content: ''; position: absolute; left: 7px; top: 0; width: 16px; height: 16px; border-radius: 50%; background: currentColor; }
+  .persona::after { content: ''; position: absolute; left: 0; top: 19px; width: 30px; height: 31px; border-radius: 14px 14px 4px 4px; background: currentColor; }
+  .pergamino { background: #EADFC4; color: #2B1D12; padding: 46px 56px; box-shadow: 0 24px 40px rgba(0,0,0,.5); font-family: 'Instrument Serif', serif; }
+  .pergamino .linea { font-size: 50px; line-height: 1.25; font-style: italic; width: fit-content; }
+  .libro .linea { font-family: 'Space Mono', monospace; font-size: 34px; line-height: 1.6; }
+</style>
+</head>
+<body>
+<div class="frame" id="video">
+
+  <!-- 1 · GANCHO: el caballero de El Greco; los labios se tiñen de azul; después el azul baja hasta la mano -->
+  <div class="escena" id="e1">
+    <svg class="lienzo" id="l1"></svg>
+    <div id="frio" style="inset:0;background:radial-gradient(closest-side, rgba(40,80,190,0) 55%, rgba(40,80,190,.55) 100%);opacity:0"></div>
+    <svg class="lienzo" viewBox="0 0 1080 1920" id="vena1"></svg>
+    <div class="etiqueta" id="oxi" data-rot="-2" style="top:1180px;left:80px;font-size:64px">le falta oxígeno</div>
+    <div class="tira titular" id="sangreAzul" data-rasgado data-rot="-3" style="top:330px;left:640px;font-size:110px;line-height:.95;color:var(--azul)">sangre<br>azul</div>
+    <div class="negro serif" id="noble" data-rot="-2" style="top:600px;left:680px;font-size:56px">= noble</div>
+  </div>
+
+  <!-- 2 · LA PREGUNTA: tres gotas que caen y se abren -->
+  <div class="escena" id="e2" style="background:var(--lana)">
+    <svg class="lienzo" viewBox="0 0 1080 1920" id="gotas"></svg>
+    <div class="tira titular" id="pregunta" data-rasgado data-rot="-2" style="top:1120px;left:70px;font-size:84px;line-height:.95;background:var(--tinta);color:var(--crema)"><span>¿Quién</span> <span>decidió</span><br><span>qué</span> <span>significa</span><br><span>cada</span> <span>color?</span></div>
+  </div>
+
+  <!-- 3 · AZUL -->
+  <div class="escena" id="e3">
+    <!-- a1 · la mancha azul llena todo -->
+    <div class="plano" id="a1" style="background:var(--lana)"><svg class="lienzo" viewBox="0 0 1080 1920" id="llenaAzul"></svg>
+      <div class="tira titular" id="tAzul" data-rasgado data-rot="-2" style="top:820px;left:80px;font-size:110px;white-space:nowrap">El azul, <span style="color:var(--azul)">por pureza</span></div></div>
+    <!-- a2 · la infanta en gris; el azul se difunde desde el vestido; la lupa sobre la mano -->
+    <div class="plano" id="a2"><svg class="lienzo" id="l3"></svg>
+      <svg class="lienzo" viewBox="0 0 1080 1920" id="lupa"></svg>
+      <div class="etiqueta" id="seDice" data-rot="-2" style="top:300px;left:80px">se dice</div>
+      <div class="tira titular" id="castilla" data-rasgado data-rot="2" style="top:390px;left:140px;font-size:84px;white-space:nowrap">Castilla</div>
+      <div class="ficha" id="fVenas" data-rot="-1" style="top:1310px;left:80px;font-size:18px">la sangre nunca es azul: las venas lo parecen<br>por cómo la luz atraviesa la piel · Kienle y otros, 1996</div>
+      <div class="ficha" id="fInf" data-rot="1" style="top:262px;left:560px;font-size:16px">Velázquez · La infanta Margarita en azul, 1659</div></div>
+    <!-- a3 · el árbol: las venas se vuelven un árbol genealógico -->
+    <div class="plano" id="a3" style="background:var(--noche)"><svg class="lienzo" viewBox="0 0 1080 1920" id="hoja3"></svg><svg class="lienzo" viewBox="0 0 1080 1920" id="arbol"></svg>
+      <div class="etiqueta" id="eMora" data-rot="-2" style="top:300px;left:90px">sin sangre mora ni judía</div></div>
+    <!-- a4 · Toledo, 1449 -->
+    <div class="plano" id="a4"><svg class="lienzo" id="l5"></svg>
+      <div id="rayo" style="inset:0;background:#fff;opacity:0;mix-blend-mode:overlay"></div>
+      <div class="num" id="n1449" style="top:300px;left:70px;font-size:260px;color:var(--crema)">1449</div>
+      <div class="etiqueta" id="eToledo" data-rot="-2" style="top:540px;left:80px">Toledo</div>
+      <div class="ficha" id="fToledo" data-rot="1" style="top:262px;left:560px;font-size:16px">El Greco · Vista de Toledo, c. 1600</div></div>
+    <!-- a5 · el estatuto: un pergamino que se escribe y un sello de lacre -->
+    <div class="plano" id="a5" style="background:var(--noche)"><div class="puntos" style="position:absolute;inset:0"></div>
+      <div class="pergamino" id="perga" data-rot="-1" style="top:330px;left:84px;width:800px;height:760px">
+        <div class="linea" style="font-size:54px;font-style:normal;font-weight:700;letter-spacing:-.02em">Sentencia-Estatuto</div>
+        <div class="linea" style="font-size:30px;font-family:'Space Mono',monospace;font-style:normal;margin-bottom:24px">Toledo, 5 de junio de 1449</div>
+        <div class="linea">que ningún converso</div><div class="linea">de linaje de judíos</div><div class="linea">pueda tener oficio</div><div class="linea">ni beneficio alguno</div><div class="linea">en esta ciudad…</div>
+      </div>
+      <svg class="lienzo" viewBox="0 0 1080 1920" id="sello"></svg>
+      <div class="ficha" id="fEst" data-rot="-1" style="top:1260px;left:90px;font-size:18px">Sentencia-Estatuto de Pero Sarmiento · el primer estatuto<br>de limpieza de sangre · texto resumido</div></div>
+    <!-- a6 · cristianos viejos y nuevos: iguales, y una línea los separa -->
+    <div class="plano" id="a6" style="background:#8FA6C4">
+      <svg class="lienzo" viewBox="0 0 1080 1920" id="puerta"></svg>
+      <div class="etiqueta" id="eViejos" data-rot="2" style="top:300px;left:600px;font-size:46px">cristianos viejos</div>
+      <div class="etiqueta" id="eNuevos" data-rot="-2" style="top:460px;left:70px;font-size:46px">cristianos nuevos</div>
+      <div class="ficha" id="fNuevos" data-rot="-1" style="top:545px;left:80px;font-size:16px">conversos o descendientes de conversos</div></div>
+  </div>
+
+  <!-- 4 · NEGRO: la tintorería en silueta. Un plano secuencia (camina, hunde el vellón negro dos veces, la doble toma), el
+       mostrador (una moneda), los tres baños (paneo de tina en tina), el mostrador otra vez (llueven monedas) y el rebaño -->
+  <div class="escena" id="e4">
+    <div class="plano" id="n1" style="background:#D9A441"><svg class="lienzo" viewBox="0 0 1080 1920" id="taller"></svg>
+      <div class="tira titular" id="tNegro" data-rasgado data-rot="-2" style="top:290px;left:80px;font-size:104px;white-space:nowrap">El negro, <span style="color:var(--tinta)">por plata</span></div></div>
+    <div class="plano" id="n2" style="background:#7FA89A"><svg class="lienzo" viewBox="0 0 1080 1920" id="mostrador"></svg>
+      <div class="etiqueta" id="eMenos" data-rot="-2" style="top:300px;left:90px">valía menos</div>
+      <div class="etiqueta" id="eValiosa" data-rot="-2" style="top:300px;left:90px">la valiosa</div></div>
+    <div class="plano" id="n3" style="background:#D9A441"><svg class="lienzo" viewBox="0 0 1080 1920" id="tres"></svg></div>
+    <div class="plano" id="n5" style="background:#9FC0C8"><svg class="lienzo" viewBox="0 0 1080 1920" id="rebaño"></svg>
+      <div class="tira titular" id="tJuicio" data-rasgado data-rot="-2" style="top:290px;left:70px;font-size:80px;line-height:.95">Lo que era mercado<br>se volvió <span style="color:var(--rojo)">juicio moral</span></div></div>
+  </div>
+
+  <!-- 5 · ROJO -->
+  <div class="escena" id="e5">
+    <div class="plano" id="r1" style="background:var(--lana)"><svg class="lienzo" viewBox="0 0 1080 1920" id="llenaRojo"></svg>
+      <div class="tira titular" id="tRojo" data-rasgado data-rot="-2" style="top:820px;left:80px;font-size:110px;white-space:nowrap">El rojo, <span style="color:var(--rojo)">por poder</span></div></div>
+    <div class="plano" id="r2" style="background:#9FB3C8"><svg class="lienzo" viewBox="0 0 1080 1920" id="izar"></svg>
+      <div class="etiqueta" id="eParis" data-rot="-2" style="top:300px;left:80px">París</div>
+      <div class="tira titular" id="tLey" data-rasgado data-rot="2" style="top:1180px;left:420px;font-size:86px;white-space:nowrap">ley marcial</div></div>
+    <div class="plano" id="r3" style="background:var(--noche)"><svg class="lienzo" id="l9"></svg><svg class="lienzo" viewBox="0 0 1080 1920" id="marca9"></svg>
+      <div class="num" id="n1791" style="top:300px;left:70px;font-size:240px;color:var(--tinta)">1791</div>
+      <div class="ficha" id="fLey" data-rot="-1" style="top:1300px;left:80px;font-size:18px">Prieur y Berthault · Publicación de la ley marcial<br>en el Campo de Marte, 17 de julio de 1791</div></div>
+    <div class="plano" id="r4" style="background:var(--noche)"><svg class="lienzo" id="l10"></svg>
+      <svg class="lienzo" viewBox="0 0 1080 1920" id="humo"></svg>
+      <div id="fogonazo" style="inset:0;background:#FFF2D0;opacity:0;mix-blend-mode:screen"></div></div>
+    <div class="plano" id="r5" style="background:#C9B48A"><svg class="lienzo" viewBox="0 0 1080 1920" id="pueblo"></svg>
+      <div class="ficha" id="fMartires" data-rot="1" style="top:262px;left:80px;font-size:16px">después del Campo de Marte, los jacobinos levantaron<br>una bandera roja por la sangre de los muertos</div></div>
+    <div class="plano" id="r6" style="background:var(--tinta)"><svg class="lienzo" viewBox="0 0 1080 1920" id="espejo"></svg>
+      <div class="tira titular" id="tBando" data-rasgado data-rot="-2" style="top:1290px;left:70px;font-size:96px;line-height:.95">Mismo color,<br>bando opuesto</div></div>
+  </div>
+
+  <!-- 6 · EL LENGUAJE: una cabeza de perfil se traga las gotas de color y las frases le salen de la boca; después se caen -->
+  <div class="escena" id="e6" style="background:#CFC6B4">
+    <svg class="lienzo" viewBox="0 0 1080 1920" id="dicc"></svg>
+    <svg class="lienzo" viewBox="0 0 1080 1920" id="cabeza6"></svg>
+    <svg class="lienzo" viewBox="0 0 1080 1920" id="iconos"></svg>
+    <div class="tira titular" id="fOveja" data-rasgado data-rot="-3" style="top:300px;left:70px;font-size:108px;white-space:nowrap;background:var(--tinta);color:var(--crema)">oveja negra</div>
+    <div class="tira titular" id="fSangre" data-rasgado data-rot="2" style="top:490px;left:150px;font-size:108px;white-space:nowrap;background:var(--azul);color:var(--crema)">sangre azul</div>
+    <div class="tira titular" id="fGuante" data-rasgado data-rot="-1" style="top:680px;left:60px;font-size:108px;white-space:nowrap;background:#fff;color:var(--tinta)">guante blanco</div>
+    <div class="tira titular" id="fNumeros" data-rasgado data-rot="2" style="top:870px;left:110px;font-size:108px;white-space:nowrap;background:var(--rojo);color:var(--crema)">números rojos</div>
+  </div>
+
+  <!-- 7 · EL GIRO: el árbitro mete el casete; la misma jugada dos veces, de blanco y de negro; con la de negro tira el pañuelo -->
+  <div class="escena" id="e7" style="background:#7B5E7B">
+    <svg class="lienzo" viewBox="0 0 1080 1920" id="teles"></svg>
+    <div class="num" id="n1988" style="top:300px;left:70px;font-size:200px;color:var(--crema)">1988</div>
+    <div class="ficha" id="fFrank" data-rot="1" style="top:330px;left:560px;font-size:18px">Mark Frank y Thomas Gilovich · Cornell<br>Journal of Personality and Social<br>Psychology, 1988</div>
+    <div class="ficha" id="fArbitros" data-rot="1" style="top:330px;left:560px;font-size:18px">la misma jugada, filmada dos veces:<br>con el equipo de blanco y de negro<br>20 árbitros vieron cada versión</div>
+  </div>
+
+  <!-- 8 · CIERRE -->
+  <div class="escena" id="e8">
+    <svg class="lienzo" id="l13"></svg>
+    <div class="tira titular" id="tNatural" data-rasgado data-rot="-2" style="top:1150px;left:70px;font-size:96px;line-height:.95">Por eso parecen<br>naturales</div>
+    <div class="ficha" id="fBarthes" data-rot="1" style="top:1380px;left:80px;font-size:18px">Roland Barthes: el mito convierte la historia en naturaleza<br>(Mitologías, 1957)</div>
+  </div>
+
+  <div class="sub" id="sub"></div>
+  <div class="grano" id="grano"></div>
+</div>
+
+<script type="module">
+import { encuadrar, rasgar } from '../../diseno/sistema.js';
+import { cargarVoz, subtitulos, pieza, hervir, prog, lerp, ease, clamp, porPalabra, tinta, trazo, mancha, gris } from '../../diseno/motor.js';
+import { figura, oveja, tina, vellon, balanza, moneda, tele, ZANCADA, bobDe } from './siluetas.js';
+
+const IMGS = {
+  caballero:  { src: 'assets/caballero.jpg',  w: 1920, h: 2460 },
+  infanta:    { src: 'assets/infanta.jpg',    w: 1920, h: 2283 },
+  toledo:     { src: 'assets/toledo.jpg',     w: 1920, h: 0 },
+  leymarcial: { src: 'assets/leymarcial.jpg', w: 1920, h: 1747 },
+  fusillade:  { src: 'assets/fusillade.jpg',  w: 1920, h: 0 },
+};
+await Promise.all(Object.values(IMGS).map(im => new Promise(ok => { const i = new Image(); i.onload = () => { im.h = Math.round(i.naturalHeight * im.w / i.naturalWidth); ok(); }; i.src = im.src; })));
+
+const $ = id => document.getElementById(id);
+const voz = await cargarVoz('audio/voz-editada.json');
+const W = voz.W, DURACION = voz.duracion;
+const T = {
+  azules: W('azules').s, emerg: W('emergencia').s, falta: W('le falta').s, pero: W('pero si alguien').s, sangre1: W('sangre azul').s, noble: W('noble').s,
+  quien: W('quién decidió').s, que: W('qué significa').s, cada: W('cada color').s, color: W('cada color').e,
+  e3: W('el azul por').s - 0.25, pureza: W('pureza').s, sedice: W('se dice').s, castilla: W('castilla').s, piel: W('en la piel clara').s,
+  venas: W('venas').s, familias: W('algunas familias').s, prueba: W('prueba').s, mora: W('mora').s, judia: W('judía').e,
+  y1449: W('y en 1449').s - 0.1, anio: W('1449').s, toledo: W('toledo').s, estatuto: W('el primer estatuto').s, prohibio: W('prohibió').s,
+  cargos: W('cargos').s, desc: W('a los descendientes').s, aunque: W('aunque fueran').s, cristianos: W('cristianos').s,
+  e4: W('el negro por').s - 0.2, lana: W('la lana de la').s, tenir: W('teñir').s, valia: W('así que valía').s, menos: W('menos').s,
+  blanca: W('la blanca').s, tenia: W('teñía').s, cualquier: W('cualquier').s, valiosa: W('valiosa').s, era: W('era la valiosa').s, mercado: W('lo que era mercado').s, juicio: W('juicio').s, volvio: W('se volvió').s,
+  e5: W('el rojo por').s - 0.2, poder: W('poder').s, paris: W('en parís').s, bandera: W('una bandera roja').s, ley: W('ley marcial').s,
+  a1791: W('1791').s, izaron: W('izaron').s, campo: W('campo de marte').s, guardia: W('y la guardia').s, disparo: W('disparó').s,
+  multitud: W('multitud').s, revol: W('los revolucionarios').s, levantaron: W('levantaron').s, honor: W('en honor').s, muertos: W('muertos').s,
+  mismo: W('mismo color').s, bando: W('bando opuesto').s,
+  e6: W('todo eso quedó').s - 0.2, lenguaje: W('lenguaje').s, oveja: W('oveja negra', 2).s, sangre2: W('sangre azul', 2).s,
+  guante: W('guante blanco').s, numeros: W('números rojos').s, rojos: W('números rojos').e,
+  e7: W('y no son solo').s - 0.15, palabras: W('palabras').s, a1988: W('1988').s, psicologos: W('dos psicólogos').s, jugada: W('la misma jugada').s,
+  violenta: W('violenta').s, equipo: W('un equipo vestido').s, negro2: W('de negro').s,
+  e8: W('repetimos').s - 0.2, colores: W('esos colores').s, decidio: W('los decidió').s, poreso: W('por eso parecen').s, naturales: W('naturales').s,
+};
+T.vuelta = DURACION - 0.35;
+T.e7b = T.palabras + 0.45;
+T.colorW = voz.palabras[W('cualquier color').i + 1].s;
+const escenas = [['e1', -1, T.quien - 0.1], ['e2', T.quien - 0.1, T.e3], ['e3', T.e3, T.e4], ['e4', T.e4, T.e5], ['e5', T.e5, T.e6],
+  ['e6', T.e6, T.e7b], ['e7', T.e7b, T.e8], ['e8', T.e8, 999]];
+const SUBS = subtitulos(voz, [['quién decidió qué significa cada color'], ['el azul por pureza'], ['el negro por plata'], ['el rojo por poder'],
+  ['mismo color bando opuesto'], ['oveja negra sangre azul guante blanco números rojos'], ['por eso parecen naturales']], 7);
+const preg = (() => { const r = W('quién decidió qué significa cada color'); return [0, 1, 2, 3, 4, 5].map(k => voz.palabras[r.i + k].s); })();
+
+const doce = t => Math.floor(t * 12) / 12;
+const parpadea = (t, d) => { const u = (t / 2.4 + d) % 1; return u < 0.035 ? 1 : u < 0.06 ? 0.5 : 0; };
+const sv = (el, h) => { if (el._h !== h) { el.innerHTML = h; el._h = h; } };
+const f1 = v => (+v).toFixed(1);
+const aparecer = (el, t, t0, t1 = Infinity, dur = 0.3) => {
+  const o = ease.out(prog(t, t0, t0 + dur)) * (t1 === Infinity ? 1 : 1 - prog(t, t1, t1 + 0.3));
+  el.style.opacity = o; el.style.visibility = o > 0 ? 'visible' : 'hidden';
+};
+// Un plano a la vez dentro de una escena: cortes = [inicio de cada plano..., fin]
+const planos = (ids, cortes, t) => { const k = cortes.filter(c => t >= c).length - 1; ids.forEach((id, i) => { $(id).style.display = i === k ? 'block' : 'none'; }); return k; };
+
+// Una imagen recortada (viewBox = crop) en un svg, con una capa de color, otra en gris, manchas que tiñen y tintes de color
+function lienzo(svg, img, crop, { enGris = false, manchas = [], tintes = [], formas = [], color = null } = {}) {
+  const im = IMGS[img], key = JSON.stringify([crop, enGris, manchas, tintes, formas, color]);
+  if (svg._k === key) return; svg._k = key;
+  svg.setAttribute('viewBox', crop.map(f1).join(' '));
+  svg.setAttribute('preserveAspectRatio', 'xMidYMid slice');
+  let d = gris('g-' + svg.id), cap = `<image href="${im.src}" width="${im.w}" height="${im.h}" ${enGris ? `filter="url(#g-${svg.id})"` : ''}/>`;
+  manchas.forEach((m, i) => { d += mancha(`${svg.id}-m${i}`, m); cap += `<image href="${im.src}" width="${im.w}" height="${im.h}" mask="url(#${svg.id}-m${i})"/>`; });
+  tintes.forEach((m, i) => { d += mancha(`${svg.id}-t${i}`, m); cap += `<rect width="${im.w}" height="${im.h}" fill="${m.color}" style="mix-blend-mode:${m.modo || 'color'}" opacity="${m.op ?? 0.8}" mask="url(#${svg.id}-t${i})"/>`; });
+  formas.forEach(m => { cap += `<path d="${m.d}" fill="${m.color}" style="mix-blend-mode:${m.modo || 'color'}" opacity="${m.op ?? 0.8}"/>`; });
+  svg.innerHTML = `<defs>${d}</defs>${cap}`;
+}
+const recorte = (a, b, p) => a.map((v, i) => lerp(v, b[i], p));
+
+// ───── Gotas: caen, se aplastan al tocar el papel, salpican y la mancha se abre ─────
+function gota(id, t, t0, { x, y, color, r = 150, semilla = 3 }) {
+  const caer = 0.32, p = prog(t, t0, t0 + caer);
+  if (t < t0) return { defs: '', o: '' };
+  if (p < 1) {
+    const yy = lerp(-120, y, p * p), estira = 1 + 0.8 * p;
+    return { defs: '', o: `<ellipse cx="${x}" cy="${f1(yy)}" rx="${f1(26 / estira)}" ry="${f1(26 * estira)}" fill="${color}"/>` };
+  }
+  const q = ease.out(prog(t, t0 + caer, t0 + caer + 0.9));
+  let o = `<rect width="1080" height="1920" fill="${color}" mask="url(#${id})"/>`;
+  const s = prog(t, t0 + caer, t0 + caer + 0.45);
+  if (s < 1) for (let k = 0; k < 9; k++) {
+    const a = -Math.PI * (0.1 + 0.8 * ((k * 0.37) % 1)), v = 300 + 180 * ((k * 0.61) % 1);
+    o += `<circle cx="${f1(x + Math.cos(a) * v * s)}" cy="${f1(y + Math.sin(a) * v * s + 900 * s * s)}" r="${f1(9 * (1 - s) + 3)}" fill="${color}"/>`;
+  }
+  return { defs: mancha(id, { x, y, r: r * (0.25 + 0.75 * q), semilla, borde: 90 }), o };
+}
+
+// ───── La tintorería (escena 4): poses del tintorero con la vara, el vellón como péndulo, el salpicón, el taller ─────
+const rad = g => g * Math.PI / 180;
+const SUELO = 1500, PARED = 1330, ROJO = '#B8282E', AZUL = '#2C4BA0', AMAR = '#E0A93A', LANA = '#F4EEE3', NEGRO = '#161616';
+// G: la mano de adelante; ang: la vara, en grados bajo la horizontal; inc: el cuerpo (todo en la caja de la figura)
+const POSE = {
+  carga: { G: [470, 470], ang: -25, inc: 0 }, arriba: { G: [440, 380], ang: -45, inc: -5 }, adentro: { G: [470, 640], ang: 48, inc: 12 },
+  afuera: { G: [470, 520], ang: -10, inc: 2 }, muestra: { G: [460, 430], ang: -35, inc: -2 },
+};
+const VARA = 320, SUP = 761;   // el largo de la vara y la superficie del tinte (caja), con la tina en (474, 685)
+// Interpola entre claves [t, valor, ease del tramo que llega]; el valor es una pose o un número
+function claves(t, ks) {
+  const mezcla = (a, b, u) => typeof a === 'number' ? lerp(a, b, u) : { G: [lerp(a.G[0], b.G[0], u), lerp(a.G[1], b.G[1], u)], ang: lerp(a.ang, b.ang, u), inc: lerp(a.inc, b.inc, u) };
+  if (t <= ks[0][0]) return ks[0][1];
+  for (let i = 1; i < ks.length; i++) if (t < ks[i][0]) { const [ta, a] = ks[i - 1], [tb, b, e = ease.inOut] = ks[i]; return mezcla(a, b, e((t - ta) / (tb - ta))); }
+  return ks[ks.length - 1][1];
+}
+const punta = P => [P.G[0] + Math.cos(rad(P.ang)) * VARA, P.G[1] + Math.sin(rad(P.ang)) * VARA];
+// Una zambullida: levanta (anticipación), hunde rápido, revuelve, saca. Llega afuera en tf.
+const zambullida = (tf, desde = POSE.carga, d = 1) => [[tf - 0.62 * d, desde], [tf - 0.46 * d, POSE.arriba, ease.out], [tf - 0.3 * d, POSE.adentro, ease.in],
+  [tf - 0.16 * d, POSE.adentro], [tf, POSE.afuera, ease.out]];
+const revuelve = (P, tt, tramos) => tramos.some(([a, b]) => tt > a && tt < b) ? { ...P, G: [P.G[0] + 16 * Math.sin(tt * 24), P.G[1] + 7 * Math.cos(tt * 24)] } : P;
+
+// El vellón cuelga de la punta: un péndulo que se integra desde t0 con la aceleración de la punta (adentro del tinte, frena)
+function pendulo(fPunta, t0, t, sup = Infinity) {
+  const dt = 1 / 240; let phi = 0, w = 0, p0 = fPunta(t0 - 2 * dt), p1 = fPunta(t0 - dt);
+  for (let s = t0; s < t; s += dt) {
+    const p2 = fPunta(s), cl = v => Math.max(-30000, Math.min(30000, v));
+    const ax = cl((p2[0] - 2 * p1[0] + p0[0]) / (dt * dt)), ay = cl((p2[1] - 2 * p1[1] + p0[1]) / (dt * dt));
+    w += (-((2600 - ay) * Math.sin(phi) + ax * Math.cos(phi)) / 150 - (p2[1] > sup ? 30 : 3) * w) * dt;
+    phi = Math.max(-1.1, Math.min(1.1, phi + w * dt)); p0 = p1; p1 = p2;
+  }
+  return -phi * 180 / Math.PI;
+}
+// El tintorero con la vara y el vellón (en la caja de la figura). El vellón se recorta en la superficie del tinte.
+function tintorero(id, P, { fase = 0, camina = 0, lana = LANA, gotea = 0, colorGota = null, giro = 0, sup = SUP, ...cab }) {
+  const b = bobDe(fase, camina), p = punta(P);
+  return `<clipPath id="${id}"><rect x="-3000" y="-3000" width="7000" height="${f1(3000 + sup)}"/></clipPath>
+    <g clip-path="url(#${id})"><g transform="translate(${f1(p[0] - 110)} ${f1(p[1] + b)}) rotate(${f1(giro)} 110 0)">${vellon(lana, { gotea, colorGota })}</g></g>
+    ${figura({ fase, camina, inclina: P.inc, vara: { G: P.G, ang: P.ang, largo: VARA }, ...cab })}`;
+}
+// Salpicón: la corona que sube y se cae, y las gotas en parábola (en la caja: x, y = el centro de la superficie)
+function salpicon(t, ts, x, y, color, n = 16) {
+  const q = (t - ts) / 0.6; if (q < 0 || q > 1) return '';
+  let o = '';
+  const c = Math.sin(Math.PI * Math.min(1, q * 2.4));
+  if (c > 0.02) { const pts = []; for (let i = 0; i <= 14; i++) { const u = i / 14; pts.push(`${f1(x - 160 + 320 * u)} ${f1(y - (i % 2 ? 110 : 40) * c * (1 - 1.4 * Math.abs(u - 0.5)))}`); } o += `<path d="M${x - 170} ${y + 8} L ${pts.join(' L ')} L ${x + 170} ${y + 8} Z" fill="${color}"/>`; }
+  for (let i = 0; i < n; i++) {
+    const a = -Math.PI * (0.1 + 0.8 * ((i * 0.618) % 1)), v = 600 + 600 * ((i * 0.37) % 1), s = q * 0.6;
+    const xx = x + Math.cos(a) * v * s * 0.7, yy = y + Math.sin(a) * v * s + 2600 * s * s;
+    if ((yy > y + 10 && Math.abs(xx - x) < 190) || yy > 980) continue;
+    o += `<ellipse cx="${f1(xx)}" cy="${f1(yy)}" rx="${f1(8 + 6 * ((i * 0.53) % 1))}" ry="${f1(11 + 6 * ((i * 0.29) % 1))}" fill="${color}"/>`;
+  }
+  return o;
+}
+const ola = (t, golpes) => 4 + golpes.reduce((a, ts) => a + (t > ts ? 30 * Math.exp(-(t - ts) * 4) : 0), 0);
+// La cámara: z = zoom; f = el punto del mundo que va a parar a a (los dos en px de pantalla a z = 1)
+const camara = (z, f = [540, 960], a = [540, 960]) => `translate(${f1(a[0])} ${f1(a[1])}) scale(${z.toFixed(4)}) translate(${f1(-f[0])} ${f1(-f[1])})`;
+// El taller: la pared con vigas, ventanas y estantes; el tendedero con madejas que gotean; tinas al fondo que humean; el piso
+function fondoTaller(camX, t) {
+  let o = '';
+  const p0 = camX * 0.4;
+  for (let i = Math.floor((p0 - 1300) / 420); i * 420 - p0 < 2400; i++) {
+    const x = i * 420 - p0, m = ((i % 3) + 3) % 3;
+    o += `<rect x="${f1(x)}" y="-1200" width="46" height="${PARED + 1200}" fill="#B88433"/>`;
+    if (m === 1) o += `<path d="M${f1(x + 120)} 470 L ${f1(x + 280)} 470 L ${f1(x + 560)} ${PARED} L ${f1(x + 330)} ${PARED} Z" fill="#FFF6D8" opacity=".2"/>
+      <rect x="${f1(x + 120)}" y="230" width="160" height="240" fill="#F6DC8E"/><path d="M${f1(x + 200)} 230 L ${f1(x + 200)} 470 M ${f1(x + 120)} 350 L ${f1(x + 280)} 350" stroke="#B88433" stroke-width="12"/>`;
+    if (m === 2) { o += `<rect x="${f1(x + 80)}" y="1010" width="280" height="14" fill="#8C6224"/>`; [[110, ROJO], [170, AZUL], [230, '#5B7A3A'], [290, AMAR]].forEach(([dx, c]) => { o += `<rect x="${f1(x + dx)}" y="940" width="44" height="70" rx="10" fill="${c}" stroke="${NEGRO}" stroke-width="5"/>`; }); }
+  }
+  const p1 = camX * 0.7, sep = 130;
+  o += `<path d="M-1300 470 L 2500 470" stroke="${NEGRO}" stroke-width="6"/>`;
+  for (let i = Math.floor((p1 - 1300) / sep); i * sep - p1 < 2400; i++) {
+    const x = i * sep - p1, c = [ROJO, AZUL, LANA, AMAR, ROJO, '#5B7A3A', AZUL][((i % 7) + 7) % 7], m = Math.sin(t * 2.2 + i * 1.7) * 3;
+    o += `<g transform="translate(${f1(x)} 470) rotate(${f1(m)})"><path d="M-26 0 Q -36 100 -22 190 L 22 190 Q 36 100 26 0 Z" fill="${c}" stroke="${NEGRO}" stroke-width="4"/><path d="M-12 20 L -10 170 M 0 20 L 0 175 M 12 20 L 10 170" stroke="${NEGRO}" stroke-width="2" opacity=".3"/></g>`;
+    if (((i % 4) + 4) % 4 === 1) { const q = (t * 0.9 + i * 0.37) % 1; o += `<ellipse cx="${f1(x)}" cy="${f1(670 + q * q * 620)}" rx="6" ry="9" fill="${c}" opacity="${f1(1 - q)}"/>`; }
+  }
+  const p2 = camX * 0.85, sepT = 640;
+  for (let i = Math.floor((p2 - 1300) / sepT); i * sepT - p2 < 2400; i++) {
+    const x = i * sepT - p2 + 200, c = [AZUL, AMAR, '#5B7A3A'][((i % 3) + 3) % 3];
+    o += `<g transform="translate(${f1(x)} ${PARED + 30 - 174}) scale(.6)">${tina(c, { ola: t * 3 + i })}</g>`;
+    for (let v = 0; v < 3; v++) { const q = (t * 0.5 + v / 3 + i * 0.21) % 1; o += `<path d="M${f1(x + 60 + v * 60)} ${f1(PARED - 140 - q * 300)} q 18 -26 0 -52 q -18 -26 0 -52" fill="none" stroke="#FFF6D8" stroke-width="7" stroke-linecap="round" opacity="${f1(0.55 * Math.sin(Math.PI * q))}"/>`; }
+  }
+  o += `<rect x="-3000" y="${PARED}" width="8000" height="3200" fill="#6B4A2F"/>`;
+  for (const [y, vel, sp] of [[1370, 0.9, 150], [1440, 1, 170], [1560, 1.12, 200], [1720, 1.3, 240], [1900, 1.5, 290]]) {
+    const off = (camX * vel) % sp;
+    for (let x = -1300 - off; x < 2400; x += sp) o += `<path d="M${f1(x)} ${y} L ${f1(x + sp - 40)} ${y}" stroke="#4A321F" stroke-width="${f1(4 + (y - 1370) / 60)}" stroke-linecap="round"/>`;
+  }
+  return o;
+}
+// Primer plano: una soga con madejas grandes que cuelgan desde arriba de cuadro
+function frenteTaller(camX, t) {
+  let o = ''; const p = camX * 1.7, sep = 520;
+  for (let i = Math.floor((p - 1300) / sep); i * sep - p < 2400; i++) {
+    const x = i * sep - p + 150, c = [AZUL, ROJO, AMAR, '#5B7A3A'][((i % 4) + 4) % 4], m = Math.sin(t * 1.8 + i) * 2;
+    o += `<g transform="translate(${f1(x)} -60) rotate(${f1(m)}) scale(2.3)"><path d="M-26 0 Q -36 100 -22 190 L 22 190 Q 36 100 26 0 Z" fill="${c}" stroke="${NEGRO}" stroke-width="4"/><path d="M-12 20 L -10 170 M 0 20 L 0 175 M 12 20 L 10 170" stroke="${NEGRO}" stroke-width="2" opacity=".3"/></g>`;
+  }
+  return o + `<path d="M-1300 -40 L 2500 -40" stroke="${NEGRO}" stroke-width="14"/>`;
+}
+// Vapor que sube de una tina (en la caja de la tina)
+const vapor = (t, sem = 0) => { let o = ''; for (let v = 0; v < 3; v++) { const q = (t * 0.6 + v / 3 + sem) % 1; o += `<path d="M${90 + v * 110} ${f1(40 - q * 300)} q 22 -32 0 -64 q -22 -32 0 -64" fill="none" stroke="#FFF6D8" stroke-width="9" stroke-linecap="round" opacity="${f1(0.6 * Math.sin(Math.PI * q))}"/>`; } return o; };
+// Un brillo de cuatro puntas
+const brillo = (x, y, r) => `<path d="M${f1(x)} ${f1(y - r)} L ${f1(x + r * 0.22)} ${f1(y - r * 0.22)} L ${f1(x + r)} ${f1(y)} L ${f1(x + r * 0.22)} ${f1(y + r * 0.22)} L ${f1(x)} ${f1(y + r)} L ${f1(x - r * 0.22)} ${f1(y + r * 0.22)} L ${f1(x - r)} ${f1(y)} L ${f1(x - r * 0.22)} ${f1(y - r * 0.22)} Z" fill="#FFF6D8"/>`;
+// El mostrador del mercader: la puerta con luz (detrás del tintorero), los estantes con lana teñida, el piso y el mostrador
+function fondoMostrador() {
+  let o = `<path d="M70 1500 L 70 560 Q 70 330 270 330 Q 470 330 470 560 L 470 1500 Z" fill="#D9EBDD"/><path d="M70 1500 L 70 560 Q 70 330 270 330 Q 470 330 470 560 L 470 1500" fill="none" stroke="#5E8577" stroke-width="22"/>`;
+  for (const y of [560, 780, 1000]) {
+    o += `<rect x="560" y="${y}" width="560" height="18" fill="#4E7366"/>`;
+    [[600, ROJO], [690, AZUL], [780, LANA], [870, AMAR], [960, ROJO], [1050, '#5B7A3A']].forEach(([x, c], i) => { const h = 34 + ((i * 7 + y) % 3) * 22; for (let j = 0; j < h / 34; j++) o += `<rect x="${x}" y="${y - 34 * (j + 1)}" width="78" height="32" rx="8" fill="${c}" stroke="${NEGRO}" stroke-width="4"/>`; });
+  }
+  return o + `<rect x="-600" y="1500" width="2400" height="1200" fill="#4F6E63"/>`;
+}
+const mostrador = () => `<path d="M540 1060 L 1700 1060 L 1700 1520 L 540 1520 Z" fill="${NEGRO}"/><path d="M540 1062 L 1700 1062" stroke="${LANA}" stroke-width="6"/>
+  <rect x="580" y="1120" width="220" height="330" fill="none" stroke="#333" stroke-width="6"/><rect x="840" y="1120" width="220" height="330" fill="none" stroke="#333" stroke-width="6"/>`;
+
+// ───── Armado fijo ─────
+
+// ───── seek ─────
+function seek(tReal) {
+  const vuelve = tReal >= T.vuelta;
+  for (const [id, a, b] of escenas) $(id).style.display = (vuelve ? id === 'e1' : tReal >= a && tReal < b) ? 'block' : 'none';
+  const t = vuelve ? 0 : tReal, ta = doce(t);
+
+  // 1 · GANCHO
+  if (t < T.quien - 0.1) {
+    const atras = ease.inOut(prog(t, T.pero - 0.05, T.pero + 0.55));
+    const cerca = recorte([560, 380, 600, 1067], [620, 560, 470, 836], ease.suave(prog(t, 0, T.pero)));
+    const crop = recorte(cerca, [268, 0, 1384, 2460], atras);
+    const labios = ease.out(prog(t, T.azules - 0.1, T.emerg + 0.4)) * (1 - ease.in(prog(t, T.pero, T.pero + 0.6)));
+    const mano = ease.out(prog(t, T.sangre1, T.noble + 0.3));
+    lienzo($('l1'), 'caballero', crop.map(Math.round), { tintes: [
+      { x: 850, y: 834, r: Math.round(60 * labios), ry: Math.round(24 * labios), color: '#5468B8', grano: 0.04, borde: 10, op: 0.3 },
+      { x: 850, y: 836, r: Math.round(42 * labios), ry: Math.round(11 * labios), color: '#4A62C0', grano: 0.06, borde: 6, op: 0.55 },
+      { x: 640, y: 1770, r: Math.round(200 * mano), color: '#3E64D0', grano: 0.02, borde: 60, op: 0.4 }] });
+    $('frio').style.opacity = 0.9 * labios * (0.85 + 0.15 * Math.sin(t * 6));
+    // las venas del dorso de la mano se dibujan en azul, desde la muñeca
+    const vp = prog(t, T.sangre1 - 0.1, T.noble + 0.2), k = 1080 / crop[2];
+    const P = ([x, y]) => [(x - crop[0]) * k, (y - crop[1]) * k].map(f1).join(' ');
+    const venas = [[[520, 1772], [600, 1758], [680, 1722], [760, 1700]], [[520, 1772], [610, 1778], [700, 1768], [790, 1772]], [[600, 1758], [660, 1800], [730, 1836]], [[610, 1778], [650, 1740], [700, 1690]]];
+    sv($('vena1'), venas.map(v => `<path d="M${v.map(P).join(' L ')}" fill="none" stroke="#2E5BE0" stroke-width="${f1(7 * k)}" stroke-linecap="round" stroke-linejoin="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="${f1(1 - vp)}" opacity="${vp > 0 ? 0.9 : 0}"/>`).join(''));
+    pieza($('oxi'), t, { t0: T.falta - 0.05, t1: T.pero - 0.1, sale: 'fundido' });
+    pieza($('sangreAzul'), t, { t0: T.sangre1 - 0.05 });
+    pieza($('noble'), t, { t0: T.noble - 0.05, entra: 'izq', dur: 0.35 });
+  }
+
+  // 2 · LA PREGUNTA: tres gotas (azul, negra, roja) con cada palabra
+  if (t >= T.quien - 0.1 && t < T.e3 + 0.1) {
+    let d = '', o = '';
+    for (const [id, t0, g] of [['g1', preg[0] - 0.2, { x: 270, y: 640, color: '#2C4BA0', semilla: 3 }], ['g2', preg[2] - 0.2, { x: 560, y: 780, color: '#161616', r: 175, semilla: 9 }],
+      ['g3', preg[5] - 0.2, { x: 830, y: 600, color: '#B8282E', r: 140, semilla: 5 }]]) { const r = gota(id, t, t0, g); d += r.defs; o += r.o; }
+    $('gotas').innerHTML = `<defs>${d}</defs>${o}`;
+    const golpe = [preg[0], preg[2], preg[5]].map(x => x + 0.12).reduce((a, x) => a + Math.max(0, 1 - Math.abs(t - x) * 8), 0);
+    $('e2').style.transform = `translate(${f1(golpe * 7)}px, ${f1(golpe * 5)}px)`;
+    porPalabra($('pregunta'), t, preg, 0.2);
+    pieza($('pregunta'), t, { t0: preg[0] - 0.1, entra: 'fundido', dur: 0.2 });
+  }
+
+  // 3 · AZUL
+  if (t >= T.e3 && t < T.e4) {
+    const k = planos(['a1', 'a2', 'a3', 'a4', 'a5', 'a6'], [T.e3, T.sedice - 0.2, T.familias - 0.15, T.y1449 - 0.15, T.estatuto - 0.1, T.desc - 0.15, T.e4], t);
+    if (k === 0) { // la mancha azul llena la pantalla
+      const r = lerp(140, 1500, ease.inOut(prog(t, T.e3, T.e3 + 0.8)));
+      $('llenaAzul').innerHTML = `<defs>${mancha('ma', { x: 270, y: 640, r, semilla: 3, borde: 120 })}</defs><rect width="1080" height="1920" fill="#2C4BA0" mask="url(#ma)"/>`;
+      pieza($('tAzul'), t, { t0: T.e3 + 0.35, dur: 0.4 });
+    }
+    if (k === 1) { // la infanta en gris; el azul sale del vestido; la cámara sube a la cara y baja a la mano; la lupa
+      const p = prog(t, T.sedice - 0.2, T.familias - 0.15);
+      const crop = recorte([520, 0, 1284, 2283], [1120, 860, 560, 996], ease.inOut(prog(t, T.piel - 0.2, T.venas + 0.4)));
+      lienzo($('l3'), 'infanta', crop.map(Math.round), { enGris: true, manchas: [{ x: 980, y: 1300, r: Math.round(lerp(60, 900, ease.out(prog(t, T.sedice, T.familias)))), semilla: 4, grano: 0.006, borde: 160 }] });
+      const lu = ease.back(prog(t, T.venas - 0.3, T.venas + 0.1)), kk = 1080 / crop[2];
+      if (lu > 0) {
+        const cx = (1415 - crop[0]) * kk, cy = (1150 - crop[1]) * kk, R = 230 * lu;
+        const im = IMGS.infanta;
+        let v = `<clipPath id="lupaC"><circle cx="${f1(cx)}" cy="${f1(cy)}" r="${f1(R)}"/></clipPath><g clip-path="url(#lupaC)"><g transform="translate(${f1(cx)} ${f1(cy)}) scale(2.2) translate(${f1(-cx)} ${f1(-cy)})">
+          <image href="${im.src}" x="${f1(-crop[0] * kk)}" y="${f1(-crop[1] * kk)}" width="${f1(im.w * kk)}" height="${f1(im.h * kk)}"/></g><circle cx="${f1(cx)}" cy="${f1(cy)}" r="${f1(R)}" fill="#fff" opacity=".12"/></g>
+          <circle cx="${f1(cx)}" cy="${f1(cy)}" r="${f1(R + 14)}" fill="none" stroke="#161616" stroke-width="18"/>`;
+        const vv = prog(t, T.venas, T.venas + 0.6);
+        for (const [a, b, c, d2] of [[-150, 90, -40, -40], [-140, 20, 10, -90], [-110, 140, 50, 30]]) {
+          v += `<path d="M${f1(cx + a * lu)} ${f1(cy + b * lu)} Q ${f1(cx + c * lu)} ${f1(cy + d2 * lu)} ${f1(cx + (a + 230) * lu)} ${f1(cy + (b - 100) * lu)}" fill="none" stroke="#2E5BE0" stroke-width="6" opacity=".8" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="${f1(1 - vv)}"/>`;
+        }
+        v += `<path d="M${f1(cx + R * 0.7)} ${f1(cy + R * 0.7)} L ${f1(cx + R * 1.2)} ${f1(cy + R * 1.2)}" stroke="#161616" stroke-width="30" stroke-linecap="round"/>`;
+        sv($('lupa'), v);
+      } else sv($('lupa'), '');
+      pieza($('seDice'), t, { t0: T.sedice - 0.05, t1: T.piel - 0.1, sale: 'fundido' });
+      pieza($('castilla'), t, { t0: T.castilla - 0.05, t1: T.piel - 0.1, sale: 'fundido' });
+      pieza($('fVenas'), t, { t0: T.venas + 0.2, entra: 'fundido' });
+      pieza($('fInf'), t, { t0: T.sedice + 0.3, entra: 'fundido', t1: T.piel });
+    }
+    if (k === 2) { // el árbol genealógico: crece en tinta azul y cada punta es un retrato; la lupa lo revisa; la tijera corta
+      // dos ramas (en "mora" y en "judía") que caen dando vueltas
+      const g = ease.out(prog(t, T.familias - 0.15, T.prueba - 0.1));
+      const ramas = [];
+      const crecer = (x, y, a, largo, n, id) => {
+        if (n === 0) return;
+        const x2 = x + Math.sin(a) * largo, y2 = y - Math.cos(a) * largo;
+        ramas.push({ x, y, x2, y2, n, id });
+        crecer(x2, y2, a - 0.46 + 0.05 * Math.sin(n * 3.1), largo * 0.74, n - 1, id + 'i');
+        crecer(x2, y2, a + 0.46 + 0.05 * Math.cos(n * 2.3), largo * 0.74, n - 1, id + 'd');
+      };
+      crecer(540, 1520, 0, 300, 5, 'r');
+      const cortes = [['rdd', T.mora + 0.02], ['rii', W('judía').s + 0.02]];
+      const cae = id => { const c = cortes.find(([pre]) => id.startsWith(pre)); return c ? Math.max(0, t - c[1]) : 0; };
+      const base = id => { const c = cortes.find(([pre]) => id.startsWith(pre)); return c ? ramas.find(r => r.id === c[0]) : null; };
+      let o = '', lupa = '';
+      const dibujo = (grosor = 1) => {
+        let d = '';
+        ramas.forEach(r => {
+          const orden = (5 - r.n) / 5, q = clamp((g - orden * 0.8) * 5); if (q <= 0) return;
+          const x2 = lerp(r.x, r.x2, q), y2 = lerp(r.y, r.y2, q);
+          let rama = `<path d="M${f1(r.x)} ${f1(r.y)} L ${f1(x2)} ${f1(y2)}" stroke="#2C4BA0" stroke-width="${f1((3 + r.n * 3.6) * grosor)}" stroke-linecap="round"/>`;
+          if (r.n === 1) { const e = ease.back(clamp((q - 0.6) / 0.4)); if (e > 0) rama += `<g transform="translate(${f1(r.x2)} ${f1(r.y2)}) scale(${f1(e)})"><circle r="34" fill="#F4EEE3" stroke="#2C4BA0" stroke-width="7"/><circle cy="-7" r="12" fill="#161616"/><path d="M-19 22 Q 0 0 19 22 Z" fill="#161616"/></g>`; }
+          const tc = cae(r.id), b0 = base(r.id);
+          if (tc > 0) rama = `<g transform="translate(${f1(60 * tc * (b0.x2 > 540 ? 1 : -1))} ${f1(2200 * tc * tc)}) rotate(${f1(160 * tc * (b0.x2 > 540 ? 1 : -1))} ${f1(b0.x)} ${f1(b0.y)})">${rama}</g>`;
+          d += rama;
+        });
+        return d;
+      };
+      o += dibujo();
+      // la lupa recorre las ramas: adentro, las venas se ven más gruesas
+      const lp = prog(t, T.prueba - 0.3, T.mora - 0.2);
+      if (lp > 0 && lp < 1) {
+        const lx = lerp(200, 860, ease.inOut(lp)), ly = 730 + 0.0009 * (lx - 540) ** 2, R = 150 * ease.back(Math.min(1, lp * 5)) * (lp > 0.85 ? (1 - lp) / 0.15 : 1);
+        o += `<clipPath id="lente"><circle cx="${f1(lx)}" cy="${f1(ly)}" r="${f1(R)}"/></clipPath><circle cx="${f1(lx)}" cy="${f1(ly)}" r="${f1(R)}" fill="#E8DDC8"/>
+          <g clip-path="url(#lente)"><g transform="translate(${f1(lx)} ${f1(ly)}) scale(1.6) translate(${f1(-lx)} ${f1(-ly)})">${dibujo(1.4)}</g></g>
+          <circle cx="${f1(lx)}" cy="${f1(ly)}" r="${f1(R + 12)}" fill="none" stroke="#161616" stroke-width="20"/><path d="M${f1(lx + R * 0.72)} ${f1(ly + R * 0.72)} L ${f1(lx + R * 1.3)} ${f1(ly + R * 1.3)}" stroke="#161616" stroke-width="34" stroke-linecap="round"/>`;
+      }
+      // la tijera: se abre, se acerca a la rama y se cierra de golpe
+      for (const [pre, tc] of cortes) {
+        const r = ramas.find(x => x.id === pre), q = prog(t, tc - 0.4, tc + 0.25);
+        if (q <= 0 || q >= 1) continue;
+        const abre = tc - t > 0.05 ? lerp(0, 28, ease.out(prog(t, tc - 0.4, tc - 0.2))) : lerp(28, 0, ease.in(prog(t, tc - 0.05, tc)));
+        const ang = Math.atan2(r.y2 - r.y, r.x2 - r.x) * 180 / Math.PI + 90, sal = prog(t, tc + 0.05, tc + 0.25);
+        const cx = lerp(r.x, r.x2, 0.35), cy = lerp(r.y, r.y2, 0.35);
+        const hoja = sg => `<g transform="rotate(${f1(sg * abre)})"><path d="M0 -8 L 210 -4 Q 240 0 210 6 L 0 8 Z" fill="#161616"/><circle cx="-80" cy="${sg * 30}" r="34" fill="none" stroke="#161616" stroke-width="14"/><path d="M0 0 L -56 ${sg * 22}" stroke="#161616" stroke-width="14"/></g>`;
+        o += `<g transform="translate(${f1(cx - 110 * Math.cos(ang * Math.PI / 180) + 300 * sal)} ${f1(cy - 110 * Math.sin(ang * Math.PI / 180) - 200 * sal)}) rotate(${f1(ang)}) translate(-100 0)" opacity="${f1(1 - sal)}">${hoja(1)}${hoja(-1)}<circle r="9" fill="#F4EEE3"/></g>`;
+        if (Math.abs(t - tc) < 0.12) o += `<g transform="translate(${f1(cx)} ${f1(cy)})">${[0, 1, 2, 3, 4, 5].map(i => `<path d="M${f1(Math.cos(i) * 40)} ${f1(Math.sin(i) * 40)} L ${f1(Math.cos(i) * 80)} ${f1(Math.sin(i) * 80)}" stroke="#B8282E" stroke-width="8" stroke-linecap="round"/>`).join('')}</g>`;
+      }
+      // la cámara arranca cerca del tronco y sube mientras el árbol crece
+      const cp = ease.inOut(prog(t, T.familias - 0.15, T.prueba));
+      sv($('arbol'), `<g transform="${camara(lerp(1.4, 1, cp), [540, lerp(1300, 1000, cp)], [540, lerp(1160, 1060, cp)])}">${o}</g>`);
+      // la hoja del linaje: papel viejo con su guarda, el título y renglones con nombres (no se mueve con la cámara)
+      let h = `<g transform="rotate(-1.5 540 970)"><rect x="60" y="380" width="960" height="1200" fill="#EADFC4"/><rect x="92" y="412" width="896" height="1136" fill="none" stroke="#8C6F4E" stroke-width="6"/>
+        <rect x="106" y="426" width="868" height="1108" fill="none" stroke="#8C6F4E" stroke-width="2"/><text x="540" y="500" text-anchor="middle" font-family="Instrument Serif" font-style="italic" font-size="54" fill="#5A4430">Linaje</text>`;
+      for (let j = 0; j < 7; j++) h += `<rect x="${140 + (j % 2) * 640}" y="${1240 + Math.floor(j / 2) * 52}" width="${160 + (j * 37) % 80}" height="10" rx="5" fill="#B9A685"/>`;
+      sv($('hoja3'), h + '</g>');
+      pieza($('eMora'), t, { t0: T.mora - 0.1 });
+    }
+    if (k === 3) { // Toledo en gris; el cielo se tiñe de azul; un relámpago
+      const p = prog(t, T.y1449 - 0.15, T.estatuto - 0.1);
+      const crop = recorte([300, 0, 820, 1458], [620, 120, 700, 1245], ease.inOut(p));
+      lienzo($('l5'), 'toledo', crop.map(Math.round), { enGris: true, manchas: [{ x: 900, y: 200, r: Math.round(lerp(80, 760, ease.out(prog(t, T.anio, T.estatuto)))), semilla: 2, grano: 0.006, borde: 150 }] });
+      const rayo = Math.max(0, 1 - Math.abs(t - (T.toledo + 0.1)) * 7) + Math.max(0, 1 - Math.abs(t - (T.toledo + 0.32)) * 9) * 0.6;
+      $('rayo').style.opacity = rayo;
+      pieza($('n1449'), t, { t0: T.anio - 0.05, dur: 0.3 });
+      pieza($('eToledo'), t, { t0: T.toledo - 0.05 });
+      pieza($('fToledo'), t, { t0: T.toledo + 0.2, entra: 'fundido' });
+    }
+    if (k === 4) { // el estatuto: una pluma lo escribe línea por línea; la cámara se acerca; el sello de lacre golpea
+      const pt = prog(t, T.estatuto - 0.05, T.prohibio + 0.25);
+      $('perga').style.transform = `rotate(-1deg) scale(${lerp(1, 1.07, ease.inOut(prog(t, T.estatuto - 0.1, T.desc))).toFixed(4)})`;
+      tinta($('perga'), pt);
+      $('perga').style.visibility = 'visible';
+      // la pluma: sigue la punta de lo escrito, tiembla al escribir, entra desde la derecha y al final se va
+      const ls = [...$('perga').querySelectorAll('.linea')], q = pt * ls.length, il = Math.min(ls.length - 1, Math.floor(q));
+      const marco = $('video').getBoundingClientRect(), esc = 1080 / marco.width, rl = ls[il].getBoundingClientRect();
+      const fr = clamp(clamp(q - il) * 1.12 - 0.06);
+      const px = (rl.left - marco.left + rl.width * fr) * esc, py = (rl.bottom - marco.top - rl.height * 0.28) * esc;
+      const entra = 1 - ease.out(prog(t, T.estatuto - 0.35, T.estatuto - 0.05)), va = ease.in(prog(t, T.prohibio + 0.3, T.prohibio + 0.65));
+      const escribe = pt > 0 && pt < 1 ? 1 : 0;
+      const pluma = `<g transform="translate(${f1(px + 600 * entra + 380 * va)} ${f1(py + 6 * Math.sin(t * 38) * escribe - 300 * entra - 520 * va)}) rotate(${f1(28 + 4 * Math.sin(t * 23) * escribe)})" opacity="${f1(1 - va)}">
+        <path d="M0 0 L -5 -26 L 5 -26 Z" fill="#161616"/><path d="M-3 -24 Q -10 -160 6 -330 Q 12 -170 4 -24 Z" fill="#161616"/>
+        <path d="M2 -60 Q 56 -150 34 -330 Q 30 -250 6 -300 Q -40 -220 -34 -150 Q -30 -100 2 -60 Z" fill="#161616"/>
+        <path d="M4 -90 Q 10 -200 8 -300" fill="none" stroke="#F4EEE3" stroke-width="3" opacity=".7"/></g>`;
+      const s0 = T.cargos + 0.05, cae = prog(t, s0 - 0.25, s0), rebota = prog(t, s0, s0 + 0.3);
+      const y = lerp(-500, 1040, cae * cae), sc = cae < 1 ? 1.3 : 1 + 0.18 * Math.sin(Math.PI * rebota) * (1 - rebota);
+      let o = '';
+      if (t > s0 - 0.25) {
+        o += `<g transform="translate(800 ${f1(y)}) scale(${f1(sc)}, ${f1(cae < 1 ? 1.15 : 1 - 0.12 * Math.sin(Math.PI * rebota))})">
+          <path d="M-110 -10 Q -120 -100 -20 -112 Q 90 -126 112 -30 Q 130 70 40 108 Q -60 140 -104 70 Q -140 40 -110 -10 Z" fill="#9E1F24"/>
+          <circle r="66" fill="none" stroke="#6E1418" stroke-width="10"/><path d="M-28 -30 L 0 30 L 28 -30" fill="none" stroke="#6E1418" stroke-width="12" stroke-linejoin="round"/></g>`;
+      }
+      sv($('sello'), o + (va < 1 ? pluma : ''));
+      const golpe = Math.max(0, 1 - Math.abs(t - s0) * 9);
+      $('a5').style.transform = `translate(${f1(golpe * 10)}px, ${f1(golpe * 8)}px)`;
+      pieza($('fEst'), t, { t0: T.prohibio, entra: 'fundido' });
+    }
+    if (k === 5) { // la fila: todos iguales, cada uno con su cruz, entran a la luz del ayuntamiento; la reja cae de golpe
+      // delante del cuarto y los de atrás se frenan en cadena; miran la reja, se miran la cruz
+      const t0 = T.desc - 0.15, cierra = T.aunque - 0.1, s = 0.75, v = 1.1;
+      let o = `<rect x="560" y="700" width="560" height="820" fill="#F3D27A"/><path d="M560 700 L 1120 700 L 1120 1500 L 560 1500 Z" fill="#FFF6D8" opacity=".25"/>`;
+      const para = [Infinity, Infinity, Infinity, cierra + 0.04, cierra + 0.14, cierra + 0.24];
+      for (let i = 5; i >= 0; i--) {
+        const x0 = 560 - i * 170;
+        const fase = tt => { const tp = Math.min(tt, para[i]); let f = (tp - t0) * v; if (tt > para[i]) f += v * 0.12 * (1 - Math.pow(1 - clamp((tt - para[i]) / 0.12), 2)); return f; };
+        const fa = fase(ta), x = x0 + fa * ZANCADA * s, quieto = ta > para[i] + 0.12;
+        const susto = ease.out(prog(ta, para[i], para[i] + 0.1)) * (1 - ease.inOut(prog(ta, para[i] + 0.1, para[i] + 0.5)));
+        const mira = i >= 3 ? (ta < T.cristianos - 0.1 ? lerp(0, -10, ease.out(prog(ta, para[i] + 0.1, para[i] + 0.3))) : lerp(-10, 16, ease.inOut(prog(ta, T.cristianos - 0.1, T.cristianos + 0.15)))) : 0;
+        const b = bobDe(fa, quieto ? 0 : 1);
+        o += `<g transform="translate(${f1(x)} ${f1(SUELO - 975 * s)}) scale(${s})">${figura({ fase: fa, camina: ta > para[i] ? 1 - clamp((ta - para[i]) / 0.12) : 1, ropa: 'camisa', sombrero: 'nada',
+          inclina: -7 * susto, mira, boca: i >= 3 && ta > para[i] ? 'o' : 0, parpadeo: parpadea(ta, i * 0.21) })}
+          <g transform="rotate(${f1(-7 * susto)} 212 970) translate(0 ${f1(b)})"><path d="M244 440 L 244 500 M 226 458 L 262 458" stroke="#F4EEE3" stroke-width="9" stroke-linecap="round"/></g></g>`;
+      }
+      // la fachada (con el hueco de la puerta), el cartel y la reja
+      o += `<path d="M560 380 L 1200 380 L 1200 1500 L 560 1500 Z M 760 1500 L 760 860 Q 760 760 870 760 Q 980 760 980 860 L 980 1500 Z" fill="#5C6F8E" fill-rule="evenodd"/>
+        <path d="M760 1500 L 760 860 Q 760 760 870 760 Q 980 760 980 860 L 980 1500" fill="none" stroke="#3E4C66" stroke-width="18"/>
+        <rect x="670" y="560" width="400" height="104" fill="#161616"/><text x="870" y="628" text-anchor="middle" font-family="Space Mono" font-size="32" font-weight="700" fill="#F4EEE3">CARGOS PÚBLICOS</text>`;
+      const rb = ease.in(prog(t, cierra - 0.12, cierra)), reb = Math.sin(Math.PI * prog(t, cierra, cierra + 0.16)) * (1 - prog(t, cierra, cierra + 0.16));
+      const yr = lerp(-760, 0, rb) - 26 * reb;
+      o += `<clipPath id="arco"><path d="M760 1500 L 760 860 Q 760 760 870 760 Q 980 760 980 860 L 980 1500 Z"/></clipPath><g clip-path="url(#arco)"><g transform="translate(0 ${f1(yr)})">
+        ${[790, 830, 870, 910, 950].map(x => `<rect x="${x - 7}" y="740" width="14" height="760" fill="#161616"/>`).join('')}${[900, 1100, 1300].map(y => `<rect x="760" y="${y}" width="220" height="12" fill="#161616"/>`).join('')}</g></g>`;
+      const polvo = prog(t, cierra, cierra + 0.6);
+      if (polvo > 0 && polvo < 1) for (let j = 0; j < 6; j++) o += `<circle cx="${f1(870 + (j - 2.5) * 50 * (1 + polvo))}" cy="${f1(1490 - 30 * polvo)}" r="${f1(16 + 40 * polvo)}" fill="#C9C2B4" opacity="${f1(0.7 * (1 - polvo))}"/>`;
+      o += `<rect x="-600" y="1500" width="2400" height="900" fill="#4A5468"/>`;
+      const sac = Math.max(0, 1 - Math.abs(t - cierra) * 8);
+      const zp = ease.inOut(prog(t, t0, T.e4));
+      sv($('puerta'), `<g transform="${camara(lerp(1, 1.12, zp), [lerp(540, 600, zp) + sac * 8, lerp(960, 1000, zp)], [540, 960])}">${o}</g>`);
+      pieza($('eViejos'), t, { t0: T.desc + 0.3 });
+      pieza($('eNuevos'), t, { t0: T.aunque + 0.05 });
+      pieza($('fNuevos'), t, { t0: T.cristianos, entra: 'fundido' });
+    }
+  }
+
+  // 4 · NEGRO: la tintorería
+  if (t >= T.e4 && t < T.e5) {
+    const cortes = [T.e4, T.valia - 0.1, T.blanca - 0.1, T.era - 0.12, T.mercado - 0.15, T.e5];
+    const k = cortes.filter(c => t >= c).length - 1, vis = ['n1', 'n2', 'n3', 'n2', 'n5'][k];
+    for (const id of ['n1', 'n2', 'n3', 'n5']) $(id).style.display = id === vis ? 'block' : 'none';
+    // n1 · un plano secuencia: la cámara lo acompaña por el taller (la pared, el tendedero, las tinas del fondo y el piso
+    // pasan a distintas velocidades; un poste pasa por delante). Frena ante la tina roja, toma envión, hunde el vellón negro,
+    // lo revuelve, lo saca: negro. Lo vuelve a hundir, más rápido. Negro otra vez. La doble toma, y la cámara se le acerca.
+    if (k === 0) {
+      const t0 = T.e4, para = T.lana - 0.12, v = 1.1, FY = SUELO - 975;
+      const fase = tt => { const a = para - 0.5; if (tt < a) return (tt - t0) * v; const u = clamp((tt - a) / 0.5); return (a - t0) * v + v * 0.5 * (u - u * u / 2); };
+      const camina = tt => 1 - ease.inOut(prog(tt, para - 0.3, para + 0.05));
+      const X = tt => fase(tt) * ZANCADA, xT = X(para + 5) + 474;
+      const d2 = T.tenir - 0.16;   // la segunda zambullida termina justo antes de "teñir"
+      const ks = [...zambullida(para + 1.12, POSE.carga, 1.25), [para + 1.26, POSE.afuera], ...zambullida(d2, POSE.afuera, 0.75).slice(1)];
+      const golpes = [ks[2][0] + 0.01, ks[ks.length - 3][0] + 0.01];
+      const pose = tt => revuelve(claves(tt, ks), tt, [[ks[2][0], ks[3][0]], [ks[ks.length - 3][0], ks[ks.length - 2][0]]]);
+      const fP = tt => { const p = punta(pose(tt)); return [X(tt) + p[0], p[1] + bobDe(fase(tt), camina(tt))]; };
+      const camX = X(ta) - 110;
+      const giro = pendulo(fP, t0, ta, SUP);
+      // la cabeza: mira la tina, el vellón; la doble toma en "teñir" (mira a otro lado, vuelve de golpe, la gorra salta)
+      const dt0 = T.tenir - 0.1;
+      const mira = claves(ta, [[para, 0], [para + 0.2, 9], [para + 1.0, 9], [para + 1.2, 13], [dt0, 13], [dt0 + 0.1, -7, ease.out], [dt0 + 0.16, -7], [dt0 + 0.26, 15, ease.back]]);
+      const alza = 34 * Math.sin(Math.PI * clamp((ta - dt0 - 0.2) / 0.24));
+      const boca = ta > dt0 + 0.2 ? 'o' : ta > para + 1.1 ? -0.4 : 0.4;
+      const gotea = ta > ks[4][0] - 0.05 ? (t * 1.8) % 1 : 0;
+      let o = fondoTaller(camX, t);
+      const amp = ola(t, golpes);
+      o += `<g transform="translate(${f1(X(ta) - camX)} ${FY})">
+        ${tintorero('c1', pose(ta), { fase: fase(ta), camina: camina(ta), lana: NEGRO, gotea, colorGota: ROJO, giro, sup: SUP + amp * 0.5, mira, alza, boca, parpadeo: parpadea(ta, 0.2) })}</g>`;
+      o += `<g transform="translate(${f1(xT - camX)} ${FY + 685})">${tina(ROJO, { ola: t * 6, amp })}${vapor(t, 0.3)}</g>`;
+      o += `<g transform="translate(${f1(xT - 474 - camX)} ${FY})">${golpes.map(g => salpicon(t, g, 684, SUP, ROJO)).join('')}</g>`;
+      // en primer plano, arriba, pasan madejas grandes (van más rápido que todo: están cerca de la cámara)
+      o += frenteTaller(camX, t);
+      const z = lerp(1, 1.5, ease.out(prog(t, dt0 + 0.18, dt0 + 0.32)));
+      const u = (z - 1) / 0.5;
+      sv($('taller'), `<g transform="${camara(z, [lerp(540, 650, u), lerp(960, 900, u)], [540, 960])}">${o}</g>`);
+      pieza($('tNegro'), t, { t0: T.e4 + 0.25, dur: 0.4, t1: para + 0.3 });
+    }
+    // n2 · el mostrador: el mercader mira el vellón negro con desdén y le tira una sola moneda; él la ataja, la mira y se
+    // desinfla. Después (k = 3), con los vellones teñidos, el mercader da vuelta una bolsa y llueven monedas
+    if (k === 1 || k === 3) {
+      const DY = 580, MX = 1110, MY = 400, s = 0.95;
+      let o = fondoMostrador(), z = 1, f = [540, 960], a = [540, 960];
+      const mercader = (cfg) => `<g transform="translate(${MX} ${MY}) scale(${-s} ${s})">${figura({ camina: 0, ropa: 'levita', sombrero: 'galera', parpadeo: parpadea(ta, 0.55), ...cfg })}</g>`;
+      const enPantalla = (p, dx, dy, sx) => [dx + sx * p[0], dy + s * p[1]];
+      if (k === 1) {
+        const tf = T.valia + 0.12, tl = tf + 0.36;
+        const bD = claves(ta, [[T.valia - 0.1, 0], [tf - 0.08, 1, ease.out], [tf + 0.02, 2, ease.in], [tf + 0.3, 3]]);
+        const brazoM = [[40, 150], [22, 176], [82, 58], [72, 82]];
+        const i = Math.min(2, Math.floor(bD)), u = bD - i, angM = [lerp(brazoM[i][0], brazoM[i + 1][0], u), lerp(brazoM[i][1], brazoM[i + 1][1], u)];
+        o += mercader({ bD: angM, bA: [12, 28], mira: claves(ta, [[T.valia - 0.1, 14], [tf - 0.15, 14], [tf, 4]]), boca: -0.5 });
+        o += mostrador();
+        o += `<g transform="translate(575 880) scale(.85)">${vellon(NEGRO, { gotea: (t * 1.2) % 1, colorGota: ROJO })}</g><ellipse cx="672" cy="1060" rx="70" ry="9" fill="${ROJO}"/>`;
+        // el tintorero: la mano abierta, esperando; la moneda cae, la mano cede y vuelve; en "menos" se desinfla
+        const cae = prog(t, tl, tl + 0.15), cede = Math.sin(Math.PI * cae) * (1 - cae);
+        const triste = ease.inOut(prog(ta, T.menos - 0.05, T.menos + 0.3));
+        const bDt = [45 + 8 * cede - 6 * triste, 105 - 10 * cede - 8 * triste];
+        o += `<g transform="translate(40 ${DY}) scale(${s})">${figura({ camina: 0, bD: bDt, inclina: 3 * triste, respira: 0.5 + 0.5 * Math.sin(t * 3),
+          mira: lerp(-3, 15, triste), boca: lerp(0.6, -1, triste), parpadeo: Math.max(parpadea(ta, 0.1), 0.35 * triste) })}</g>`;
+        // la moneda: de la mano del mercader a la del tintorero, girando
+        const cM = [228 + 140 * Math.sin(rad(82)), 404 + 140 * Math.cos(rad(82))], mM = [cM[0] + 124 * Math.sin(rad(58)), cM[1] + 124 * Math.cos(rad(58))];
+        const M = enPantalla(mM, MX, MY, -s);
+        const cT = [228 + 140 * Math.sin(rad(bDt[0])), 404 + 140 * Math.cos(rad(bDt[0]))], mT = [cT[0] + 124 * Math.sin(rad(bDt[1])), cT[1] + 124 * Math.cos(rad(bDt[1]))];
+        const H = enPantalla(mT, 40, DY, s);
+        const q = prog(t, tf, tl);
+        if (q > 0 && q < 1) o += `<g transform="translate(${f1(lerp(M[0], H[0], q))} ${f1(lerp(M[1], H[1] - 30, q) - 240 * Math.sin(Math.PI * q))})">${moneda(q * 9)}</g>`;
+        else if (q >= 1) { o += `<g transform="translate(${f1(H[0])} ${f1(H[1] - 30)})">${moneda(0)}</g>`; const b = prog(t, tl, tl + 0.35); if (b < 1) o += brillo(H[0] + 26, H[1] - 58, 26 * Math.sin(Math.PI * b)); }
+        const p = ease.inOut(prog(t, T.menos - 0.1, T.blanca - 0.1));
+        z = lerp(1, 1.3, p); f = [lerp(540, 400, p), lerp(960, 960, p)]; a = [540, lerp(960, 1000, p)];
+        pieza($('eMenos'), t, { t0: T.menos - 0.05 });
+        $('eValiosa').style.visibility = 'hidden';
+      } else {
+        // los vellones teñidos en el mostrador; el mercader da vuelta la bolsa y llueven monedas; él se tambalea y sonríe
+        const tp = T.era + 0.02, N = 24, cada = 0.03, viaje = 0.3;
+        const vuelca = ease.out(prog(ta, tp - 0.15, tp + 0.1));
+        o += mercader({ bA: [58 - 6 * vuelca, 40], bD: [70 - 8 * vuelca, 44], mira: 10, boca: 0.5 });
+        o += mostrador();
+        o += `<g transform="translate(560 900) scale(.8)">${vellon(ROJO)}</g><g transform="translate(720 905) scale(.8)">${vellon(AZUL)}</g><g transform="translate(640 800) scale(.8)">${vellon(AMAR)}</g>`;
+        // la bolsa, en las manos del mercader, se inclina hacia él
+        const B = [692, 925], boca2 = [B[0] - 70 - 40 * vuelca, B[1] - 20 + 50 * vuelca];
+        o += `<g transform="translate(${B[0]} ${B[1]}) rotate(${f1(-70 * vuelca)})"><path d="M-50 -10 Q -110 60 -86 150 Q -40 210 40 196 Q 104 150 84 60 Q 64 0 40 -10 Z" fill="#6B4A2F" stroke="${NEGRO}" stroke-width="6"/>
+          <path d="M-56 -14 L 46 -14 L 36 -40 L -46 -40 Z" fill="#6B4A2F" stroke="${NEGRO}" stroke-width="6"/><path d="M-40 -6 Q 0 10 40 -6" fill="none" stroke="${NEGRO}" stroke-width="5"/></g>`;
+        const llegadas = Array.from({ length: N }, (_, j) => tp + j * cada + viaje);
+        const carga = llegadas.filter(x => ta >= x).length / N;
+        const tamb = Math.sin(t * 15) * 3 * carga * (1 - prog(t, T.valiosa + 0.4, T.valiosa + 0.8));
+        const pila = [440, 1000];
+        const salta = Math.sin(Math.PI * clamp((ta - T.valiosa + 0.05) / 0.3));
+        o += `<g transform="translate(40 ${DY}) scale(${s})">${figura({ camina: 0, bA: [38 + 10 * carga, 96 - 8 * carga], bD: [44 + 10 * carga, 102 - 8 * carga], inclina: -6 * carga + tamb,
+          mira: 6, boca: 1, alza: 30 * salta, parpadeo: carga > 0.5 ? 0.85 : parpadea(ta, 0.4) })}</g>`;
+        // la pila en sus brazos crece; las monedas vuelan desde la boca de la bolsa
+        let pi = '';
+        const n = Math.round(carga * N);
+        for (let j = 0; j < n; j++) { const fila = Math.floor(Math.sqrt(j * 1.6)); pi += `<ellipse cx="${f1(pila[0] - 60 + ((j * 37) % 120))}" cy="${f1(pila[1] - 8 * carga * 0 - fila * 16)}" rx="30" ry="12" fill="#D9A441" stroke="${NEGRO}" stroke-width="4"/>`; }
+        o += `<g transform="rotate(${f1(-6 * carga + tamb)} 240 1500)">${pi}</g>`;
+        for (let j = 0; j < N; j++) {
+          const q = prog(ta + (t - ta), tp + j * cada, tp + j * cada + viaje);
+          if (q <= 0 || q >= 1) continue;
+          o += `<g transform="translate(${f1(lerp(boca2[0], pila[0] - 40 + ((j * 53) % 100), q))} ${f1(lerp(boca2[1], pila[1] - 40, q) - 160 * Math.sin(Math.PI * q) + 0)})">${moneda(q * 7 + j)}</g>`;
+        }
+        if (carga > 0.6) o += brillo(pila[0] + 60, pila[1] - 70, 22 * Math.abs(Math.sin(t * 9))) + brillo(pila[0] - 50, pila[1] - 50, 16 * Math.abs(Math.cos(t * 7)));
+        const sac = Math.sin(t * 60) * 5 * carga * (1 - carga);
+        z = 1.08; f = [540 + sac, 980]; a = [540, 960];
+        pieza($('eValiosa'), t, { t0: T.valiosa - 0.05 });
+        $('eMenos').style.visibility = 'hidden';
+      }
+      sv($('mostrador'), `<g transform="${camara(z, f, a)}">${o}</g>`);
+    }
+    // n3 · los tres baños: tres tintoreros en fila, cada uno con su vellón blanco; la cámara pasa de uno a otro y cada uno
+    // lo hunde con una palabra (rojo, azul, amarillo). Al final se abre y los tres muestran su vellón, chorreando.
+    if (k === 2) {
+      const s = 0.9, FY = SUELO - 975 * s, SEP = 700;
+      const w = [T.tenia, T.cualquier, T.colorW];
+      const cx = i => i * SEP + 468 - 540;
+      const camX = claves(t, [[T.blanca - 0.1, cx(0) - 90], [w[0] - 0.2, cx(0)], [w[0] - 0.02, cx(0)], [w[1] - 0.22, cx(1)], [w[1] - 0.04, cx(1)], [w[2] - 0.22, cx(2)], [w[2] + 0.1, cx(2)], [T.era - 0.12, cx(1)]]);
+      const vel = Math.abs(claves(t + 0.02, [[T.blanca - 0.1, cx(0) - 90], [w[0] - 0.2, cx(0)], [w[0] - 0.02, cx(0)], [w[1] - 0.22, cx(1)], [w[1] - 0.04, cx(1)], [w[2] - 0.22, cx(2)], [w[2] + 0.1, cx(2)], [T.era - 0.12, cx(1)]]) - camX) / 0.02;
+      let o = fondoTaller(camX, t);
+      const colores = [ROJO, AZUL, AMAR];
+      for (let i = 0; i < 3; i++) {
+        const tf = w[i] + 0.06;
+        const ks = [[T.blanca - 0.1, i === 0 ? POSE.muestra : POSE.carga], ...zambullida(tf, i === 0 ? POSE.muestra : POSE.carga, 0.7), [tf + 0.22, POSE.muestra, ease.out]];
+        const sub = ks[3][0], golpe = sub + 0.01;
+        const pose = tt => { const P = revuelve(claves(tt, ks), tt, [[sub, ks[4][0]]]); return tt > tf + 0.22 ? { ...P, G: [P.G[0], P.G[1] - 14 * Math.abs(Math.sin((tt - tf) * 7))] } : P; };
+        const giro = pendulo(tt => punta(pose(tt)), T.blanca - 0.3, ta, SUP);
+        const tenido = ta > sub + 0.02;
+        const amp = ola(t, [golpe]);
+        o += `<g transform="translate(${f1(i * SEP - camX)} ${f1(FY)}) scale(${s})">
+          ${tintorero('c3' + i, pose(ta), { lana: tenido ? colores[i] : LANA, gotea: tenido ? (t * 1.8 + i * 0.3) % 1 : 0, giro, sup: SUP + amp * 0.5, respira: 0.5 + 0.5 * Math.sin(t * 3 + i),
+            mira: tenido ? -4 : 6, boca: tenido ? 1 : 0.3, alza: 22 * Math.sin(Math.PI * clamp((ta - tf) / 0.25)), parpadeo: parpadea(ta, 0.3 * i) })}
+          <g transform="translate(474 685)">${tina(colores[i], { ola: t * 6 + i, amp })}${vapor(t, i * 0.4)}</g>${salpicon(t, golpe, 684, SUP, colores[i])}</g>`;
+      }
+      // líneas de velocidad en los paneos
+      if (vel > 1500) { const op = clamp((vel - 1500) / 3000) * 0.5; for (let j = 0; j < 9; j++) o += `<path d="M${f1(-100 + ((j * 263 + camX * 0.5) % 1300))} ${200 + j * 150} l 420 0" stroke="#FFF6D8" stroke-width="${6 + (j % 3) * 4}" opacity="${f1(op)}" stroke-linecap="round"/>`; }
+      const zo = ease.inOut(prog(t, w[2] + 0.12, T.era - 0.12));
+      sv($('tres'), `<g transform="${camara(lerp(1, 0.6, zo), [540, lerp(960, 1100, zo)], [540, lerp(960, 1080, zo)])}">${o}</g>`);
+    }
+    // n5 · el rebaño camina; frena; las blancas se dan vuelta, fruncen el ceño y se apartan de la negra; la negra mira a un
+    // lado y al otro, baja la cabeza y las orejas. El campo se oscurece menos alrededor de ella. La cámara se le acerca.
+    if (k === 4) {
+      const t0 = T.mercado - 0.15, para = T.volvio - 0.4;
+      const fase = tt => tt < para ? (tt - t0) * 1.7 : (para - t0) * 1.7 + 1.7 * 0.12 * (1 - Math.pow(1 - clamp((tt - para) / 0.25), 2));
+      const camina = 1 - ease.inOut(prog(ta, para - 0.05, para + 0.2));
+      const avance = fase(ta) * 120;
+      const gira = j => ease.inOut(prog(ta, para + 0.15 + j * 0.06, para + 0.27 + j * 0.06));
+      const aparta = ease.out(prog(ta, T.volvio + 0.05, T.volvio + 0.4)), salto = Math.sin(Math.PI * prog(ta, T.volvio + 0.05, T.volvio + 0.4));
+      const mira = ease.inOut(prog(ta, para + 0.1, para + 0.3));
+      let o = `<rect x="-600" y="990" width="2300" height="2000" fill="#6E8B4C"/><path d="M-600 1000 Q -200 900 200 980 Q 600 1040 1000 960 Q 1400 900 1700 990 L 1700 1010 L -600 1010 Z" fill="#8DAA6B"/>`;
+      for (const [y, vel, sp, c] of [[1080, 0.45, 150, '#5E7A44'], [1230, 0.65, 190, '#58733F'], [1420, 0.9, 240, '#4F6A38'], [1700, 1.2, 300, '#46602F']]) {
+        const off = (avance * vel) % sp;
+        for (let x = -600 - off; x < 1700; x += sp) o += `<path d="M${f1(x)} ${y} q 12 -${f1(20 * vel)} 24 0 q 12 -${f1(30 * vel)} 24 0" fill="none" stroke="${c}" stroke-width="${f1(5 * vel + 2)}" stroke-linecap="round"/>`;
+      }
+      const ovejaEn = (cx, pie, sc, lado, cfg, j) => {
+        // lado: dónde está la negra (-1 a la izquierda, 1 a la derecha, 0 es ella)
+        const flip = lado < 0 ? lerp(1, -1, gira(j)) : 1;
+        const x = cx + (lado ? -lado * 110 * sc * aparta : 0), y = pie - 354 * sc - (lado ? 22 * sc * salto : 0);
+        return `<g transform="translate(${f1(x)} ${f1(y)}) scale(${f1(flip * sc)} ${f1(sc)}) translate(-260 0)">${oveja(cfg)}</g>`;
+      };
+      const blanca = (j, lado) => ({ fase: fase(ta) + j * 0.31, camina, mira: lado ? lerp(0.3, 1, mira) : 0.3, ceno: lado ? mira : 0, parpadeo: parpadea(ta, j * 0.17) });
+      [[140, 1], [400, 1], [700, -1], [960, -1]].forEach(([cx, lado], j) => { o += ovejaEn(cx, 1160, 0.42, lado, blanca(j, lado), j); });
+      [[170, 1], [910, -1]].forEach(([cx, lado], j) => { o += ovejaEn(cx, 1330, 0.6, lado, blanca(j + 4, lado), j + 4); });
+      const triste = ease.inOut(prog(ta, T.juicio - 0.1, T.juicio + 0.35));
+      const miraN = ta < T.volvio + 0.1 ? 0.3 : ta < T.volvio + 0.3 ? -1 : ta < T.juicio - 0.1 ? 1 : lerp(1, 0.2, triste);
+      // el juicio: todo se oscurece y un cono de luz cae sobre la negra (ella va encima de la sombra)
+      const foco = ease.inOut(prog(t, T.juicio - 0.05, T.juicio + 0.4));
+      if (foco > 0) o += `<rect x="-1000" y="-1000" width="3080" height="4000" fill="#1B2130" opacity="${f1(0.62 * foco)}"/>
+        <path d="M470 -300 L 610 -300 L 820 1330 L 260 1330 Z" fill="#FFF6D8" opacity="${f1(0.16 * foco)}"/><ellipse cx="540" cy="1330" rx="290" ry="46" fill="#FFF6D8" opacity="${f1(0.3 * foco)}"/>`;
+      o += ovejaEn(540, 1330, 0.6, 0, { lana: NEGRO, fase: fase(ta) + 0.5, camina, mira: miraN, ceno: -0.8 * triste, oreja: 55 * triste, come: 0.32 * triste, parpadeo: Math.max(parpadea(ta, 0.9), 0.3 * triste) }, 9);
+      [[-80, 1], [1160, -1]].forEach(([cx, lado], j) => { o += ovejaEn(cx, 1560, 0.88, lado, blanca(j + 6, lado), j + 6); });
+
+      const zp = ease.inOut(prog(t, T.volvio + 0.2, T.e5));
+      sv($('rebaño'), `<g transform="${camara(lerp(1, 1.4, zp), [540, lerp(960, 1230, zp)], [540, lerp(960, 1180, zp)])}">${o}</g>`);
+      pieza($('tJuicio'), t, { t0: T.mercado - 0.05 });
+    }
+  }
+
+  // 5 · ROJO
+  if (t >= T.e5 && t < T.e6) {
+    const k = planos(['r1', 'r2', 'r3', 'r4', 'r5', 'r6'], [T.e5, T.paris - 0.15, T.a1791 - 0.15, T.guardia - 0.1, T.revol - 0.15, T.mismo - 0.15, T.e6], t);
+    if (k === 0) {
+      const r = lerp(140, 1500, ease.inOut(prog(t, T.e5, T.e5 + 0.8)));
+      $('llenaRojo').innerHTML = `<defs>${mancha('mr', { x: 830, y: 600, r, semilla: 5, borde: 120 })}</defs><rect width="1080" height="1920" fill="#B8282E" mask="url(#mr)"/>`;
+      pieza($('tRojo'), t, { t0: T.e5 + 0.35, dur: 0.4 });
+    }
+    if (k === 1) { // un guardia iza la bandera roja tirando de la soga, mano sobre mano; la bandera sube a tirones; la gente del
+      // fondo levanta la vista y, con "ley marcial", se da vuelta y se va
+      const t0 = T.paris - 0.15, i0 = T.paris + 0.1, i1 = T.ley + 0.05, P = 0.5;
+      const c = clamp((ta - i0) / (i1 - i0)) * ((i1 - i0) / P) * 2, tirones = Math.floor(c) + ease.inOut(c - Math.floor(c));
+      const iz = c >= ((i1 - i0) / P) * 2 ? 1 : tirones / (((i1 - i0) / P) * 2);
+      let o = `<path d="M0 1240 L 0 900 L 90 900 L 90 760 L 120 720 L 150 760 L 150 900 L 260 900 L 260 820 L 300 820 L 300 960 L 420 960 L 420 700 L 446 640 L 472 700 L 472 980 L 640 980 L 640 860 L 760 860 L 760 760 L 790 760 L 790 860 L 900 860 L 900 940 L 1080 940 L 1080 1240 Z" fill="#6E7F92"/>`;
+      for (let x = 30; x < 1080; x += 110) o += `<rect x="${x}" y="1040" width="34" height="56" rx="14" fill="#9FB3C8"/>`;
+      o += `<rect x="-400" y="1240" width="1900" height="900" fill="#8A8F96"/>`;
+      // la gente del fondo: miran para arriba; con "ley marcial" se dan vuelta y se van
+      for (let j = 0; j < 7; j++) {
+        const x0 = 40 + j * 150 + (j % 2) * 30, sale = ta > T.ley + 0.2 + j * 0.05, fv = (ta - T.ley - 0.2 - j * 0.05) * 1.4;
+        const x = sale ? x0 - fv * ZANCADA * 0.32 : x0;
+        o += `<g transform="translate(${f1(x + (sale ? 0.32 * 420 : 0))} ${f1(1235 - 975 * 0.32)}) scale(${sale ? -0.32 : 0.32} 0.32)">${figura({ fase: sale ? fv : 0, camina: sale ? 1 : 0, ropa: 'camisa', sombrero: j % 3 ? 'nada' : 'galera',
+          mira: sale ? 0 : -18 * iz, boca: -0.3, parpadeo: parpadea(ta, j * 0.13) })}</g>`;
+      }
+      // el mástil, la roldana y la bandera que sube a tirones y flamea
+      const yb = lerp(1150, 420, iz), W2 = 340, H2 = 230, pts = [], pb = [];
+      for (let j = 0; j <= 18; j++) { const u = j / 18, a = Math.sin(u * 6 - t * 8) * 20 * u * (0.4 + 0.6 * iz); pts.push(`${f1(726 + W2 * u)} ${f1(yb + a)}`); pb.unshift(`${f1(726 + W2 * u)} ${f1(yb + H2 + a + 10 * u)}`); }
+      o += `<path d="M720 1250 L 720 380" stroke="#161616" stroke-width="16"/><circle cx="720" cy="372" r="16" fill="#161616"/><circle cx="720" cy="372" r="6" fill="#9FB3C8"/>`;
+      o += `<path d="M${pts.join(' L ')} L ${pb.join(' L ')} Z" fill="#B8282E" stroke="#161616" stroke-width="4"/>`;
+      // el guardia tira de la soga: una mano sube a buscarla mientras la otra baja tirando
+      const g = [430, 1240 - 975 * 0.8], s2 = 0.8, xr = (708 - g[0]) / s2;
+      const ciclo = u => { u = ((u % 1) + 1) % 1; return u < 0.5 ? ease.inOut(u * 2) : 1 - ease.inOut((u - 0.5) * 2); };
+      const u0 = ta < i0 ? 0 : (Math.min(ta, i1) - i0) / P * 2 / 2;
+      const yA = lerp(230, 560, ciclo(u0)), yD = lerp(230, 560, ciclo(u0 + 0.5));
+      const fin = ease.out(prog(ta, i1, i1 + 0.3));
+      const mA = [lerp(xr, xr - 30, fin), lerp(yA, 600, fin)], mD = [lerp(xr, xr - 10, fin), lerp(yD, 590, fin)];
+      o += `<path d="M712 380 L 712 ${f1(g[1] + s2 * Math.min(mA[1], mD[1]))} M 712 ${f1(g[1] + s2 * Math.max(mA[1], mD[1]))} L 712 1180" stroke="#E8E2D2" stroke-width="5"/>`;
+      o += `<g transform="translate(${g[0]} ${f1(g[1])}) scale(${s2})">${figura({ camina: 0, sombrero: 'bicornio', ropa: 'levita', manoA: mA, manoD: mD, inclina: -3 * Math.abs(Math.sin(Math.PI * u0 * 2)) * (1 - fin),
+        mira: lerp(-10, -26, iz), boca: -0.3, parpadeo: parpadea(ta, 0.4) })}</g>`;
+      o += `<rect x="700" y="1170" width="26" height="14" fill="#161616"/>`;
+      const zp = ease.inOut(prog(t, t0, T.a1791 - 0.15));
+      sv($('izar'), `<g transform="${camara(lerp(1.06, 1, zp), [lerp(600, 540, zp), lerp(1000, 960, zp)], [540, 960])}">${o}</g>`);
+      pieza($('eParis'), t, { t0: T.paris - 0.05 });
+      pieza($('tLey'), t, { t0: T.ley - 0.05 });
+    }
+    if (k === 2) { // el grabado en gris: la cámara lo recorre de derecha a izquierda (el humo, la caballería, el altar) hasta
+      // la guardia; se acerca a su bandera, que se tiñe de rojo: es la de la ley marcial
+      const pan = ease.inOut(prog(t, T.a1791 - 0.15, T.izaron - 0.2)), zo = ease.inOut(prog(t, T.izaron - 0.3, T.campo + 0.2));
+      const crop = recorte(recorte([1075, 269, 605, 1075], [400, 269, 605, 1075], pan), [531, 862, 360, 640], zo);
+      const roja = ease.out(prog(t, T.izaron - 0.05, T.izaron + 0.45));
+      lienzo($('l9'), 'leymarcial', crop.map(Math.round), { enGris: true, formas: roja > 0 ? [{ d: 'M697 1117 L 727 1124 L 727 1158 L 698 1153 Z', color: '#D0302A', op: +(0.78 * roja).toFixed(2), modo: 'normal' }] : [] });
+      // un círculo que se dibuja alrededor de la bandera (sin taparla)
+      const k9 = 1080 / crop[2], cx = (712 - crop[0]) * k9, cy = (1138 - crop[1]) * k9, R = 52 * k9 * 0.9;
+      const dib = prog(t, T.izaron + 0.2, T.campo);
+      sv($('marca9'), dib > 0 ? `<path d="M${f1(cx + R)} ${f1(cy)} A ${f1(R)} ${f1(R * 1.15)} 0 1 1 ${f1(cx + R - 1)} ${f1(cy - 20)}" fill="none" stroke="#D0302A" stroke-width="9" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="${f1(1 - dib)}"/>` : '');
+      pieza($('n1791'), t, { t0: T.a1791 - 0.05, dur: 0.3, t1: T.izaron - 0.3, sale: 'fundido' });
+      pieza($('fLey'), t, { t0: T.campo, entra: 'fundido' });
+    }
+    if (k === 3) { // los disparos: humo, fogonazos y la cámara que se sacude
+      const p = prog(t, T.guardia - 0.1, T.revol - 0.15);
+      const crop = recorte([60, 420, 620, 1102], [150, 700, 470, 836], ease.inOut(p));
+      lienzo($('l10'), 'fusillade', crop.map(Math.round), { enGris: true });
+      // fogonazos en las bocas de los fusiles (coordenadas del grabado) y el humo que sale y se abre
+      const tiros = [T.disparo + 0.02, T.disparo + 0.24, T.disparo + 0.5], bocas = [[[430, 1010], [470, 1030]], [[330, 1000], [380, 1015]], [[520, 1040], [250, 990]]];
+      const k10 = 1080 / crop[2], P = ([x, y]) => [(x - crop[0]) * k10, (y - crop[1]) * k10];
+      let o = '', flash = 0, sac = 0;
+      tiros.forEach((tt, i) => {
+        const q = prog(t, tt, tt + 1.5);
+        flash += Math.max(0, 1 - Math.abs(t - tt) * 12);
+        sac += Math.max(0, 1 - Math.abs(t - tt) * 6);
+        if (q > 0) bocas[i].forEach(bp => {
+          const [x, y] = P(bp);
+          if (q < 0.08) o += brillo(x + 20, y, 90 * (1 - q / 0.08) + 30);
+          for (let j = 0; j < 5; j++) o += `<circle cx="${f1(x + 60 + j * 46 * Math.sqrt(q) * 3)}" cy="${f1(y - j * 12 - q * 90)}" r="${f1(20 + 90 * Math.sqrt(q) + j * 8)}" fill="#EFE8DA" opacity="${f1(0.6 * (1 - q))}"/>`;
+        });
+      });
+      sv($('humo'), o);
+      $('fogonazo').style.opacity = clamp(flash) * 0.7;
+      $('r4').style.transform = `translate(${f1(Math.sin(t * 70) * 12 * clamp(sac))}px, ${f1(Math.cos(t * 60) * 8 * clamp(sac))}px)`;
+    }
+    if (k === 4) { // el pueblo levanta la misma bandera: travelling, gorros frigios, la bandera grande
+      const d = ta - (T.revol - 0.15), f = d * 1.0, sube = ease.back(prog(t, T.levantaron - 0.1, T.levantaron + 0.6));
+      let o = `<rect x="0" y="1300" width="1080" height="620" fill="#7A6A4E"/>`;
+      for (let x = -((d * 300) % 160); x < 1100; x += 160) o += `<path d="M${f1(x)} 1330 L ${f1(x + 100)} 1330" stroke="#5E5139" stroke-width="10"/>`;
+      // la multitud del fondo (siluetas que caminan, más chicas)
+      for (let i = 0; i < 6; i++) {
+        const x = ((i * 190 - d * 120) % 1240 + 1240) % 1240 - 160;
+        o += `<g transform="translate(${f1(x)} 640) scale(.6)">${figura({ fase: f + i * 0.37, sombrero: i % 2 ? 'frigio' : 'nada', ropa: 'camisa', boca: -0.3 })}</g>`;
+      }
+      // el que lleva la bandera, adelante y más grande
+      o += `<g transform="translate(330 ${f1(560 - 60 * sube)}) scale(.95)">${figura({ fase: f, sombrero: 'frigio', ropa: 'camisa', lleva: 'bandera', ondea: t, vaiven: 6 * Math.sin(t * 3), boca: 0.1, parpadeo: parpadea(ta, 0.3) })}</g>`;
+      sv($('pueblo'), o);
+      pieza($('fMartires'), t, { t0: T.honor, entra: 'fundido' });
+    }
+    if (k === 5) { // dos mitades: la guardia (gris azulado) y el pueblo (ocre). Los dos abanderados avanzan hacia la línea, cada
+      // uno con la misma bandera roja; frenan, la clavan en el piso (se aplastan un poco) y quedan frente a frente
+      const t0 = T.mismo - 0.15, llega = T.bando - 0.05;
+      const fase = tt => (Math.min(tt, llega) - t0) * 1.3;
+      const camina = 1 - ease.inOut(prog(ta, llega - 0.15, llega + 0.05));
+      const clava = Math.sin(Math.PI * prog(ta, llega, llega + 0.25));
+      const s2 = 0.7, avance = fase(ta) * ZANCADA * s2;
+      let o = `<rect x="-200" y="-200" width="740" height="2400" fill="#9FB3C8"/><rect x="540" y="-200" width="740" height="2400" fill="#C9B48A"/>
+        <rect x="-200" y="1250" width="740" height="900" fill="#7C8A9A"/><rect x="540" y="1250" width="740" height="900" fill="#7A6A4E"/>`;
+      o += `<path d="M540 -200 L 540 2200" stroke="#161616" stroke-width="10"/>`;
+      const x0 = -280 + avance, y0 = 1250 - 975 * s2 + 30 * clava;
+      o += `<g transform="translate(${f1(x0)} ${f1(y0)}) scale(${s2} ${f1(s2 * (1 - 0.04 * clava))})">${figura({ fase: fase(ta), camina, sombrero: 'bicornio', ropa: 'levita', lleva: 'bandera', ondea: t, vaiven: -8 * clava, boca: -0.4, parpadeo: parpadea(ta, 0.2) })}</g>`;
+      o += `<g transform="translate(${f1(1360 - avance)} ${f1(y0)}) scale(${-s2} ${f1(s2 * (1 - 0.04 * clava))})">${figura({ fase: fase(ta) + 0.5, camina, sombrero: 'frigio', ropa: 'camisa', lleva: 'bandera', ondea: t + 0.4, vaiven: -8 * clava, boca: -0.4, parpadeo: parpadea(ta, 0.7) })}</g>`;
+      // el golpe de las dos varas en el piso
+      const pol = prog(t, llega, llega + 0.5);
+      if (pol > 0 && pol < 1) for (const xx of [x0 + 284 * s2, 1360 - avance - 284 * s2]) for (let j = 0; j < 4; j++) o += `<circle cx="${f1(xx + (j - 1.5) * 34 * (1 + pol))}" cy="${f1(1245 - 16 * pol)}" r="${f1(10 + 22 * pol)}" fill="#E8E2D2" opacity="${f1(0.7 * (1 - pol))}"/>`;
+      const zp = ease.inOut(prog(t, t0, T.e6));
+      sv($('espejo'), `<g transform="${camara(lerp(1, 1.1, zp), [540, lerp(960, 900, zp)], [540, 960])}">${o}</g>`);
+      pieza($('tBando'), t, { t0: T.bando - 0.1 });
+    }
+  }
+
+  // 6 · EL LENGUAJE: tres gotas (azul, negra, roja) vuelan a la boca de una cabeza enorme de perfil, que traga; con cada frase
+  // la boca se abre y la frase sale disparada y se pega en su lugar, con su iconito; con "no son solo palabras" se caen
+  if (t >= T.e6 && t < T.e7b) {
+    const entra = ease.out(prog(t, T.e6, T.e6 + 0.45));
+    // la página del diccionario: entra desde abajo y queda detrás de todo; con "no son solo palabras" se cae con las frases
+    const cd = ease.in(prog(t, T.e7 + 0.2, T.e7b));
+    let dic = `<g transform="translate(0 ${f1(lerp(900, 0, ease.out(prog(t, T.e6 - 0.05, T.e6 + 0.5))) + 1800 * cd * cd)}) rotate(-2 540 820)"><rect x="70" y="240" width="940" height="1180" fill="#F4EEE3"/>
+      <text x="110" y="310" font-family="Space Mono" font-weight="700" font-size="30" fill="#161616">COLOR</text><path d="M110 330 L 970 330" stroke="#161616" stroke-width="3"/>`;
+    for (let c = 0; c < 2; c++) for (let j = 0; j < 19; j++) {
+      const x = 110 + c * 450, y = 380 + j * 54, w = 300 + ((j * 53 + c * 17) % 110), cab = j % 5 === 0;
+      dic += `<rect x="${x}" y="${y}" width="${cab ? 120 : w}" height="${cab ? 18 : 12}" rx="5" fill="${cab ? '#161616' : '#BDB4A2'}"/>${cab ? `<rect x="${x + 135}" y="${y + 3}" width="${w - 135}" height="12" rx="5" fill="#BDB4A2"/>` : ''}`;
+    }
+    sv($('dicc'), dic + '</g>');
+    const gotas = [[AZUL, 270, 260, T.e6 + 0.3], [NEGRO, 560, 200, T.e6 + 0.95], [ROJO, 840, 280, T.e6 + 1.55]];
+    const boca = [437, 1383];
+    let ic = '', traga = 0;
+    for (const [c, x0, y0, tg] of gotas) {
+      const q = prog(t, tg, tg + 0.5);
+      if (q > 0 && q < 1) { const x = lerp(x0, boca[0] - 40 * (1 - entra) * 0, q), y = lerp(y0, boca[1], q * q) - 260 * Math.sin(Math.PI * q); ic += `<ellipse cx="${f1(x)}" cy="${f1(y)}" rx="${f1(30 - 8 * q)}" ry="${f1(40 + 10 * q)}" fill="${c}"/>`; }
+      else if (q <= 0) ic += `<ellipse cx="${x0}" cy="${y0}" rx="${f1(30 * ease.back(prog(t, T.e6, T.e6 + 0.3)))}" ry="${f1(40 * ease.back(prog(t, T.e6, T.e6 + 0.3)))}" fill="${c}"/>`;
+      traga += Math.sin(Math.PI * prog(t, tg + 0.45, tg + 0.7));
+    }
+    // la boca: se abre con cada palabra (y para tragar)
+    const pal = voz.palabras.filter(w => w.s >= T.e6 - 0.1 && w.s < T.e7b);
+    const habla = pal.some(w => ta >= w.s && ta < w.s + 0.14) || gotas.some(([, , , tg]) => ta > tg + 0.3 && ta < tg + 0.5);
+    const cae = ease.in(prog(t, T.e7 + 0.05, T.e7b));
+    const cab = figura({ camina: 0, ropa: 'camisa', sombrero: 'nada', boca: habla ? 'o' : 0.15, mira: -3 + 2 * Math.sin(t * 5) - 4 * traga, parpadeo: parpadea(ta, 0.5) });
+    sv($('cabeza6'), `<g transform="translate(${f1(lerp(-900, -330, entra))} ${f1(560 + 30 * traga)}) scale(${f1(2.7 * (1 + 0.04 * traga))} ${f1(2.7 * (1 - 0.04 * traga))})">${cab}</g>`);
+    // las frases salen de la boca y se pegan; después se caen
+    const frases = [['fOveja', T.oveja], ['fSangre', T.sangre2], ['fGuante', T.guante], ['fNumeros', T.numeros]];
+    frases.forEach(([id, t0], i) => {
+      const el = $(id), q = prog(t, t0 - 0.12, t0 + 0.22), e = ease.back(q);
+      el.style.visibility = q > 0 ? 'visible' : 'hidden';
+      const cx = el.offsetLeft + el.offsetWidth / 2, cy = el.offsetTop + el.offsetHeight / 2;
+      const c2 = clamp(cae * 1.25 - i * 0.08), dy = 1700 * c2 * c2, dr = 50 * c2 * (i % 2 ? 1 : -1);
+      el.style.transform = `translate(${f1((boca[0] - cx) * (1 - e))}px, ${f1((boca[1] - cy) * (1 - e) + dy)}px) rotate(${f1(+el.dataset.rot + dr)}deg) scale(${f1(lerp(0.1, 1, clamp(e, 0, 1.2)))})`;
+    });
+    // los iconitos: la oveja negra, la gota azul, el guante blanco, el número rojo
+    const pop = (t0) => ease.back(prog(t, t0 + 0.1, t0 + 0.35));
+    const caeI = i => { const c2 = clamp(cae * 1.25 - i * 0.08); return `translate(0 ${f1(1700 * c2 * c2)})`; };
+    let p;
+    if ((p = pop(T.oveja)) > 0) ic += `<g transform="${caeI(0)}"><g transform="translate(860 270) scale(${f1(0.32 * p)})">${oveja({ lana: NEGRO, fase: t * 1.2, camina: 0.6, parpadeo: parpadea(ta, 0.2) })}</g></g>`;
+    if ((p = pop(T.sangre2)) > 0) ic += `<g transform="${caeI(1)}"><g transform="translate(900 560) scale(${f1(p)}) rotate(${f1(8 * Math.sin(t * 6))})"><path d="M0 -70 Q 46 0 40 30 Q 34 70 0 70 Q -34 70 -40 30 Q -46 0 0 -70 Z" fill="${AZUL}" stroke="${NEGRO}" stroke-width="6"/><ellipse cx="-14" cy="22" rx="8" ry="14" fill="#fff" opacity=".6"/></g></g>`;
+    if ((p = pop(T.guante)) > 0) ic += `<g transform="${caeI(2)}"><g transform="translate(940 750) scale(${f1(3.2 * p)}) rotate(${f1(-20 + 18 * Math.sin(t * 7))})" fill="#fff" stroke="${NEGRO}" stroke-width="3"><ellipse cx="13" cy="9" rx="7" ry="11" transform="rotate(-38 13 9)"/><ellipse cx="0" cy="17" rx="17" ry="19"/><rect x="-16" y="-9" width="32" height="13" rx="5"/></g></g>`;
+    if ((p = pop(T.numeros)) > 0) ic += `<g transform="${caeI(3)}"><g transform="translate(870 1080) scale(${f1(p)}) rotate(-4)"><rect x="-10" y="-60" width="190" height="96" fill="#F7F1E4" stroke="${NEGRO}" stroke-width="5"/><text x="85" y="8" text-anchor="middle" font-family="Space Mono" font-weight="700" font-size="46" fill="${ROJO}">${Math.abs(Math.sin(t * 9)) > 0.2 ? '−1449' : '−1791'}</text></g></g>`;
+    sv($('iconos'), ic);
+  }
+
+  // 7 · EL GIRO: 1988. El árbitro mete el casete; la tele se prende (barras de color); la misma jugada dos veces: con el
+  // defensor de blanco, nada; rebobina; con el de negro, salta, pita y tira el pañuelo amarillo contra la pantalla
+  if (t >= T.e7b && t < T.e8) {
+    const s3 = 1.15, R = [20, 1060];   // el árbitro
+    const TVx = 135, TVy = 540, TVs = 1.35, SC = [TVx + 50 * TVs, TVy + 50 * TVs, 400 * TVs, 320 * TVs];
+    const mete = ease.inOut(prog(ta, T.e7b + 0.1, T.a1988 - 0.1)), prende = prog(t, T.a1988 - 0.05, T.a1988 + 0.2);
+    const blanco = [T.jugada - 0.05, T.violenta - 0.15], negro = [T.violenta + 0.25, T.e8], rebob = [T.violenta - 0.15, T.violenta + 0.25];
+    const tau = t < blanco[1] ? (t - blanco[0]) : t < rebob[1] ? lerp(1.6, 0, prog(t, rebob[0], rebob[1])) : (t - negro[0]);
+    const choque = 1.0;   // el tackle, en segundos de jugada
+    const tN = negro[0] + choque;
+    let pant = '';
+    if (t < T.a1988 - 0.05) pant = `<rect width="400" height="320" fill="#141814"/>`;
+    else if (prende < 1) pant = `<rect width="400" height="320" fill="#141814"/><rect x="0" y="${f1(160 - 160 * ease.in(prende))}" width="400" height="${f1(Math.max(3, 320 * ease.in(prende)))}" fill="#F4F4F4"/>`;
+    else if (t < T.psicologos - 0.1) {
+      const bar = ['#C0C0C0', '#C0C000', '#00C0C0', '#00C000', '#C000C0', '#C00000', '#0000C0'];
+      pant = bar.map((c, i) => `<rect x="${i * 400 / 7}" y="0" width="${f1(400 / 7 + 1)}" height="230" fill="${c}"/>`).join('') + `<rect y="230" width="400" height="90" fill="#101010"/><rect x="0" y="230" width="57" height="90" fill="#0A1F5A"/><rect x="114" y="230" width="57" height="90" fill="#F4F4F4"/>`;
+    } else if (t < blanco[0]) {
+      // la cuenta regresiva de la cinta: el círculo, la cruz y el barrido que gira
+      const r = (blanco[0] - t) / (blanco[0] - T.psicologos + 0.1) * 3, n = Math.ceil(r), a = (n - r) * 360;
+      const ax = 200 + 150 * Math.sin(a * Math.PI / 180), ay = 160 - 150 * Math.cos(a * Math.PI / 180);
+      pant = `<rect width="400" height="320" fill="#C8C2B4"/><path d="M200 160 L 200 10 A 150 150 0 ${a > 180 ? 1 : 0} 1 ${f1(ax)} ${f1(ay)} Z" fill="#8F897C"/>
+        <path d="M0 160 L 400 160 M 200 0 L 200 320" stroke="#161616" stroke-width="3"/><circle cx="200" cy="160" r="120" fill="none" stroke="#F4F4F4" stroke-width="6"/><circle cx="200" cy="160" r="100" fill="none" stroke="#F4F4F4" stroke-width="4"/>
+        <text x="200" y="208" text-anchor="middle" font-family="Inter Tight, sans-serif" font-weight="800" font-size="140" fill="#161616">${Math.max(1, n)}</text>`;
+    } else {
+      // la jugada: el corredor (gris) viene con la pelota; el defensor (blanco o negro) lo tacklea; caen los dos
+      const eq = t < rebob[1] ? 'blanco' : 'negro', tc = Math.max(0, tau);
+      const cae = ease.out(clamp((tc - choque) / 0.3));
+      pant = `<rect width="400" height="320" fill="#2F6B3C"/>`;
+      for (let x = -((tc * 50) % 70); x < 420; x += 70) pant += `<path d="M${f1(x)} 0 L ${f1(x + 40)} 320" stroke="#EFE8DA" stroke-width="3" opacity=".55"/>`;
+      const fc = Math.min(tc, choque), sc = 0.26;
+      const xr = 280 - 95 * fc, xd = -40 + 150 * fc;
+      pant += `<g transform="translate(${f1(xr + 110 + 30 * cae)} ${f1(48 + 10 * cae)}) rotate(${f1(78 * cae)} -50 250) scale(${-sc} ${sc})" style="filter:brightness(0) invert(.58)">${figura({ fase: fc * 2.2, camina: 1 - cae, inclina: 10, sombrero: 'casco', ropa: 'camiseta', brazos: 'pecho' })}</g>`;
+      pant += `<g transform="translate(${f1(xd + 30 * cae)} ${f1(48 + 14 * cae)}) rotate(${f1(lerp(14, 62, cae))} 60 250) scale(${sc})" style="${eq === 'blanco' ? 'filter:invert(1)' : ''}">${figura({ fase: fc * 2.4, camina: 1 - cae, sombrero: 'casco', ropa: 'camiseta', brazos: 'equilibrio', vaiven: 30 * cae })}</g>`;
+      // la pelota sale volando
+      const pq = clamp((tc - choque) / 0.6);
+      pant += `<ellipse cx="${f1(lerp(xr + 70, xr + 230, pq))}" cy="${f1(lerp(170, 270, pq) - 90 * Math.sin(Math.PI * pq))}" rx="13" ry="8" fill="#7A4A26" transform="rotate(${f1(400 * pq)} ${f1(lerp(xr + 70, xr + 230, pq))} ${f1(lerp(170, 270, pq) - 90 * Math.sin(Math.PI * pq))})"/>`;
+      if (t > rebob[0] && t < rebob[1]) for (let j = 0; j < 7; j++) { const y = (j * 53 + t * 900) % 320; pant += `<rect y="${f1(y)}" width="400" height="${5 + (j % 3) * 4}" fill="#fff" opacity=".45"/>`; }
+      const osd = t > rebob[0] && t < rebob[1] ? '◀◀' : t > T.e8 - 0.6 ? '❚❚' : 'PLAY ▶';
+      pant += `<text x="18" y="34" font-family="Space Mono" font-weight="700" font-size="22" fill="#9FF29F">${osd}</text>`;
+    }
+    for (let y = 0; y < 320; y += 5) pant += `<rect y="${y}" width="400" height="2" fill="#000" opacity=".16"/>`;
+    let o = `<rect x="-400" y="1300" width="1900" height="900" fill="#4E3A4E"/>`;
+    o += `<g transform="translate(${TVx} ${TVy}) scale(${TVs})">${tele(pant)}</g>`;
+    // la videocasetera, con el reloj en 12:00 que titila
+    o += `<rect x="300" y="1215" width="600" height="104" rx="8" fill="#161616"/><rect x="340" y="1252" width="190" height="26" fill="#333"/>
+      <text x="800" y="1282" text-anchor="middle" font-family="Space Mono" font-weight="700" font-size="34" fill="#9FF29F" opacity="${Math.floor(t * 2) % 2 ? 1 : 0.25}">12:00</text>`;
+    // el casete: en la mano del árbitro, entra en la ranura
+    if (mete < 1) o += `<g transform="translate(${f1(lerp(250, 440, mete))} ${f1(lerp(1330, 1265, mete))})"><rect x="-95" y="-14" width="190" height="${f1(lerp(110, 30, mete))}" fill="#222" stroke="#F4EEE3" stroke-width="3"/><rect x="-60" y="0" width="120" height="${f1(lerp(36, 10, mete))}" fill="#F4EEE3"/></g>`;
+    // el pañuelo amarillo: sale de la mano, vuela y se aplasta contra la pantalla
+    const tira0 = tN + 0.25, vuela = prog(t, tira0, tira0 + 0.35);
+    const manoD = t < T.e7b + 0.15 ? [380, 560] : t < T.a1988 + 0.3 ? [lerp(330, 400, mete), lerp(560, 230, mete)] : t < tN + 0.05 ? [300, 470] :
+      [lerp(300, 470, ease.out(prog(t, tN + 0.05, tira0))), lerp(470, 200, ease.out(prog(t, tN + 0.05, tira0)))];
+    const salto = Math.sin(Math.PI * prog(ta, tN + 0.02, tN + 0.32));
+    o += `<g transform="translate(${R[0]} ${f1(R[1] - 40 * salto)}) scale(${s3})">${figura({ camina: 0, ropa: 'arbitro', sombrero: 'gorra', manoD, bA: [8, 16],
+      mira: t > tN ? -6 : -10, boca: t > tN && t < tN + 0.9 ? 'o' : 0.1, alza: 30 * salto, parpadeo: parpadea(ta, 0.3) })}</g>`;
+    if (t > tN && t < tN + 0.9) o += `<rect x="${f1(R[0] + s3 * 290)}" y="${f1(R[1] - 40 * salto + s3 * 298)}" width="${f1(s3 * 34)}" height="${f1(s3 * 14)}" rx="4" fill="#F4EEE3"/>`;
+    if (t > tN && t < tN + 0.6) for (let j = 0; j < 3; j++) o += `<path d="M${f1(R[0] + s3 * 340 + j * 6)} ${f1(R[1] + s3 * 290 - j * 40)} l ${40 + j * 10} ${-16 - j * 10}" stroke="#F4EEE3" stroke-width="7" stroke-linecap="round" opacity="${f1(1 - prog(t, tN, tN + 0.6))}"/>`;
+    if (vuela > 0) {
+      const ini = [R[0] + s3 * 470, R[1] + s3 * 200], fin = [SC[0] + SC[2] * 0.62, SC[1] + SC[3] * 0.5];
+      const x = lerp(ini[0], fin[0], vuela), y = lerp(ini[1], fin[1], vuela) - 260 * Math.sin(Math.PI * vuela), pega = vuela >= 1 ? Math.sin(Math.PI * prog(t, tira0 + 0.35, tira0 + 0.55)) : 0;
+      o += `<g transform="translate(${f1(x)} ${f1(y)}) rotate(${f1(vuela < 1 ? 600 * vuela : -12)}) scale(${f1(1.6 + 0.4 * pega)} ${f1(1.6 - 0.3 * pega)})"><path d="M-40 -30 Q 0 -50 40 -30 L 30 30 Q 0 40 -30 30 Z" fill="#E8C64A" stroke="#161616" stroke-width="5"/><circle r="10" fill="#161616"/></g>`;
+    }
+    const zp = ease.inOut(prog(t, T.e7b, T.e8));
+    sv($('teles'), `<g transform="${camara(lerp(1, 1.08, zp), [540, lerp(960, 900, zp)], [540, 960])}">${o}</g>`);
+    pieza($('n1988'), t, { t0: T.a1988 - 0.05, dur: 0.3, t1: T.jugada - 0.2, sale: 'fundido' });
+    pieza($('fFrank'), t, { t0: T.psicologos, entra: 'fundido', t1: T.jugada - 0.2 });
+    pieza($('fArbitros'), t, { t0: T.jugada + 0.2, entra: 'fundido' });
+  }
+
+  // 8 · CIERRE: el caballero; los colores se van; vuelve al primer cuadro
+  if (t >= T.e8) {
+    const p = prog(t, T.e8, T.vuelta);
+    const crop = recorte([268, 0, 1384, 2460], [560, 380, 600, 1067], ease.inOut(prog(t, T.poreso, T.vuelta)));
+    const queda = 1 - ease.inOut(prog(t, T.colores, T.decidio + 0.6));
+    lienzo($('l13'), 'caballero', crop.map(Math.round), { enGris: true, manchas: queda > 0.01 ? [{ x: 860, y: 1200, r: Math.round(1600 * queda), semilla: 6, grano: 0.004, borde: 200 }] : [] });
+    pieza($('tNatural'), t, { t0: T.poreso - 0.05, t1: T.vuelta - 0.3, sale: 'fundido' });
+    pieza($('fBarthes'), t, { t0: T.poreso + 0.4, entra: 'fundido', t1: T.vuelta - 0.3 });
+  }
+
+  const sb = SUBS.find(x => t >= x.s && t < x.e);
+  const html = sb ? `<span>${sb.texto}</span>` : '';
+  if ($('sub').innerHTML !== html) $('sub').innerHTML = html;
+  hervir($('grano'), t);
+}
+
+// ───── Armado ─────
+encuadrar(document, IMGS);
+rasgar(document);
+for (const el of document.querySelectorAll('[data-rot]')) el.style.transform = `rotate(${el.dataset.rot}deg)`;
+await document.fonts.ready;
+window.seek = seek;
+window.DURACION = DURACION;
+window.T = T;
+seek(0);
+window.listo = true;
+
+if (!location.search.includes('render')) {
+  const audio = new Audio('audio/voz-editada.wav');
+  document.body.addEventListener('click', () => { audio.currentTime = 0; audio.play(); });
+  (function loop() { seek(audio.paused ? 0 : audio.currentTime); requestAnimationFrame(loop); })();
+}
+</script>
+</body>
+</html>

@@ -17,3 +17,4 @@ YouTube Studio. Siempre los mismos, para poder comparar.
 | 04 · Los embajadores | B | 3/10/2026 / 3/10/2026 | | | | | | | |
 | 05 · El trapito (Winnicott) | E | | | | | | | | Primera prueba del formato E |
 | 06 · El síndrome de Stendhal | A | | | | | | | | Primero del formato A |
+| 07 · Los colores que alguien decidió | D | | | | | | | | Idea de Dano; la tintorería en silueta |

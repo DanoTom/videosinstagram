@@ -134,10 +134,35 @@ que es lo que más funcionó.
 ## Producción
 
 1. **Guion:** aprobado por Dano (4/10/2026: "me cierra el guion así").
-2. **Storyboard:** `storyboard.html` → `storyboard.jpg` (13 cuadros). Prototipos: el tinte (`mancha()` y `gris()` en
-   `diseno/motor.js`) y el teñido en silueta (`siluetas.js`: el tintorero, la oveja, la tina y el vellón). Para el video:
-   los labios azules más sutiles (que el tinte se note en los labios, no como una mancha encima) y ropa de jugador para el
-   experimento (en el storyboard son el tintorero, invertido en blanco).
-3. **Voz:** pendiente, la graba Dano con ElevenLabs (la misma voz y los mismos ajustes que el 06).
-4. Después: `herramientas/transcribir.py` → `herramientas/pausas.py` (1 s después del gancho) → `video.html` →
-   `herramientas/render.mjs`.
+2. **Storyboard:** `storyboard.html` (13 cuadros, el de antes de la voz). Prototipos: el tinte (`mancha()` y `gris()` en
+   `diseno/motor.js`) y el teñido en silueta (`siluetas.js`). `storyboard.jpg`: 20 cuadros del video terminado.
+3. **Voz:** ElevenLabs (Dano, 4/10/2026), `audio/voz-elevenlabs.mp3` (85,6 s). Whisper se comió "cargos" (lo pegó a
+   "públicos"): se volvió a transcribir ese tramo y se insertó a mano en `voz.json`. `pausas.py` con 1 s después de
+   "color?" y `--cola=1.3` → `voz-editada.wav` (87,9 s). `cotejar.py`: 219/219.
+4. **Video:** `video.html`. Lo que pidió Dano al ver el storyboard: "recordá que lo que fue más efectivo antes fue cuando el
+   hombre se mareaba, que tenía más complejidad… para evitar escenas demasiado pobres (veo que la de las ovejas y la del
+   hombre con fondo amarillo corren ese peligro)". Por eso cada tramo en silueta es una acción física con la cámara que
+   acompaña:
+   - **La tintorería** (33,3 a 46 s): un plano secuencia por el taller (la pared, el tendedero, las tinas del fondo, el
+     piso y las madejas del primer plano pasan a distintas velocidades); frena ante la tina roja, toma envión, hunde el
+     vellón negro (la vara la sostienen las dos manos, con cinemática inversa en los brazos; el vellón cuelga como un
+     péndulo), lo revuelve, lo saca negro, lo vuelve a hundir más rápido, y la doble toma con la cámara que se le acerca de
+     golpe. El mostrador: el mercader le tira una sola moneda, él la ataja y se desinfla. Los tres baños: tres tintoreros
+     en fila y la cámara que pasa de uno a otro (rojo, azul, amarillo, una tina por palabra). El mostrador otra vez:
+     llueven monedas y él se tambalea. El rebaño: las blancas se dan vuelta, fruncen el ceño y se apartan; la negra baja
+     la cabeza y las orejas; el campo se oscurece y un cono de luz cae sobre ella.
+   - **El azul:** el árbol genealógico (cada punta es un retrato; la lupa lo revisa; una tijera corta dos ramas que caen) y
+     la fila (todos iguales, con su cruz, entran a la luz del ayuntamiento; la reja cae delante del cuarto y los de atrás
+     frenan en cadena). El estatuto lo escribe una pluma.
+   - **El rojo:** el guardia iza la bandera tirando de la soga, mano sobre mano, y la gente del fondo se va con "ley
+     marcial"; en el grabado de Prieur, la cámara va hasta la bandera de la guardia (la de la ley marcial) y la tiñe; en el
+     otro ejemplar, los fogonazos; el espejo: los dos abanderados avanzan desde fondos distintos y clavan la misma bandera.
+   - **El lenguaje:** una cabeza de perfil se traga tres gotas (azul, negra, roja) y le salen las cuatro frases.
+   - **El experimento:** el árbitro mete el casete (1988: la videocasetera en 12:00, barras de color, la cuenta regresiva);
+     la misma jugada con el defensor de blanco y, rebobinada, de negro: ahí salta, pita y tira el pañuelo amarillo contra
+     la pantalla.
+   - El *Agnus Dei* de Zurbarán quedó afuera: el tramo del negro se cuenta entero en silueta.
+5. **Render:** `render.mjs` → `out/07-render.mp4` (6 min con 4 workers). `quietud.py`: el primer render marcó dos tramos
+   vacíos (el árbol, líneas finas sobre papel liso; el arranque del lenguaje) y se les puso fondo: la hoja del linaje y una
+   página de diccionario. Después, 0 vacíos y 0 quietos. Dos pasadas a 2,55 Mbps (un poco menos que 240 / 87,9 − 0,13, para
+   no rozar el límite) → `07-colores.mp4`, 29,3 MB.
