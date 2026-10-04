@@ -34,7 +34,7 @@
   Google Drive se encuentran buscando el nombre del archivo (por ejemplo `title contains '02-icaro'`), y con el id se bajan a
   `referencias/`: `curl -L -o referencias/NN.mp4 "https://drive.usercontent.google.com/download?id=<id>&export=download&confirm=t"`.
 - Cada video varía la paleta y los efectos respecto del anterior, dentro de la misma identidad (ver `docs/guia-visual.md`).
-- Descripción del posteo: la invitación a seguir la cuenta y El Reflejo va ahí, junto con las obras y las fuentes. Se guarda en `publicacion.md`.
+- Descripción del posteo: la invitación a seguir la cuenta y El Reflejo va ahí, junto con las obras y las fuentes. Se guarda en `publicacion.md`. Instagram corta la descripción en 2200 caracteres (con obras, fuentes y hashtags): contarlos antes de pasarla; si sobra, se acortan las fuentes y se sacan los museos, que en YouTube sí entran (5000).
   Nombre, biografías y firmas, iguales en todos los canales: `docs/identidad.md`. El Reflejo sale cada dos o tres semanas:
   nunca prometer "cada semana".
 - **YouTube Shorts (desde octubre de 2026):** los mismos reels, sin trabajo extra. Reglas:

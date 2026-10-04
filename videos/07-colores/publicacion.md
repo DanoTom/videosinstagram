@@ -12,15 +12,15 @@ La oveja negra valía menos porque su lana no se podía teñir. Y la bandera roj
 
 No queda solo en las palabras. En 1988, Mark Frank y Thomas Gilovich mostraron a árbitros la misma jugada, filmada con el equipo de blanco y con el equipo de negro: con el de negro estaban más dispuestos a cobrar falta y la juzgaban más sucia.
 
-Fuera de la cancha pasa algo parecido: repetimos esas frases y miramos a los demás con esos colores: así se arma un prejuicio, que se mete en cómo juzgamos a alguien y en cómo nos vinculamos. Y como nadie recuerda quién lo decidió, parece natural. Roland Barthes lo llamaba mito: convertir la historia en naturaleza.
+Fuera de la cancha pasa algo parecido. Repetimos esas frases y miramos a los demás con esos colores: así se arma un prejuicio, que se mete en cómo juzgamos a alguien y en cómo nos vinculamos. Y como nadie recuerda quién lo decidió, parece natural. Roland Barthes lo llamaba mito: convertir la historia en naturaleza.
 
 Si te interesa, seguime por acá. Y si querés pensarlo con más tiempo, escribo El Reflejo (link en la bio).
 
 ¿Y a vos? ¿Qué otra frase con un color decís sin pensarlo?
 
 —
-Obras: El Greco, El caballero de la mano en el pecho, c. 1580 (Museo del Prado) · Diego Velázquez, La infanta Margarita Teresa en azul, 1659 (Kunsthistorisches Museum, Viena) · El Greco, Vista de Toledo, c. 1599–1600 (Metropolitan Museum) · Jean-Louis Prieur y Pierre-Gabriel Berthault, Publicación de la ley marcial en el Campo de Marte, 17 de julio de 1791 (Tableaux historiques de la Révolution française).
-Fuentes: A. Kienle y otros, "Why do veins appear blue?", Applied Optics, 1996 · Sentencia-Estatuto de Pero Sarmiento, Toledo, 1449 · Etymonline, "blue blood" y "black sheep" · Ley marcial del 21 de octubre de 1789 y la masacre del Campo de Marte, 17 de julio de 1791 · M. G. Frank y T. Gilovich, "The dark side of self- and social perception: Black uniforms and aggression in professional sports", Journal of Personality and Social Psychology, 1988 · Roland Barthes, Mitologías, 1957.
+Obras: El Greco, El caballero de la mano en el pecho, c. 1580 · Diego Velázquez, La infanta Margarita Teresa en azul, 1659 · El Greco, Vista de Toledo, c. 1599–1600 · Jean-Louis Prieur y Pierre-Gabriel Berthault, Publicación de la ley marcial en el Campo de Marte, 1791.
+Fuentes: A. Kienle y otros, Applied Optics, 1996 · Sentencia-Estatuto de Pero Sarmiento, Toledo, 1449 · M. G. Frank y T. Gilovich, Journal of Personality and Social Psychology, 1988 · Roland Barthes, Mitologías, 1957.
 
 #psicologia #arte #colores #historia #lenguaje
 
