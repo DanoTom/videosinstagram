@@ -31,7 +31,7 @@ psicología como giro. Idea y estructura de Dano (4/10/2026). Duración prevista
 >
 > Repetimos esas frases y miramos a los demás con esos colores: así se arma un prejuicio. Y como nadie recuerda quién lo decidió, parece natural.
 
-231 palabras (el cierre es la versión 2: ver la tabla). La voz editada dura 88,6 s.
+231 palabras (el cierre es la versión 2: ver la tabla). La voz editada dura 89,1 s.
 
 **Versión 1 del cierre** (la de la primera voz): "Repetimos esos colores sin saber que alguien los decidió. Por eso parecen
 naturales." Dano, al ver el video (4/10/2026): la frase queda indirecta; quería decir que no son solo frases, que cambian cómo
@@ -174,8 +174,10 @@ que es lo que más funcionó.
 6. **Cierre, versión 2** (Dano, 4/10/2026, después de ver el video): nueva toma de ElevenLabs desde "Y no son solo
    palabras" hasta el final (`audio/voz-cierre.mp3`, 19,3 s; así la entonación entra natural). Empalme a mano (numpy): la
    voz de antes hasta "rojos.", con la pausa después de "color?" en 0,75 s; la toma nueva entera, con el volumen igualado y
-   0,45 s menos en el hueco después de "1988,"; cola de 0,85 s. Sin acelerar daba 90,0 s: todo con `atempo` 1,015 →
-   `voz-editada.wav`, 88,6 s. `cotejar.py`: 231/231; `quietud.py`: 0 vacíos y 0 quietos; a 2,52 Mbps, `07-colores.mp4` pesa 29,3 MB. En el video, el cierre nuevo: con "miramos a los demás con esos
+   0,12 s menos en el silencio después de "palabras."; cola de 0,85 s; todo con `atempo` 1,015 → `voz-editada.wav`, 89,1 s.
+   Ojo: en la primera versión del empalme se achicó el "hueco" que whisper marcaba después de "1988," y se cortó "…y ocho"
+   (Dano lo escuchó): whisper termina "mil novecientos ochenta y ocho" antes de tiempo. Antes de cortar un hueco, mirar la
+   energía del audio, no solo los tiempos de whisper. `cotejar.py`: 231/231; `quietud.py`: 0 vacíos y 0 quietos; a 2,52 Mbps, `07-colores.mp4` pesa 29,3 MB. En el video, el cierre nuevo: con "miramos a los demás con esos
    colores" entran tres filtros (azul, gris, rojo), como gelatinas de luz, y tiñen al caballero; con "así se arma un
    prejuicio" se apilan sobre la cara (tira "un prejuicio"); con "nadie recuerda quién lo decidió" los marcos se borran y el
    tinte se disuelve, y la cámara vuelve a la cara del principio, en color, para que el loop empalme.
