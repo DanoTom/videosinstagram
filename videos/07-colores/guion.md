@@ -29,7 +29,7 @@ psicología como giro. Idea y estructura de Dano (4/10/2026). Duración prevista
 >
 > Todo eso quedó en el lenguaje: oveja negra, sangre azul, guante blanco, números rojos. Y no son solo palabras: en 1988, dos psicólogos mostraron que la misma jugada parece más violenta si la hace un equipo vestido de negro.
 >
-> Repetimos esas frases y miramos a los demás con esos colores: así se arma un prejuicio. Y como nadie recuerda quién lo decidió, parece natural.
+> Repetimos esas frases y miramos a los demás con esos colores: así se arma un prejuicio. Y como nadie recuerda el origen, nos terminan pareciendo expresiones naturales.
 
 231 palabras (el cierre es la versión 2: ver la tabla). La voz editada dura 89,1 s.
 
@@ -181,3 +181,10 @@ que es lo que más funcionó.
    colores" entran tres filtros (azul, gris, rojo), como gelatinas de luz, y tiñen al caballero; con "así se arma un
    prejuicio" se apilan sobre la cara (tira "un prejuicio"); con "nadie recuerda quién lo decidió" los marcos se borran y el
    tinte se disuelve, y la cámara vuelve a la cara del principio, en color, para que el loop empalme.
+7. **Versión 3** (5/10/2026, sugerencias de una persona con criterio audiovisual que vio el video): el final sonaba abrupto,
+   así que Dano grabó otra vez la última frase con una pausa después de "pareciendo" y entonación de cierre
+   (`audio/voz-cierre2.mp3`: "Y como nadie recuerda el origen, nos terminan pareciendo… expresiones naturales"). Para que
+   entre en 90 s: los silencios de más de 0,6 s quedan en 0,45 s y todo va con `atempo` 1,037 → 89,3 s; `cotejar.py`
+   233/233. El negro ahora tiene su separador, como el azul y el rojo: la gota negra de la pregunta llena la pantalla con
+   "El negro, por plata". Poda de rótulos que repetían la voz: "se dice", "Toledo", las fichas de "conversos o
+   descendientes de conversos", de los mártires y de los 20 árbitros. `quietud.py`: 0 vacíos y 0 quietos; 29,5 MB.
