@@ -1,0 +1,67 @@
+{
+ "duracion": 5.878,
+ "segmentos": [
+  {
+   "s": 0.0,
+   "e": 5.6,
+   "texto": "Y como nadie recuerda el origen, nos terminan pareciendo expresiones naturales."
+  }
+ ],
+ "palabras": [
+  {
+   "w": "Y",
+   "s": 0.0,
+   "e": 0.14
+  },
+  {
+   "w": "como",
+   "s": 0.14,
+   "e": 0.32
+  },
+  {
+   "w": "nadie",
+   "s": 0.32,
+   "e": 0.6
+  },
+  {
+   "w": "recuerda",
+   "s": 0.6,
+   "e": 1.14
+  },
+  {
+   "w": "el",
+   "s": 1.14,
+   "e": 1.24
+  },
+  {
+   "w": "origen,",
+   "s": 1.24,
+   "e": 1.9
+  },
+  {
+   "w": "nos",
+   "s": 2.02,
+   "e": 2.14
+  },
+  {
+   "w": "terminan",
+   "s": 2.14,
+   "e": 2.58
+  },
+  {
+   "w": "pareciendo",
+   "s": 2.58,
+   "e": 3.24
+  },
+  {
+   "w": "expresiones",
+   "s": 3.24,
+   "e": 4.86
+  },
+  {
+   "w": "naturales.",
+   "s": 4.86,
+   "e": 5.6
+  }
+ ]
+}
