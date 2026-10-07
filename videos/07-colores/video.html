@@ -125,18 +125,19 @@
     <div class="tira titular" id="fNumeros" data-rasgado data-rot="2" style="top:870px;left:110px;font-size:108px;white-space:nowrap;background:var(--rojo);color:var(--crema)">números rojos</div>
   </div>
 
-  <!-- 7 · EL GIRO: el árbitro mete el casete; la misma jugada dos veces, de blanco y de negro; con la de negro tira el pañuelo -->
-  <div class="escena" id="e7" style="background:#7B5E7B">
-    <svg class="lienzo" viewBox="0 0 1080 1920" id="teles"></svg>
-    <div class="num" id="n1988" style="top:300px;left:70px;font-size:200px;color:var(--crema)">1988</div>
-    <div class="ficha" id="fFrank" data-rot="1" style="top:330px;left:560px;font-size:18px">Mark Frank y Thomas Gilovich · Cornell<br>Journal of Personality and Social<br>Psychology, 1988</div>
+  <!-- 7 · EL GIRO: 1928, la máquina de escribir tipea la frase de los Thomas; el retrato de familia y la oveja negra -->
+  <div class="escena" id="e7">
+    <div class="plano" id="m1" style="background:#7B5E7B"><svg class="lienzo" viewBox="0 0 1080 1920" id="maquina"></svg>
+      <div class="num" id="n1928" style="top:300px;left:70px;font-size:200px;color:var(--crema)">1928</div>
+      <div class="ficha" id="fThomas" data-rot="1" style="top:330px;left:560px;font-size:18px">William I. Thomas y Dorothy S. Thomas<br>The Child in America, 1928, p. 572<br>el «teorema de Thomas»</div></div>
+    <div class="plano" id="m2" style="background:#C9B48A"><svg class="lienzo" viewBox="0 0 1080 1920" id="familia"></svg>
+      <div class="etiqueta" id="eOveja" data-rot="-3" style="top:680px;left:520px">«la oveja negra»</div></div>
   </div>
 
   <!-- 8 · CIERRE -->
   <div class="escena" id="e8">
     <svg class="lienzo" id="l13"></svg>
     <svg class="lienzo" id="geles"></svg>
-    <div class="tira titular" id="tNatural" data-rasgado data-rot="-2" style="top:1150px;left:70px;font-size:110px;white-space:nowrap">un <span style="color:var(--rojo)">prejuicio</span></div>
     <div class="ficha" id="fBarthes" data-rot="1" style="top:1380px;left:80px;font-size:18px">Roland Barthes: el mito convierte la historia en naturaleza<br>(Mitologías, 1957)</div>
   </div>
 
@@ -176,18 +177,20 @@ const T = {
   mismo: W('mismo color').s, bando: W('bando opuesto').s,
   e6: W('todo eso quedó').s - 0.2, lenguaje: W('lenguaje').s, oveja: W('oveja negra', 2).s, sangre2: W('sangre azul', 2).s,
   guante: W('guante blanco').s, numeros: W('números rojos').s, rojos: W('números rojos').e,
-  e7: W('y no son solo').s - 0.15, palabras: W('palabras').s, a1988: W('1988').s, psicologos: W('dos psicólogos').s, jugada: W('la misma jugada').s,
-  violenta: W('violenta').s, equipo: W('un equipo vestido').s, negro2: W('de negro').s,
-  e8: W('repetimos').s - 0.2, miramos: W('miramos').s, demas: W('demás').s, colores: W('esos colores').s, asi: W('así se arma').s, prejuicio: W('prejuicio').s,
-  nadie: W('y como nadie').s, decidio: W('el origen').s, natural: W('expresiones naturales').s,
+  e7: W('y no son solo').s - 0.15, palabras: W('palabras').s, a1928: W('1928').s, sociologos: W('dos sociólogos').s, frase: W('una frase famosa').s,
+  llamamos: W('a quien llamamos').s, oveja3: W('oveja negra', 3).s, tratamos: W('lo tratamos').s, acabar: W('puede acabar').s,
+  e8: W('y como nadie').s - 0.25, asi: W('el origen').s - 0.1, nadie: W('estas expresiones').s, decidio: W('pareciendo').s, natural: W('naturales').s,
 };
+T.miramos = T.e8 + 0.1; T.demas = T.e8 + 0.35; T.colores = T.e8 + 0.6; T.prejuicio = T.nadie;
+const cita = (() => { const r = W('si definimos algo como real'); return Array.from({ length: 10 }, (_, k) => voz.palabras[r.i + k]); })();
 T.vuelta = DURACION - 0.35;
 T.e7b = T.palabras + 0.45;
 T.colorW = voz.palabras[W('cualquier color').i + 1].s;
 const escenas = [['e1', -1, T.quien - 0.1], ['e2', T.quien - 0.1, T.e3], ['e3', T.e3, T.e4], ['e4', T.e4, T.e5], ['e5', T.e5, T.e6],
   ['e6', T.e6, T.e7b], ['e7', T.e7b, T.e8], ['e8', T.e8, 999]];
 const SUBS = subtitulos(voz, [['quién decidió qué significa cada color'], ['el azul por pureza'], ['el negro por plata'], ['el rojo por poder'],
-  ['mismo color bando opuesto'], ['oveja negra sangre azul guante blanco números rojos']], 7, [['con esos colores']]);
+  ['mismo color bando opuesto'], ['oveja negra sangre azul guante blanco números rojos'],
+  ['si definimos algo como real es real en sus consecuencias']], 7, [['dos sociólogos'], ['oveja negra', 3], ['como tal'], ['el origen']]);
 const preg = (() => { const r = W('quién decidió qué significa cada color'); return [0, 1, 2, 3, 4, 5].map(k => voz.palabras[r.i + k].s); })();
 
 const doce = t => Math.floor(t * 12) / 12;
@@ -892,72 +895,79 @@ function seek(tReal) {
     sv($('iconos'), ic);
   }
 
-  // 7 · EL GIRO: 1988. El árbitro mete el casete; la tele se prende (barras de color); la misma jugada dos veces: con el
-  // defensor de blanco, nada; rebobina; con el de negro, salta, pita y tira el pañuelo amarillo contra la pantalla
+  // 7 · EL GIRO. "1928": una máquina de escribir sube a cuadro, entra la hoja y tipea la frase de los Thomas al ritmo de
+  // la voz (el carro corre a la izquierda con cada letra, el renglón salta con su campanita). Después, el retrato de familia:
+  // todos en blanco; con «la oveja negra» a uno lo tiñe una mancha negra; los demás se dan vuelta, lo miran con mala cara
+  // y se apartan; con "puede acabar siéndolo" la foto se oscurece, le cae un cono de luz y él baja la cabeza.
   if (t >= T.e7b && t < T.e8) {
-    const s3 = 1.15, R = [20, 1060];   // el árbitro
-    const TVx = 135, TVy = 540, TVs = 1.35, SC = [TVx + 50 * TVs, TVy + 50 * TVs, 400 * TVs, 320 * TVs];
-    const mete = ease.inOut(prog(ta, T.e7b + 0.1, T.a1988 - 0.1)), prende = prog(t, T.a1988 - 0.05, T.a1988 + 0.2);
-    const blanco = [T.jugada - 0.05, T.violenta - 0.15], negro = [T.violenta + 0.25, T.e8], rebob = [T.violenta - 0.15, T.violenta + 0.25];
-    const tau = t < blanco[1] ? (t - blanco[0]) : t < rebob[1] ? lerp(1.6, 0, prog(t, rebob[0], rebob[1])) : (t - negro[0]);
-    const choque = 1.0;   // el tackle, en segundos de jugada
-    const tN = negro[0] + choque;
-    let pant = '';
-    if (t < T.a1988 - 0.05) pant = `<rect width="400" height="320" fill="#141814"/>`;
-    else if (prende < 1) pant = `<rect width="400" height="320" fill="#141814"/><rect x="0" y="${f1(160 - 160 * ease.in(prende))}" width="400" height="${f1(Math.max(3, 320 * ease.in(prende)))}" fill="#F4F4F4"/>`;
-    else if (t < T.psicologos - 0.1) {
-      const bar = ['#C0C0C0', '#C0C000', '#00C0C0', '#00C000', '#C000C0', '#C00000', '#0000C0'];
-      pant = bar.map((c, i) => `<rect x="${i * 400 / 7}" y="0" width="${f1(400 / 7 + 1)}" height="230" fill="${c}"/>`).join('') + `<rect y="230" width="400" height="90" fill="#101010"/><rect x="0" y="230" width="57" height="90" fill="#0A1F5A"/><rect x="114" y="230" width="57" height="90" fill="#F4F4F4"/>`;
-    } else if (t < blanco[0]) {
-      // la cuenta regresiva de la cinta: el círculo, la cruz y el barrido que gira
-      const r = (blanco[0] - t) / (blanco[0] - T.psicologos + 0.1) * 3, n = Math.ceil(r), a = (n - r) * 360;
-      const ax = 200 + 150 * Math.sin(a * Math.PI / 180), ay = 160 - 150 * Math.cos(a * Math.PI / 180);
-      pant = `<rect width="400" height="320" fill="#C8C2B4"/><path d="M200 160 L 200 10 A 150 150 0 ${a > 180 ? 1 : 0} 1 ${f1(ax)} ${f1(ay)} Z" fill="#8F897C"/>
-        <path d="M0 160 L 400 160 M 200 0 L 200 320" stroke="#161616" stroke-width="3"/><circle cx="200" cy="160" r="120" fill="none" stroke="#F4F4F4" stroke-width="6"/><circle cx="200" cy="160" r="100" fill="none" stroke="#F4F4F4" stroke-width="4"/>
-        <text x="200" y="208" text-anchor="middle" font-family="Inter Tight, sans-serif" font-weight="800" font-size="140" fill="#161616">${Math.max(1, n)}</text>`;
+    const k7 = t < T.llamamos - 0.15 ? 0 : 1;
+    $('m1').style.display = k7 === 0 ? 'block' : 'none'; $('m2').style.display = k7 === 1 ? 'block' : 'none';
+    if (k7 === 0) {
+      const CW = 26.4, LH = 70, lineas = [[0, 3], [3, 7], [7, 10]];
+      const sube = ease.out(prog(t, T.e7b, T.e7b + 0.55)), entra = ease.inOut(prog(t, T.frase - 0.1, T.frase + 0.7));
+      const textos = lineas.map(([a, b]) => cita.slice(a, b).map(w => w.w).join(' '));
+      let ultima = -9;
+      const escritos = lineas.map(([a, b]) => { let n = 0; for (let k = a; k < b; k++) { const w = cita[k], txt = w.w + (k < b - 1 ? ' ' : ''), d = Math.max(0.15, w.e - w.s);
+        const q = clamp((t - w.s) / d), c = Math.floor(q * txt.length); n += c; if (c > 0) ultima = Math.max(ultima, w.s + d * c / txt.length); if (q < 1) break; } return n; });
+      const ini = lineas.map(([a]) => cita[a].s);
+      const salto = li => ease.inOut(prog(t, ini[li] - 0.2, ini[li] - 0.04));
+      const lf = salto(1) + salto(2), cur = lf >= 2 ? 2 : lf >= 1 ? 1 : 0;
+      const enSalto = cur < 2 && t > ini[cur + 1] - 0.2;
+      let cx = -escritos[cur] * CW;
+      if (enSalto) cx = lerp(-textos[cur].length * CW, 0, salto(cur + 1));
+      const golpe = t - ultima < 0.06 ? 1 : 0, temb = golpe * 2.5 * Math.sin(t * 90);
+      const Y0 = lerp(700, 0, sube);
+      let o = `<g transform="translate(0 ${f1(Y0 + temb)})">`;
+      // la hoja, detrás del rodillo: entra desde abajo y sube un renglón con cada salto
+      o += `<clipPath id="hojaC"><rect x="-200" y="-400" width="1500" height="${1612}"/></clipPath><g clip-path="url(#hojaC)"><g transform="translate(${f1(540 + cx)} ${f1(1140 - lf * LH + (1 - entra) * 560)})">
+        <rect x="-70" y="-430" width="640" height="${430 + 3 * LH + 90}" fill="#F7F1E4" stroke="#161616" stroke-width="4"/>
+        ${textos.map((tx, li) => `<text x="0" y="${li * LH}" font-family="Space Mono" font-weight="700" font-size="44" fill="#161616" xml:space="preserve">${tx.slice(0, escritos[li])}</text>`).join('')}</g></g>`;
+      // el carro: el rodillo y sus perillas, la palanca de retorno
+      o += `<g transform="translate(${f1(cx)} 0)"><rect x="${430 - 110}" y="1150" width="860" height="62" rx="31" fill="#161616"/><circle cx="${320}" cy="1181" r="40" fill="#161616"/><circle cx="${1180}" cy="1181" r="40" fill="#161616"/>
+        <path d="M330 1160 L 250 1090 L 210 1095" fill="none" stroke="#161616" stroke-width="14" stroke-linecap="round"/><rect x="${430 - 110}" y="1176" width="860" height="6" fill="#F4EEE3" opacity=".35"/></g>`;
+      // el cuerpo, el cesto de las barras, el teclado
+      o += `<path d="M130 1540 L 950 1540 L 870 1236 L 210 1236 Z" fill="#161616"/><path d="M210 1236 L 870 1236 L 850 1214 L 230 1214 Z" fill="#2E2E2E"/>`;
+      for (let k = -6; k <= 6; k++) { const a = k * 0.2; o += `<path d="M${f1(540 + Math.sin(a) * 40)} ${f1(1290 - Math.cos(a) * 40)} L ${f1(540 + Math.sin(a) * 95)} ${f1(1290 - Math.cos(a) * 95)}" stroke="#F4EEE3" stroke-width="3" opacity=".5"/>`; }
+      if (golpe) o += `<path d="M560 1270 L 540 1158" stroke="#F4EEE3" stroke-width="7" stroke-linecap="round"/>`;
+      const tecla = Math.floor(ultima * 37) % 27;
+      for (let r = 0; r < 3; r++) for (let c = 0; c < 9; c++) { const id = r * 9 + c, baja = golpe && id === tecla ? 6 : 0;
+        o += `<circle cx="${270 + c * 68 + r * 18}" cy="${1360 + r * 56 + baja}" r="23" fill="#F4EEE3" stroke="#161616" stroke-width="5"/><circle cx="${270 + c * 68 + r * 18}" cy="${1360 + r * 56 + baja}" r="13" fill="#161616" opacity=".85"/>`; }
+      o += `<rect x="380" y="1525" width="320" height="22" rx="11" fill="#F4EEE3" opacity=".9"/>`;
+      // la campanita del final de renglón
+      for (const li of [1, 2]) { const q = prog(t, ini[li] - 0.24, ini[li] + 0.15); if (q > 0 && q < 1) for (let j = 0; j < 3; j++) o += `<path d="M${f1(890 + j * 10)} ${f1(1110 - j * 26)} l ${30 + j * 8} ${-14 - j * 6}" stroke="#F4EEE3" stroke-width="6" stroke-linecap="round" opacity="${f1(1 - q)}"/>`; }
+      o += `</g>`;
+      const zp = ease.inOut(prog(t, cita[0].s - 0.3, T.llamamos));
+      sv($('maquina'), `<g transform="${camara(lerp(1, 1.12, zp), [540, lerp(960, 1080, zp)], [540, lerp(960, 1000, zp)])}">${o}</g>`);
+      pieza($('n1928'), t, { t0: T.a1928 - 0.05, dur: 0.3, t1: T.frase, sale: 'fundido' });
+      pieza($('fThomas'), t, { t0: T.sociologos, entra: 'fundido', t1: T.llamamos - 0.3 });
     } else {
-      // la jugada: el corredor (gris) viene con la pelota; el defensor (blanco o negro) lo tacklea; caen los dos
-      const eq = t < rebob[1] ? 'blanco' : 'negro', tc = Math.max(0, tau);
-      const cae = ease.out(clamp((tc - choque) / 0.3));
-      pant = `<rect width="400" height="320" fill="#2F6B3C"/>`;
-      for (let x = -((tc * 50) % 70); x < 420; x += 70) pant += `<path d="M${f1(x)} 0 L ${f1(x + 40)} 320" stroke="#EFE8DA" stroke-width="3" opacity=".55"/>`;
-      const fc = Math.min(tc, choque), sc = 0.26;
-      const xr = 280 - 95 * fc, xd = -40 + 150 * fc;
-      pant += `<g transform="translate(${f1(xr + 110 + 30 * cae)} ${f1(48 + 10 * cae)}) rotate(${f1(78 * cae)} -50 250) scale(${-sc} ${sc})" style="filter:brightness(0) invert(.58)">${figura({ fase: fc * 2.2, camina: 1 - cae, inclina: 10, sombrero: 'casco', ropa: 'camiseta', brazos: 'pecho' })}</g>`;
-      pant += `<g transform="translate(${f1(xd + 30 * cae)} ${f1(48 + 14 * cae)}) rotate(${f1(lerp(14, 62, cae))} 60 250) scale(${sc})" style="${eq === 'blanco' ? 'filter:invert(1)' : ''}">${figura({ fase: fc * 2.4, camina: 1 - cae, sombrero: 'casco', ropa: 'camiseta', brazos: 'equilibrio', vaiven: 30 * cae })}</g>`;
-      // la pelota sale volando
-      const pq = clamp((tc - choque) / 0.6);
-      pant += `<ellipse cx="${f1(lerp(xr + 70, xr + 230, pq))}" cy="${f1(lerp(170, 270, pq) - 90 * Math.sin(Math.PI * pq))}" rx="13" ry="8" fill="#7A4A26" transform="rotate(${f1(400 * pq)} ${f1(lerp(xr + 70, xr + 230, pq))} ${f1(lerp(170, 270, pq) - 90 * Math.sin(Math.PI * pq))})"/>`;
-      if (t > rebob[0] && t < rebob[1]) for (let j = 0; j < 7; j++) { const y = (j * 53 + t * 900) % 320; pant += `<rect y="${f1(y)}" width="400" height="${5 + (j % 3) * 4}" fill="#fff" opacity=".45"/>`; }
-      const osd = t > rebob[0] && t < rebob[1] ? '◀◀' : t > T.e8 - 0.6 ? '❚❚' : 'PLAY ▶';
-      pant += `<text x="18" y="34" font-family="Space Mono" font-weight="700" font-size="22" fill="#9FF29F">${osd}</text>`;
+      const fam = [{ x: 205, s: 0.6, som: 'galera', ropa: 'levita' }, { x: 375, s: 0.55, som: 'nada', ropa: 'camisa' }, { x: 545, s: 0.43, som: 'nada', ropa: 'camisa' },
+        { x: 725, s: 0.52, som: 'nada', ropa: 'camisa' }, { x: 890, s: 0.4, som: 'nada', ropa: 'camisa' }], NEG = 3, piso = 1330;
+      const tinte = ease.out(prog(t, T.oveja3 + 0.05, T.oveja3 + 0.65));
+      const miran = ease.inOut(prog(ta, T.tratamos - 0.1, T.tratamos + 0.25)), aparta = ease.out(prog(ta, T.tratamos + 0.15, T.tratamos + 0.65));
+      const baja = ease.inOut(prog(ta, T.acabar, T.acabar + 0.8)), luz = ease.inOut(prog(t, T.acabar - 0.2, T.acabar + 0.5));
+      let o = `<rect x="60" y="490" width="960" height="920" fill="#5A3E26"/><rect x="96" y="526" width="888" height="848" fill="#8A7A60"/><rect x="96" y="1250" width="888" height="124" fill="#75674F"/>
+        <rect x="96" y="526" width="888" height="848" fill="none" stroke="#3E2B1C" stroke-width="10"/><rect x="74" y="504" width="932" height="892" fill="none" stroke="#7A5634" stroke-width="6"/>`;
+      fam.forEach((p, i) => {
+        if (i === NEG) return;
+        const lado = i < NEG ? 1 : -1, cerca = Math.abs(i - NEG) === 1 ? 1.6 : 1;
+        const flip = lado < 0 ? lerp(1, -1, ease.inOut(prog(ta, T.tratamos - 0.1 + i * 0.03, T.tratamos + 0.12 + i * 0.03))) : 1;
+        o += `<g transform="translate(${f1(p.x - lado * 26 * cerca * aparta)} ${f1(piso - 968 * p.s)}) scale(${f1(flip * p.s)} ${f1(p.s)}) translate(-250 0)" style="filter:invert(1)">${figura({ camina: 0, ropa: p.ropa, sombrero: p.som,
+          mira: 5 * miran, boca: lerp(0.3, -0.7, miran), respira: 0.5 + 0.5 * Math.sin(t * 3 + i), parpadeo: parpadea(ta, i * 0.21) })}</g>`;
+      });
+      // la foto se oscurece y un cono de luz cae sobre él (él va encima)
+      const p = fam[NEG];
+      if (luz > 0) o += `<rect x="96" y="526" width="888" height="848" fill="#1B2130" opacity="${f1(0.55 * luz)}"/><path d="M${p.x - 45} 526 L ${p.x + 45} 526 L ${p.x + 150} ${piso + 20} L ${p.x - 150} ${piso + 20} Z" fill="#FFF6D8" opacity="${f1(0.22 * luz)}"/>
+        <ellipse cx="${p.x}" cy="${piso + 14}" rx="${f1(150 * luz)}" ry="22" fill="#FFF6D8" opacity="${f1(0.3 * luz)}"/>`;
+      const fig = figura({ camina: 0, ropa: p.ropa, sombrero: p.som, mira: lerp(-2, 16, baja), inclina: 4 * baja, boca: lerp(0.3, -0.8, Math.max(miran, baja)),
+        respira: 0.5 + 0.5 * Math.sin(t * 3), parpadeo: Math.max(parpadea(ta, 0.5), 0.35 * baja) });
+      const gT = `translate(${p.x} ${f1(piso - 968 * p.s)}) scale(${p.s}) translate(-250 0)`;
+      o += `<g transform="${gT}" style="filter:invert(1)">${fig}</g>`;
+      if (tinte > 0) o += `<defs>${mancha('mfam', { x: 245, y: 480, r: 30 + 760 * tinte, semilla: 4, borde: 60 })}</defs><g transform="${gT}"><g mask="url(#mfam)">${fig}</g></g>`;
+      const zp = ease.inOut(prog(t, T.tratamos, T.e8));
+      sv($('familia'), `<g transform="${camara(lerp(1, 1.18, zp), [lerp(540, p.x - 60, zp), lerp(960, 1000, zp)], [540, 960])}">${o}</g>`);
+      pieza($('eOveja'), t, { t0: T.oveja3 - 0.05 });
     }
-    for (let y = 0; y < 320; y += 5) pant += `<rect y="${y}" width="400" height="2" fill="#000" opacity=".16"/>`;
-    let o = `<rect x="-400" y="1300" width="1900" height="900" fill="#4E3A4E"/>`;
-    o += `<g transform="translate(${TVx} ${TVy}) scale(${TVs})">${tele(pant)}</g>`;
-    // la videocasetera, con el reloj en 12:00 que titila
-    o += `<rect x="300" y="1215" width="600" height="104" rx="8" fill="#161616"/><rect x="340" y="1252" width="190" height="26" fill="#333"/>
-      <text x="800" y="1282" text-anchor="middle" font-family="Space Mono" font-weight="700" font-size="34" fill="#9FF29F" opacity="${Math.floor(t * 2) % 2 ? 1 : 0.25}">12:00</text>`;
-    // el casete: en la mano del árbitro, entra en la ranura
-    if (mete < 1) o += `<g transform="translate(${f1(lerp(250, 440, mete))} ${f1(lerp(1330, 1265, mete))})"><rect x="-95" y="-14" width="190" height="${f1(lerp(110, 30, mete))}" fill="#222" stroke="#F4EEE3" stroke-width="3"/><rect x="-60" y="0" width="120" height="${f1(lerp(36, 10, mete))}" fill="#F4EEE3"/></g>`;
-    // el pañuelo amarillo: sale de la mano, vuela y se aplasta contra la pantalla
-    const tira0 = tN + 0.25, vuela = prog(t, tira0, tira0 + 0.35);
-    const manoD = t < T.e7b + 0.15 ? [380, 560] : t < T.a1988 + 0.3 ? [lerp(330, 400, mete), lerp(560, 230, mete)] : t < tN + 0.05 ? [300, 470] :
-      [lerp(300, 470, ease.out(prog(t, tN + 0.05, tira0))), lerp(470, 200, ease.out(prog(t, tN + 0.05, tira0)))];
-    const salto = Math.sin(Math.PI * prog(ta, tN + 0.02, tN + 0.32));
-    o += `<g transform="translate(${R[0]} ${f1(R[1] - 40 * salto)}) scale(${s3})">${figura({ camina: 0, ropa: 'arbitro', sombrero: 'gorra', manoD, bA: [8, 16],
-      mira: t > tN ? -6 : -10, boca: t > tN && t < tN + 0.9 ? 'o' : 0.1, alza: 30 * salto, parpadeo: parpadea(ta, 0.3) })}</g>`;
-    if (t > tN && t < tN + 0.9) o += `<rect x="${f1(R[0] + s3 * 290)}" y="${f1(R[1] - 40 * salto + s3 * 298)}" width="${f1(s3 * 34)}" height="${f1(s3 * 14)}" rx="4" fill="#F4EEE3"/>`;
-    if (t > tN && t < tN + 0.6) for (let j = 0; j < 3; j++) o += `<path d="M${f1(R[0] + s3 * 340 + j * 6)} ${f1(R[1] + s3 * 290 - j * 40)} l ${40 + j * 10} ${-16 - j * 10}" stroke="#F4EEE3" stroke-width="7" stroke-linecap="round" opacity="${f1(1 - prog(t, tN, tN + 0.6))}"/>`;
-    if (vuela > 0) {
-      const ini = [R[0] + s3 * 470, R[1] + s3 * 200], fin = [SC[0] + SC[2] * 0.62, SC[1] + SC[3] * 0.5];
-      const x = lerp(ini[0], fin[0], vuela), y = lerp(ini[1], fin[1], vuela) - 260 * Math.sin(Math.PI * vuela), pega = vuela >= 1 ? Math.sin(Math.PI * prog(t, tira0 + 0.35, tira0 + 0.55)) : 0;
-      o += `<g transform="translate(${f1(x)} ${f1(y)}) rotate(${f1(vuela < 1 ? 600 * vuela : -12)}) scale(${f1(1.6 + 0.4 * pega)} ${f1(1.6 - 0.3 * pega)})"><path d="M-40 -30 Q 0 -50 40 -30 L 30 30 Q 0 40 -30 30 Z" fill="#E8C64A" stroke="#161616" stroke-width="5"/><circle r="10" fill="#161616"/></g>`;
-    }
-    const zp = ease.inOut(prog(t, T.e7b, T.e8));
-    sv($('teles'), `<g transform="${camara(lerp(1, 1.08, zp), [540, lerp(960, 900, zp)], [540, 960])}">${o}</g>`);
-    pieza($('n1988'), t, { t0: T.a1988 - 0.05, dur: 0.3, t1: T.jugada - 0.2, sale: 'fundido' });
-    pieza($('fFrank'), t, { t0: T.psicologos, entra: 'fundido', t1: T.jugada - 0.2 });
   }
 
   // 8 · CIERRE: el caballero, en color. Con "miramos a los demás con esos colores" entran tres filtros (azul, negro, rojo),
@@ -981,7 +991,6 @@ function seek(tReal) {
         <rect x="-190" y="-250" width="380" height="500" rx="18" fill="none" stroke="#161616" stroke-width="14" opacity="${f1(1 - borra)}"/><rect x="-40" y="-282" width="80" height="34" rx="6" fill="#161616" opacity="${f1(1 - borra)}"/></g>`;
     });
     sv(g, o);
-    pieza($('tNatural'), t, { t0: T.prejuicio - 0.05, t1: T.decidio, sale: 'fundido' });
     pieza($('fBarthes'), t, { t0: T.natural - 0.3, entra: 'fundido', t1: T.vuelta - 0.25 });
   }
 

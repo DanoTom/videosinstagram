@@ -27,9 +27,9 @@ psicología como giro. Idea y estructura de Dano (4/10/2026). Duración prevista
 >
 > El rojo, por poder. En París, una bandera roja anunciaba la ley marcial. En 1791 la izaron en el Campo de Marte, y la guardia disparó contra la multitud. Los revolucionarios levantaron esa misma bandera en honor a sus muertos. Mismo color, bando opuesto.
 >
-> Todo eso quedó en el lenguaje: oveja negra, sangre azul, guante blanco, números rojos. Y no son solo palabras: en 1988, dos psicólogos mostraron que la misma jugada parece más violenta si la hace un equipo vestido de negro.
+> Todo eso quedó en el lenguaje: oveja negra, sangre azul, guante blanco, números rojos. Y no son solo palabras. En 1928, dos sociólogos escribieron una frase famosa: si definimos algo como real, es real en sus consecuencias. A quien llamamos «la oveja negra» lo tratamos como tal, y puede acabar siéndolo.
 >
-> Repetimos esas frases y miramos a los demás con esos colores: así se arma un prejuicio. Y como nadie recuerda el origen, nos terminan pareciendo expresiones naturales.
+> Y como nadie recuerda el origen de estas expresiones, nos terminan pareciendo naturales.
 
 231 palabras (el cierre es la versión 2: ver la tabla). La voz editada dura 89,1 s.
 
@@ -106,7 +106,7 @@ que es lo que más funcionó.
 | 4 | Negro | La secuencia en silueta del teñido; Zurbarán, *Agnus Dei* (1635–1640) para "la blanca era la valiosa" | "Lo que era mercado se volvió juicio moral" |
 | 5 | Rojo | Prieur y Berthault, *Publicación de la ley marcial en el Campo de Marte, 17 de julio de 1791* (la bandera roja izada); *Fusillade du Champ de Mars*; la bandera que se da vuelta y cambia de leyenda | "1791 · ley marcial" · «Ley marcial del pueblo soberano…» (1792) |
 | 6 | El lenguaje | Las cuatro frases como tiras, cada una en su color | "oveja negra" · "sangre azul" · "guante blanco" · "números rojos" |
-| 7 | Giro | La misma jugada dos veces, con personitas de blanco y de negro; un medidor de "violencia" que sube solo con el negro | ficha "Frank y Gilovich, Cornell, 1988" |
+| 7 | Giro | 1928: una máquina de escribir tipea la frase de los Thomas al ritmo de la voz; el retrato de familia en silueta, todos en blanco: a uno lo tiñe la mancha negra con «la oveja negra», los demás lo miran y se apartan, y con "puede acabar siéndolo" le cae un cono de luz y baja la cabeza | ficha "William I. Thomas y Dorothy S. Thomas, The Child in America, 1928, p. 572 · el «teorema de Thomas»" · etiqueta "«la oveja negra»" |
 | 8 | Cierre | Vuelve el caballero de El Greco, sin color; el último cuadro es el primero (loop) | ficha "Roland Barthes: el mito convierte la historia en naturaleza (Mitologías, 1957)" |
 
 ## Obras (Wikimedia Commons, dominio público)
@@ -132,7 +132,8 @@ que es lo que más funcionó.
 | París: la bandera roja anunciaba la ley marcial; en 1791 la izaron en el Campo de Marte y la guardia disparó contra la multitud | Ley marcial del 21 de octubre de 1789 (la bandera roja como señal para que se dispersen las reuniones); 17 de julio de 1791: el alcalde Bailly hizo izar la bandera roja y la Guardia Nacional de La Fayette disparó contra los que firmaban una petición; "varias decenas de muertos" (Hérodote, "17 juillet 1791"; Wikipedia, "Champ de Mars massacre") |
 | Los revolucionarios levantaron esa misma bandera en honor a sus muertos | "Inverting the original symbolism, the Jacobins protested this action by flying a red flag to honour the «martyrs' blood»" (Wikipedia, "Red flag (politics)"); Jean Jaurès, *Historia socialista de la Revolución francesa*: la bandera de la ley marcial pasó a los insurrectos del 10 de agosto de 1792 |
 | Pantalla: «Ley marcial del pueblo soberano contra la rebelión del poder ejecutivo» (1792) | Wikipedia, "Insurrection of 10 August 1792" |
-| 1988: la misma jugada parece más violenta si la hace un equipo vestido de negro | M. G. Frank y T. Gilovich, "The dark side of self- and social perception: Black uniforms and aggression in professional sports", *Journal of Personality and Social Psychology* 54 (1), 1988, pp. 74–85 (Cornell). ✓ El experimento: dos jugadas de fútbol americano filmadas igual, con el equipo defensor de blanco o de negro; 20 árbitros universitarios y de secundaria vieron cada versión, y con el equipo de negro estaban más dispuestos a sancionarlo y lo juzgaban más "sucio" (*Sports Illustrated*, "Dark forces", 17/4/1989). Ficha posible: "20 árbitros por versión" |
+| 1928, dos sociólogos: "si definimos algo como real, es real en sus consecuencias" | ✓ W. I. Thomas y D. S. Thomas, *The Child in America: Behavior Problems and Programs*, Knopf, 1928, p. 572: «If men define situations as real, they are real in their consequences» (el «teorema de Thomas»). Dorothy Swaine Thomas era entonces su asistente de investigación (se casaron después): por eso "dos sociólogos" y no "un matrimonio" |
+| A quien llamamos «la oveja negra» lo tratamos como tal, y puede acabar siéndolo | Aplicación (relato, no dato) de la profecía autocumplida: R. K. Merton, "The Self-Fulfilling Prophecy", *The Antioch Review* 8 (2), 1948, pp. 193–210, que parte del teorema de Thomas: «una definición falsa de la situación que provoca una conducta que vuelve verdadera la concepción falsa». "Puede acabar", no "muchas veces": se afirma el mecanismo, no una frecuencia |
 | (Pantalla) Barthes: el mito convierte la historia en naturaleza | Roland Barthes, *Mitologías* (1957), "El mito, hoy": el mito tiene a su cargo convertir una intención histórica en naturaleza, una contingencia en eternidad. Va como paráfrasis, sin comillas: el texto de la traducción de Siglo XXI no se pudo leer desde acá |
 | (Contexto, no va en la voz) La asociación automática blanco = moral, negro = inmoral | G. D. Sherman y G. L. Clore, "The color of sin", *Psychological Science* 20 (8), 2009: en una tarea de Stroop se nombra más rápido el color negro de palabras inmorales y el blanco de palabras morales |
 
@@ -188,3 +189,10 @@ que es lo que más funcionó.
    233/233. El negro ahora tiene su separador, como el azul y el rojo: la gota negra de la pregunta llena la pantalla con
    "El negro, por plata". Poda de rótulos que repetían la voz: "se dice", "Toledo", las fichas de "conversos o
    descendientes de conversos", de los mártires y de los 20 árbitros. `quietud.py`: 0 vacíos y 0 quietos; 29,5 MB.
+8. **Versión 4** (7/10/2026, Dano, viéndolo en frío antes de publicar): el ejemplo del fútbol (y la tele, que tenía errores)
+   no alcanzaba a decir por qué "no son solo palabras": las expresiones definen modos de ver, pensar y relacionarse, y por
+   eso inciden en la realidad. Se reemplaza por el teorema de Thomas (1928) y la oveja negra en la familia (la profecía
+   autocumplida de Merton), y el final pasa a "el origen de estas expresiones, nos terminan pareciendo… naturales" (la
+   última palabra sola, después de la pausa). Toma `audio/voz-cierre3.mp3` desde "Y no son solo palabras"; silencios de más
+   de 0,5 s en 0,4 s y `atempo` 1,025 → 89,3 s; `cotejar.py` 231/231. En el video: la máquina de escribir y el retrato de
+   familia (ver el plan visual, fila 7); los filtros sobre El Greco quedan para "Y como nadie recuerda el origen…".
