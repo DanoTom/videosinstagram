@@ -34,7 +34,12 @@
   Google Drive se encuentran buscando el nombre del archivo (por ejemplo `title contains '02-icaro'`), y con el id se bajan a
   `referencias/`: `curl -L -o referencias/NN.mp4 "https://drive.usercontent.google.com/download?id=<id>&export=download&confirm=t"`.
 - Cada video varía la paleta y los efectos respecto del anterior, dentro de la misma identidad (ver `docs/guia-visual.md`).
-- Descripción del posteo: la invitación a seguir la cuenta y El Reflejo va ahí, junto con las obras y las fuentes. Se guarda en `publicacion.md`. Instagram corta la descripción en 2200 caracteres (con obras, fuentes y hashtags): contarlos antes de pasarla; si sobra, se acortan las fuentes y se sacan los museos, que en YouTube sí entran (5000).
+- Descripción del posteo: corta, y sin repetir lo que ya dice el video (decisión de Dano, 7/10/2026: las largas duplicaban el
+  video y rinden menos). Se guarda en `publicacion.md` y lleva, en este orden: (1) una o dos oraciones con algo que **no**
+  está en el video (un dato extra, una fuente, otro ángulo; la primera línea es lo que se ve sin tocar "más"); (2) la
+  invitación a seguir la cuenta y a El Reflejo; (3) la pregunta del final; (4) obras y fuentes abreviadas; (5) hashtags. En
+  YouTube, además, una primera línea que diga de qué trata con las palabras que se buscan. Con esto queda lejos del límite
+  de Instagram (2200 caracteres).
   Nombre, biografías y firmas, iguales en todos los canales: `docs/identidad.md`. El Reflejo sale cada dos o tres semanas:
   nunca prometer "cada semana".
 - **YouTube Shorts (desde octubre de 2026):** los mismos reels, sin trabajo extra. Reglas:
